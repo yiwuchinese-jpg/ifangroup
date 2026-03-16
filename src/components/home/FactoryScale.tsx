@@ -23,7 +23,7 @@ export default function FactoryScale() {
  className="absolute inset-0 w-full h-[120%] -top-[10%]"
  >
  <img
- src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
+ src="/images/static/home-factory.webp"
  alt="IFAN Advanced Manufacturing Facility"
  className="w-full h-full object-cover select-none"
  draggable={false}

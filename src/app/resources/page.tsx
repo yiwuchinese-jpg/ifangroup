@@ -17,7 +17,7 @@ export default function ResourcesPage() {
  {/* Background Image / Overlay */}
  <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
  <img
- src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2000&auto=format&fit=crop"
+ src="/images/static/resources-hero.webp"
  alt="IFAN Engineering Data Repository"
  className="w-full h-full object-cover opacity-40 select-none scale-105"
  draggable={false}

@@ -46,14 +46,11 @@ function SpinningText({ text }: { text: string }) {
  onPointerOut={() => setHovered(false)}
  >
  {text}
- {/* Metallic/Glassy Material for the 3D Text */}
- <meshPhysicalMaterial
+ {/* Elegant Glossy Material */}
+ <meshStandardMaterial
  color="#ffffff"
- metalness={0.8}
- roughness={0.2}
- envMapIntensity={1.5}
- clearcoat={1}
- clearcoatRoughness={0.1}
+ roughness={0.15}
+ metalness={0.05}
  />
  </Text3D>
  </Float>
@@ -65,14 +62,15 @@ export default function Hero3DLogo({ text }: { text: string }) {
  return (
  <div className="w-full h-48 md:h-64 mb-8 cursor-pointer relative z-20">
  <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
- <ambientLight intensity={0.5} />
- <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
- <pointLight position={[-10, -10, -10]} intensity={0.5} />
+ <ambientLight intensity={1.5} />
+ <spotLight position={[10, 15, 10]} angle={0.2} penumbra={1} intensity={2.5} castShadow />
+ <pointLight position={[-10, 5, -10]} intensity={2} color="#ffffff" />
+
+ {/* Manual lights to compensate for removed Environment */}
+ <directionalLight position={[0, -5, 10]} intensity={1.5} color="#ffffff" />
+ <hemisphereLight intensity={1.0} color="#ffffff" groundColor="#404040" />
 
  <SpinningText text={text} />
-
- {/* Environment for reflections */}
- <Environment preset="city"/>
 
  {/* Contact shadows for grounding the text */}
  <ContactShadows

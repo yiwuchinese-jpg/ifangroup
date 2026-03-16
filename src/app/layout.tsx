@@ -15,7 +15,7 @@ export const metadata: Metadata = {
  siteName:"IFAN Group",
  images: [
  {
- url:"https://images.unsplash.com/photo-1542032766-41fb8d672535?q=80&w=1200",
+ url: "/images/static/og-image.webp",
  width: 1200,
  height: 630,
  alt:"IFAN Group Manufacturing Facility",

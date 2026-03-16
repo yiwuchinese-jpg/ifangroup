@@ -5,10 +5,9 @@ import YouTubeGallery from "./YouTubeGallery";
 
 export default function MediaCenter() {
     return (
-        <section id="media" className="w-full bg-white relative py-24 md:py-32 border-t-2 border-slate-900 scroll-m-20">
+        <section id="media" className="w-full bg-slate-50 relative py-24 md:py-32 border-t border-slate-200 scroll-m-20">
             {/* Background Aesthetic Elements */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50 border-l border-slate-100 hidden lg:block" />
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-white border-l border-slate-100 hidden lg:block" />
 
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
 

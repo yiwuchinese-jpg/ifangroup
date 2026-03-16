@@ -5,38 +5,38 @@ import Link from"next/link";
 import { ArrowRight, Check } from"lucide-react";
 
 const categories = [
- {
- id:"ppr",
- title:"PPR Potable Water Systems",
- description:"Engineered from 100% Hyosung R200P. The undisputed industry standard for zero-leakage, 50-year lifespan water distribution.",
- image:"https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop",
- features: ["Acoustic Insulation","Antimicrobial Layers","PN20 / PN25 Class Rated"],
- link:"/products/ppr-piping-systems"
- },
- {
- id:"pex",
- title:"PEX & Radiant Heating",
- description:"High-flexibility, cross-linked tubing with EVOH oxygen barriers. Designed for extreme thermal cycling in modern radiant heating.",
- image:"https://images.unsplash.com/photo-1590483863704-df61b4712776?q=80&w=2000&auto=format&fit=crop",
- features: ["EVOH Oxygen Barrier","PEX-a / PEX-b","Complete Underfloor Manifolds"],
- link:"/products/pex-systems"
- },
- {
- id:"brass",
- title:"Forged Brass Valves",
- description:"Precision-machined European standard brass. Heavy-weight forging ensures absolute tolerance against burst pressure and corrosion.",
- image:"https://images.unsplash.com/photo-1621535450849-c1ab6fa14828?q=80&w=2000&auto=format&fit=crop",
- features: ["CW617N Pure Brass","Heavy Duty Forged Body","Ball Valves & Bibcocks"],
- link:"/products/brass-valves-fittings"
- },
- {
- id:"hdpe",
- title:"HDPE Infrastructure",
- description:"High-density infrastructure piping for municipal water grids, mining, and industrial chemical transport. Unyielding strength.",
- image:"https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=2000&auto=format&fit=crop",
- features: ["Butt Fusion Ready","Absolute Chemical Immunity","Large Diameter Capable"],
- link:"/products/hdpe-pvc"
- }
+    {
+    id: "ppr",
+    title: "PPR Potable Water Systems",
+    description: "Engineered from 100% Hyosung R200P. The undisputed industry standard for zero-leakage, 50-year lifespan water distribution.",
+    image: "/images/static/home-cat-ppr.webp",
+    features: ["Acoustic Insulation", "Antimicrobial Layers", "PN20 / PN25 Class Rated"],
+    link: "/categories/ppr"
+    },
+    {
+    id: "pex",
+    title: "PEX & Radiant Heating",
+    description: "High-flexibility, cross-linked tubing with EVOH oxygen barriers. Designed for extreme thermal cycling in modern radiant heating.",
+    image: "/images/static/home-cat-pex.webp",
+    features: ["EVOH Oxygen Barrier", "PEX-a / PEX-b", "Complete Underfloor Manifolds"],
+    link: "/categories/pex-ppsu"
+    },
+    {
+    id: "brass",
+    title: "Forged Brass Valves",
+    description: "Precision-machined European standard brass. Heavy-weight forging ensures absolute tolerance against burst pressure and corrosion.",
+    image: "/images/static/home-cat-brass.webp",
+    features: ["CW617N Pure Brass", "Heavy Duty Forged Body", "Ball Valves & Bibcocks"],
+    link: "/categories/hvac-valves"
+    },
+    {
+    id: "hdpe",
+    title: "HDPE Infrastructure",
+    description: "High-density infrastructure piping for municipal water grids, mining, and industrial chemical transport. Unyielding strength.",
+    image: "/images/static/home-cat-hdpe.webp",
+    features: ["Butt Fusion Ready", "Absolute Chemical Immunity", "Large Diameter Capable"],
+    link: "/categories/hdpe"
+    }
 ];
 
 export default function ProductMatrix() {

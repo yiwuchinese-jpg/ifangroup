@@ -9,7 +9,7 @@ export default function LeadMagnet() {
  {/* Background Image Overlay */}
  <div className="absolute inset-0 z-0">
  <img
- src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+ src="/images/static/home-lead-bg.webp"
  alt="Corporate consulting architecture"
  className="w-full h-full object-cover opacity-10 mix-blend-luminosity grayscale select-none"
  draggable={false}

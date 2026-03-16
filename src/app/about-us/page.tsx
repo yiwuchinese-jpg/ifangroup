@@ -16,7 +16,7 @@ export default function AboutPage() {
                     {/* Background Image / Overlay */}
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                         <img
-                            src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2000&auto=format&fit=crop"
+                            src="/images/static/about-hero.webp"
                             alt="IFAN Global Infrastructure"
                             className="w-full h-full object-cover opacity-40 select-none scale-105"
                             draggable={false}
@@ -83,7 +83,7 @@ export default function AboutPage() {
                                             </p>
                                         </div>
                                         <div className="relative h-64 border border-slate-200 overflow-hidden">
-                                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000&auto=format&fit=crop" alt="Early hardware manufacturing" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <img src="/images/static/about-timeline-1.webp" alt="Early hardware manufacturing" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
                                             </p>
                                         </div>
                                         <div className="relative h-64 border border-slate-200 overflow-hidden lg:order-1">
-                                            <img src="https://images.unsplash.com/photo-1565439390141-8add469dfb4c?q=80&w=2000&auto=format&fit=crop" alt="Automated precision manufacturing lines" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <img src="/images/static/about-timeline-2.webp" alt="Automated precision manufacturing lines" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
                                             </p>
                                         </div>
                                         <div className="relative h-64 border border-slate-200 overflow-hidden">
-                                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop" alt="Global logistics and export" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <img src="/images/static/about-timeline-3.webp" alt="Global logistics and export" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ export default function AboutPage() {
                                             </p>
                                         </div>
                                         <div className="relative h-64 border border-slate-200 overflow-hidden lg:order-1">
-                                            <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=2000&auto=format&fit=crop" alt="Modern massive infrastructure" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <img src="/images/static/about-timeline-4.webp" alt="Modern massive infrastructure" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@ export default function AboutPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-slate-200 bg-white">
                             <div className="relative p-12 lg:p-20 border-b border-r border-slate-200 overflow-hidden flex flex-col h-full justify-between group">
                                 <div className="absolute inset-0 z-0">
-                                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2000&auto=format&fit=crop" alt="Laboratory Quality Control" className="w-full h-full object-cover filter grayscale opacity-20 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" />
+                                    <img src="/images/static/about-quality.webp" alt="Laboratory Quality Control" className="w-full h-full object-cover filter grayscale opacity-20 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/90 to-slate-900/60 transition-colors duration-700 group-hover:bg-slate-900/70" />
                                 </div>
                                 <div className="relative z-10">

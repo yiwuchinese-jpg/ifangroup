@@ -82,3 +82,4 @@ export default function BrandSolarSystemClient({ brands }: { brands: Brand[] }) 
  </div>
  );
 }
+ 

@@ -8,6 +8,8 @@ import FeaturedCollections from "@/components/home/FeaturedCollections";
 import GlobalFootprint from "@/components/home/GlobalFootprint";
 import Footer from "@/components/layout/Footer";
 
+export const revalidate = 0; // 强制刷新数据，不在此处缓存
+
 export default function Home() {
     const jsonLd = {
         "@context": "https://schema.org",

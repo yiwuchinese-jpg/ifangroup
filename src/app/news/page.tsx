@@ -25,7 +25,7 @@ export default async function NewsIndexPage() {
                     {/* Background Image / Overlay */}
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                         <img
-                            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop"
+                            src="/images/static/news-hero.webp"
                             alt="IFAN Global Insights"
                             className="w-full h-full object-cover opacity-30 select-none scale-105"
                             draggable={false}

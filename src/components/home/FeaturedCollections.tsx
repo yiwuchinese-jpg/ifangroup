@@ -6,28 +6,32 @@ import { ArrowRight } from"lucide-react";
 
 const collections = [
  {
- title:"Potable Water Networks",
- category:"PPR Piping Systems",
- image:"https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop",
- link:"/products/ppr-piping"
+ id:"ppr-piping",
+ title:"PPR Potable Water Network",
+ description:"Hyosung R200P material. Impeccable hygiene and seamless fusion for drinking water grids.",
+ image:"/images/static/home-feat-1.webp",
+ link:"/categories/ppr"
  },
  {
- title:"Thermal Control",
- category:"PEX & Radiant Heating",
- image:"https://images.unsplash.com/photo-1590483863704-df61b4712776?q=80&w=2000&auto=format&fit=crop",
- link:"/products/pex-systems"
+ id:"pex-systems",
+ title:"PEX Radiant Heating",
+ description:"Cross-linked flexibility with EVOH oxygen barrier for maximal thermal energy transfer.",
+ image:"/images/static/home-feat-2.webp",
+ link:"/categories/pex-ppsu"
  },
  {
+ id:"brass-valves",
  title:"Precision Flow",
- category:"Forged Brass Valves",
- image:"https://images.unsplash.com/photo-1621535450849-c1ab6fa14828?q=80&w=2000&auto=format&fit=crop",
- link:"/products/brass-valves"
+ description:"Forged Brass Valves for reliable control in diverse plumbing and industrial applications.",
+ image:"/images/static/home-feat-3.webp",
+ link:"/categories/brass-valves"
  },
  {
- title:"Subterranean Strength",
- category:"HDPE Infrastructure",
- image:"https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=2000&auto=format&fit=crop",
- link:"/products/hdpe-pvc"
+ id:"hdpe-infrastructure",
+ title:"HDPE Infrastructure",
+ description:"High-density strength for large-scale municipal water grids and chemical transport.",
+ image:"/images/static/home-feat-4.webp",
+ link:"/categories/hdpe"
  }
 ];
 
@@ -81,8 +85,8 @@ export default function FeaturedCollections() {
  <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
  {col.title}
  </h3>
- <p className="text-slate-500 font-medium tracking-wide">
- {col.category}
+ <p className="text-slate-500 font-medium tracking-wide line-clamp-2">
+ {col.description}
  </p>
  </div>
  <div className="w-10 h-10 bg-slate-50 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300 text-slate-400">

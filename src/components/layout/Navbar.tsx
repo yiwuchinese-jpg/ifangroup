@@ -22,29 +22,41 @@ export default function Navbar() {
     // Mega Menu Data (Categorized)
     const productCategories = [
         {
-            title: "Plastic Piping Systems",
-            icon: <Droplets className="w-5 h-5 text-brand-600" />,
+            title: "Pipes & Fittings",
+            icon: <Component className="w-5 h-5 text-brand-600" />,
             items: [
-                { name: "PPR Piping Systems", link: "/products#ppr-piping", desc: "Potable water solutions" },
-                { name: "PEX & Radiant Heating", link: "/products#pex-systems", desc: "Thermal cycling tubing" },
-                { name: "HDPE & PVC", link: "/products#hdpe", desc: "Municipal infrastructure" },
+                { name: "PPR", link: "/categories/ppr" },
+                { name: "Brass Fittings", link: "/categories/brass-fittings" },
+                { name: "PP", link: "/categories/pp" },
+                { name: "PVC", link: "/categories/pvc" },
+                { name: "PPH", link: "/categories/pph" },
+                { name: "HDPE", link: "/categories/hdpe" },
+                { name: "Stainless Steel Press Fittings", link: "/categories/stainless-press" },
             ]
         },
         {
-            title: "Brass & Valves",
-            icon: <Hexagon className="w-5 h-5 text-brand-600" />,
-            items: [
-                { name: "Forged Brass Valves", link: "/products#brass-valves", desc: "European standard CW617N" },
-                { name: "Brass Fittings", link: "/products#brass-fittings", desc: "Precision engineered" },
-                { name: "Manifolds", link: "/products#manifolds", desc: "Distribution systems" },
-            ]
-        },
-        {
-            title: "Heating & Gas",
+            title: "HVAC",
             icon: <Flame className="w-5 h-5 text-brand-600" />,
             items: [
-                { name: "Gas Valves & Fittings", link: "/products#gas", desc: "Certified safety systems" },
-                { name: "Radiator Valves", link: "/products#radiator", desc: "Temperature control" },
+                { name: "Brass Valves & Manifolds", link: "/categories/hvac-valves" },
+                { name: "PEX / PPSU", link: "/categories/pex-ppsu" },
+                { name: "PEXA", link: "/categories/pexa" },
+            ]
+        },
+        {
+            title: "Gas",
+            icon: <Hexagon className="w-5 h-5 text-brand-600" />,
+            items: [
+                { name: "Gas System Products", link: "/categories/gas-systems" },
+                { name: "Stainless Steel Corrugated Pipes", link: "/categories/stainless-corrugated" },
+            ]
+        },
+        {
+            title: "Sanitary",
+            icon: <Droplets className="w-5 h-5 text-brand-600" />,
+            items: [
+                { name: "Angle Valves & Hoses", link: "/categories/angle-valves" },
+                { name: "Faucets & Accessories", link: "/categories/faucets" },
             ]
         }
     ];
@@ -122,7 +134,7 @@ export default function Navbar() {
                         className="relative group h-full flex items-center cursor-pointer"
                         onMouseEnter={() => setActiveMegaMenu("products")}
                     >
-                        <div className={`flex items-center gap-1.5 text-sm font-bold tracking-widest uppercase transition-colors py-4 ${useWhiteText ? "text-white hover:text-white/80" : activeMegaMenu === "products" ? "text-brand-600" : "text-slate-700 hover:text-brand-600"}`}>
+                        <div className={`flex items-center gap-1.5 text-base md:text-lg font-bold tracking-widest uppercase transition-colors py-4 ${useWhiteText ? "text-white hover:text-white/80" : activeMegaMenu === "products" ? "text-brand-600" : "text-slate-700 hover:text-brand-600"}`}>
                             Products <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeMegaMenu === "products" ? "rotate-180" : ""}`} />
                         </div>
                     </div>
@@ -132,7 +144,7 @@ export default function Navbar() {
                         className="relative group h-full flex items-center cursor-pointer"
                         onMouseEnter={() => setActiveMegaMenu("company")}
                     >
-                        <div className={`flex items-center gap-1.5 text-sm font-bold tracking-widest uppercase transition-colors py-4 ${useWhiteText ? "text-white hover:text-white/80" : activeMegaMenu === "company" ? "text-brand-600" : "text-slate-700 hover:text-brand-600"}`}>
+                        <div className={`flex items-center gap-1.5 text-base md:text-lg font-bold tracking-widest uppercase transition-colors py-4 ${useWhiteText ? "text-white hover:text-white/80" : activeMegaMenu === "company" ? "text-brand-600" : "text-slate-700 hover:text-brand-600"}`}>
                             Company <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeMegaMenu === "company" ? "rotate-180" : ""}`} />
                         </div>
                     </div>
@@ -142,7 +154,7 @@ export default function Navbar() {
                         className="relative group h-full flex items-center cursor-pointer"
                         onMouseEnter={() => setActiveMegaMenu("resources")}
                     >
-                        <div className={`flex items-center gap-1.5 text-sm font-bold tracking-widest uppercase transition-colors py-4 ${useWhiteText ? "text-white hover:text-white/80" : activeMegaMenu === "resources" ? "text-brand-600" : "text-slate-700 hover:text-brand-600"}`}>
+                        <div className={`flex items-center gap-1.5 text-base md:text-lg font-bold tracking-widest uppercase transition-colors py-4 ${useWhiteText ? "text-white hover:text-white/80" : activeMegaMenu === "resources" ? "text-brand-600" : "text-slate-700 hover:text-brand-600"}`}>
                             Resources <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeMegaMenu === "resources" ? "rotate-180" : ""}`} />
                         </div>
                     </div>
@@ -185,9 +197,17 @@ export default function Navbar() {
                         <div className="container mx-auto px-6 py-6">
                             <div className="grid grid-cols-12 gap-8">
                                 {/* Left Side: Featured / Hero */}
-                                <div className="col-span-4 bg-slate-50 p-6 border border-slate-100 flex flex-col justify-between">
-                                    <div>
-                                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-widest mb-4">
+                                <div className="col-span-4 bg-slate-50 border border-slate-100 flex flex-col justify-between overflow-hidden relative group">
+                                    <div className="absolute inset-0 z-0">
+                                        <img
+                                            src="/images/static/nav-products-bg.webp"
+                                            alt="IFAN Products"
+                                            className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent"></div>
+                                    </div>
+                                    <div className="p-6 relative z-10">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100/80 backdrop-blur-sm text-brand-700 text-xs font-bold uppercase tracking-widest mb-4">
                                             Featured Catalog
                                         </div>
                                         <h3 className="text-xl font-black text-slate-900 tracking-tight leading-tight mb-3">
@@ -197,51 +217,55 @@ export default function Navbar() {
                                             Over 10,000 SKUs covering every aspect of modern plumbing and heating infrastructure.
                                         </p>
                                     </div>
-                                    <Link href="/products" className="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 mt-6 group">
+                                    <Link href="/products" className="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 p-6 pt-0 relative z-10 group/link">
                                         Download Full PDF Catalog
-                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                     </Link>
                                 </div>
 
                                 {/* Right Side: Flowing Grid (Categorized) */}
-                                <div className="col-span-8 grid grid-cols-3 gap-x-6 gap-y-8">
+                                <div className="col-span-8 grid grid-cols-5 gap-x-8 gap-y-8">
                                     {productCategories.map((category, i) => (
-                                        <div key={i} className="flex flex-col">
-                                            <div className="flex items-center gap-3 mb-4 pb-2 border-b border-slate-100">
-                                                <div className="w-8 h-8 bg-brand-50 flex items-center justify-center">
+                                        <div key={i} className={`flex flex-col relative ${i === 0 ? "col-span-2" : "col-span-1"}`}>
+                                            {/* Vertical Divider */}
+                                            {i !== productCategories.length - 1 && (
+                                                <div className="absolute -right-4 top-0 bottom-0 w-px bg-slate-100 hidden lg:block"></div>
+                                            )}
+                                            
+                                            <div className="flex items-center gap-3 mb-4 pb-2 border-b border-slate-100 pr-4">
+                                                <div className="w-8 h-8 bg-brand-50 flex items-center justify-center text-brand-600 rounded">
                                                     {category.icon}
                                                 </div>
-                                                <h4 className="text-base font-bold text-slate-900">
+                                                <h4 className="text-lg font-bold text-slate-900">
                                                     {category.title}
                                                 </h4>
                                             </div>
-                                            <ul className="space-y-3 flex-grow">
+                                            <ul className={`flex-grow pr-4 ${i === 0 ? "columns-2 gap-x-6" : "space-y-0"}`}>
                                                 {category.items.map((item, j) => (
-                                                    <li key={j}>
+                                                    <li key={j} className="break-inside-avoid">
                                                         <Link
                                                             href={item.link}
-                                                            className="group block"
+                                                            className="group flex items-center justify-between py-2 border-b border-transparent hover:border-brand-100 transition-colors"
                                                         >
-                                                            <div className="text-sm font-bold text-slate-700 group-hover:text-brand-600 transition-colors">
+                                                            <div className="text-base font-bold text-slate-700 group-hover:text-brand-600 transition-colors">
                                                                 {item.name}
                                                             </div>
-                                                            <div className="text-xs text-slate-500 mt-0.5">
-                                                                {item.desc}
-                                                            </div>
+                                                            <ArrowRight className="w-3.5 h-3.5 text-slate-300 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-brand-500 transition-all duration-300" />
                                                         </Link>
                                                     </li>
                                                 ))}
                                             </ul>
                                         </div>
                                     ))}
+                                </div>
 
-                                    {/* View All - Spans full width of the grid */}
-                                    <div className="col-span-3 pt-4 border-t border-slate-100 flex justify-end">
-                                        <Link href="/products" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 font-bold text-sm uppercase tracking-widest transition-colors group">
-                                            View All Categories
-                                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                        </Link>
-                                    </div>
+                                {/* View All - Spans 8 columns on a new virtual wrapper, empty 4 on the left */}
+                                <div className="col-span-4 lg:block hidden"></div>
+                                <div className="col-span-12 lg:col-span-8 pt-4 border-t border-slate-100 flex justify-end">
+                                    <Link href="/products" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 font-bold text-sm uppercase tracking-widest transition-colors group">
+                                        View All Categories
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -260,9 +284,17 @@ export default function Navbar() {
                         <div className="container mx-auto px-6 py-6">
                             <div className="grid grid-cols-12 gap-8">
                                 {/* Left Side */}
-                                <div className="col-span-4 bg-slate-50 p-6 border border-slate-100 flex flex-col justify-between">
-                                    <div>
-                                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-widest mb-4">
+                                <div className="col-span-4 bg-slate-50 border border-slate-100 flex flex-col justify-between overflow-hidden relative group">
+                                    <div className="absolute inset-0 z-0">
+                                        <img
+                                            src="/images/static/nav-company-bg.webp"
+                                            alt="IFAN Manufacturing"
+                                            className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent"></div>
+                                    </div>
+                                    <div className="p-6 relative z-10">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100/80 backdrop-blur-sm text-brand-700 text-xs font-bold uppercase tracking-widest mb-4">
                                             Our Legacy
                                         </div>
                                         <h3 className="text-xl font-black text-slate-900 tracking-tight leading-tight mb-3">
@@ -272,9 +304,9 @@ export default function Navbar() {
                                             With over three decades of manufacturing excellence, IFAN Group delivers innovative piping solutions globally.
                                         </p>
                                     </div>
-                                    <Link href="/about-us" className="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 mt-6 group">
+                                    <Link href="/about-us" className="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 p-6 pt-0 relative z-10 group/link">
                                         Learn More About IFAN
-                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                     </Link>
                                 </div>
 
@@ -286,7 +318,7 @@ export default function Navbar() {
                                                 <div className="w-8 h-8 bg-brand-50 flex items-center justify-center">
                                                     {category.icon}
                                                 </div>
-                                                <h4 className="text-base font-bold text-slate-900">
+                                                <h4 className="text-lg font-bold text-slate-900">
                                                     {category.title}
                                                 </h4>
                                             </div>
@@ -297,10 +329,10 @@ export default function Navbar() {
                                                             href={item.link}
                                                             className="group block"
                                                         >
-                                                            <div className="text-sm font-bold text-slate-700 group-hover:text-brand-600 transition-colors">
+                                                            <div className="text-base font-bold text-slate-700 group-hover:text-brand-600 transition-colors">
                                                                 {item.name}
                                                             </div>
-                                                            <div className="text-xs text-slate-500 mt-0.5">
+                                                            <div className="text-sm text-slate-500 mt-0.5">
                                                                 {item.desc}
                                                             </div>
                                                         </Link>
@@ -327,9 +359,17 @@ export default function Navbar() {
                         <div className="container mx-auto px-6 py-6">
                             <div className="grid grid-cols-12 gap-8">
                                 {/* Left Side */}
-                                <div className="col-span-4 bg-slate-50 p-6 border border-slate-100 flex flex-col justify-between">
-                                    <div>
-                                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-widest mb-4">
+                                <div className="col-span-4 bg-slate-50 border border-slate-100 flex flex-col justify-between overflow-hidden relative group">
+                                    <div className="absolute inset-0 z-0">
+                                        <img
+                                            src="/images/static/nav-resources-bg.webp"
+                                            alt="IFAN Resources"
+                                            className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent"></div>
+                                    </div>
+                                    <div className="p-6 relative z-10">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100/80 backdrop-blur-sm text-brand-700 text-xs font-bold uppercase tracking-widest mb-4">
                                             Knowledge Base
                                         </div>
                                         <h3 className="text-xl font-black text-slate-900 tracking-tight leading-tight mb-3">
@@ -339,9 +379,9 @@ export default function Navbar() {
                                             Access our comprehensive library of technical documents, industry news, and product resources.
                                         </p>
                                     </div>
-                                    <Link href="/news" className="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 mt-6 group">
+                                    <Link href="/news" className="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 p-6 pt-0 relative z-10 group/link">
                                         View All Insights
-                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                     </Link>
                                 </div>
 
@@ -353,7 +393,7 @@ export default function Navbar() {
                                                 <div className="w-8 h-8 bg-brand-50 flex items-center justify-center">
                                                     {category.icon}
                                                 </div>
-                                                <h4 className="text-base font-bold text-slate-900">
+                                                <h4 className="text-lg font-bold text-slate-900">
                                                     {category.title}
                                                 </h4>
                                             </div>
@@ -364,10 +404,10 @@ export default function Navbar() {
                                                             href={item.link}
                                                             className="group block"
                                                         >
-                                                            <div className="text-sm font-bold text-slate-700 group-hover:text-brand-600 transition-colors">
+                                                            <div className="text-base font-bold text-slate-700 group-hover:text-brand-600 transition-colors">
                                                                 {item.name}
                                                             </div>
-                                                            <div className="text-xs text-slate-500 mt-0.5">
+                                                            <div className="text-sm text-slate-500 mt-0.5">
                                                                 {item.desc}
                                                             </div>
                                                         </Link>

@@ -16,7 +16,7 @@ export default function ManufacturingPage() {
                     {/* Background Image / Overlay */}
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                         <img
-                            src="https://images.unsplash.com/photo-1563914336021-3eefbfcedcb6?q=80&w=2000&auto=format&fit=crop"
+                            src="/images/static/mfg-hero.webp"
                             alt="IFAN Manufacturing Excellence"
                             className="w-full h-full object-cover opacity-40 select-none scale-105"
                             draggable={false}
@@ -84,7 +84,7 @@ export default function ManufacturingPage() {
 
                             <div className="lg:col-span-6 relative h-[500px] lg:h-[700px] w-full border border-slate-200 overflow-hidden group">
                                 <img
-                                    src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=2000&auto=format&fit=crop"
+                                    src="/images/static/mfg-chaos.webp"
                                     alt="Logistics and Supply Chain Chaos"
                                     className="w-full h-full object-cover filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 hover:scale-105"
                                 />
@@ -110,7 +110,7 @@ export default function ManufacturingPage() {
                             </div>
                             <div className="relative h-[300px] lg:h-[400px] w-full border border-slate-200 overflow-hidden group">
                                 <img
-                                    src="https://images.unsplash.com/photo-1565439387600-98523ee792be?q=80&w=2000&auto=format&fit=crop"
+                                    src="/images/static/mfg-factory.webp"
                                     alt="Massive automated factory floor"
                                     className="w-full h-full object-cover filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                                 />
@@ -147,7 +147,7 @@ export default function ManufacturingPage() {
                 <section className="relative py-32 lg:py-48 border-t border-slate-200 overflow-hidden bg-slate-900 pb-32">
                     <div className="absolute inset-0 z-0">
                         <img
-                            src="https://images.unsplash.com/photo-1504917595217-d4dc3ebc0e9c?q=80&w=2000&auto=format&fit=crop"
+                            src="/images/static/mfg-engineering-2.webp"
                             alt="Engineering blueprints and tools"
                             className="w-full h-full object-cover filter grayscale opacity-20 scale-105"
                         />

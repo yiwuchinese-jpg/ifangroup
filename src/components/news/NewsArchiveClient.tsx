@@ -161,8 +161,13 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                                     />
                                 ) : (
                                     <div className="w-full h-full flex flex-col items-center justify-center bg-slate-900">
-                                        <ArrowDownRight className="w-16 h-16 text-slate-800 mb-4" />
-                                        <span className="font-mono text-xs text-slate-700 uppercase tracking-[0.3em]">Featured Media</span>
+                                        <img 
+                                            src="/images/media/news-placeholder.webp" 
+                                            alt="IFAN News Placeholder" 
+                                            className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale"
+                                        />
+                                        <ArrowDownRight className="w-16 h-16 text-slate-800 mb-4 relative z-10" />
+                                        <span className="font-mono text-xs text-slate-700 uppercase tracking-[0.3em] relative z-10">Featured Media</span>
                                     </div>
                                 )}
                                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none mix-blend-overlay" />
@@ -191,8 +196,13 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                                                 className="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                                             />
                                         ) : (
-                                            <div className="w-full h-full flex items-center justify-center bg-slate-900 text-slate-800">
-                                                <span className="font-black text-6xl tracking-tighter">IFAN</span>
+                                            <div className="w-full h-full flex items-center justify-center bg-slate-900 text-slate-800 relative">
+                                                <img 
+                                                    src="/images/media/news-placeholder.webp" 
+                                                    alt="IFAN News Placeholder" 
+                                                    className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale"
+                                                />
+                                                <span className="font-black text-6xl tracking-tighter relative z-10">IFAN</span>
                                             </div>
                                         )}
                                         {/* High-tech Overlay Grid */}

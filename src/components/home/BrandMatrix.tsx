@@ -30,7 +30,7 @@ export default function BrandMatrix() {
  <div className="h-64 relative bg-slate-200">
  {/* Placeholder for massive warehouse/volume shipments */}
  <img
- src="https://images.unsplash.com/photo-1586528116311-ad8ed7c83a50?q=80&w=2070&auto=format&fit=crop"
+ src="/images/static/home-brand-standard.webp"
  alt="High-volume pallet logistics"
  className="w-full h-full object-cover grayscale opacity-90 select-none"
  draggable={false}
@@ -85,7 +85,7 @@ export default function BrandMatrix() {
  <div className="h-64 relative bg-slate-900">
  {/* Placeholder for high-end luxury bathroom/architecture */}
  <img
- src="https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=2069&auto=format&fit=crop"
+ src="/images/static/home-brand-plus.webp"
  alt="Premium architectural installation"
  className="w-full h-full object-cover border-b border-white/10 select-none"
  draggable={false}

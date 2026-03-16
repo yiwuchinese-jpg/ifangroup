@@ -9,7 +9,7 @@ const YOUTUBE_VIDEOS = [
     {
         id: "1",
         videoId: "dQw4w9WgXcQ",
-        imageUrl: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=1200&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-1.webp",
         title: "Inside the IFAN Mega-Factory: 2024 Automation Tour",
         category: "Factory Tour",
         duration: "12:45",
@@ -20,7 +20,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "2",
-        imageUrl: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-2.webp",
         title: "How It's Made: PPR Piping Systems",
         category: "Product Tech",
         duration: "08:20",
@@ -31,7 +31,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "3",
-        imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-3.webp",
         title: "Understanding CW617N Brass Certification",
         category: "Engineering",
         duration: "05:15",
@@ -42,7 +42,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "4",
-        imageUrl: "https://images.unsplash.com/photo-1541888086925-0c13bb3bed29?q=80&w=800&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-4.webp",
         title: "IFAN Group Corporate Profile 2024",
         category: "Corporate",
         duration: "03:45",
@@ -53,7 +53,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "5",
-        imageUrl: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-5.webp",
         title: "Global Distribution Network Explained",
         category: "Logistics",
         duration: "06:30",
@@ -64,7 +64,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "6",
-        imageUrl: "https://images.unsplash.com/photo-1631427508375-7bc07b815cdb?q=80&w=800&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-6.webp",
         title: "Quality Control: The 50-Point Inspection",
         category: "Engineering",
         duration: "09:12",
@@ -75,7 +75,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "7",
-        imageUrl: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-7.webp",
         title: "Installation Guide: PEX vs PPR",
         category: "Product Tech",
         duration: "14:20",
@@ -86,7 +86,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "8",
-        imageUrl: "https://images.unsplash.com/photo-1517594422361-5e182312b988?q=80&w=800&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-8.webp",
         title: "Future of Heating: Radiant Systems",
         category: "Innovation",
         duration: "11:05",
@@ -97,7 +97,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "9",
-        imageUrl: "https://images.unsplash.com/photo-1416879598446-e40212aa219e?q=80&w=800&auto=format&fit=crop",
+        imageUrl: "/images/media/yt-cover-9.webp",
         title: "Behind the Scenes: R&D Laboratory",
         category: "Innovation",
         duration: "07:45",
@@ -173,12 +173,12 @@ export default function YouTubeGallery() {
         <section id="youtube-gallery" className="mb-24 scroll-mt-24">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 border-b-2 border-slate-900 pb-6 gap-6">
                 <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-red-50 text-red-700 font-mono text-[10px] uppercase tracking-widest border border-red-200 mb-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 font-mono text-[10px] uppercase tracking-widest border border-brand-200 mb-4">
                         <Youtube className="w-3.5 h-3.5" />
                         Video Library
                     </div>
                     <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
-                        Featured <span className="text-red-600">Broadcasts</span>
+                        Featured <span className="text-brand-600">Broadcasts</span>
                     </h2>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
@@ -190,12 +190,12 @@ export default function YouTubeGallery() {
                             placeholder="SEARCH VIDEOS..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full bg-white border border-slate-200 py-3 pl-12 pr-4 font-mono text-xs uppercase tracking-widest text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all rounded-none"
+                            className="w-full bg-white border border-slate-200 py-3 pl-12 pr-4 font-mono text-xs uppercase tracking-widest text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all rounded-none"
                         />
                     </div>
                     <a
                         href="#"
-                        className="hidden sm:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-red-600 transition-colors group flex-shrink-0"
+                        className="hidden sm:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-brand-600 transition-colors group flex-shrink-0"
                     >
                         Subscribe IFAN Channel
                         <ExternalLink className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
@@ -210,7 +210,7 @@ export default function YouTubeGallery() {
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
                         className={`px-4 py-2 font-mono text-[10px] md:text-xs uppercase tracking-widest border transition-colors ${activeCategory === cat
-                            ? "bg-red-600 text-white border-red-600"
+                            ? "bg-brand-600 text-white border-brand-600"
                             : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900"
                             }`}
                     >
@@ -231,7 +231,7 @@ export default function YouTubeGallery() {
                             />
                             {/* Play Button Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <div className="w-20 h-20 bg-red-600/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-20 h-20 bg-brand-600/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
                                     <Play className="w-8 h-8 text-white fill-white ml-2" />
                                 </div>
                             </div>
@@ -243,11 +243,11 @@ export default function YouTubeGallery() {
 
                         <div>
                             {featuredVideo.category && (
-                                <div className="inline-block px-2 py-1 bg-red-100 text-red-700 font-mono text-[10px] uppercase tracking-widest mb-3">
+                                <div className="inline-block px-2 py-1 bg-brand-100 text-brand-700 font-mono text-[10px] uppercase tracking-widest mb-3">
                                     {featuredVideo.category}
                                 </div>
                             )}
-                            <h3 className="text-2xl lg:text-4xl font-black text-slate-900 tracking-tight uppercase mb-4 group-hover:text-red-600 transition-colors">
+                            <h3 className="text-2xl lg:text-4xl font-black text-slate-900 tracking-tight uppercase mb-4 group-hover:text-brand-600 transition-colors">
                                 {featuredVideo.title}
                             </h3>
                             <div className="flex items-center gap-4 text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
@@ -299,7 +299,7 @@ export default function YouTubeGallery() {
                                             {video.duration}
                                         </div>
                                         {video.category && (
-                                            <div className="absolute top-2 left-2 px-2 py-1 bg-red-600 text-white font-mono text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                                            <div className="absolute top-2 left-2 px-2 py-1 bg-brand-600 text-white font-mono text-[10px] font-bold uppercase tracking-widest shadow-sm">
                                                 {video.category}
                                             </div>
                                         )}
@@ -307,7 +307,7 @@ export default function YouTubeGallery() {
 
                                     {/* Info */}
                                     <div className="flex flex-col">
-                                        <h4 className="font-bold text-lg text-slate-900 group-hover:text-red-600 leading-tight mb-2 line-clamp-2 transition-colors">
+                                        <h4 className="font-bold text-lg text-slate-900 group-hover:text-brand-600 leading-tight mb-2 line-clamp-2 transition-colors">
                                             {video.title}
                                         </h4>
                                         <div className="flex items-center gap-3 text-[10px] font-mono text-slate-500 uppercase tracking-wider">
@@ -326,7 +326,7 @@ export default function YouTubeGallery() {
                                 <button
                                     onClick={() => handlePageChange(currentPage - 1)}
                                     disabled={currentPage === 1}
-                                    className="w-10 h-10 flex items-center justify-center border border-slate-200 bg-white text-slate-500 hover:border-red-600 hover:text-red-600 disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-colors"
+                                    className="w-10 h-10 flex items-center justify-center border border-slate-200 bg-white text-slate-500 hover:border-brand-600 hover:text-brand-600 disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-colors"
                                 >
                                     <ChevronLeft className="w-4 h-4" />
                                 </button>
@@ -337,8 +337,8 @@ export default function YouTubeGallery() {
                                             key={i}
                                             onClick={() => handlePageChange(i + 1)}
                                             className={`w-10 h-10 flex items-center justify-center font-mono text-sm font-bold border transition-colors ${currentPage === i + 1
-                                                    ? 'bg-red-600 border-red-600 text-white'
-                                                    : 'bg-white border-slate-200 text-slate-600 hover:border-red-600 hover:text-red-600'
+                                                    ? 'bg-brand-600 border-brand-600 text-white'
+                                                    : 'bg-white border-slate-200 text-slate-600 hover:border-brand-600 hover:text-brand-600'
                                                 }`}
                                         >
                                             {i + 1}
@@ -349,7 +349,7 @@ export default function YouTubeGallery() {
                                 <button
                                     onClick={() => handlePageChange(currentPage + 1)}
                                     disabled={currentPage === totalPages}
-                                    className="w-10 h-10 flex items-center justify-center border border-slate-200 bg-white text-slate-500 hover:border-red-600 hover:text-red-600 disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-colors"
+                                    className="w-10 h-10 flex items-center justify-center border border-slate-200 bg-white text-slate-500 hover:border-brand-600 hover:text-brand-600 disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-colors"
                                 >
                                     <ChevronRight className="w-4 h-4" />
                                 </button>
@@ -361,7 +361,7 @@ export default function YouTubeGallery() {
 
             <a
                 href="#"
-                className="md:hidden mt-8 flex items-center justify-center gap-2 w-full py-4 border border-slate-200 bg-white text-sm font-bold uppercase tracking-widest text-slate-900 hover:border-red-600 hover:text-red-600 transition-colors group"
+                className="md:hidden mt-8 flex items-center justify-center gap-2 w-full py-4 border border-slate-200 bg-white text-sm font-bold uppercase tracking-widest text-slate-900 hover:border-brand-600 hover:text-brand-600 transition-colors group"
             >
                 Subscribe Channel
                 <ExternalLink className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />

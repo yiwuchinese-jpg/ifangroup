@@ -419,9 +419,24 @@ export default function GlobalSolutionsClient() {
  </button>
 
  <div className="pt-8 flex-grow">
- <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-8 pr-12 uppercase leading-none">
+  <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-8 pr-12 uppercase leading-none">
  {activeRegion.name}
  </h2>
+
+ {/* Regional Visual Area */}
+ <div className="mb-10 aspect-video bg-slate-800 border border-white/10 overflow-hidden relative group">
+ <img 
+ src={activeRegion.images?.[0] || `/images/solutions/${activeRegion.id}/img-1.webp`} 
+ alt={activeRegion.name} 
+ className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+ />
+ <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+ <div className="absolute bottom-4 left-4">
+ <span className="text-[10px] font-bold text-brand-500 uppercase tracking-[0.2em] bg-slate-900/80 px-2 py-1 border border-brand-500/30">
+ Region Snapshot
+ </span>
+ </div>
+ </div>
 
  {/* [PAS Model] Problem & Agitate */}
  <div className="mb-10 space-y-6">

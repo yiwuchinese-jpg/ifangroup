@@ -20,7 +20,7 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
 
                 <motion.div style={{ y: y1 }} className="absolute inset-0 opacity-20 filter grayscale blend-luminosity pointer-events-none">
                     <img
-                        src={region.images?.[0] || "https://images.unsplash.com/photo-1565439390141-8add469dfb4c?q=80&w=2070&auto=format&fit=crop"}
+                        src={region.images?.[0] || `/images/solutions/${region.id}/img-1.webp`}
                         alt={`${region.name} Infrastructure`}
                         className="absolute inset-0 w-full h-full object-cover"
                     />
@@ -117,7 +117,7 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                             className="relative h-[600px] lg:h-[800px] w-full border border-white/10 overflow-hidden group"
                         >
                             <img
-                                src={region.images?.[1] || "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop"}
+                                src={region.images?.[1] || `/images/solutions/${region.id}/img-2.webp`}
                                 alt={`${region.name} environmental challenge`}
                                 className="w-full h-full object-cover filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                             />
@@ -160,7 +160,7 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                             className="lg:col-span-4 relative h-[400px] lg:h-auto border border-white/10 overflow-hidden"
                         >
                             <img
-                                src={region.images?.[2] || "https://images.unsplash.com/photo-1565439387600-98523ee792be?q=80&w=2000&auto=format&fit=crop"}
+                                src={region.images?.[2] || `/images/solutions/${region.id}/img-3.webp`}
                                 alt={`${region.name} engineered solution`}
                                 className="absolute inset-0 w-full h-full object-cover"
                             />

@@ -41,8 +41,36 @@ export const brandBySlugQuery = groq`*[_type == "brand" && slug.current == $slug
             url
         }
     },
+    packagingMaterials[] {
+        asset->{
+            url
+        }
+    },
+    marketingMaterials[] {
+        asset->{
+            url
+        }
+    },
     advantages,
     externalUrl
+}`;
+
+export const relatedBrandsQuery = groq`*[_type == "brand" && slug.current != $slug] {
+    _id,
+    name,
+    series,
+    "slug": slug.current,
+    logo {
+        asset->{
+            url
+        }
+    },
+    description,
+    coverImage {
+        asset->{
+            url
+        }
+    }
 }`;
 
 export const productsByBrandQuery = groq`*[_type == "product" && brand->slug.current == $slug] {

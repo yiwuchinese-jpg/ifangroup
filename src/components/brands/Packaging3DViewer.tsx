@@ -28,8 +28,8 @@ export default function Packaging3DViewer({ url, transparent = false, heroMode =
     }
 
     const containerClass = transparent
-        ? "w-full h-full relative group cursor-grab active:cursor-grabbing overflow-hidden"
-        : "w-full h-full relative group cursor-grab active:cursor-grabbing bg-slate-50 border border-slate-200 overflow-hidden";
+        ? "w-full h-full relative group cursor-grab active:cursor-grabbing"
+        : "w-full h-full relative group cursor-grab active:cursor-grabbing";
 
     return (
         <div className={containerClass}>
@@ -41,10 +41,9 @@ export default function Packaging3DViewer({ url, transparent = false, heroMode =
             </div>
 
             <Suspense fallback={
-                <div className={`absolute inset-0 flex items-center justify-center ${transparent ? 'bg-transparent' : 'bg-slate-50'}`}>
+                <div className="absolute inset-0 flex items-center justify-center bg-transparent pointer-events-none">
                     <div className="flex flex-col items-center gap-4">
-                        <Loader2 className="w-8 h-8 text-brand-600 animate-spin" />
-                        <span className="text-xs font-bold text-slate-500 uppercase tracking-widest animate-pulse">Loading Matrix Data...</span>
+                        <Loader2 className={`w-8 h-8 animate-spin ${transparent ? 'text-white/50' : 'text-brand-600'}`} />
                     </div>
                 </div>
             }>

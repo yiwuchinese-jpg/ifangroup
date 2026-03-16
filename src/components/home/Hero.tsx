@@ -17,7 +17,7 @@ export default function Hero() {
                     playsInline
                     className="w-full h-full object-cover scale-105"
                 >
-                    <source src="/238632327b39e678c8ba26e8e53f89cd_raw.mp4" type="video/mp4" />
+                    <source src="/images/static/home-hero.mp4" type="video/mp4" />
                 </video>
                 {/* Subtle gradient at the bottom to ensure the white text pops without washing out the video */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
