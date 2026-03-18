@@ -1,23 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowDownRight } from "lucide-react";
 
+type ArticleHeading = { id: string; text: string; level: string };
+
 export default function ArticleTOC() {
-    const [headings, setHeadings] = useState<{ id: string, text: string, level: string }[]>([]);
+    const [headingElements, setHeadingElements] = useState<Element[]>([]);
     const [activeId, setActiveId] = useState("");
+
+    const headings = useMemo<ArticleHeading[]>(() => {
+        return headingElements.map((elem) => ({
+            id: elem.id,
+            text: (elem as HTMLElement).innerText || "",
+            level: elem.tagName.toLowerCase(),
+        }));
+    }, [headingElements]);
 
     useEffect(() => {
         // Find all injected h2 and h3 elements within the article body
         const elements = Array.from(document.querySelectorAll("h2[id], h3[id]"));
-
-        const extractedHeadings = elements.map((elem) => ({
-            id: elem.id,
-            text: (elem as HTMLElement).innerText || "",
-            level: elem.tagName.toLowerCase()
-        }));
-
-        setHeadings(extractedHeadings);
+        setHeadingElements(elements);
 
         const observer = new IntersectionObserver(
             (entries) => {

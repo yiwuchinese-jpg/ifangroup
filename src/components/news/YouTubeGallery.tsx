@@ -10,7 +10,7 @@ const YOUTUBE_VIDEOS = [
         id: "1",
         videoId: "dQw4w9WgXcQ",
         imageUrl: "/images/media/yt-cover-1.webp",
-        title: "Inside the IFAN Mega-Factory: 2024 Automation Tour",
+        title: "Inside the IFAN Mega-Factory: Automation Tour",
         category: "Factory Tour",
         duration: "12:45",
         views: "124K",
@@ -43,7 +43,7 @@ const YOUTUBE_VIDEOS = [
     {
         id: "4",
         imageUrl: "/images/media/yt-cover-4.webp",
-        title: "IFAN Group Corporate Profile 2024",
+        title: "IFAN Group Corporate Profile",
         category: "Corporate",
         duration: "03:45",
         views: "210K",

@@ -1,29 +1,40 @@
 import { NextResponse } from 'next/server';
 import { createClient } from 'next-sanity';
 
-const writeClient = createClient({
-    projectId: "m2e07kon",
-    dataset: "production",
-    apiVersion: "2024-02-26",
-    useCdn: false,
-    token: process.env.SANITY_AUTH_TOKEN,
-});
+function getWriteClient() {
+    const token = process.env.SANITY_AUTH_TOKEN;
+
+    if (!token) {
+        throw new Error('SANITY_AUTH_TOKEN is not configured');
+    }
+
+    return createClient({
+        projectId: 'm2e07kon',
+        dataset: 'production',
+        apiVersion: '2024-02-26',
+        useCdn: false,
+        token,
+    });
+}
 
 export async function POST(request: Request) {
     try {
         const { email } = await request.json();
+        const normalizedEmail = typeof email === 'string' ? email.trim().toLowerCase() : '';
 
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
             return NextResponse.json(
                 { error: 'Invalid email address' },
                 { status: 400 }
             );
         }
 
+        const writeClient = getWriteClient();
+
         // Check if email already exists
         const existingSubscriber = await writeClient.fetch(
             `*[_type == "subscriber" && email == $email][0]`,
-            { email }
+            { email: normalizedEmail }
         );
 
         if (existingSubscriber) {
@@ -38,7 +49,7 @@ export async function POST(request: Request) {
         // Create new subscriber
         await writeClient.create({
             _type: 'subscriber',
-            email,
+            email: normalizedEmail,
             source: 'Footer Newsletter',
             status: 'active',
             subscribedAt: new Date().toISOString(),

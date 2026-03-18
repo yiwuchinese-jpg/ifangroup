@@ -1,0 +1,1020 @@
+{
+  "nav": {
+    "products": "Products",
+    "company": "Company",
+    "resources": "Resources",
+    "requestQuote": "Request Quote",
+    "viewAll": "View All Categories",
+    "downloadCatalog": "Download Full PDF Catalog",
+    "learnMore": "Learn More About IFAN",
+    "viewInsights": "View All Insights",
+    "categories": "Categories"
+  },
+  "nav_products": {
+    "badge": "Featured Catalog",
+    "title": "The Complete Product Universe",
+    "desc": "Over 10,000 SKUs covering every aspect of modern plumbing and heating infrastructure.",
+    "pipesAndFittings": "Pipes & Fittings",
+    "hvac": "HVAC",
+    "gas": "Gas",
+    "sanitary": "Sanitary",
+    "items": {
+      "ppr": "PPR",
+      "brassFittings": "Brass Fittings",
+      "pp": "PP",
+      "pvc": "PVC",
+      "pph": "PPH",
+      "hdpe": "HDPE",
+      "stainlessPress": "Stainless Steel Press Fittings",
+      "hvacValves": "Brass Valves & Manifolds",
+      "pexPpsu": "PEX / PPSU",
+      "pexa": "PEXA",
+      "gasSystems": "Gas System Products",
+      "stainlessCorrugated": "Stainless Steel Corrugated Pipes",
+      "angleValves": "Angle Valves & Hoses",
+      "faucets": "Faucets & Accessories"
+    }
+  },
+  "nav_company": {
+    "badge": "Our Legacy",
+    "title": "Building the Future of Infrastructure",
+    "desc": "With over three decades of manufacturing excellence, IFAN Group delivers innovative piping solutions globally.",
+    "aboutIfan": "About IFAN",
+    "capabilities": "Capabilities",
+    "items": {
+      "ourStory": "Our Story",
+      "ourStoryDesc": "30+ years of manufacturing excellence",
+      "globalSolutions": "Global Solutions",
+      "globalSolutionsDesc": "Enterprise project capabilities",
+      "ourBrands": "Our Brands",
+      "ourBrandsDesc": "Explore our brand portfolio",
+      "oem": "OEM & Manufacturing",
+      "oemDesc": "Custom production and scale",
+      "quality": "Quality & Certifications",
+      "qualityDesc": "International standards"
+    }
+  },
+  "nav_resources": {
+    "badge": "Knowledge Base",
+    "title": "Insights & Documentation",
+    "desc": "Access our comprehensive library of technical documents, industry news, and product resources.",
+    "insightsMedia": "Insights & Media",
+    "support": "Support",
+    "items": {
+      "news": "News & Insights",
+      "newsDesc": "Latest updates and industry trends",
+      "media": "Media Center",
+      "mediaDesc": "Press releases and videos",
+      "contact": "Contact Us",
+      "contactDesc": "Get in touch with our team",
+      "download": "Download Center",
+      "downloadDesc": "Catalogs and technical documents"
+    }
+  },
+  "hero": {
+    "tagline": "30+ Years of Manufacturing Excellence",
+    "headline1": "The World's",
+    "headline2": "Plumbing",
+    "headline3": "Infrastructure",
+    "subheadline": "Partner",
+    "desc": "From our 120,000m² mega-factory, we engineer 10,000+ precision plumbing solutions for 80+ countries. From a single valve to a complete city system.",
+    "cta_quote": "Request B2B Quote",
+    "cta_catalog": "View Full Catalog"
+  },
+  "footer": {
+    "desc": "Global manufacturer of comprehensive plumbing, heating systems, and smart factory solutions since 1993. Engineered for absolute scale and reliability.",
+    "tagline": "Global manufacturer of comprehensive plumbing, heating systems, and smart factory solutions since 1993. Engineered for absolute scale and reliability.",
+    "copyright": "© 2025 IFAN Group. All rights reserved. ISO 9001 / CE Certified.",
+    "products": "Products Universe",
+    "pprPipes": "PPR Piping Systems",
+    "compositePipes": "Composite Pipe Solutions",
+    "brassFittings": "Precision Brass Fittings",
+    "brassValves": "Heavy-Duty Brass Valves",
+    "company": "The Enterprise",
+    "aboutUs": "About Us",
+    "brandMatrix": "Brand Matrix",
+    "resources": "Download Center",
+    "contact": "Contact Us",
+    "newsletterTitle": "Sourcing Intelligence",
+    "newsletterDesc": "Get raw material price alerts, global logistics updates, and exclusive B2B reports securely delivered to your inbox.",
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions"
+  },
+  "brandShowcase": {
+    "ifanTitle1": "Global",
+    "ifanTitle2": "Power.",
+    "ifanDesc": "The backbone of municipal water grids and large-scale public infrastructure.",
+    "exploreCollection": "Explore Collection",
+    "ifanPlusTitle1": "Pure",
+    "ifanPlusTitle2": "Elegance.",
+    "ifanPlusDesc": "The flagship luxury tier for strict residential aesthetics and performance.",
+    "discoverMasterpieces": "Discover Masterpieces",
+    "portfolioBadge": "Diversified Portfolio",
+    "portfolioTitle1": "The Ecosystem",
+    "portfolioTitle2": "of",
+    "portfolioTitle3": "Specialization.",
+    "portfolioDesc": "A highly calibrated network of brands, each leading a specific regional or technological segment of the global fluid control market.",
+    "viewSpecs": "View Specifications",
+    "proxyTitle1": "Authorized for Prestigious",
+    "proxyTitle2": "Global Labels.",
+    "ctaTitle": "Scale Your Brand with the IFAN Mega-Factory.",
+    "ctaDesc": "Join the prestigious list of global series authorized for precision manufacturing.",
+    "ctaButton": "Global Partnership Inquiry"
+  },
+  "factoryScale": {
+    "badge": "Scale & Precision",
+    "title": "120,000m² of True Manufacturing Muscle.",
+    "desc": "We do not assemble; we engineer. From raw brass forging to high-polymer extrusion, our fully integrated production lines ensure absolute control over every micron.",
+    "explore": "Explore Factory Capabilities"
+  },
+  "globalFootprint": {
+    "title1": "Powering Infrastructure in",
+    "title2": "120+ Countries",
+    "desc": "From extreme heat in the Middle East to deep freezes in Northern Europe, IFAN products are engineered to shatter local standard requirements worldwide.",
+    "feature1Title": "Major Municipal Projects",
+    "feature1Desc": "Approved vendor for government water grids across Asia and Africa.",
+    "feature2Title": "High-Volume Distribution",
+    "feature2Desc": "Supplying tier-1 plumbing wholesalers in Europe and the Americas.",
+    "feature3Title": "Localized Certifications",
+    "feature3Desc": "WRAS, CE, SKZ, and ISO certifications for strict regional compliance.",
+    "stat1": "Global Partners",
+    "stat2": "Containers/Year",
+    "logisticsTitle": "Seamless Door-to-Port Logistics",
+    "logisticsDesc": "Our dedicated logistics team handles full customs clearance and shipping optimization, minimizing your landed cost per unit."
+  },
+  "productionSimulator": {
+    "badge": "Digital Twin System",
+    "title1": "Smart Manufacturing",
+    "title2": "Simulator",
+    "desc": "Experience the precision of IFAN's extrusion technology. Adjust parameters in real-time to observe throughput, energy efficiency, and operational metrics.",
+    "controlPanel": "Control Panel",
+    "haltLine": "Halt Line",
+    "startLine": "Start Line",
+    "rawMaterial": "Raw Material",
+    "pipeDiameter": "Pipe Diameter",
+    "extruderRPM": "Extruder RPM",
+    "coolingIntensity": "Cooling Intensity",
+    "productionRate": "Production Rate",
+    "lineSpeed": "Line Speed",
+    "powerDraw": "Power Draw",
+    "efficiency": "Efficiency",
+    "haltedTitle": "Production Halted",
+    "haltedDesc": "Line paused. Waiting for operator command.",
+    "qualityAlert": "Quality Alert: High speed with low cooling compromises pipe integrity.",
+    "extruderDie": "Extruder & Die",
+    "coolingTank": "Vacuum Cooling Tank",
+    "haulOff": "Haul-off",
+    "cutter": "Cutter",
+    "meltTempOk": "Melt Temp OK",
+    "waterFlowOk": "Water Flow OK",
+    "uptime": "Uptime"
+  },
+  "featuredCollections": {
+    "badge": "Flagship Series",
+    "title": "The Collections.",
+    "explore": "Explore Complete Catalog",
+    "items": {
+      "ppr-piping": {
+        "title": "PPR Potable Water Network",
+        "desc": "Hyosung R200P material. Impeccable hygiene and seamless fusion for drinking water grids."
+      },
+      "pex-systems": {
+        "title": "PEX Radiant Heating",
+        "desc": "Cross-linked flexibility with EVOH oxygen barrier for maximal thermal energy transfer."
+      },
+      "brass-valves": {
+        "title": "Precision Flow",
+        "desc": "Forged Brass Valves for reliable control in diverse plumbing and industrial applications."
+      },
+      "hdpe-infrastructure": {
+        "title": "HDPE Infrastructure",
+        "desc": "High-density strength for large-scale municipal water grids and chemical transport."
+      }
+    },
+    "ctaTitle": "Ready to scale your inventory?",
+    "ctaDesc": "Skip the middleman. Get direct factory pricing, secure supply chains, and expert engineering support for your next major project.",
+    "ctaButton": "Get Source Factory Pricing"
+  },
+  "materialScience": {
+    "badge": "Our Zero-Defect Guarantee",
+    "title": "Engineered from the Molecular Level.",
+    "desc": "A brand is only as strong as its raw materials. By refusing recycled impurities and utilizing only 100% virgin, globally-verified resins & alloys, we ensure absolute liability protection for your projects.",
+    "items": {
+      "brass": {
+        "name": "CW617N Pure Brass",
+        "desc": "European standard forged brass ensuring absolute tolerance against burst pressure and zero heavy-metal leaching."
+      },
+      "ppr": {
+        "name": "100% Hyosung R200P",
+        "desc": "Sourced globally from top-tier chemical conglomerates. The foundational polymer for our 50-year lifespan guarantee."
+      },
+      "pex": {
+        "name": "Cross-Linked EVOH",
+        "desc": "Advanced multi-layer engineering incorporating an impeccable oxygen barrier to preserve heating system integrity."
+      }
+    }
+  },
+  "globalSolutions": {
+    "badge": "Geographic Intelligence",
+    "title": "Global Solutions.",
+    "instruction": "Drag to rotate · Select a territory to analyze",
+    "hudFootprint": "Global Footprint",
+    "hudGlobalStatValue": "120+",
+    "hudGlobalStatLabel": "Countries Served",
+    "hudScale": "Scale & Capacity",
+    "hudScaleValue": "120k",
+    "hudScaleLabel": "Mega Facility",
+    "hudLinesValue": "100+",
+    "hudLinesLabel": "Auto Lines",
+    "hudCompliance": "Certified Quality",
+    "snapshot": "Region Snapshot",
+    "painPoints": "Critical Pain Points",
+    "problem": "Problem",
+    "liability": "Liability",
+    "integration": "The IFAN Integration",
+    "techAdvantage": "Technical Advantage",
+    "businessBenefit": "Primary Business Benefit",
+    "deepDive": "Deep Dive: {name}",
+    "regions": {
+      "mena": {
+        "problem": "Extreme UV radiation, 40°C+ heat, and highly corrosive desalinated water.",
+        "agitate": "Standard plastics degrade rapidly, turning brittle under intense sun, risking catastrophic high-pressure leaks and massive project liabilities.",
+        "feature": "PPR-AL-PPR Composite Pipes + Heavy-duty Forged Brass Valves.",
+        "advantage": "Armored anti-UV resin blocks sun damage, while the middle aluminum layer provides metallic strength and zero oxygen permeation.",
+        "benefit": "Lifetime outdoor durability. Total immunity to softening, guaranteeing zero-defect approvals on luxury villas and municipal networks."
+      },
+      "north-america": {
+        "problem": "Severe winter freezes, wood-frame construction, and strict zero-lead (NSF/cUPC) regulations.",
+        "agitate": "Frozen burst pipes cause millions in water damage. Hot-work welding in wooden frames creates immense fire hazards and incurs exorbitant skilled labor costs.",
+        "feature": "Cold Expansion PEX-a + Push-Fit Fittings + 304/316L Stainless Steel Press.",
+        "advantage": "PEX-a thermal memory expands rather than cracks when frozen. Push-fit requires zero flames or tools. Stainless steel ensures absolute medical-grade hygiene.",
+        "benefit": "Freeze-proof, fire-proof, and lead-free compliance. Slashes installation time by 60% while meeting the highest commercial safety standards."
+      },
+      "europe": {
+        "problem": "Relentless energy efficiency mandates, mandatory underfloor heating, and strict non-toxic material certifications.",
+        "agitate": "Oxygen permeation in standard pipes causes rust in expensive boilers. Micro-plastics in old systems threaten drinking water purity.",
+        "feature": "EVOH Anti-Oxygen PEX-b/PERT + DVGW Certified Thin-walled Stainless Steel + TRVs.",
+        "advantage": "Nano-level EVOH layer achieves zero oxygen permeability. Stainless steel completely eliminates micro-plastics and chemical leaching.",
+        "benefit": "Absolute protection for premium heating matrices and ultra-pure residential drinking water, securing the highest-tier real estate contracts."
+      },
+      "asia": {
+        "problem": "High heat and humidity breed bacteria; rapid urbanization demands both extreme cost-efficiency and emerging luxury upgrades.",
+        "agitate": "Intense sunlight penetrates standard pipes, turning water green with algae. Aging infrastructure suffers from 'red water' rust contamination.",
+        "feature": "Nano-Silver Anti-bacterial PPR + Premium 304/316 Stainless Steel Networks.",
+        "advantage": "Dual-color PPR blocks light while nano-silver ions actively destroy bacteria. Stainless steel offers a lifetime zero-rust guarantee.",
+        "benefit": "Captures both mass-market high-rises (with cost-effective antimicrobial PPR) and elite luxury developments (with premium stainless steel)."
+      },
+      "cis": {
+        "problem": "Brutal sub-zero winters demand highly pressurized, extreme-temperature central district heating systems (often >95°C).",
+        "agitate": "Normal plastics soften, expand, and contort like snakes under such boiling surges, leading to catastrophic system blowouts.",
+        "feature": "Fiberglass-Reinforced High-Pressure PPR (PPR-GF-PPR) + Large-bore Forged Manifolds.",
+        "advantage": "The rigid fiberglass skeleton slashes thermal expansion to 1/4 of standard PPR, maintaining structural integrity at scalding temperatures.",
+        "benefit": "Rock-solid, perfectly straight pipelines. Built to permanently withstand the ruthless pressure of massive district heating grids."
+      },
+      "latam": {
+        "problem": "Deeply entrenched US standard (ASTM) legacy systems, heavily relying on traditional PVC glue joints.",
+        "agitate": "High long-distance shipping costs crush margins. Migrating local contractors away from legacy 40-year-old glue systems is notoriously difficult.",
+        "feature": "Complete ASTM Sch40/Sch80 PVC Glue-Joint Systems + Accessible Green PPR.",
+        "advantage": "100% compatible with local contractor habits. Aggressive cost-to-performance ratio for mass market volume.",
+        "benefit": "Unbeatable wholesale velocity. Immediately replaces inferior rusty iron pipes with modern polymers without retraining the local workforce."
+      }
+    }
+  },
+  "solutionDetail": {
+    "breadcrumb": "Global Intelligence Hub",
+    "heroTitleSuffix": "Infrastructure.",
+    "threatBadge": "Systemic Vulnerabilities",
+    "threatTitle": "The Environment Dictates <risk>The Risk.</risk>",
+    "threatDesc": "Localized climate extremes and volatile water chemistry are the silent destroyers of generic plumbing systems. In this territory, standard materials guarantee catastrophic failure.",
+    "threatStep1": "01 / The Core Threat",
+    "threatStep2": "02 / Business Liability",
+    "threatLiveBadge": "Live Threat Feed",
+    "threatLiveStatus": "Monitoring regional failure vectors.",
+    "solutionBadge": "Engineered Intervention",
+    "solutionTitle": "The IFAN Product Integration.",
+    "executionBadge": "Execution",
+    "featureLabel": "Precision Manufacturing",
+    "advantageLabel": "Technical Advantage",
+    "benefitLabel": "Primary Business Benefit",
+    "specsTitle": "Infrastructure Specs",
+    "complianceTitle": "Mandatory Compliance",
+    "complianceDesc": "100% factory-tested to pass or exceed these regional auditing standards out-of-the-box. We guarantee completely frictionless customs clearance.",
+    "ctaTitle": "Lock In Your Supply Chain.",
+    "ctaDesc": "Speak directly with our regional engineering directors. Bypass the middlemen. Request sample shipments and receive a complete matrix quote within 24 hours.",
+    "ctaButton": "Contact Regional Sales Director",
+    "returnButton": "Return to Global Map",
+    "regions": {
+      "mena": {
+        "name": "MENA (Middle East & N. Africa)",
+        "intro": "The MENA region demands absolute resilience. Coastal desalination plants produce highly corrosive water, while inland projects face relentless solar radiation. IFAN's armored multi-layer systems are engineered specifically to neutralize these desert conditions.",
+        "problem": "Extreme UV radiation, 40°C+ heat, and highly corrosive desalinated water.",
+        "agitate": "Standard plastics degrade rapidly, turning brittle under intense sun, risking catastrophic high-pressure leaks and massive project liabilities.",
+        "feature": "PPR-AL-PPR Composite Pipes + Heavy-duty Forged Brass Valves.",
+        "advantage": "Armored anti-UV resin blocks sun damage, while the middle aluminum layer provides metallic strength and zero oxygen permeation.",
+        "benefit": "Lifetime outdoor durability. Total immunity to softening, guaranteeing zero-defect approvals on luxury villas and municipal networks.",
+        "details": {
+          "infrastructureSpecs": [
+            "Anti-UV External Resin Layer rated for 50-year desert exposure.",
+            "High-pressure Brass Manifolds (CW617N) for luxury high-rise water distribution.",
+            "HDPE underground networks for municipal sand-bed resilience."
+          ]
+        }
+      },
+      "north-america": {
+        "name": "North America",
+        "intro": "North America features the world's strictest drinking water regulations alongside uniquely brutal freeze-thaw cycles. IFAN's North American matrix focuses entirely on lead-free compliance and ultra-fast, flame-free installation methods to bypass the massive local labor costs.",
+        "problem": "Severe winter freezes, wood-frame construction, and strict zero-lead (NSF/cUPC) regulations.",
+        "agitate": "Frozen burst pipes cause millions in water damage. Hot-work welding in wooden frames creates immense fire hazards and incurs exorbitant skilled labor costs.",
+        "feature": "Cold Expansion PEX-a + Push-Fit Fittings + 304/316L Stainless Steel Press.",
+        "advantage": "PEX-a thermal memory expands rather than cracks when frozen. Push-fit requires zero flames or tools. Stainless steel ensures absolute medical-grade hygiene.",
+        "benefit": "Freeze-proof, fire-proof, and lead-free compliance. Slashes installation time by 60% while meeting the highest commercial safety standards.",
+        "details": {
+          "infrastructureSpecs": [
+            "Shape-memory PEX-a tubing capable of surviving 300% expansion without bursting.",
+            "DZR (Dezincification Resistant) Lead-Free Brass Push-Fit couplings.",
+            "304/316L Stainless Steel Press-Fit for hospital and commercial hygienic lines."
+          ]
+        }
+      },
+      "europe": {
+        "name": "European Union & UK",
+        "intro": "Europe leads the world in low-carbon hydronic heating and micro-plastic elimination. IFAN supplies the heavy-duty oxygen barriers and thermostatic controls required to pass EU strict energy efficiency ratings (A++).",
+        "problem": "Relentless energy efficiency mandates, mandatory underfloor heating, and strict non-toxic material certifications.",
+        "agitate": "Oxygen permeation in standard pipes causes rust in expensive boilers. Micro-plastics in old systems threaten drinking water purity.",
+        "feature": "EVOH Anti-Oxygen PEX-b/PERT + DVGW Certified Thin-walled Stainless Steel + TRVs.",
+        "advantage": "Nano-level EVOH layer achieves zero oxygen permeability. Stainless steel completely eliminates micro-plastics and chemical leaching.",
+        "benefit": "Absolute protection for premium heating matrices and ultra-pure residential drinking water, securing the highest-tier real estate contracts.",
+        "details": {
+          "infrastructureSpecs": [
+            "EVOH ultra-barrier layers for zero boiler corrosion.",
+            "Smart Thermostatic Radiator Valves (TRV) for precise room-by-room climate control.",
+            "DVGW-approved Stainless Steel networks for replacing legacy lead/copper pipes."
+          ]
+        }
+      },
+      "asia": {
+        "name": "East & Southeast Asia",
+        "intro": "Spanning the hyper-dense Mega-cities of China, Japan, Korea, and the tropical expansion of Southeast Asia, this region requires a dual-pronged approach: absolute cost-efficiency for mass housing and uncompromising hygiene for luxury real estate.",
+        "problem": "High heat and humidity breed bacteria; rapid urbanization demands both extreme cost-efficiency and emerging luxury upgrades.",
+        "agitate": "Intense sunlight penetrates standard pipes, turning water green with algae. Aging infrastructure suffers from 'red water' rust contamination.",
+        "feature": "Nano-Silver Anti-bacterial PPR + Premium 304/316 Stainless Steel Networks.",
+        "advantage": "Dual-color PPR blocks light while nano-silver ions actively destroy bacteria. Stainless steel offers a lifetime zero-rust guarantee.",
+        "benefit": "Captures both mass-market high-rises (with cost-effective antimicrobial PPR) and elite luxury developments (with premium stainless steel).",
+        "details": {
+          "infrastructureSpecs": [
+            "Anti-bacterial Green/White PPR co-extruded pipes.",
+            "Mass-volume UPVC/CPVC systems for rapid urban drainage and industrial flows.",
+            "High-end Stainless Steel Press systems for commercial 'red-water' eradication."
+          ]
+        }
+      },
+      "cis": {
+        "name": "Russia & CIS Area",
+        "intro": "The CIS region relies entirely on massive, high-temperature District Heating networks. IFAN’s fiberglass-infused systems are specifically designed to survive internal boiling temperatures while resisting massive external freeze shock.",
+        "problem": "Brutal sub-zero winters demand highly pressurized, extreme-temperature central district heating systems (often >95°C).",
+        "agitate": "Normal plastics soften, expand, and contort like snakes under such boiling surges, leading to catastrophic system blowouts.",
+        "feature": "Fiberglass-Reinforced High-Pressure PPR (PPR-GF-PPR) + Large-bore Forged Manifolds.",
+        "advantage": "The rigid fiberglass skeleton slashes thermal expansion to 1/4 of standard PPR, maintaining structural integrity at scalding temperatures.",
+        "benefit": "Rock-solid, perfectly straight pipelines. Built to permanently withstand the ruthless pressure of massive district heating grids.",
+        "details": {
+          "infrastructureSpecs": [
+            "PPR-GF-PPR tri-layer pipes with negligible thermal expansion.",
+            "Heavy-duty forged brass manifolds capable of managing intense pressure spikes.",
+            "Large-bore fusion systems designed for thick concrete encasements."
+          ]
+        }
+      },
+      "latam": {
+        "name": "Latin & South America",
+        "intro": "Latin America provides massive wholesale volume opportunities driven by cost and legacy habits. IFAN dominates this sector by providing extreme value via perfectly compliant ASTM PVC glued systems and highly aggressive pricing on standard PPR.",
+        "problem": "Deeply entrenched US standard (ASTM) legacy systems, heavily relying on traditional PVC glue joints.",
+        "agitate": "High long-distance shipping costs crush margins. Migrating local contractors away from legacy 40-year-old glue systems is notoriously difficult.",
+        "feature": "Complete ASTM Sch40/Sch80 PVC Glue-Joint Systems + Accessible Green PPR.",
+        "advantage": "100% compatible with local contractor habits. Aggressive cost-to-performance ratio for mass market volume.",
+        "benefit": "Unbeatable wholesale velocity. Immediately replaces inferior rusty iron pipes with modern polymers without retraining the local workforce.",
+        "details": {
+          "infrastructureSpecs": [
+            "ASTM standard Sch40/Sch80 White and Grey PVC.",
+            "Traditional solvent-weld (glue) fittings for rapid local adoption.",
+            "High-value Green PPR substituting outdated galvanized iron."
+          ]
+        }
+      }
+    }
+  },
+  "contact": {
+    "badge": "Global Procurement",
+    "heroTitleLine1": "Let's Build",
+    "heroTitleLine2": "Global",
+    "heroTitleHighlight": "Together.",
+    "heroDesc": "Whether you are looking for factory-direct sourcing, customized OEM manufacturing, or exclusive regional distributorships. IFAN Group provides unparalleled engineering and logistics support worldwide.",
+    "hqTitle": "Global Headquarters",
+    "hqAddress": "IFAN Industrial Park, Diankou Town, Zhuji City, Zhejiang Province, China",
+    "procurementDesk": "Direct Procurement Desk",
+    "corporateComm": "Corporate Communications",
+    "whyDirectTitle": "Why Source Factory-Direct?",
+    "whyDirect1": "Zero Middleman Markup (Save 20-40%)",
+    "whyDirect2": "Priority Production Scheduling",
+    "whyDirect3": "Dedicated Engineering Support Team",
+    "initiateTitle": "Initiate Secure Inquiry",
+    "initiateDesc": "Complete the secure form below. A dedicated regional sales director will be assigned to your case and respond within 12 hours.",
+    "loadingForm": "Loading Secure Form...",
+    "companyName": "Company Name",
+    "companyPlaceholder": "Global Corp Ltd.",
+    "contactPerson": "Contact Person",
+    "emailLabel": "Corporate Email",
+    "phoneLabel": "Direct Phone / WhatsApp",
+    "inquiryType": "Inquiry Topic",
+    "distributorship": "Regional Distributorship Application",
+    "oemService": "OEM / Custom Manufacturing",
+    "projectSpec": "Large Project Procurement",
+    "other": "Other Business Inquiry",
+    "requirementsLabel": "Technical / Sourcing Requirements",
+    "defaultRequirement": "I am interested in procuring {interestedProduct}. Please provide more technical specifications and the latest wholesale pricing.",
+    "requirementsPlaceholder": "Please detail your estimated annual volume, target markets, or specific material standards...",
+    "successTitle": "Inquiry Transmitted Securely",
+    "successMessage": "Your procurement profile has been securely routed to our regional director. You will be contacted within 12 hours.",
+    "submitting": "Transmitting...",
+    "submitBtn": "Establish Connection"
+  },
+  "news": {
+    "badge": "Industry Knowledge",
+    "title": "News &",
+    "titleAccent": "Insights.",
+    "desc": "Stay ahead with the latest developments, technical breakthroughs, and market analyses in the global plumbing and HVAC hardware industry.",
+    "readMore": "Read More",
+    "allArticles": "All Articles",
+    "noArticles": "No articles found."
+  },
+  "about": {
+    "badge": "Our Story",
+    "title": "Built to Last.",
+    "desc": "Three decades of precision manufacturing have made IFAN Group a trusted name in global plumbing infrastructure.",
+    "hero": {
+      "badge": "Our Core Purpose",
+      "title": "Engineering {br} The <highlight>Veins</highlight> of {br} Modern <highlight>Infrastructure.</highlight>",
+      "descBold": "Why we exist:",
+      "desc": "We believe that every drop of water and every joule of energy should flow securely. IFAN Group exists to eliminate the catastrophic risks of fluid control failure in global construction.",
+      "cta": "View Manufacturing Floor"
+    },
+    "timeline": {
+      "badge": "How We Do It",
+      "title": "30 Years of Relentless{br}Optimization.",
+      "items": {
+        "item1": {
+          "year": "1993",
+          "desc": "Founded in Zhuji City, Zhejiang. Began as a specialized domestic hardware and valve manufacturer."
+        },
+        "item2": {
+          "year": "2001",
+          "desc": "Established IFAN Piping Systems. Implemented fully automated European extrusion lines for PPR and PVC."
+        },
+        "item3": {
+          "year": "2015",
+          "desc": "Global expansion phase. Export volume exceeded 100 countries, earning national high-tech enterprise certification."
+        },
+        "item4": {
+          "year": "Now",
+          "desc": "Launch of IFAN GROUP holdings. Unifying IFAN, IFANPLUS, and IFANPRO under a massive 400,000 m² smart manufacturing ecosystem."
+        }
+      }
+    },
+    "stats": {
+      "badge": "What We Build",
+      "title": "The Comprehensive Portfolio.",
+      "items": {
+        "item1": {
+          "value": "10K+",
+          "label": "Distinct SKUs"
+        },
+        "item2": {
+          "value": "3",
+          "label": "Core Brands"
+        },
+        "item3": {
+          "value": "120",
+          "label": "Export Countries"
+        },
+        "item4": {
+          "value": "50yr",
+          "label": "Lifespan Guarantee"
+        }
+      }
+    },
+    "philosophy": {
+      "title": "Zero-Defect Philosophy.",
+      "desc": "Our CNAS-certified national laboratory subjects every production batch to rigorous hydrostatic, thermal, and impact stress tests. We don't just meet ISO/CE standards; we exceed them.",
+      "cta": "View Manufacturing Floor"
+    },
+    "certifications": {
+      "title": "Global Certifications.",
+      "desc": "Fully compliant with CE, ISO9001, ISO14001, SKZ, and WRAS. Our potable water and gas systems are legally certified for use in over 120 jurisdictions worldwide.",
+      "cta": "Request Compliance Files"
+    }
+  },
+  "manufacturing": {
+    "hero": {
+      "badge": "Industrial Scale Infrastructure",
+      "title": "Your <highlight>Global</highlight>{br} Manufacturing {br} <highlight>Partner.</highlight>",
+      "desc": "Beyond distribution. IFAN GROUP operates a massive network of interconnected manufacturing facilities utilizing German-imported injection molding and extrusion systems. We are the architects behind the world's leading fluid control brands.",
+      "cta": "Initiate OEM Partnership"
+    },
+    "pas": {
+      "badge": "The Hidden Cost of Sourcing",
+      "title": "Tired of unpredictable supply chains and middlemen?",
+      "desc1": "Every delayed container, failed pressure test, or inconsistent batch doesn't just cost money—it damages your brand's reputation and halts major construction timelines.",
+      "desc2": "Stop risking your multi-million dollar projects on unverified trading companies. The era of blind sourcing is over."
+    },
+    "solution": {
+      "badge": "The IFAN Solution",
+      "title": "Complete Vertical{br}Integration.",
+      "items": {
+        "item1": {
+          "value": "400,000 m²",
+          "desc": "Of specialized, automated production floors across the IFAN network."
+        },
+        "item2": {
+          "value": "3,000+ Units",
+          "desc": "Of high-precision CNC machines and German extrusion lines running 24/7."
+        },
+        "item3": {
+          "value": "Zero-Defect",
+          "desc": "National-level CNAS laboratory testing every batch for pressure and thermal resistance."
+        },
+        "item4": {
+          "value": "120 Countries",
+          "desc": "Verified export logistics network supporting vast global supply chains."
+        }
+      }
+    },
+    "cta": {
+      "badge": "Direct Engineering Access",
+      "title": "OEM & ODM Customization.",
+      "desc": "From raw material compounding to proprietary molds and private-label packaging, our engineering team executes your designs under strict international NDA protocols.",
+      "button": "Request Engineering Consultation"
+    }
+  },
+  "news_page": {
+    "hero": {
+      "badge": "Industry Knowledge",
+      "title1": "News &",
+      "title2": "Insights.",
+      "desc": "Stay ahead with the latest developments, technical breakthroughs, and market analyses in the global plumbing and HVAC hardware industry."
+    }
+  },
+  "brandPage": {
+    "scrollToDiscover": "Scroll to Discover",
+    "exploreMatrix": "Explore Matrix",
+    "officialSite": "Official Site",
+    "valuePropositionLabel": "Value Proposition",
+    "qualityAssuredTitle": "Quality Assured",
+    "qualityAssuredDesc": "Manufactured under strict ISO protocols, ensuring every component performs flawlessly under extreme conditions.",
+    "brandEcosystem": "Brand Ecosystem",
+    "exploreMoreBrands": "Explore More Brands.",
+    "viewFullPortfolio": "View Full Portfolio",
+    "partnerBrand": "Partner Brand",
+    "globalSupply": "Global Supply",
+    "productUniverse": "Product Universe.",
+    "productUniverseDesc": "Filtered strictly to {brandName} commercial items. Discover the complete range of specifications.",
+    "matrixGenerating": "Matrix Generating",
+    "matrixGeneratingDesc": "Products for this brand are currently being documented for the global matrix.",
+    "globalPartnership": "Global Partnership",
+    "agentNetwork": "Agent Network.",
+    "agentNetworkDesc": "Glimpses into our global showrooms, factory inspections, and trusted partnerships driving the {brandName} ecosystem forward.",
+    "joinFramework": "Join The",
+    "joinFrameworkHighlight": "Framework.",
+    "joinFrameworkDesc": "Elevate your distribution network with {brandName}'s extreme manufacturing scale. Contact us today to discuss exclusive territorial agency opportunities.",
+    "becomePartner": "Become a Partner",
+    "recentStories": "Recent Stories",
+    "seriesLabels": {
+      "turkey": "Turkey Series",
+      "germany": "Germany Series",
+      "italy": "Italy Series",
+      "ifanCore": "IFAN Core Series",
+      "euro": "Euro Series"
+    },
+    "brands": {
+      "IFAN": {
+        "tagline": "The Global Standard in Complete Fluid Systems",
+        "heroDescription": "The foundation of our engineering legacy. A comprehensive, stock-ready matrix of supreme quality components serving the entire globe.",
+        "valuePropositionTitle": "Uncompromising Quality, Ready to Ship",
+        "valuePropositionContent1": "IFAN is the core engine of our manufacturing might. Built on the philosophy of full-range availability, we maintain massive inventory to ensure your supply chain never breaks.",
+        "valuePropositionContent2": "From foundational PPR pipes to advanced brass valves, every item in the IFAN core series is engineered for extreme durability and 50-year longevity.",
+        "marketStrategyTitle": "Global Reach, Direct Factory Access",
+        "marketStrategyDesc": "Positioned as our ultimate STOCK brand, IFAN targets the entire global market without intermediaries. By eliminating regional agencies, we offer direct factory-to-business efficiency, giving wholesale partners unparalleled pricing leverage.",
+        "designPhilosophyTitle": "The Colors of Passion & Life",
+        "designPhilosophyDesc": "Defined by a deeply resonant visual identity: Green representing the source of life and sustainable engineering, paired with Orange, signifying our passion for manufacturing excellence and relentless innovation."
+      },
+      "IFANPlus": {
+        "tagline": "The Zenith of Plumbing Engineering",
+        "heroDescription": "Our flagship ultra-premium tier. IFANPlus represents the absolute peak of material science and precision manufacturing.",
+        "valuePropositionTitle": "Engineered for the Elite",
+        "valuePropositionContent1": "When compromise is not an option, IFANPlus is the answer. Every product under the Plus moniker undergoes rigorous over-engineering to exceed every known international benchmark.",
+        "valuePropositionContent2": "Featuring superior material density, enhanced pressure ratings, and impeccable finish, this series is designed for flagship architectural projects and clients who demand the very best.",
+        "marketStrategyTitle": "Dominating the Premium Global Sector",
+        "marketStrategyDesc": "Targeting the top-tier global market, IFANPlus operates on a direct-to-buyer model. We empower supreme distributors to capture the absolute high-end segment of the construction industry without the friction of traditional agency models.",
+        "designPhilosophyTitle": "Purity & Perfection",
+        "designPhilosophyDesc": "Contrasting the vitality of our signature Green with a pristine, high-end White aesthetic. The visual language of IFANPlus screams clinical precision, hygiene, and architectural supremacy."
+      },
+      "IFANPRO": {
+        "tagline": "Italian Aesthetics. Unbeatable Value.",
+        "heroDescription": "The strategic masterclass in cost-performance. IFANPRO delivers premium European-style aesthetics engineered flawlessly for tremendous value.",
+        "valuePropositionTitle": "The Ultimate Value Proposition",
+        "valuePropositionContent1": "IFANPRO bridges the gap between high-end design and aggressive commercial pricing. Specializing in PPR, PEX, PP pipes, and robust valves, it is the ultimate tool for capturing market share.",
+        "valuePropositionContent2": "We have optimized the manufacturing pipeline to strip out bloat while retaining core structural integrity, allowing B2B partners to maximize their profit margins exponentially.",
+        "marketStrategyTitle": "Engineered for West African Dominance",
+        "marketStrategyDesc": "Strategically calibrated for the lucrative and rapidly expanding West African market. IFANPRO provides the aggressive pricing and durable performance required to outcompete local alternatives and dominate large-scale commercial tenders.",
+        "designPhilosophyTitle": "The Italian Color Scheme",
+        "designPhilosophyDesc": "Adopting a striking Italian-inspired palette, IFANPRO commands attention on the shelf. The premium look and feel elevate the brand perception, making it irresistible to contractors and retailers alike."
+      },
+      "IFANNova": {
+        "tagline": "French Elegance, Elite Infrastructure",
+        "heroDescription": "A sophisticated foray into high-end fluid management, bringing exceptional engineering to specialized premium markets.",
+        "valuePropositionTitle": "Refined High-End Performance",
+        "valuePropositionContent1": "IFANNova represents a focused selection of top-tier PPR, PEX, and PP systems. It is engineered not just to function, but to excel in demanding environments where both aesthetics and performance are scrutinized.",
+        "valuePropositionContent2": "Built for wholesale partners aiming to penetrate luxury developments and high-budget infrastructural projects.",
+        "marketStrategyTitle": "Premium Penetration in West Africa",
+        "marketStrategyDesc": "While IFANPRO captures volume, IFANNova is the tactical weapon for securing the high-end sector in West Africa. It offers regional distributors a distinct premium brand to upsell and dominate the top of the market.",
+        "designPhilosophyTitle": "French Color Aesthetics",
+        "designPhilosophyDesc": "Imbued with an elegant French color scheme, the brand exudes sophistication. The visual identity reassures clients of its premium positioning before a single pipe is even installed."
+      },
+      "IFANUltra": {
+        "tagline": "The Pinnacle of European Quality",
+        "heroDescription": "Absolute top-tier engineering designed strictly for the uncompromising standards of the European market.",
+        "valuePropositionTitle": "Paramount Structural Integrity",
+        "valuePropositionContent1": "IFANUltra is where maximum performance meets rigorous certification. Specializing in core PPR, PEX, and valve systems, this brand is built to withstand extreme pressures and thermal variations.",
+        "valuePropositionContent2": "No shortcuts. No compromises. Just pure, unadulterated manufacturing excellence tailored for the most strictly regulated environments on Earth.",
+        "marketStrategyTitle": "Conquering the European Landscape",
+        "marketStrategyDesc": "Targeted exclusively at Europe, IFANUltra provides continental distributors with a powerhouse brand that competes head-to-head with legacy European manufacturers, offering superior margins.",
+        "designPhilosophyTitle": "The Signature Blue Paradigm",
+        "designPhilosophyDesc": "Anchored in a deep, authoritative Blue aesthetic. The color signifies trust, industrial confidence, and absolute reliability—critical traits for European engineering sectors."
+      }
+    },
+    "generic": {
+      "premiumTagline": "Premium Excellence in Fluid Control",
+      "valueTagline": "Unbeatable Value & Engineering",
+      "heroDescription": "Engineered for the demands of the modern infrastructure. {brandName} delivers uncompromising performance across its primary range of {products}.",
+      "propositionTitle": "The {brandName} Standard",
+      "propositionContent1": "When precision matters, {brandName} delivers. Our manufacturing process ensures every component meets rigorous international standards.",
+      "propositionContent2": "By focusing on {route}, we provide our partners with scalable, dependable plumbing solutions that drive business growth and project success.",
+      "strategyTitle": "Strategic Dominance in {market}",
+      "strategyDesc": "Tailored specifically for the {market} region, {brandName} understands the unique environmental and commercial demands of the local infrastructure. Our strategic positioning guarantees optimal distribution efficiency and market penetration.",
+      "philosophyTitle": "Aesthetic & Engineering Reference",
+      "philosophyDesc": "Drawing inspiration from the {reference}, {brandName} combines striking visual identity with battle-tested structural integrity. Every product is not just a component, but a statement of quality."
+    },
+    "partnerBrandDesc": "A specialized partner brand within the {brandName} eco-system."
+  },
+  "common": {
+    "confidential": "Confidential",
+    "confidentialAsset": "Confidential Asset",
+    "authorizedOnly": "Authorized personnel only. Protected by digital watermark.",
+    "protectedDocument": "Protected Document",
+    "propertyOf": "Confidential Property of",
+    "physicalStack": "Physical Stack",
+    "privacyPolicy": "Privacy Policy",
+    "dragToOpen": "Drag to open",
+    "loading": "Loading...",
+    "available": "Available"
+  },
+  "home": {
+    "leadMagnet": {
+      "badge": "Exclusive B2B Whitepaper",
+      "title": "The Guide to Sourcing Plumbing Materials in China",
+      "desc": "Stop losing margin to hidden costs. Download our comprehensive guide covering advanced factory vetting, TCO quality benchmarks, and global logistics optimization.",
+      "feature1": "Identifying Fake Manufacturers vs. Real Mega-Factories",
+      "feature2": "TCO (Total Cost of Ownership) Analysis for Piping",
+      "feature3": "Strict Quality Checklists for PPR & Brass Valves",
+      "formTitle": "Get Instant Access",
+      "formDesc": "Download securely to your inbox.",
+      "companyLabel": "Company Name",
+      "companyPlaceholder": "e.g. Acme Wholesale",
+      "emailLabel": "Work Email",
+      "emailPlaceholder": "john@example.com",
+      "downloadBtn": "Download PDF",
+      "privacyNotice": "We respect your privacy. SSL Encrypted."
+    },
+    "brandMatrix": {
+      "title": "Strategic Dual-Brand Architecture",
+      "subtitle": "Whether you demand massive volume with cost-efficiency or absolute premium aesthetics for top-tier architects, we own the supply chain for both.",
+      "ifanStandardTitle": "IFAN Standard",
+      "ifanStandardBadge": "Wholesale & Mega-Projects Volume",
+      "ifanStandardDesc": "Engineered for absolute volume. Designed for distributors and large-scale public infrastructure where strict ISO compliance and extreme margin control are non-negotiable.",
+      "ifanStandardFeature1": "Optimized for High-Volume Pallet ROI",
+      "ifanStandardFeature2": "Maximum Profit Margins for Distributors",
+      "ifanStandardFeature3": "Strict ISO 9001 Compliance & Certifications",
+      "ifanStandardFeature4": "Unmatched Reliability for Public Works",
+      "ifanStandardBtn": "Contract IFAN Standard",
+      "ifanPlusTitle": "IFANPLUS",
+      "ifanPlusBadge": "Premium Architectural Specifications",
+      "ifanPlusDesc": "The flagship tier. Thicker walls, flawless finish, engineered from pure Hyosung R200P. Luxury performance for high-end residential and strict architectural specifications.",
+      "ifanPlusFeature1": "Enhanced Wall Thickness (Superior Pn Ratings)",
+      "ifanPlusFeature2": "Flawless Surface Aesthetics for Exposed Pipes",
+      "ifanPlusFeature3": "100% Premium Raw Material Guarantee",
+      "ifanPlusFeature4": "Exclusive Regional Agency Protection Options",
+      "ifanPlusBtn": "Discover IFANPLUS Premium"
+    }
+  },
+  "products": {
+    "searchPlaceholder": "Search by product name...",
+    "brands": "Brands",
+    "allBrands": "All Brands",
+    "defaultProductDescription": "Premium industrial component engineered for global infrastructure and high-pressure residential networks.",
+    "variants": "Variants",
+    "details": "View Details",
+    "completeSpecMatrix": "Complete Technical Matrix",
+    "code": "Article Code",
+    "dimensionsSize": "Size (mm/inch)",
+    "packaging": "Packing Count",
+    "cbm": "CBM/Carton",
+    "volumeProcurement": "Volume Procurement",
+    "procurementNote": "Direct-from-factory pricing securely restricted to qualified B2B partners. Request an immediate bulk quote.",
+    "getPricing": "Get Latest Pricing",
+    "globalShipping": "Global Shipping",
+    "available": "Available",
+    "closeMatrix": "Close Matrix",
+    "noProductsMatch": "No products match the selected filters.",
+    "previous": "Previous",
+    "page": "Page",
+    "of": "of",
+    "next": "Next",
+    "products": "Products",
+    "durability": "Durability",
+    "yearWarranty": "Year Warranty",
+    "material": "Material",
+    "virginGrade": "Virgin Grade A+",
+    "getQuote": "Get Enterprise Quote",
+    "specNote": "Precise measurements and packaging standards for wholesale procurement."
+  },
+  "productsPage": {
+    "hero": {
+      "badge": "Global Supply Chain",
+      "title1": "Product",
+      "title2": "Matrix.",
+      "desc": "Explore our comprehensive engineering components. Select products to view deep technical specifications, tolerances, and packaging metrics. Contact our enterprise team for volume manufacturing quotes."
+    },
+    "quickJump": {
+      "ppr": { "name": "PPR Systems", "desc": "Potable Water & Heating" },
+      "pex": { "name": "PEX Series", "desc": "Radiant Floor Heating" },
+      "brass": { "name": "Brass Valves", "desc": "Heavy-Duty Control" },
+      "pe": { "name": "PE Fittings", "desc": "Municipal & Industrial" }
+    },
+    "stats": {
+      "skus": { "title": "10,000+", "desc": "Active SKUs" },
+      "years": { "title": "30+ Years", "desc": "Manufacturing" },
+      "quality": { "title": "100% Quality", "desc": "ISO 9001 Tested" },
+      "scale": { "title": "Global Scale", "desc": "Exporting to 120+ Countries" }
+    },
+    "catalog": {
+      "title": "Complete Catalog Directory",
+      "desc": "Use the filters below to browse our full inventory of piping and fitting solutions."
+    },
+    "factory": {
+      "badge": "Factory Direct Advantage",
+      "title": "Scale Your Operations with the Source Factory.",
+      "desc": "Why deal with middlemen when you can partner directly with the manufacturer? With over 3 decades of extrusion and molding expertise, IFAN guarantees unprecedented quality control, massive scalable capacity, and unbeatable wholesale margins for global distributors.",
+      "features": [
+        "Automated German Extrusion Lines",
+        "In-House Mold Engineering & Tooling",
+        "Rigorous Hydrostatic Pressure Testing Labs"
+      ],
+      "topLabel": "Top 1%",
+      "topDesc": "in Manufacturing"
+    },
+    "cta": {
+      "title": "Need Bulk Pricing?",
+      "desc": "Skip the retail margins. Connect with our enterprise sales engineering team to configure your next 40HQ container load with direct factory pricing.",
+      "getQuote": "Get a Quote",
+      "salesHotline": "Sales Hotline"
+    }
+  },
+  "resources": {
+    "catalogs": "Catalogs",
+    "corporateNews": "Corporate News",
+    "virtualTour": "Virtual Tour"
+  },
+  "secureGallery": {
+    "loadingEngine": "Loading Book Engine...",
+    "assetLibrary": "Premium Asset Library",
+    "lookbookTitle": "Brand Lookbook.",
+    "simulationDesc": "Interactive physical simulation of {brandName} materials. Drag page corners horizontally to turn pages.",
+    "protectionNotice": "All materials are highly protected against extraction.",
+    "endOf": "End of {title}",
+    "packagingTitle": "Packaging Standards",
+    "marketingTitle": "Marketing Excellence",
+    "packagingDesc": "Dive into our comprehensive packaging standards. This interactive manual details our robust packing methodologies designed to securely transit {brandName} components across global shipping lanes.",
+    "marketingDesc": "Explore our premium marketing and visual identity assets. This exclusive lookbook is engineered to empower our distributors with high-conversion promotional materials for the {brandName} global ecosystem."
+  },
+  "categories": {
+    "badge": "Certified Manufacturing",
+    "series": "IFAN Engineering Series",
+    "trustedBy": "Trusted by 2,000+ global partners",
+    "exploreShowcase": "Explore Showcase",
+    "signatureBadge": "Signature Engineering",
+    "signatureTitlePrefix": "The",
+    "signatureTitleSuffix": "Standard.",
+    "signatureDesc": "Every component is engineered to outlast industry benchmarks. Manufactured from 100% virgin-grade raw materials under rigorous ISO 9001 standards.",
+    "viewSpecs": "View Full Specifications",
+    "replaceImage": "Signature Component",
+    "engineeringBadge": "Technical Deep-Dive",
+    "engineeringDesc": "Our manufacturing process ensures every component exceeds international pressure, thermal, and chemical resistance standards.",
+    "materialIntegrityTitle": "100% Virgin Raw Materials",
+    "materialIntegrityDesc": "Zero recycled impurities. Every batch uses globally-verified, premium-grade polymers and alloys with full traceability.",
+    "factoryQATitle": "Real-Time Factory QA",
+    "factoryQADesc": "CNAS-certified lab testing on every production batch. Hydrostatic, thermal, and impact tests before any shipment leaves our facility.",
+    "visualIntelligence": "Visual Intelligence",
+    "showcaseSuffix": "Showcase.",
+    "galleryDesc": "A curated visual gallery of our manufacturing precision and product quality.",
+    "galleryMainBadge": "Featured Product",
+    "galleryMainTitle": "View Full Catalog",
+    "ctaBadge": "Direct Factory Access",
+    "ctaTitle": "Ready to Source Direct?",
+    "ctaDesc": "Skip the middleman. Get factory-direct pricing, secure supply chain guarantees, and a dedicated engineering support team for your next project.",
+    "ctaButtonPrimary": "Request Wholesale Pricing",
+    "ctaButtonSecondary": "View Full Catalog",
+    "items": {
+      "ppr": {
+        "heroTitle": "PPR Piping Systems",
+        "heroDescription": "IFAN's Polypropylene Random Copolymer (PPR) systems represent the bedrock of pure, safe, and durable fluid transportation. Engineered for extreme thermal stability and seamless heat fusion, our PPR pipes are the trusted choice for residential and commercial infrastructure worldwide.",
+        "tagline": "The Global Standard for Potable Water & Heating",
+        "technicalSuperiority": {
+          "title": "Molecular Engineering & Seamless Fusion",
+          "description": "Manufactured from premium Hyosung raw materials, our PPR products boast impenetrable molecular integrity. Through homogeneous heat fusion, joints become as strong as the pipe itself, guaranteeing a 100% leak-proof system with a lifespan exceeding 50 years."
+        },
+        "applications": {
+          "title": "Versatile Infrastructure Domination",
+          "description": "From luxury skyscraper potable water grids to extreme-condition industrial fluid transport, IFAN PPR systems excel across the board. They are the premier choice for hot and cold internal plumbing, central heating networks, and chilled water lines."
+        }
+      },
+      "brass-fittings": {
+        "heroTitle": "Premium Brass Fittings",
+        "heroDescription": "Forged from high-grade CW617N brass, IFAN's masterfully machined fittings guarantee structural dominance in any piping network. Designed for high pressure, aggressive environments, and rapid installation, they are the anchor points of professional plumbing.",
+        "tagline": "Unbreakable Connections. Solid Brass Authority.",
+        "technicalSuperiority": {
+          "title": "Precision Machining & Metallurgical Purity",
+          "description": "Our brass fittings are the result of rigorous hot forging and ultra-precise CNC machining. This ensures zero porosity and perfect threading. The high copper content provides unparalleled resistance to dezincification and corrosion."
+        },
+        "applications": {
+          "title": "The Backbone of Complex Fluid Networks",
+          "description": "Essential for linking disparate systems, executing sharp turns, or managing high-torque junctions. IFAN brass fittings are heavily deployed in extreme HVAC setups, municipal water distribution, and heavy-duty gas line installations."
+        }
+      },
+      "pp": {
+        "heroTitle": "PP Compression Systems",
+        "heroDescription": "IFAN Polypropylene (PP) compression fittings are the ultimate solution for high-speed, heavy-duty outdoor and underground water distribution. Designed for zero-tool, instant connections.",
+        "tagline": "Rapid Deployment. Agricultural & Urban Resilience.",
+        "technicalSuperiority": {
+          "title": "High-Impact Resistance & UV Shielding",
+          "description": "Engineered with advanced UV stabilizers and high-impact copolymers. These fittings shrug off harsh sunlight, sudden ground shifts, and mechanical stress. The advanced O-ring compression mechanics ensure a hermetic seal against severe hydraulic pressure."
+        },
+        "applications": {
+          "title": "Commanding the Great Outdoors",
+          "description": "The undisputed king of agricultural irrigation, municipal landscaping, and heavy-duty water mains. Whenever water needs to be pushed across vast distances quickly and reliably, IFAN PP systems answer the call."
+        }
+      },
+      "pvc": {
+        "heroTitle": "PVC Drainage & Conduit",
+        "heroDescription": "The absolute standard in municipal, residential, and industrial wastewater management. IFAN PVC pipes and fittings offer immense structural rigidity while ensuring a smooth, frictionless core that accelerates flow and eliminates blockages.",
+        "tagline": "Flawless Flow. Century-Long Drainage Power.",
+        "technicalSuperiority": {
+          "title": "Chemical Immunity & Structural Rigidity",
+          "description": "Formulated with un-plasticized polyvinyl chloride (uPVC), our drainage solutions are entirely immune to harsh environmental alkalis, ground acids, and caustic industrial effluents."
+        },
+        "applications": {
+          "title": "Subterranean & Vertical Dominance",
+          "description": "Universally deployed for residential soil and waste discharge, major municipal sewerage, underground conduit protection, and massive rainwater harvesting networks."
+        }
+      },
+      "pex-ppsu": {
+        "heroTitle": "PEX & PPSU Piping",
+        "heroDescription": "The absolute apex of radiant heating and potable water dynamics. IFAN cross-linked polyethylene (PEX) paired with aerospace-grade PPSU fittings creates an indestructible, hyper-flexible nervous system for modern buildings.",
+        "tagline": "Hyper-Flexible Thermal Dominance.",
+        "technicalSuperiority": {
+          "title": "Thermal Memory & Extreme Flexibility",
+          "description": "PEX's unique cross-linked molecular structure allows it to expand without shattering during freezes and bend aggressively around structural obstacles without compromising flow rate. Paired with our PPSU fittings, this system is future-proof."
+        },
+        "applications": {
+          "title": "The Core of Radiant Comfort",
+          "description": "The premium standard for immersive underfloor heating manifolds, complex potable water manifolds, and retrofitting historical buildings where rigid pipes cannot operate."
+        }
+      },
+      "hvac-valves": {
+        "heroTitle": "Brass Valves & Manifolds",
+        "heroDescription": "The command centers of your fluid infrastructure. IFAN's heavy-duty brass valves and intricate manifold systems grant precision control, failsafe isolation, and perfectly balanced thermal distribution.",
+        "tagline": "Absolute Control Over Pressure and Flow.",
+        "technicalSuperiority": {
+          "title": "Zero-Tolerance Sealing & Dynamic Balance",
+          "description": "Crafted via precision hot-forging with PTFE seals and explosion-proof stems. Our valves maintain total structural integrity under extreme PSI spikes. Our manifolds feature microscopic flow-adjustment meters for precise thermal distribution."
+        },
+        "applications": {
+          "title": "Architectural & Industrial Control",
+          "description": "Deployed in high-rise mechanical rooms, premium residential heating distribution hubs, and industrial isolation points. Wherever fluid needs to be stopped, split, or perfectly measured."
+        }
+      },
+      "hdpe": {
+        "heroTitle": "HDPE Infrastructure",
+        "heroDescription": "IFAN High-Density Polyethylene (HDPE) systems deliver unmatched durability for large-scale municipal water grids, industrial pipelines, and chemical transport infrastructure.",
+        "tagline": "High-Density Strength for Municipal Scale.",
+        "technicalSuperiority": {
+          "title": "Superior Chemical Resistance & Flexibility",
+          "description": "HDPE's high-density molecular structure provides exceptional resistance to a wide spectrum of chemicals, corrosive soils, and UV radiation. The flexible nature prevents cracking under ground movement."
+        },
+        "applications": {
+          "title": "Municipal & Industrial Backbone",
+          "description": "The premier choice for water supply mains, sewage and drainage networks, industrial chemical transport, and gas distribution pipelines across municipal and industrial projects worldwide."
+        }
+      },
+      "pph": {
+        "heroTitle": "PPH Industrial Piping",
+        "heroDescription": "Engineered from Polypropylene Homopolymer (PPH), IFAN's industrial-grade systems guarantee unmatched chemical resistance and high-temperature performance for demanding chemical, petrochemical, and industrial manufacturing environments.",
+        "tagline": "Industrial-Grade Chemical & Thermal Resilience.",
+        "technicalSuperiority": {
+          "title": "Beta-Nucleated Structural Integrity",
+          "description": "Manufactured using advanced beta-nucleation technology, our PPH products offer superior impact strength, high rigidity, and excellent resistance to comprehensive chemical corrosion, even at elevated temperatures up to 100°C."
+        },
+        "applications": {
+          "title": "Aggressive Chemical Handling",
+          "description": "The definitive solution for corrosive fluid transport, industrial effluent treatment, pickling lines, and semiconductor manufacturing facilities where standard polymers fail."
+        }
+      },
+      "stainless-press": {
+        "heroTitle": "Stainless Steel Press Systems",
+        "heroDescription": "IFAN 304/316L Stainless Steel press fittings and pipes redefine metallic infrastructure. Delivering immediate, flame-free, permanent connections with pristine hygiene standards tailored for critical water and gas pipelines.",
+        "tagline": "Pristine Purity. Flame-Free Permanent Connection.",
+        "technicalSuperiority": {
+          "title": "O-Ring Press Technology & Hygienic Purity",
+          "description": "Utilizing precision-engineered EPDM/FKM O-rings and high-grade austenitic stainless steel. Our press technology ensures a leak-proof sealing in seconds, eliminating welding risks while maintaining absolute fluid purity and profound corrosion resistance."
+        },
+        "applications": {
+          "title": "Critical Demands & Architectural Prestige",
+          "description": "Crucial for hospital water supplies, food and beverage processing plants, luxury hotel potable water grids, and high-pressure fire protection systems."
+        }
+      },
+      "pexa": {
+        "heroTitle": "PEX-a Cross-Linked Piping",
+        "heroDescription": "Engineered through pure peroxide cross-linking, IFAN PEX-a piping systems offer the industry's highest degree of flexibility, thermal memory, and freeze damage resistance, establishing the ultimate standard for radiant heating and snow-melting applications.",
+        "tagline": "Unparalleled Flexibility. Supreme Thermal Memory.",
+        "technicalSuperiority": {
+          "title": "Peroxide Cross-Linking Perfection",
+          "description": "Achieving over 80% degree of cross-linking, our PEX-a pipes can expand dramatically to accommodate freezing water and instantly return to their original shape when heated, completely eliminating freeze-rupture risks."
+        },
+        "applications": {
+          "title": "Radiant Heating & Snow Melting",
+          "description": "The elite choice for underfloor radiant heating grids, outdoor snow-melting systems, and tight-radius potable water plumbing loops in both residential and high-end commercial architecture."
+        }
+      },
+      "gas-systems": {
+        "heroTitle": "Professional Gas Systems",
+        "heroDescription": "Engineered for absolute safety and zero-leak reliability, IFAN Gas Systems provide robust, multi-layer composite piping and precision brass fittings designed exclusively for seamless indoor and outdoor gas distribution.",
+        "tagline": "Uncompromising Safety for Gas Transport.",
+        "technicalSuperiority": {
+          "title": "Enhanced Barrier & Hermetic Sealing",
+          "description": "Featuring a highly engineered aluminum core layer, our PEX-AL-PEX gas pipes offer 100% impermeability to oxygen and gases, while our gas-rated brass fittings ensure tamper-proof, high-torque sealing."
+        },
+        "applications": {
+          "title": "Residential & Commercial Gas Feeds",
+          "description": "Crucial for delivering natural gas (NG) and liquid petroleum gas (LPG) to boilers, stoves, commercial kitchens, and central heating units with absolute peace of mind."
+        }
+      },
+      "stainless-corrugated": {
+        "heroTitle": "Corrugated Stainless Systems",
+        "heroDescription": "Revolutionizing difficult installations, IFAN Corrugated Stainless Steel Tubing (CSST) delivers immense flexibility wrapped in armored durability, making complex routing in tight spaces both rapid and remarkably secure.",
+        "tagline": "Armored Flexibility for Extreme Routing.",
+        "technicalSuperiority": {
+          "title": "Deep Corrugation & Austenitic Strength",
+          "description": "Manufactured from premium 304/316L stainless steel, the deep corrugation geometry absorbs seismic shocks, thermal expansion, and mechanical vibration while allowing the tube to bend sharply without kinking."
+        },
+        "applications": {
+          "title": "Seismic Zones & Tight Retrofits",
+          "description": "Highly deployed in advanced HVAC hookups, solar thermal loops, seismic-prone gas line installations, and retrofitting historical buildings where rigid pipes simply cannot maneuver."
+        }
+      },
+      "angle-valves": {
+        "heroTitle": "Precision Angle Valves",
+        "heroDescription": "The final line of defense for your sanitary fixtures. IFAN premium angle valves combine elegant, architectural aesthetics with heavy-duty ceramic core technology to provide smooth, drip-free shutoff capability.",
+        "tagline": "Elegant Design. Drip-Free Isolation.",
+        "technicalSuperiority": {
+          "title": "Diamond-Polished Ceramic Cartridges",
+          "description": "Constructed from solid brass and equipped with diamond-polished ceramic discs, our angle valves withstand up to 500,000 operational cycles, ensuring absolute zero leakage and exceptionally smooth torque."
+        },
+        "applications": {
+          "title": "Sanitary & Appliance Isolation",
+          "description": "Essential for isolating water supply to toilets, bidets, premium washbasins, and household appliances like washing machines and dishwashers for immediate servicing."
+        }
+      },
+      "faucets": {
+        "heroTitle": "Architectural Faucets",
+        "heroDescription": "Fusing masterful fluid engineering with contemporary design, IFAN architectural faucets are the centerpiece of modern bathrooms and kitchens, delivering precise temperature control and visually stunning water flow.",
+        "tagline": "Where Fluid Engineering Meets Luxury Design.",
+        "technicalSuperiority": {
+          "title": "Aerated Flow & Multi-Layer Plating",
+          "description": "Fitted with advanced Swiss aerators to ensure a splash-free, water-saving cascade. The exterior boasts rigorous multi-layer electroplating that provides superior resistance to hard water stains, corrosion, and everyday scratching."
+        },
+        "applications": {
+          "title": "Premium Residential & Hospitality",
+          "description": "Designed for luxury bathroom vanities, chef-grade kitchen sinks, and upscale hotel suites where both relentless durability and striking visual prestige are demanded."
+        }
+      }
+    }
+  }
+}

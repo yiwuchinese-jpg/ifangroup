@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Settings2, Activity, Zap, Layers, Gauge, Wind, PlayCircle, PauseCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 // Predefined Materials
 const MATERIALS = [
@@ -13,6 +14,7 @@ const MATERIALS = [
 ];
 
 export default function ProductionSimulator() {
+    const t = useTranslations("productionSimulator");
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-10%" });
 
@@ -75,13 +77,13 @@ export default function ProductionSimulator() {
                     >
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 font-bold text-xs uppercase tracking-widest rounded-none mb-6">
                             <Activity className="w-4 h-4" />
-                            Digital Twin System
+                            {t("badge", { defaultMessage: "Digital Twin System" })}
                         </div>
                         <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6">
-                            Smart Manufacturing <span className="text-brand-600">Simulator</span>
+                            {t("title1", { defaultMessage: "Smart Manufacturing" })} <span className="text-brand-600">{t("title2", { defaultMessage: "Simulator" })}</span>
                         </h2>
                         <p className="text-lg text-slate-600 font-medium">
-                            Experience the precision of IFAN&apos;s extrusion technology. Adjust parameters in real-time to observe throughput, energy efficiency, and operational metrics.
+                            {t("desc", { defaultMessage: "Experience the precision of IFAN's extrusion technology. Adjust parameters in real-time to observe throughput, energy efficiency, and operational metrics." })}
                         </p>
                     </motion.div>
                 </div>
@@ -100,21 +102,21 @@ export default function ProductionSimulator() {
                         <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-100">
                             <h3 className="text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
                                 <Settings2 className="w-5 h-5 text-brand-600" />
-                                Control Panel
+                                {t("controlPanel", { defaultMessage: "Control Panel" })}
                             </h3>
                             <button
                                 onClick={() => setIsPlaying(!isPlaying)}
                                 className={`flex items-center gap-2 px-3 py-1.5 rounded-none text-sm font-bold transition-colors ${isPlaying ? 'bg-amber-100 text-amber-700 hover:bg-amber-200' : 'bg-brand-100 text-brand-700 hover:bg-brand-200'}`}
                             >
                                 {isPlaying ? <PauseCircle className="w-4 h-4" /> : <PlayCircle className="w-4 h-4" />}
-                                {isPlaying ? 'Halt Line' : 'Start Line'}
+                                {isPlaying ? t("haltLine", { defaultMessage: "Halt Line" }) : t("startLine", { defaultMessage: "Start Line" })}
                             </button>
                         </div>
 
                         {/* Material Select */}
                         <div className="mb-8">
                             <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">
-                                Raw Material
+                                {t("rawMaterial", { defaultMessage: "Raw Material" })}
                             </label>
                             <div className="grid grid-cols-2 gap-3">
                                 {MATERIALS.map(mat => (
@@ -142,7 +144,7 @@ export default function ProductionSimulator() {
                         <div className="mb-8 p-4 bg-slate-50 rounded-none border border-slate-100">
                             <div className="flex items-center justify-between mb-3">
                                 <label className="text-xs font-bold uppercase tracking-widest text-slate-600">
-                                    Pipe Diameter
+                                    {t("pipeDiameter", { defaultMessage: "Pipe Diameter" })}
                                 </label>
                                 <span className="font-mono font-bold text-brand-600 text-sm bg-white px-2 py-0.5 rounded-none border border-slate-200 shadow-sm">{diameter} mm</span>
                             </div>
@@ -163,7 +165,7 @@ export default function ProductionSimulator() {
                         <div className="mb-8 p-4 bg-slate-50 rounded-none border border-slate-100">
                             <div className="flex items-center justify-between mb-3">
                                 <label className="text-xs font-bold uppercase tracking-widest text-slate-600 flex items-center gap-1">
-                                    <Gauge className="w-3.5 h-3.5" /> Extruder RPM
+                                    <Gauge className="w-3.5 h-3.5" /> {t("extruderRPM", { defaultMessage: "Extruder RPM" })}
                                 </label>
                                 <span className="font-mono font-bold text-blue-600 text-sm bg-white px-2 py-0.5 rounded-none border border-slate-200 shadow-sm">{speed}%</span>
                             </div>
@@ -180,7 +182,7 @@ export default function ProductionSimulator() {
                         <div className="p-4 bg-slate-50 rounded-none border border-slate-100">
                             <div className="flex items-center justify-between mb-3">
                                 <label className="text-xs font-bold uppercase tracking-widest text-slate-600 flex items-center gap-1">
-                                    <Wind className="w-3.5 h-3.5" /> Cooling Intensity
+                                    <Wind className="w-3.5 h-3.5" /> {t("coolingIntensity", { defaultMessage: "Cooling Intensity" })}
                                 </label>
                                 <span className="font-mono font-bold text-cyan-600 text-sm bg-white px-2 py-0.5 rounded-none border border-slate-200 shadow-sm">{cooling}%</span>
                             </div>
@@ -206,7 +208,7 @@ export default function ProductionSimulator() {
                     {/* Metrics Dashboard */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <MetricCard
-                            title="Production Rate"
+                            title={t("productionRate", { defaultMessage: "Production Rate" })}
                             value={metrics.rate}
                             unit="kg/h"
                             icon={<Layers className="w-4 h-4 text-brand-600" />}
@@ -214,7 +216,7 @@ export default function ProductionSimulator() {
                             textColor="text-brand-900"
                         />
                         <MetricCard
-                            title="Line Speed"
+                            title={t("lineSpeed", { defaultMessage: "Line Speed" })}
                             value={metrics.lineSpeed}
                             unit="m/min"
                             icon={<Gauge className="w-4 h-4 text-blue-600" />}
@@ -222,7 +224,7 @@ export default function ProductionSimulator() {
                             textColor="text-blue-900"
                         />
                         <MetricCard
-                            title="Power Draw"
+                            title={t("powerDraw", { defaultMessage: "Power Draw" })}
                             value={metrics.power}
                             unit="kW"
                             icon={<Zap className="w-4 h-4 text-amber-600" />}
@@ -230,7 +232,7 @@ export default function ProductionSimulator() {
                             textColor="text-amber-900"
                         />
                         <MetricCard
-                            title="Efficiency"
+                            title={t("efficiency", { defaultMessage: "Efficiency" })}
                             value={metrics.efficiency}
                             unit="%"
                             icon={<Activity className="w-4 h-4 text-violet-600" />}
@@ -257,7 +259,7 @@ export default function ProductionSimulator() {
                                             {[...Array(5)].map((_, i) => (
                                                 <motion.circle
                                                     key={i}
-                                                    cx={45 + Math.random() * 10}
+                                                    cx={45 + (i * 2)}
                                                     cy="30"
                                                     r="3"
                                                     fill={material.color}
@@ -294,7 +296,7 @@ export default function ProductionSimulator() {
                                         {/* Die Head */}
                                         <polygon points="220,10 250,20 250,40 220,50" fill="#94a3b8" />
                                     </svg>
-                                    <div className="absolute -bottom-6 left-24 text-[10px] font-bold uppercase tracking-widest text-slate-500">Extruder & Die</div>
+                                    <div className="absolute -bottom-6 left-24 text-[10px] font-bold uppercase tracking-widest text-slate-500">{t("extruderDie")}</div>
                                 </div>
 
                                 {/* 2. Cooling Bath */}
@@ -332,7 +334,7 @@ export default function ProductionSimulator() {
                                             </motion.g>
                                         )}
                                     </svg>
-                                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold uppercase tracking-widest text-cyan-600">Vacuum Cooling Tank</div>
+                                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold uppercase tracking-widest text-cyan-600">{t("coolingTank")}</div>
                                 </div>
 
                                 {/* 3. Haul-off & Cutter */}
@@ -373,8 +375,8 @@ export default function ProductionSimulator() {
                                             rx="0"
                                         />
                                     </svg>
-                                    <div className="absolute -bottom-6 left-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">Haul-off</div>
-                                    <div className="absolute -bottom-6 right-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">Cutter</div>
+                                    <div className="absolute -bottom-6 left-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">{t("haulOff")}</div>
+                                    <div className="absolute -bottom-6 right-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">{t("cutter")}</div>
                                 </div>
 
                                 {/* 4. End Product Stacker */}
@@ -407,8 +409,8 @@ export default function ProductionSimulator() {
                             <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-10 transition-all duration-300">
                                 <div className="bg-white px-8 py-6 rounded-none shadow-xl flex flex-col items-center gap-3 border border-slate-100">
                                     <PauseCircle className="w-12 h-12 text-slate-400" />
-                                    <span className="text-slate-900 font-black text-xl tracking-tight">Production Halted</span>
-                                    <p className="text-slate-500 font-medium text-sm">Line paused. Waiting for operator command.</p>
+                                    <span className="text-slate-900 font-black text-xl tracking-tight">{t("haltedTitle")}</span>
+                                    <p className="text-slate-500 font-medium text-sm">{t("haltedDesc")}</p>
                                 </div>
                             </div>
                         )}
@@ -416,11 +418,11 @@ export default function ProductionSimulator() {
                         {/* Status Bar Header */}
                         <div className="absolute top-0 left-0 right-0 bg-slate-50/90 backdrop-blur-sm border-b border-slate-200 px-6 py-3 flex items-center justify-between z-10">
                             <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                                <span className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ backgroundColor: material.color }}></span> Melt Temp OK</span>
-                                <span className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-cyan-500 shadow-sm"></span> Water Flow OK</span>
+                                <span className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ backgroundColor: material.color }}></span> {t("meltTempOk")}</span>
+                                <span className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-cyan-500 shadow-sm"></span> {t("waterFlowOk")}</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Uptime</span>
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t("uptime")}</span>
                                 <span className="font-mono font-bold text-slate-700 text-sm bg-white px-2 py-0.5 rounded-none border border-slate-200">{formatTime(elapsedTime)}</span>
                             </div>
                         </div>
@@ -440,7 +442,7 @@ export default function ProductionSimulator() {
                                             <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                                         </span>
                                         <p className="text-red-700 text-xs font-bold uppercase tracking-wider">
-                                            Quality Alert: High speed with low cooling compromises pipe integrity.
+                                            {t("qualityAlert", { defaultMessage: "Quality Alert: High speed with low cooling compromises pipe integrity." })}
                                         </p>
                                     </div>
                                 </motion.div>

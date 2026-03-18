@@ -1,12 +1,27 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { ArrowRight, Calendar, User, Tag, Search, ArrowDownRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const ITEMS_PER_PAGE = 9;
 
-export default function NewsArchiveClient({ initialArticles }: { initialArticles: any[] }) {
+type NewsArticle = {
+    _id: string;
+    title: string;
+    slug: string;
+    category?: string;
+    publishedAt?: string;
+    excerpt?: string;
+    authorName?: string;
+    mainImage?: {
+        asset?: {
+            url?: string;
+        };
+    };
+};
+
+export default function NewsArchiveClient({ initialArticles }: { initialArticles: NewsArticle[] }) {
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
     const [currentPage, setCurrentPage] = useState(1);
@@ -19,11 +34,6 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
         });
         return ["All", ...Array.from(cats)];
     }, [initialArticles]);
-
-    // Reset page when filters change
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [searchQuery, activeCategory]);
 
     // Filter articles
     const filteredArticles = useMemo(() => {
@@ -43,27 +53,10 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
 
     // Determine layout: if not searching and on page 1, show hero feature + 9 grid items. 
     // Otherwise, just show a straight grid of items.
-    const showFeatured = !isSearching && currentPage === 1 && filteredArticles.length > 0;
-
-    // Calculate items for current page
-    const itemsForGrid = useMemo(() => {
-        let startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-        if (showFeatured) {
-            // If showing featured, the first item is taken by the hero, so grid starts from index 1
-            startIndex = startIndex === 0 ? 1 : startIndex + 1;
-        }
-        return filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-    }, [filteredArticles, currentPage, showFeatured]);
-
-    const featuredArticle = showFeatured ? filteredArticles[0] : null;
-
-    // Total pages calculation
     const totalPages = useMemo(() => {
-        let itemsCount = filteredArticles.length;
+        const itemsCount = filteredArticles.length;
         if (itemsCount === 0) return 1;
 
-        // If we have a featured item, the first page holds 1 (featured) + 9 (grid) = 10 items.
-        // Subsequent pages hold 9 items.
         if (!isSearching && itemsCount > 0) {
             if (itemsCount <= ITEMS_PER_PAGE + 1) return 1;
             return Math.ceil((itemsCount - 1) / ITEMS_PER_PAGE);
@@ -71,6 +64,21 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
 
         return Math.ceil(itemsCount / ITEMS_PER_PAGE);
     }, [filteredArticles.length, isSearching]);
+
+    const effectivePage = Math.min(currentPage, totalPages);
+    const showFeatured = !isSearching && effectivePage === 1 && filteredArticles.length > 0;
+
+    // Calculate items for current page
+    const itemsForGrid = useMemo(() => {
+        let startIndex = (effectivePage - 1) * ITEMS_PER_PAGE;
+        if (showFeatured) {
+            // If showing featured, the first item is taken by the hero, so grid starts from index 1
+            startIndex = startIndex === 0 ? 1 : startIndex + 1;
+        }
+        return filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    }, [filteredArticles, effectivePage, showFeatured]);
+
+    const featuredArticle = showFeatured ? filteredArticles[0] : null;
 
     const handlePageChange = (newPage: number) => {
         if (newPage >= 1 && newPage <= totalPages) {
@@ -92,7 +100,10 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                     {categories.map(cat => (
                         <button
                             key={cat}
-                            onClick={() => setActiveCategory(cat)}
+                        onClick={() => {
+                            setActiveCategory(cat);
+                            setCurrentPage(1);
+                        }}
                             className={`px-4 py-2 font-mono text-[10px] md:text-xs uppercase tracking-widest border transition-colors ${activeCategory === cat
                                 ? "bg-brand-600 text-white border-brand-600"
                                 : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900"
@@ -110,7 +121,10 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                         type="text"
                         placeholder="SEARCH BRIEFINGS..."
                         value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onChange={(e) => {
+                            setSearchQuery(e.target.value);
+                            setCurrentPage(1);
+                        }}
                         className="w-full bg-white border border-slate-200 py-3 pl-12 pr-4 font-mono text-xs uppercase tracking-widest text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all rounded-none"
                     />
                 </div>
@@ -178,7 +192,7 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                     {/* Standard Grid Database */}
                     {itemsForGrid.length > 0 && (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-slate-200 bg-white">
-                            {itemsForGrid.map((article: any) => (
+                            {itemsForGrid.map((article) => (
                                 <Link
                                     key={article._id}
                                     href={`/news/${article.slug}`}
@@ -258,8 +272,8 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                     {totalPages > 1 && (
                         <div className="flex items-center justify-center gap-2 mt-16">
                             <button
-                                onClick={() => handlePageChange(currentPage - 1)}
-                                disabled={currentPage === 1}
+                                onClick={() => handlePageChange(effectivePage - 1)}
+                                disabled={effectivePage === 1}
                                 className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-white text-slate-500 hover:border-brand-600 hover:text-brand-600 disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-colors"
                             >
                                 <ChevronLeft className="w-5 h-5" />
@@ -270,7 +284,7 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                                     <button
                                         key={i}
                                         onClick={() => handlePageChange(i + 1)}
-                                        className={`w-12 h-12 flex items-center justify-center font-mono text-sm font-bold border transition-colors ${currentPage === i + 1
+                                        className={`w-12 h-12 flex items-center justify-center font-mono text-sm font-bold border transition-colors ${effectivePage === i + 1
                                                 ? 'bg-brand-600 border-brand-600 text-white'
                                                 : 'bg-white border-slate-200 text-slate-600 hover:border-brand-600 hover:text-brand-600'
                                             }`}
@@ -281,8 +295,8 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                             </div>
 
                             <button
-                                onClick={() => handlePageChange(currentPage + 1)}
-                                disabled={currentPage === totalPages}
+                                onClick={() => handlePageChange(effectivePage + 1)}
+                                disabled={effectivePage === totalPages}
                                 className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-white text-slate-500 hover:border-brand-600 hover:text-brand-600 disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-colors"
                             >
                                 <ChevronRight className="w-5 h-5" />

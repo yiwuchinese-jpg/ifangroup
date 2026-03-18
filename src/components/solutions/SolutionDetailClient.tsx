@@ -5,8 +5,10 @@ import { RegionData } from "@/lib/regionsData";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShieldAlert, Zap, Factory, ArrowRight, Cog, HardHat, FileCheck2, Globe2 } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function SolutionDetailClient({ region }: { region: RegionData }) {
+    const t = useTranslations("solutionDetail");
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
 
@@ -38,19 +40,19 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                                 <Link href="/global-solutions" className="group flex items-center justify-center w-12 h-12 bg-white/5 border border-white/10 hover:bg-brand-600 transition-colors">
                                     <ArrowRight className="w-5 h-5 text-white rotate-180 group-hover:-translate-x-1 transition-transform" />
                                 </Link>
-                                <span className="text-white font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs">
-                                    Global Intelligence Hub / {region.id.replace(/-/g, ' ')}
-                                </span>
+                                 <span className="text-white font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs">
+                                     {t("breadcrumb", { defaultMessage: "Global Intelligence Hub" })} / {region.id.replace(/-/g, ' ')}
+                                 </span>
                             </div>
 
-                            <h1 className="text-5xl sm:text-7xl lg:text-[7rem] font-black text-white tracking-tighter leading-[0.9] mb-8 uppercase">
-                                <span className="block text-brand-500 mb-2 truncate max-w-full">{region.name}</span>
-                                Infrastructure.
-                            </h1>
+                             <h1 className="text-5xl sm:text-7xl lg:text-[7rem] font-black text-white tracking-tighter leading-[0.9] mb-8 uppercase">
+                                 <span className="block text-brand-500 mb-2 truncate max-w-full">{t(`regions.${region.id}.name`, { defaultMessage: region.name })}</span>
+                                 {t("heroTitleSuffix", { defaultMessage: "Infrastructure." })}
+                             </h1>
 
-                            <p className="text-xl md:text-2xl text-slate-400 font-medium leading-relaxed max-w-3xl border-l-4 border-brand-500 pl-6 py-2">
-                                {region.details.intro}
-                            </p>
+                             <p className="text-xl md:text-2xl text-slate-400 font-medium leading-relaxed max-w-3xl border-l-4 border-brand-500 pl-6 py-2">
+                                 {t(`regions.${region.id}.intro`, { defaultMessage: region.details.intro })}
+                             </p>
                         </motion.div>
                     </div>
                 </div>
@@ -66,18 +68,22 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                             >
-                                <h2 className="text-brand-500 font-bold tracking-[0.3em] uppercase text-xs mb-4 flex items-center gap-3">
-                                    <ShieldAlert className="w-4 h-4" /> Systemic Vulnerabilities
-                                </h2>
-                                <h3 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-tight mb-8">
-                                    The Environment <br />Dictates <span className="text-red-500">The Risk.</span>
-                                </h3>
+                                 <h2 className="text-brand-500 font-bold tracking-[0.3em] uppercase text-xs mb-4 flex items-center gap-3">
+                                     <ShieldAlert className="w-4 h-4" /> {t("threatBadge", { defaultMessage: "Systemic Vulnerabilities" })}
+                                 </h2>
+                                 <h3 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-tight mb-8">
+                                     {t.rich("threatTitle", {
+                                         br: () => <br />,
+                                         risk: (chunks) => <span className="text-red-500">{chunks}</span>,
+                                         defaultMessage: "The Environment <br />Dictates <risk>The Risk.</risk>"
+                                     })}
+                                 </h3>
 
                                 <div className="h-[1px] w-12 bg-white/20 mb-8" />
 
-                                <p className="text-lg md:text-xl text-slate-400 leading-relaxed font-medium mb-12">
-                                    Localized climate extremes and volatile water chemistry are the silent destroyers of generic plumbing systems. In this territory, standard materials guarantee catastrophic failure.
-                                </p>
+                                 <p className="text-lg md:text-xl text-slate-400 leading-relaxed font-medium mb-12">
+                                     {t("threatDesc", { defaultMessage: "Localized climate extremes and volatile water chemistry are the silent destroyers of generic plumbing systems. In this territory, standard materials guarantee catastrophic failure." })}
+                                 </p>
                             </motion.div>
 
                             <div className="flex flex-col gap-6">
@@ -87,12 +93,12 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                                     className="bg-slate-900 border border-white/10 p-8 relative overflow-hidden group hover:border-red-500/50 transition-colors"
                                 >
                                     <div className="absolute top-0 left-0 w-1 h-full bg-slate-800 group-hover:bg-red-500 transition-colors" />
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <h4 className="text-white font-black uppercase tracking-widest text-lg">01 / The Core Threat</h4>
-                                    </div>
-                                    <p className="text-slate-300 text-base leading-relaxed font-medium">
-                                        {region.problem}
-                                    </p>
+                                     <div className="flex items-center gap-4 mb-4">
+                                         <h4 className="text-white font-black uppercase tracking-widest text-lg">{t("threatStep1", { defaultMessage: "01 / The Core Threat" })}</h4>
+                                     </div>
+                                     <p className="text-slate-300 text-base leading-relaxed font-medium">
+                                         {t(`regions.${region.id}.problem`, { defaultMessage: region.problem })}
+                                     </p>
                                 </motion.div>
 
                                 {/* Liability / Agitate */}
@@ -101,12 +107,12 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                                     className="bg-red-950/20 border border-red-900/40 p-8 relative overflow-hidden group hover:border-red-500/80 transition-colors"
                                 >
                                     <div className="absolute top-0 left-0 w-1 h-full bg-red-900 group-hover:bg-red-500 transition-colors" />
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <h4 className="text-red-500 font-black uppercase tracking-widest text-lg">02 / Business Liability</h4>
-                                    </div>
-                                    <p className="text-red-200/80 text-base leading-relaxed font-medium">
-                                        {region.agitate}
-                                    </p>
+                                     <div className="flex items-center gap-4 mb-4">
+                                         <h4 className="text-red-500 font-black uppercase tracking-widest text-lg">{t("threatStep2", { defaultMessage: "02 / Business Liability" })}</h4>
+                                     </div>
+                                     <p className="text-red-200/80 text-base leading-relaxed font-medium">
+                                         {t(`regions.${region.id}.agitate`, { defaultMessage: region.agitate })}
+                                     </p>
                                 </motion.div>
                             </div>
                         </div>
@@ -123,10 +129,10 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                             />
                             {/* High-tech overlay matrix */}
                             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,0,0,0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] pointer-events-none mix-blend-overlay" />
-                            <div className="absolute bottom-6 left-6 right-6 border border-red-500/30 bg-black/80 backdrop-blur-sm p-6 text-red-500 font-mono text-xs uppercase tracking-widest">
-                                <span className="animate-pulse">● Live Threat Feed</span>
-                                <div className="mt-2 text-white/70">Monitoring regional failure vectors.</div>
-                            </div>
+                             <div className="absolute bottom-6 left-6 right-6 border border-red-500/30 bg-black/80 backdrop-blur-sm p-6 text-red-500 font-mono text-xs uppercase tracking-widest">
+                                 <span className="animate-pulse">● {t("threatLiveBadge", { defaultMessage: "Live Threat Feed" })}</span>
+                                 <div className="mt-2 text-white/70">{t("threatLiveStatus", { defaultMessage: "Monitoring regional failure vectors." })}</div>
+                             </div>
                         </motion.div>
 
                     </div>
@@ -145,12 +151,15 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                         initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                         className="mb-16 md:mb-24 max-w-3xl"
                     >
-                        <h2 className="text-brand-500 font-bold tracking-[0.3em] uppercase text-xs mb-4 flex items-center gap-3">
-                            <Cog className="w-4 h-4" /> Engineered Intervention
-                        </h2>
-                        <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-tight">
-                            The IFAN Product <br />Integration.
-                        </h3>
+                         <h2 className="text-brand-500 font-bold tracking-[0.3em] uppercase text-xs mb-4 flex items-center gap-3">
+                             <Cog className="w-4 h-4" /> {t("solutionBadge", { defaultMessage: "Engineered Intervention" })}
+                         </h2>
+                         <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-tight">
+                             {t.rich("solutionTitle", {
+                                 br: () => <br />,
+                                 defaultMessage: "The IFAN Product <br />Integration."
+                             })}
+                         </h3>
                     </motion.div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
@@ -166,9 +175,9 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                             />
                             {/* Overlay Gradient for readability if needed, though raw photo is better for brutalism */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                            <div className="absolute bottom-8 left-8">
-                                <span className="text-brand-500 font-mono text-[10px] uppercase tracking-[0.3em] font-bold">Execution</span>
-                            </div>
+                             <div className="absolute bottom-8 left-8">
+                                 <span className="text-brand-500 font-mono text-[10px] uppercase tracking-[0.3em] font-bold">{t("executionBadge", { defaultMessage: "Execution" })}</span>
+                             </div>
                         </motion.div>
 
                         <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -177,11 +186,11 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                                 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
                                 className="bg-black border border-white/10 p-8 md:p-10 flex flex-col h-full hover:border-brand-500/50 transition-colors"
                             >
-                                <Factory className="w-12 h-12 text-slate-700 mb-8" />
-                                <h4 className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-4">Precision Manufacturing</h4>
-                                <p className="text-white font-black text-2xl uppercase tracking-tighter leading-tight flex-grow">
-                                    {region.feature}
-                                </p>
+                                 <Factory className="w-12 h-12 text-slate-700 mb-8" />
+                                 <h4 className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-4">{t("featureLabel", { defaultMessage: "Precision Manufacturing" })}</h4>
+                                 <p className="text-white font-black text-2xl uppercase tracking-tighter leading-tight flex-grow">
+                                     {t(`regions.${region.id}.feature`, { defaultMessage: region.feature })}
+                                 </p>
                             </motion.div>
 
                             {/* Advantage */}
@@ -189,11 +198,11 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                                 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
                                 className="bg-black border border-white/10 p-8 md:p-10 flex flex-col h-full hover:border-brand-500/50 transition-colors"
                             >
-                                <HardHat className="w-12 h-12 text-slate-700 mb-8" />
-                                <h4 className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-4">Technical Advantage</h4>
-                                <p className="text-slate-300 font-medium text-lg leading-relaxed flex-grow">
-                                    {region.advantage}
-                                </p>
+                                 <HardHat className="w-12 h-12 text-slate-700 mb-8" />
+                                 <h4 className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-4">{t("advantageLabel", { defaultMessage: "Technical Advantage" })}</h4>
+                                 <p className="text-slate-300 font-medium text-lg leading-relaxed flex-grow">
+                                     {t(`regions.${region.id}.advantage`, { defaultMessage: region.advantage })}
+                                 </p>
                             </motion.div>
 
                             {/* Benefit (Spans full width of this sub-grid) */}
@@ -202,11 +211,11 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
                                 className="md:col-span-2 bg-brand-600 p-8 md:p-10 flex flex-col h-full shadow-[0_0_50px_rgba(22,163,74,0.15)] relative overflow-hidden"
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-3xl -translate-y-1/2 translate-x-1/2" />
-                                <Zap className="w-12 h-12 text-brand-950 mb-8 relative z-10" />
-                                <h4 className="text-brand-950 font-black uppercase tracking-[0.2em] text-[10px] mb-4 relative z-10">Primary Business Benefit</h4>
-                                <p className="text-white font-black text-2xl md:text-3xl uppercase tracking-tighter leading-tight flex-grow relative z-10">
-                                    {region.benefit}
-                                </p>
+                                 <Zap className="w-12 h-12 text-brand-950 mb-8 relative z-10" />
+                                 <h4 className="text-brand-950 font-black uppercase tracking-[0.2em] text-[10px] mb-4 relative z-10">{t("benefitLabel", { defaultMessage: "Primary Business Benefit" })}</h4>
+                                 <p className="text-white font-black text-2xl md:text-3xl uppercase tracking-tighter leading-tight flex-grow relative z-10">
+                                     {t(`regions.${region.id}.benefit`, { defaultMessage: region.benefit })}
+                                 </p>
                             </motion.div>
                         </div>
                     </div>
@@ -220,29 +229,31 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
 
                         {/* Hardware Specs */}
                         <div>
-                            <div className="flex items-center gap-4 mb-8">
-                                <FileCheck2 className="w-8 h-8 text-white" />
-                                <h3 className="text-3xl font-black text-white uppercase tracking-tighter">Infrastructure Specs</h3>
-                            </div>
+                             <div className="flex items-center gap-4 mb-8">
+                                 <FileCheck2 className="w-8 h-8 text-white" />
+                                 <h3 className="text-3xl font-black text-white uppercase tracking-tighter">{t("specsTitle", { defaultMessage: "Infrastructure Specs" })}</h3>
+                             </div>
                             <div className="space-y-4">
-                                {region.details.infrastructureSpecs.map((spec, i) => (
-                                    <div key={i} className="flex items-start gap-4 p-4 border border-white/10 bg-slate-900/50 hover:bg-slate-900 transition-colors">
-                                        <div className="w-1.5 h-1.5 bg-brand-500 mt-2 shrink-0" />
-                                        <span className="text-slate-300 font-mono text-sm uppercase tracking-tight">{spec}</span>
-                                    </div>
-                                ))}
+                                 {region.details.infrastructureSpecs.map((spec, i) => (
+                                     <div key={i} className="flex items-start gap-4 p-4 border border-white/10 bg-slate-900/50 hover:bg-slate-900 transition-colors">
+                                         <div className="w-1.5 h-1.5 bg-brand-500 mt-2 shrink-0" />
+                                         <span className="text-slate-300 font-mono text-sm uppercase tracking-tight">
+                                             {t(`regions.${region.id}.details.infrastructureSpecs.${i}`, { defaultMessage: spec })}
+                                         </span>
+                                     </div>
+                                 ))}
                             </div>
                         </div>
 
                         {/* Certs */}
                         <div>
-                            <div className="flex items-center gap-4 mb-8">
-                                <Globe2 className="w-8 h-8 text-white" />
-                                <h3 className="text-3xl font-black text-white uppercase tracking-tighter">Mandatory Compliance</h3>
-                            </div>
-                            <p className="text-slate-400 font-medium mb-8">
-                                100% factory-tested to pass or exceed these regional auditing standards out-of-the-box. We guarantee completely frictionless customs clearance.
-                            </p>
+                             <div className="flex items-center gap-4 mb-8">
+                                 <Globe2 className="w-8 h-8 text-white" />
+                                 <h3 className="text-3xl font-black text-white uppercase tracking-tighter">{t("complianceTitle", { defaultMessage: "Mandatory Compliance" })}</h3>
+                             </div>
+                             <p className="text-slate-400 font-medium mb-8">
+                                 {t("complianceDesc", { defaultMessage: "100% factory-tested to pass or exceed these regional auditing standards out-of-the-box. We guarantee completely frictionless customs clearance." })}
+                             </p>
                             <div className="flex flex-wrap gap-3">
                                 {region.details.certifications.map((cert, i) => (
                                     <div key={i} className="px-6 py-4 bg-white/5 border border-white/10 text-white font-bold tracking-[0.2em] uppercase text-[10px] hover:border-brand-500 hover:text-brand-500 transition-colors cursor-default">
@@ -263,28 +274,31 @@ export default function SolutionDetailClient({ region }: { region: RegionData })
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                        <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-black text-white tracking-tighter uppercase leading-[0.9] mb-8">
-                            Lock In Your <br />Supply Chain.
-                        </h2>
-                        <p className="text-xl md:text-2xl text-brand-950 font-bold mb-12 max-w-3xl mx-auto">
-                            Speak directly with our regional engineering directors. Bypass the middlemen. Request sample shipments and receive a complete matrix quote within 24 hours.
-                        </p>
+                         <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-black text-white tracking-tighter uppercase leading-[0.9] mb-8">
+                             {t.rich("ctaTitle", {
+                                 br: () => <br />,
+                                 defaultMessage: "Lock In Your <br />Supply Chain."
+                             })}
+                         </h2>
+                         <p className="text-xl md:text-2xl text-brand-950 font-bold mb-12 max-w-3xl mx-auto">
+                             {t("ctaDesc", { defaultMessage: "Speak directly with our regional engineering directors. Bypass the middlemen. Request sample shipments and receive a complete matrix quote within 24 hours." })}
+                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <Link
-                                href="/contact"
-                                className="group flex items-center justify-center gap-4 bg-white text-slate-900 font-black uppercase tracking-[0.2em] text-sm md:text-base px-10 py-6 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-2xl"
-                            >
-                                Contact Regional Sales Director
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                            </Link>
+                             <Link
+                                 href="/contact"
+                                 className="group flex items-center justify-center gap-4 bg-white text-slate-900 font-black uppercase tracking-[0.2em] text-sm md:text-base px-10 py-6 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-2xl"
+                             >
+                                 {t("ctaButton", { defaultMessage: "Contact Regional Sales Director" })}
+                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                             </Link>
 
-                            <Link
-                                href="/global-solutions"
-                                className="text-brand-950 font-bold uppercase tracking-widest text-xs hover:text-white transition-colors p-4"
-                            >
-                                Return to Global Map
-                            </Link>
+                             <Link
+                                 href="/global-solutions"
+                                 className="text-brand-950 font-bold uppercase tracking-widest text-xs hover:text-white transition-colors p-4"
+                             >
+                                 {t("returnButton", { defaultMessage: "Return to Global Map" })}
+                             </Link>
                         </div>
                     </motion.div>
                 </div>

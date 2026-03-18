@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from"framer-motion";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const materials = [
  {
@@ -24,6 +25,7 @@ const materials = [
 ];
 
 export default function MaterialScience() {
+ const t = useTranslations("materialScience");
  return (
  <section className="py-32 lg:py-48 bg-white border-t border-slate-200">
  <div className="container mx-auto px-6">
@@ -31,14 +33,14 @@ export default function MaterialScience() {
  <div className="mb-32 md:flex flex-col lg:flex-row items-end justify-between gap-12">
  <div className="max-w-4xl">
  <span className="text-slate-400 font-bold tracking-[0.3em] uppercase text-xs mb-8 block">
- Our Zero-Defect Guarantee
+ {t("badge", { defaultMessage: "Our Zero-Defect Guarantee" })}
  </span>
  <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-black text-slate-900 tracking-tighter leading-[0.9]">
- Engineered from the Molecular Level.
+ {t("title", { defaultMessage: "Engineered from the Molecular Level." })}
  </h2>
  </div>
  <p className="text-xl text-slate-500 font-light max-w-lg mt-8 lg:mt-0 leading-relaxed">
- A brand is only as strong as its raw materials. By refusing recycled impurities and utilizing only 100% virgin, globally-verified resins & alloys, we ensure absolute liability protection for your projects.
+ {t("desc", { defaultMessage: "A brand is only as strong as its raw materials. By refusing recycled impurities and utilizing only 100% virgin, globally-verified resins & alloys, we ensure absolute liability protection for your projects." })}
  </p>
  </div>
 
@@ -62,10 +64,10 @@ export default function MaterialScience() {
  />
  </div>
  <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tighter uppercase">
- {mat.name}
+ {t(`items.${mat.id}.name`, { defaultMessage: mat.name })}
  </h3>
  <p className="text-slate-600 font-medium leading-relaxed">
- {mat.description}
+ {t(`items.${mat.id}.desc`, { defaultMessage: mat.description })}
  </p>
  </motion.div>
  ))}

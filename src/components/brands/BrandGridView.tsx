@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { getBrandCopy } from '@/lib/brandCopywriting';
+import { useTranslations } from 'next-intl';
 
 interface Brand {
     _id: string;
@@ -13,44 +13,52 @@ interface Brand {
     logo?: { asset: { url: string } };
 }
 
-const SERIES_TRANSLATIONS: Record<string, string> = {
-    "IFAN系列": "IFAN CORE",
-    "IFAN 系列": "IFAN CORE",
-    "Ifan系列": "IFAN CORE",
-    "德国系列": "GERMAN SERIES",
-    "德国 系列": "GERMAN SERIES",
-    "意大利系列": "ITALY SERIES",
-    "意大利 系列": "ITALY SERIES",
-    "英国系列": "UK SERIES",
-    "英国 系列": "UK SERIES",
-    "土耳其系列": "TURKISH SERIES",
-    "土耳其 系列": "TURKISH SERIES",
-    "其他": "PARTNERS",
-    "Sub-Brands": "PARTNERS"
-};
-
 export default function BrandGridView({ brands }: { brands: Brand[] }) {
+    const t = useTranslations("brandPage");
+
+    const getSeriesLabel = (series: string) => {
+        const map: Record<string, string> = {
+            "土耳其系列": t("seriesLabels.turkey"),
+            "德国系列": t("seriesLabels.germany"),
+            "意大利系列": t("seriesLabels.italy"),
+            "Ifan系列": t("seriesLabels.ifanCore"),
+            "欧洲系列": t("seriesLabels.euro"),
+            "IFAN系列": t("seriesLabels.ifanCore"),
+            "IFAN 系列": t("seriesLabels.ifanCore"),
+            "其他": t("seriesLabels.euro"), // Fallback to Euro or generic
+            "Sub-Brands": t("partnerBrand")
+        };
+        return map[series] || series;
+    };
+
     // Group brands by series
-    const groupedBrands = useMemo(() => {
-        const groups: Record<string, Brand[]> = {};
-        brands.forEach(brand => {
-            const rawSeries = brand.series || 'Sub-Brands';
-            const seriesName = SERIES_TRANSLATIONS[rawSeries] || rawSeries.toUpperCase();
-            if (!groups[seriesName]) {
-                groups[seriesName] = [];
-            }
-            groups[seriesName].push(brand);
-        });
+    const groups: Record<string, Brand[]> = {};
+    brands.forEach(brand => {
+        const rawSeries = brand.series || 'Sub-Brands';
+        const seriesName = getSeriesLabel(rawSeries);
+        if (!groups[seriesName]) {
+            groups[seriesName] = [];
+        }
+        groups[seriesName].push(brand);
+    });
 
-        // Ensure"IFAN CORE"is always first if it exists
-        const orderedGroups = Object.entries(groups).sort(([a], [b]) => {
-            if (a === "IFAN CORE") return -1;
-            if (b === "IFAN CORE") return 1;
-            return a.localeCompare(b);
-        });
+    const groupedBrands = Object.entries(groups).sort(([a], [b]) => {
+        const ifanCore = t("seriesLabels.ifanCore");
+        if (a === ifanCore) return -1;
+        if (b === ifanCore) return 1;
+        return a.localeCompare(b);
+    });
 
-        return orderedGroups;
-    }, [brands]);
+    const getBrandSnapshot = (brand: Brand) => {
+        const coreBrands = ["IFAN", "IFANPlus", "IFANPRO", "IFANNova", "IFANUltra"];
+        if (coreBrands.includes(brand.name)) {
+            return t(`brands.${brand.name}.heroDescription`);
+        }
+        
+        // Extract from CMS description for non-core brands
+        const productTypes = brand.description?.match(/主要产品：(.*?)(?=\n|$)/)?.[1] || "Core Plumbing Systems";
+        return t("generic.heroDescription", { brandName: brand.name, products: productTypes });
+    };
 
     return (
         <div className="w-full h-full overflow-y-auto bg-slate-50 pt-32 pb-24 px-6 md:px-12 lg:px-24">
@@ -59,10 +67,10 @@ export default function BrandGridView({ brands }: { brands: Brand[] }) {
                 {/* Header Title for Grid View */}
                 <div className="text-center space-y-4">
                     <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter uppercase">
-                        Brand Matrix.
+                        {t("brandEcosystem")}
                     </h1>
                     <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">
-                        Explore our comprehensive ecosystem of specialized manufacturing brands across global standards.
+                        {t("exploreMoreBrands")}
                     </p>
                 </div>
 
@@ -81,7 +89,7 @@ export default function BrandGridView({ brands }: { brands: Brand[] }) {
                                 {seriesName}
                             </h2>
                             <span className="text-sm font-bold text-slate-400 tracking-widest">
-                                {seriesBrands.length} BRANDS
+                                {seriesBrands.length} {t("brandsLabel", { defaultValue: "BRANDS" })}
                             </span>
                         </div>
 
@@ -100,8 +108,6 @@ export default function BrandGridView({ brands }: { brands: Brand[] }) {
                                             {/* Brand Logo / Text Identifier */}
                                             <div className="h-16 flex items-center justify-start">
                                                 {brand.logo?.asset?.url ? (
-                                                    // Ensure the logo uses Next Image for optimization or just a simple img tag for CMS urls
-                                                    /* eslint-disable-next-line @next/next/no-img-element */
                                                     <img
                                                         src={brand.logo.asset.url}
                                                         alt={brand.name}
@@ -116,14 +122,14 @@ export default function BrandGridView({ brands }: { brands: Brand[] }) {
 
                                             {/* Brand Description Snapshot */}
                                             <p className="text-slate-500 text-sm leading-relaxed line-clamp-3 whitespace-pre-line">
-                                                {getBrandCopy(brand.name, brand).valueProposition.content.join(" ")}
+                                                {getBrandSnapshot(brand)}
                                             </p>
                                         </div>
 
                                         {/* Interactive Footer */}
                                         <div className="mt-8 flex items-center justify-between w-full pt-6 border-t border-slate-100 relative z-10">
                                             <span className="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-brand-600 transition-colors">
-                                                Discover
+                                                {t("exploreMatrix", { defaultValue: "Discover" })}
                                             </span>
                                             <div className="w-8 h-8 bg-slate-50 flex items-center justify-center group-hover:bg-brand-600 group-hover:scale-110 transition-all duration-300">
                                                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />

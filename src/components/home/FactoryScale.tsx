@@ -1,11 +1,13 @@
 "use client";
 
 import { motion, useScroll, useTransform } from"framer-motion";
-import { useRef } from"react";
-import { ArrowRight } from"lucide-react";
-import Link from"next/link";
+import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function FactoryScale() {
+ const t = useTranslations("factoryScale");
  const containerRef = useRef<HTMLDivElement>(null);
  const { scrollYProgress } = useScroll({
  target: containerRef,
@@ -44,7 +46,7 @@ export default function FactoryScale() {
  transition={{ duration: 0.6 }}
  className="text-brand-400 font-bold tracking-[0.3em] uppercase text-xs mb-6 block"
  >
- Scale & Precision
+ {t("badge", { defaultMessage: "Scale & Precision" })}
  </motion.span>
  <motion.h2
  initial={{ opacity: 0, y: 30 }}
@@ -53,7 +55,7 @@ export default function FactoryScale() {
  transition={{ duration: 0.8, delay: 0.1 }}
  className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8"
  >
- 120,000m² of True Manufacturing Muscle.
+ {t("title", { defaultMessage: "120,000m² of True Manufacturing Muscle." })}
  </motion.h2>
  <motion.p
  initial={{ opacity: 0, y: 20 }}
@@ -62,7 +64,7 @@ export default function FactoryScale() {
  transition={{ duration: 0.6, delay: 0.2 }}
  className="text-xl md:text-2xl text-slate-300 font-light max-w-2xl leading-relaxed"
  >
- We do not assemble; we engineer. From raw brass forging to high-polymer extrusion, our fully integrated production lines ensure absolute control over every micron.
+ {t("desc", { defaultMessage: "We do not assemble; we engineer. From raw brass forging to high-polymer extrusion, our fully integrated production lines ensure absolute control over every micron." })}
  </motion.p>
  </div>
 
@@ -77,7 +79,7 @@ export default function FactoryScale() {
  href="/manufacturing-oem"
  className="group inline-flex items-center gap-4 bg-white text-slate-900 px-8 py-4 font-bold tracking-[0.2em] uppercase text-sm hover:bg-brand-600 hover:text-white transition-all duration-300"
  >
- Explore Factory Capabilities
+ {t("explore", { defaultMessage: "Explore Factory Capabilities" })}
  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
  </Link>
  </motion.div>

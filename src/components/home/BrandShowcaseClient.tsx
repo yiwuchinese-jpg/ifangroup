@@ -2,20 +2,36 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+export interface ShowcaseBrand {
+    _id: string;
+    name: string;
+    slug: string;
+    series?: string;
+    description?: string;
+    logo?: {
+        asset?: {
+            url?: string;
+        };
+    };
+}
 
 interface BrandShowcaseClientProps {
-    flagships: any[];
-    subBrands: any[];
-    proxySeries: Record<string, any[]>;
-    otherBrands: any[];
+    flagships: ShowcaseBrand[];
+    subBrands: ShowcaseBrand[];
+    proxySeries: Record<string, ShowcaseBrand[]>;
+    otherBrands: ShowcaseBrand[];
 }
 
 export default function BrandShowcaseClient({
     flagships,
     subBrands,
     proxySeries,
+    otherBrands: _otherBrands,
 }: BrandShowcaseClientProps) {
+    const t = useTranslations("brandShowcase");
 
     const ifan = flagships.find(b => b.name === "IFAN");
     const ifanPlus = flagships.find(b => b.name === "IFANPlus");
@@ -49,17 +65,17 @@ export default function BrandShowcaseClient({
 
                             <div className="space-y-6">
                                 <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-[7.5rem] font-black text-slate-900 tracking-tighter leading-[0.9]">
-                                    Global<br /><span className="text-brand-600">Power.</span>
+                                    {t("ifanTitle1", { defaultMessage: "Global" })}<br /><span className="text-brand-600">{t("ifanTitle2", { defaultMessage: "Power." })}</span>
                                 </h2>
                                 <p className="text-slate-500 text-lg md:text-xl font-light max-w-sm leading-relaxed">
-                                    The backbone of municipal water grids and large-scale public infrastructure.
+                                    {t("ifanDesc", { defaultMessage: "The backbone of municipal water grids and large-scale public infrastructure." })}
                                 </p>
                             </div>
                         </motion.div>
 
                         <div className="pt-24 lg:pt-0">
                             <Link href={`/brands/${ifan.slug}`} className="group/btn inline-flex items-center gap-4 text-brand-600 font-bold tracking-[0.2em] uppercase text-sm">
-                                Explore Collection
+                                {t("exploreCollection", { defaultMessage: "Explore Collection" })}
                                 <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
                             </Link>
                         </div>
@@ -90,17 +106,17 @@ export default function BrandShowcaseClient({
 
                             <div className="space-y-6">
                                 <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-[7.5rem] font-black text-slate-900 tracking-tighter leading-[0.9]">
-                                    Pure<br /><span className="text-slate-800">Elegance.</span>
+                                    {t("ifanPlusTitle1", { defaultMessage: "Pure" })}<br /><span className="text-slate-800">{t("ifanPlusTitle2", { defaultMessage: "Elegance." })}</span>
                                 </h2>
                                 <p className="text-slate-500 text-lg md:text-xl font-light max-w-sm leading-relaxed">
-                                    The flagship luxury tier for strict residential aesthetics and performance.
+                                    {t("ifanPlusDesc", { defaultMessage: "The flagship luxury tier for strict residential aesthetics and performance." })}
                                 </p>
                             </div>
                         </motion.div>
 
                         <div className="pt-24 lg:pt-0">
                             <Link href={`/brands/${ifanPlus.slug}`} className="group/btn inline-flex items-center gap-4 text-slate-900 hover:text-brand-600 font-bold tracking-[0.2em] uppercase text-sm transition-colors">
-                                Discover Masterpieces
+                                {t("discoverMasterpieces", { defaultMessage: "Discover Masterpieces" })}
                                 <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
                             </Link>
                         </div>
@@ -118,12 +134,12 @@ export default function BrandShowcaseClient({
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <span className="text-slate-400 font-bold tracking-[0.3em] uppercase text-xs mb-8 block">Diversified Portfolio</span>
+                            <span className="text-slate-400 font-bold tracking-[0.3em] uppercase text-xs mb-8 block">{t("portfolioBadge", { defaultMessage: "Diversified Portfolio" })}</span>
                             <h3 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-tight mb-8">
-                                The Ecosystem <br className="hidden md:block" /> of <span className="text-brand-600">Specialization.</span>
+                                {t("portfolioTitle1", { defaultMessage: "The Ecosystem" })} <br className="hidden md:block" /> {t("portfolioTitle2", { defaultMessage: "of" })} <span className="text-brand-600">{t("portfolioTitle3", { defaultMessage: "Specialization." })}</span>
                             </h3>
                             <p className="text-xl text-slate-500 font-light max-w-2xl leading-relaxed">
-                                A highly calibrated network of brands, each leading a specific regional or technological segment of the global fluid control market.
+                                {t("portfolioDesc", { defaultMessage: "A highly calibrated network of brands, each leading a specific regional or technological segment of the global fluid control market." })}
                             </p>
                         </motion.div>
                     </header>
@@ -153,7 +169,7 @@ export default function BrandShowcaseClient({
 
                                 <div className="mt-auto">
                                     <Link href={`/brands/${b.slug}`} className="flex items-center gap-4 group/link text-slate-400 hover:text-brand-600 transition-colors">
-                                        <span className="text-xs font-bold tracking-[0.2em] uppercase">View Specifications</span>
+                                        <span className="text-xs font-bold tracking-[0.2em] uppercase">{t("viewSpecs", { defaultMessage: "View Specifications" })}</span>
                                         <ArrowRight className="w-4 h-4 group-hover/link:translate-x-2 transition-transform duration-300" />
                                     </Link>
                                 </div>
@@ -168,7 +184,7 @@ export default function BrandShowcaseClient({
                 <div className="container mx-auto px-6">
                     <div className="mb-32">
                         <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter max-w-4xl leading-tight">
-                            Authorized for Prestigious <span className="text-brand-600">Global Labels.</span>
+                            {t("proxyTitle1", { defaultMessage: "Authorized for Prestigious" })} <span className="text-brand-600">{t("proxyTitle2", { defaultMessage: "Global Labels." })}</span>
                         </h3>
                     </div>
 
@@ -207,11 +223,11 @@ export default function BrandShowcaseClient({
                     {/* Call to Action for Partnership (Flattened) */}
                     <div className="mt-48 pt-24 border-t border-slate-200 flex flex-col md:flex-row items-start justify-between gap-12">
                         <div className="max-w-xl">
-                            <h4 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6">Scale Your Brand with the IFAN Mega-Factory.</h4>
-                            <p className="text-slate-500 text-lg font-light leading-relaxed">Join the prestigious list of global series authorized for precision manufacturing.</p>
+                            <h4 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6">{t("ctaTitle", { defaultMessage: "Scale Your Brand with the IFAN Mega-Factory." })}</h4>
+                            <p className="text-slate-500 text-lg font-light leading-relaxed">{t("ctaDesc", { defaultMessage: "Join the prestigious list of global series authorized for precision manufacturing." })}</p>
                         </div>
                         <Link href="/contact" className="group flex items-center gap-4 text-brand-600 font-bold tracking-[0.2em] uppercase text-sm mt-4 md:mt-0">
-                            Global Partnership Inquiry
+                            {t("ctaButton", { defaultMessage: "Global Partnership Inquiry" })}
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                         </Link>
                     </div>

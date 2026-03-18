@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
 // Dynamically import the Heavy 3D canvas with forced client-side rendering
@@ -11,12 +11,6 @@ const ViewerInner = dynamic(
 );
 
 export default function Packaging3DViewer({ url, transparent = false, heroMode = false }: { url: string, transparent?: boolean, heroMode?: boolean }) {
-    // Avoid double mounting on React 18 strict mode that can cause Context Lost
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
     if (!url) {
         if (transparent) return null;
         return (
@@ -47,7 +41,7 @@ export default function Packaging3DViewer({ url, transparent = false, heroMode =
                     </div>
                 </div>
             }>
-                {mounted && <ViewerInner url={url} heroMode={heroMode} />}
+                <ViewerInner url={url} heroMode={heroMode} />
             </Suspense>
         </div>
     );

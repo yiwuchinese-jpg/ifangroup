@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from"framer-motion";
-import Link from"next/link";
-import { ArrowRight } from"lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const collections = [
  {
@@ -24,7 +25,7 @@ const collections = [
  title:"Precision Flow",
  description:"Forged Brass Valves for reliable control in diverse plumbing and industrial applications.",
  image:"/images/static/home-feat-3.webp",
- link:"/categories/brass-valves"
+ link:"/categories/hvac-valves"
  },
  {
  id:"hdpe-infrastructure",
@@ -36,6 +37,7 @@ const collections = [
 ];
 
 export default function FeaturedCollections() {
+ const t = useTranslations("featuredCollections");
  return (
  <section className="bg-white py-32 lg:py-48">
  <div className="container mx-auto px-6">
@@ -43,17 +45,17 @@ export default function FeaturedCollections() {
  <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-32 gap-6 md:gap-8">
  <div className="max-w-4xl">
  <span className="text-slate-400 font-bold tracking-[0.3em] uppercase text-xs mb-8 block">
- Flagship Series
+ {t("badge", { defaultMessage: "Flagship Series" })}
  </span>
  <h2 className="text-4xl md:text-6xl lg:text-[7rem] font-black text-slate-900 tracking-tighter leading-[0.9]">
- The Collections.
+ {t("title", { defaultMessage: "The Collections." })}
  </h2>
  </div>
  <Link
  href="/products"
  className="group inline-flex items-center gap-3 text-sm font-bold tracking-widest uppercase text-slate-900 hover:text-brand-600 transition-colors"
  >
- Explore Complete Catalog
+ {t("explore", { defaultMessage: "Explore Complete Catalog" })}
  <span className="w-10 h-10 border border-slate-200 flex items-center justify-center group-hover:border-brand-600 transition-colors">
  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"/>
  </span>
@@ -83,10 +85,10 @@ export default function FeaturedCollections() {
  <div className="flex justify-between items-start">
  <div>
  <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
- {col.title}
+ {t(`items.${col.id}.title`, { defaultMessage: col.title })}
  </h3>
  <p className="text-slate-500 font-medium tracking-wide line-clamp-2">
- {col.description}
+ {t(`items.${col.id}.desc`, { defaultMessage: col.description })}
  </p>
  </div>
  <div className="w-10 h-10 bg-slate-50 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300 text-slate-400">
@@ -108,10 +110,10 @@ export default function FeaturedCollections() {
  <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
  <div className="max-w-2xl text-center lg:text-left">
  <h3 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6">
- Ready to scale your inventory?
+ {t("ctaTitle", { defaultMessage: "Ready to scale your inventory?" })}
  </h3>
  <p className="text-xl text-slate-500 font-light leading-relaxed">
- Skip the middleman. Get direct factory pricing, secure supply chains, and expert engineering support for your next major project.
+ {t("ctaDesc", { defaultMessage: "Skip the middleman. Get direct factory pricing, secure supply chains, and expert engineering support for your next major project." })}
  </p>
  </div>
  <div className="flex-shrink-0">
@@ -119,7 +121,7 @@ export default function FeaturedCollections() {
  href="/contact?intent=quote"
  className="group flex items-center gap-4 text-brand-600 font-bold tracking-[0.2em] uppercase text-sm"
  >
- Get Source Factory Pricing
+ {t("ctaButton", { defaultMessage: "Get Source Factory Pricing" })}
  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300"/>
  </Link>
  </div>

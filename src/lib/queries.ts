@@ -107,7 +107,14 @@ export const allArticlesQuery = groq`*[_type == "article"] | order(publishedAt d
         }
     },
     "authorName": author->name,
-    "authorImage": author->image.asset->url
+    "authorImage": author->image.asset->url,
+    translations {
+        es { title },
+        pt { title },
+        ru { title },
+        ar { title },
+        fr { title }
+    }
 }`;
 
 export const articleBySlugQuery = groq`*[_type == "article" && slug.current == $slug][0] {
@@ -124,7 +131,14 @@ export const articleBySlugQuery = groq`*[_type == "article" && slug.current == $
     },
     body,
     "authorName": author->name,
-    "authorImage": author->image.asset->url
+    "authorImage": author->image.asset->url,
+    translations {
+        es { title, body },
+        pt { title, body },
+        ru { title, body },
+        ar { title, body },
+        fr { title, body }
+    }
 }`;
 
 export const relatedArticlesQuery = groq`*[_type == "article" && slug.current != $slug] | order(publishedAt desc)[0...3] {

@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from"framer-motion";
 import { X, ArrowRight, ShieldAlert, Zap, Factory, Globe } from"lucide-react";
 import Link from"next/link";
 import { REGIONS_DATA, RegionData } from"@/lib/regionsData";
+import { useTranslations } from "next-intl";
 
 // Helper: Lat/Lon to 3D Cartesian (Radius = 10)
 function getCartesian(lat: number, lon: number, radius: number): [number, number, number] {
@@ -211,20 +212,25 @@ function RegionMarker({
  )}
 
  {/* HTML Label floating above marker */}
- <Html
- center
- position={[0, 0, isActive ? 3.5 : 2.5]}
- style={{ zIndex: isActive ? 100 : 10, visibility: isAnyActive && !isActive ? 'hidden' : 'visible' }}
- >
- <div
- ref={labelRef}
- style={{ transition: 'opacity 0.3s ease-in-out' }}
- className={`whitespace-nowrap px-4 py-2 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs border ${isActive
- ? 'bg-brand-600 border-brand-500 text-white shadow-[0_0_30px_rgba(22,163,74,0.4)]'
- : 'bg-slate-900/80 backdrop-blur-md border-white/20 text-white hover:bg-slate-800'
- }`}
- >
- {region.name}
+  <Html
+  center
+  position={[0, 0, isActive ? 3.5 : 2.5]}
+  zIndexRange={[20, 0]}
+  style={{ zIndex: isActive ? 2 : 1, visibility: isAnyActive && !isActive ? 'hidden' : 'visible' }}
+  >
+  <div
+  ref={labelRef}
+  style={{ transition: 'opacity 0.3s ease-in-out' }}
+  onClick={(e) => {
+  e.stopPropagation();
+  onClick();
+  }}
+  className={`whitespace-nowrap px-4 py-2 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs border ${isActive
+  ? 'bg-brand-600 border-brand-500 text-white shadow-[0_0_30px_rgba(22,163,74,0.4)]'
+  : 'bg-slate-900/80 backdrop-blur-md border-white/20 text-white hover:bg-slate-800'
+  }`}
+  >
+  {region.name}
  </div>
  </Html>
  </group>
@@ -285,6 +291,7 @@ function GlobeCameraRig({
 // --- Main Client Component ---
 
 export default function GlobalSolutionsClient() {
+ const t = useTranslations("globalSolutions");
  const [activeRegion, setActiveRegion] = useState<RegionData | null>(null);
  const orbitControlsRef = useRef<any>(null);
 
@@ -294,13 +301,16 @@ export default function GlobalSolutionsClient() {
  {/* Header Overlay */}
  <div className="absolute top-24 left-6 md:top-32 md:left-12 pointer-events-none z-10 transition-opacity duration-500">
  <span className="text-brand-500 font-bold tracking-[0.3em] uppercase text-xs mb-4 block">
- Geographic Intelligence
+ {t("badge", { defaultMessage: "Geographic Intelligence" })}
  </span>
  <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter mb-4 leading-none">
- Global<br />Solutions.
+ {t.rich("title", {
+   br: () => <br />,
+   defaultMessage: "Global<br />Solutions."
+ })}
  </h1>
  <p className="text-slate-400 font-medium tracking-widest uppercase text-[10px] md:text-xs">
- Drag to rotate · Select a territory to analyze
+ {t("instruction", { defaultMessage: "Drag to rotate · Select a territory to analyze" })}
  </p>
  </div>
 
@@ -313,11 +323,11 @@ export default function GlobalSolutionsClient() {
  >
  <div className="bg-slate-900/40 backdrop-blur-md border border-white/10 p-5">
  <h3 className="text-brand-500 font-bold tracking-[0.2em] uppercase text-[10px] mb-2 flex items-center gap-2">
- <Globe className="w-3 h-3"/> Global Footprint
+ <Globe className="w-3 h-3"/> {t("hudFootprint", { defaultMessage: "Global Footprint" })}
  </h3>
  <div className="flex items-baseline gap-2">
- <span className="text-3xl font-black text-white">120+</span>
- <span className="text-slate-400 text-xs font-medium">Countries Served</span>
+ <span className="text-3xl font-black text-white">{t("hudGlobalStatValue", { defaultMessage: "120+" })}</span>
+ <span className="text-slate-400 text-xs font-medium">{t("hudGlobalStatLabel", { defaultMessage: "Countries Served" })}</span>
  </div>
  </div>
  </motion.div>
@@ -331,16 +341,16 @@ export default function GlobalSolutionsClient() {
  >
  <div className="bg-slate-900/40 backdrop-blur-md border border-white/10 p-5">
  <h3 className="text-brand-500 font-bold tracking-[0.2em] uppercase text-[10px] mb-2 flex items-center gap-2">
- <Factory className="w-3 h-3"/> Scale & Capacity
+ <Factory className="w-3 h-3"/> {t("hudScale", { defaultMessage: "Scale & Capacity" })}
  </h3>
  <div className="grid grid-cols-2 gap-4">
  <div>
- <div className="text-2xl font-black text-white mb-0.5">120k <span className="text-sm font-medium text-slate-400">m²</span></div>
- <div className="text-[10px] text-slate-400 uppercase tracking-wider">Mega Facility</div>
+ <div className="text-2xl font-black text-white mb-0.5">{t("hudScaleValue", { defaultMessage: "120k" })} <span className="text-sm font-medium text-slate-400">m²</span></div>
+ <div className="text-[10px] text-slate-400 uppercase tracking-wider">{t("hudScaleLabel", { defaultMessage: "Mega Facility" })}</div>
  </div>
  <div>
- <div className="text-2xl font-black text-white mb-0.5">100+</div>
- <div className="text-[10px] text-slate-400 uppercase tracking-wider">Auto Lines</div>
+ <div className="text-2xl font-black text-white mb-0.5">{t("hudLinesValue", { defaultMessage: "100+" })}</div>
+ <div className="text-[10px] text-slate-400 uppercase tracking-wider">{t("hudLinesLabel", { defaultMessage: "Auto Lines" })}</div>
  </div>
  </div>
  </div>
@@ -355,7 +365,7 @@ export default function GlobalSolutionsClient() {
  >
  <div className="bg-slate-900/40 backdrop-blur-md border border-white/10 p-5">
  <h3 className="text-brand-500 font-bold tracking-[0.2em] uppercase text-[10px] mb-2 flex items-center gap-2">
- <ShieldAlert className="w-3 h-3"/> Certified Quality
+ <ShieldAlert className="w-3 h-3"/> {t("hudCompliance", { defaultMessage: "Certified Quality" })}
  </h3>
  <div className="flex flex-wrap gap-2 mt-3">
  {['ISO 9001', 'CE', 'NSF-61', 'DVGW', 'WaterMark'].map((cert) => (
@@ -401,25 +411,36 @@ export default function GlobalSolutionsClient() {
  </Canvas>
  </div>
 
- {/* PAS/FAB Data Panel Overlay */}
- <AnimatePresence>
- {activeRegion && (
- <motion.div
- initial={{ opacity: 0, x: 50 }}
- animate={{ opacity: 1, x: 0 }}
- exit={{ opacity: 0, x: 50 }}
- transition={{ type:"spring", damping: 25, stiffness: 200 }}
- className="absolute top-auto bottom-0 right-0 md:top-0 md:bottom-auto w-full md:w-[500px] h-[65vh] md:h-full bg-slate-900/95 backdrop-blur-3xl border-t md:border-t-0 md:border-l border-slate-700 p-6 md:p-12 z-50 flex flex-col overflow-y-auto shadow-2xl"
- >
- <button
- onClick={() => setActiveRegion(null)}
- className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors bg-slate-800 p-2 z-50 cursor-pointer"
- >
- <X className="w-5 h-5"/>
- </button>
+  {/* PAS/FAB Data Panel Overlay */}
+  <AnimatePresence>
+  {activeRegion && (
+  <>
+  <motion.button
+  type="button"
+  aria-label={t("closePanel", { defaultMessage: "Close region panel" })}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.2 }}
+  onClick={() => setActiveRegion(null)}
+  className="absolute inset-0 z-[10020] bg-slate-950/45 backdrop-blur-[2px]"
+  />
+  <motion.div
+  initial={{ opacity: 0, x: 50 }}
+  animate={{ opacity: 1, x: 0 }}
+  exit={{ opacity: 0, x: 50 }}
+  transition={{ type:"spring", damping: 25, stiffness: 200 }}
+  className="absolute top-auto bottom-0 right-0 md:top-0 md:bottom-auto w-full md:w-[500px] h-[65vh] md:h-full bg-slate-900/95 backdrop-blur-3xl border-t md:border-t-0 md:border-l border-slate-700 p-6 md:p-12 z-[10030] flex flex-col overflow-y-auto shadow-2xl"
+  >
+  <button
+  onClick={() => setActiveRegion(null)}
+  className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors bg-slate-800/95 hover:bg-slate-700 p-2 z-[10040] cursor-pointer"
+  >
+  <X className="w-5 h-5"/>
+  </button>
 
  <div className="pt-8 flex-grow">
-  <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-8 pr-12 uppercase leading-none">
+ <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-8 pr-12 uppercase leading-none">
  {activeRegion.name}
  </h2>
 
@@ -433,7 +454,7 @@ export default function GlobalSolutionsClient() {
  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
  <div className="absolute bottom-4 left-4">
  <span className="text-[10px] font-bold text-brand-500 uppercase tracking-[0.2em] bg-slate-900/80 px-2 py-1 border border-brand-500/30">
- Region Snapshot
+ {t("snapshot", { defaultMessage: "Region Snapshot" })}
  </span>
  </div>
  </div>
@@ -442,16 +463,16 @@ export default function GlobalSolutionsClient() {
  <div className="mb-10 space-y-6">
  <div className="p-6 bg-slate-800/40 border-l-4 border-red-500">
  <h3 className="text-white font-bold uppercase tracking-[0.2em] text-xs flex items-center gap-2 mb-4">
- <ShieldAlert size={14} className="text-red-500"/> Critical Pain Points
+ <ShieldAlert size={14} className="text-red-500"/> {t("painPoints", { defaultMessage: "Critical Pain Points" })}
  </h3>
  <div className="space-y-4">
  <div className="text-slate-300 text-sm leading-relaxed">
- <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px] block mb-1">Problem</span>
- {activeRegion.problem}
+ <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px] block mb-1">{t("problem", { defaultMessage: "Problem" })}</span>
+ {t(`regions.${activeRegion.id}.problem`, { defaultMessage: activeRegion.problem })}
  </div>
  <div className="text-slate-300 text-sm leading-relaxed">
- <span className="text-red-500 font-bold uppercase tracking-widest text-[10px] block mb-1">Liability</span>
- {activeRegion.agitate}
+ <span className="text-red-500 font-bold uppercase tracking-widest text-[10px] block mb-1">{t("liability", { defaultMessage: "Liability" })}</span>
+ {t(`regions.${activeRegion.id}.agitate`, { defaultMessage: activeRegion.agitate })}
  </div>
  </div>
  </div>
@@ -463,28 +484,28 @@ export default function GlobalSolutionsClient() {
  <div className="space-y-8">
  <div>
  <h3 className="text-white font-bold text-xs uppercase tracking-[0.2em] flex items-center gap-2 mb-4">
- <Factory size={14} className="text-brand-500"/> The IFAN Integration
+ <Factory size={14} className="text-brand-500"/> {t("integration", { defaultMessage: "The IFAN Integration" })}
  </h3>
  <p className="text-2xl font-black text-white leading-tight uppercase tracking-tighter">
- {activeRegion.feature}
+ {t(`regions.${activeRegion.id}.feature`, { defaultMessage: activeRegion.feature })}
  </p>
  </div>
 
  <div className="pl-5 border-l border-slate-700">
  <h3 className="text-slate-500 font-bold text-[10px] uppercase tracking-[0.2em] mb-2">
- Technical Advantage
+ {t("techAdvantage", { defaultMessage: "Technical Advantage" })}
  </h3>
  <p className="text-slate-300 text-sm leading-relaxed font-medium">
- {activeRegion.advantage}
+ {t(`regions.${activeRegion.id}.advantage`, { defaultMessage: activeRegion.advantage })}
  </p>
  </div>
 
  <div className="p-6 bg-slate-800/40 border-l-4 border-brand-500">
  <h3 className="text-white font-bold text-[10px] uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
- <Zap size={14} className="text-brand-500"/> Primary Business Benefit
+ <Zap size={14} className="text-brand-500"/> {t("businessBenefit", { defaultMessage: "Primary Business Benefit" })}
  </h3>
  <p className="text-white font-bold text-lg leading-relaxed">
- {activeRegion.benefit}
+ {t(`regions.${activeRegion.id}.benefit`, { defaultMessage: activeRegion.benefit })}
  </p>
  </div>
  </div>
@@ -496,13 +517,14 @@ export default function GlobalSolutionsClient() {
  href={`/global-solutions/${activeRegion.id}`}
  className="group flex items-center justify-between w-full px-6 py-5 bg-white text-slate-900 font-black uppercase tracking-[0.2em] text-xs hover:bg-brand-500 hover:text-white transition-all duration-300"
  >
- <span>Deep Dive: {activeRegion.name}</span>
+ <span>{t("deepDive", { name: activeRegion.name, defaultMessage: `Deep Dive: ${activeRegion.name}` })}</span>
  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform"/>
  </Link>
- </div>
- </motion.div>
- )}
- </AnimatePresence>
+  </div>
+  </motion.div>
+  </>
+  )}
+  </AnimatePresence>
  </div>
  );
 }

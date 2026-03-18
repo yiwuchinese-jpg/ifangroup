@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Third-party decoder assets served from public/
+    "public/draco/**",
+    // Local maintenance/import scripts are not part of the website runtime
+    "scripts/**",
   ]),
 ]);
 

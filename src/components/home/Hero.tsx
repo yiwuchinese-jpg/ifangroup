@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+    const t = useTranslations("hero");
     return (
         <section className="relative w-full h-screen min-h-[500px] md:min-h-[800px] flex items-end pb-20 md:pb-32 justify-start overflow-hidden bg-black">
 
@@ -30,8 +32,8 @@ export default function Hero() {
                     transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="text-5xl sm:text-6xl lg:text-[8rem] font-bold text-white tracking-tighter leading-[0.9] mb-8 md:mb-12 max-w-5xl"
                 >
-                    Global Sourcing. <br />
-                    Absolute Precision.
+                    {t("headline1")} <br />
+                    {t("subheadline")}
                 </motion.h1>
 
                 <motion.div
@@ -44,7 +46,7 @@ export default function Hero() {
                         className="group flex flex-col items-start gap-2 max-w-max"
                     >
                         <span className="text-white font-bold tracking-[0.2em] uppercase text-sm flex items-center gap-4">
-                            Explore Product Matrix
+                            {t("cta_catalog")}
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform duration-300" />
                         </span>
                         <div className="h-[1px] w-full bg-white/30 group-hover:bg-white transition-colors duration-300" />

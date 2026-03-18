@@ -38,7 +38,7 @@ export default function WhyChooseUs() {
  Why Global Wholesalers Bank On <span className="text-brand-600">IFAN</span>
  </h2>
  <p className="text-lg text-slate-600 font-medium mb-12">
- We don't just sell pipes; we engineer profitability and absolute supply chain reliability. For 30 years, we've powered the world's most demanding water networks.
+ {"We don't just sell pipes; we engineer profitability and absolute supply chain reliability. For 30 years, we've powered the world's most demanding water networks."}
  </p>
 
  <div className="grid sm:grid-cols-2 gap-8">

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Instagram, Heart, MessageCircle, ExternalLink, Search, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 
 // Placeholder data representing future CMS content (duplicated to show pagination)
 const INSTAGRAM_POSTS = [
@@ -36,7 +36,7 @@ const INSTAGRAM_POSTS = [
     {
         id: "4",
         imageUrl: "/images/media/ig-post-4.webp",
-        caption: "Team IFAN at the 2024 International Builders' Show. Thank you to everyone who stopped by our booth!",
+        caption: "Team IFAN at the International Builders' Show. Thank you to everyone who stopped by our booth!",
         category: "Events",
         likes: 678,
         comments: 45,
@@ -132,11 +132,6 @@ export default function InstagramGallery() {
         return ["All", ...Array.from(cats)];
     }, []);
 
-    // Reset pagination on filter change
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [searchQuery, activeCategory]);
-
     // Filter posts
     const filteredPosts = useMemo(() => {
         return INSTAGRAM_POSTS.filter(post => {
@@ -147,9 +142,10 @@ export default function InstagramGallery() {
     }, [searchQuery, activeCategory]);
 
     const totalPages = Math.max(1, Math.ceil(filteredPosts.length / ITEMS_PER_PAGE));
+    const effectivePage = Math.min(currentPage, totalPages);
     const currentPosts = filteredPosts.slice(
-        (currentPage - 1) * ITEMS_PER_PAGE,
-        currentPage * ITEMS_PER_PAGE
+        (effectivePage - 1) * ITEMS_PER_PAGE,
+        effectivePage * ITEMS_PER_PAGE
     );
 
     const handlePageChange = (newPage: number) => {
@@ -184,7 +180,10 @@ export default function InstagramGallery() {
                             type="text"
                             placeholder="SEARCH CULTURE..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => {
+                                setSearchQuery(e.target.value);
+                                setCurrentPage(1);
+                            }}
                             className="w-full bg-white border border-slate-200 py-3 pl-12 pr-4 font-mono text-xs uppercase tracking-widest text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all rounded-none"
                         />
                     </div>
@@ -203,7 +202,10 @@ export default function InstagramGallery() {
                 {categories.map(cat => (
                     <button
                         key={cat}
-                        onClick={() => setActiveCategory(cat)}
+                        onClick={() => {
+                            setActiveCategory(cat);
+                            setCurrentPage(1);
+                        }}
                         className={`px-4 py-2 font-mono text-[10px] md:text-xs uppercase tracking-widest border transition-colors ${activeCategory === cat
                             ? "bg-brand-600 text-white border-brand-600"
                             : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900"
@@ -268,8 +270,8 @@ export default function InstagramGallery() {
                     {totalPages > 1 && (
                         <div className="flex items-center justify-center gap-2 mt-12">
                             <button
-                                onClick={() => handlePageChange(currentPage - 1)}
-                                disabled={currentPage === 1}
+                                onClick={() => handlePageChange(effectivePage - 1)}
+                                disabled={effectivePage === 1}
                                 className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-white text-slate-500 hover:border-brand-600 hover:text-brand-600 disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-colors"
                             >
                                 <ChevronLeft className="w-5 h-5" />
@@ -280,7 +282,7 @@ export default function InstagramGallery() {
                                     <button
                                         key={i}
                                         onClick={() => handlePageChange(i + 1)}
-                                        className={`w-12 h-12 flex items-center justify-center font-mono text-sm font-bold border transition-colors ${currentPage === i + 1
+                                        className={`w-12 h-12 flex items-center justify-center font-mono text-sm font-bold border transition-colors ${effectivePage === i + 1
                                                 ? 'bg-brand-600 border-brand-600 text-white'
                                                 : 'bg-white border-slate-200 text-slate-600 hover:border-brand-600 hover:text-brand-600'
                                             }`}
@@ -291,8 +293,8 @@ export default function InstagramGallery() {
                             </div>
 
                             <button
-                                onClick={() => handlePageChange(currentPage + 1)}
-                                disabled={currentPage === totalPages}
+                                onClick={() => handlePageChange(effectivePage + 1)}
+                                disabled={effectivePage === totalPages}
                                 className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-white text-slate-500 hover:border-brand-600 hover:text-brand-600 disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-colors"
                             >
                                 <ChevronRight className="w-5 h-5" />

@@ -4,7 +4,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { useGLTF, PresentationControls, OrbitControls, Center, ContactShadows } from "@react-three/drei";
 import { Suspense, useEffect } from "react";
 import { AlertCircle } from "lucide-react";
-import { ErrorBoundary } from "react-error-boundary";
+import { ErrorBoundary, type FallbackProps } from "react-error-boundary";
 
 // 必须在 Canvas 内部调用 useThree，显式清除 WebGL renderer 的默认灰色清屏色
 function TransparentBackground() {
@@ -27,11 +27,11 @@ useGLTF.preload("/models/gw4-draco.glb", '/draco/');
 
 export default function Packaging3DViewerInner({ url, heroMode = false }: { url: string, heroMode?: boolean }) {
     return (
-        <ErrorBoundary fallbackRender={({ error }: { error: any }) => (
+        <ErrorBoundary fallbackRender={({ error }: FallbackProps) => (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 border border-red-500/50 p-6 text-center z-50">
                 <AlertCircle className="w-12 h-12 text-red-500 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">3D Render Error</h3>
-                <p className="text-sm text-red-400 font-mono break-words max-w-full">{error.message}</p>
+                <p className="text-sm text-red-400 font-mono break-words max-w-full">{error instanceof Error ? error.message : "Unknown rendering error"}</p>
             </div>
         )}>
             <Canvas
