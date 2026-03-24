@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight, CheckCircle2, ShieldCheck, TrendingUp, Globe, Award } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { CategoryCopy } from "@/lib/categoryCopywriting";
 
@@ -26,10 +27,13 @@ export default function CategoryClientPage({
             <main className="flex-grow">
                 <section className="relative w-full min-h-[85vh] flex items-center justify-start overflow-hidden bg-slate-950 pt-32 lg:pt-40 pb-20">
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-                        <img 
-                            src={`/images/categories/${slug}/hero-bg.webp`} 
-                            alt={`${t(`items.${slug}.heroTitle`, { fallback: copy.heroTitle })} Background`} 
-                            className="w-full h-full object-cover opacity-75 scale-105"
+                        <Image
+                            src={`/images/categories/${slug}/hero-bg.webp`}
+                            alt={`${t(`items.${slug}.heroTitle`, { fallback: copy.heroTitle })} Background`}
+                            fill
+                            priority
+                            sizes="100vw"
+                            className="object-cover opacity-75 scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
                         <div className="absolute inset-0 bg-gradient-t from-slate-950 via-transparent to-transparent" />
@@ -123,11 +127,15 @@ export default function CategoryClientPage({
                                 <div className="relative w-full max-w-xl flex items-center justify-center p-8 lg:p-12">
                                     <div className="absolute inset-0 bg-brand-50 rounded-full blur-[80px] -z-10 mix-blend-multiply opacity-50"></div>
                                     
-                                    <img 
-                                        src={`/images/categories/${slug}/signature.png`} 
-                                        alt="Signature Component" 
-                                        className="relative z-10 w-full object-contain mix-blend-multiply drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-110 transition-transform duration-700"
-                                    />
+                                    <div className="relative z-10 w-full aspect-[4/3]">
+                                        <Image
+                                            src={`/images/categories/${slug}/signature.webp`}
+                                            alt="Signature Component"
+                                            fill
+                                            sizes="(min-width: 1024px) 40vw, 90vw"
+                                            className="object-contain mix-blend-multiply drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-110 transition-transform duration-700"
+                                        />
+                                    </div>
                                     
                                     <div className="absolute bottom-0 right-0 lg:right-10 bg-slate-900 border border-slate-800 px-4 py-2 z-20 shadow-2xl">
                                         <p className="text-[10px] font-bold text-white uppercase tracking-widest">{t("replaceImage")}</p>
@@ -257,11 +265,13 @@ export default function CategoryClientPage({
                                 viewport={{ once: true }}
                                 className="md:col-span-8 md:row-span-2 group relative overflow-hidden bg-slate-100"
                             >
-                                <Link href="/products" className="block w-full h-full cursor-pointer">
-                                    <img 
-                                        src={showcaseImages[0]} 
-                                        alt="Product Showcase Main" 
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out will-change-transform"
+                                <Link href="/products" prefetch className="block w-full h-full cursor-pointer">
+                                    <Image
+                                        src={showcaseImages[0]}
+                                        alt="Product Showcase Main"
+                                        fill
+                                        sizes="(min-width: 768px) 66vw, 100vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out will-change-transform"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <div className="absolute bottom-8 left-8 right-8 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-white flex items-end justify-between">
@@ -283,11 +293,13 @@ export default function CategoryClientPage({
                                 transition={{ delay: 0.1 }}
                                 className="md:col-span-4 group relative overflow-hidden bg-slate-100"
                             >
-                                <Link href="/products" className="block w-full h-full cursor-pointer">
-                                    <img 
-                                        src={showcaseImages[1]} 
-                                        alt="Product Detail 1" 
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out will-change-transform"
+                                <Link href="/products" prefetch className="block w-full h-full cursor-pointer">
+                                    <Image
+                                        src={showcaseImages[1]}
+                                        alt="Product Detail 1"
+                                        fill
+                                        sizes="(min-width: 768px) 33vw, 100vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out will-change-transform"
                                     />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                          <div className="bg-white/10 backdrop-blur-md rounded-full p-3 text-white"><ArrowRight className="w-6 h-6" /></div>
@@ -302,11 +314,13 @@ export default function CategoryClientPage({
                                 transition={{ delay: 0.2 }}
                                 className="md:col-span-4 group relative overflow-hidden bg-slate-100"
                             >
-                                <Link href="/products" className="block w-full h-full cursor-pointer">
-                                    <img 
-                                        src={showcaseImages[2]} 
-                                        alt="Product Detail 2" 
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out will-change-transform"
+                                <Link href="/products" prefetch className="block w-full h-full cursor-pointer">
+                                    <Image
+                                        src={showcaseImages[2]}
+                                        alt="Product Detail 2"
+                                        fill
+                                        sizes="(min-width: 768px) 33vw, 100vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out will-change-transform"
                                     />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                          <div className="bg-white/10 backdrop-blur-md rounded-full p-3 text-white"><ArrowRight className="w-6 h-6" /></div>
@@ -321,8 +335,8 @@ export default function CategoryClientPage({
                                 transition={{ delay: 0.1 }}
                                 className="md:col-span-4 group relative overflow-hidden bg-slate-100 hidden md:block"
                             >
-                                <Link href="/products" className="block w-full h-full cursor-pointer">
-                                    <img src={showcaseImages[3]} alt="Product Detail 3" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                                <Link href="/products" prefetch className="block w-full h-full cursor-pointer">
+                                    <Image src={showcaseImages[3]} alt="Product Detail 3" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                          <div className="bg-white/10 backdrop-blur-md rounded-full p-3 text-white"><ArrowRight className="w-6 h-6" /></div>
                                     </div>
@@ -336,8 +350,8 @@ export default function CategoryClientPage({
                                 transition={{ delay: 0.2 }}
                                 className="md:col-span-4 group relative overflow-hidden bg-slate-100 hidden md:block"
                             >
-                                <Link href="/products" className="block w-full h-full cursor-pointer">
-                                    <img src={showcaseImages[4]} alt="Product Detail 4" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                                <Link href="/products" prefetch className="block w-full h-full cursor-pointer">
+                                    <Image src={showcaseImages[4]} alt="Product Detail 4" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                          <div className="bg-white/10 backdrop-blur-md rounded-full p-3 text-white"><ArrowRight className="w-6 h-6" /></div>
                                     </div>
@@ -351,8 +365,8 @@ export default function CategoryClientPage({
                                 transition={{ delay: 0.3 }}
                                 className="md:col-span-4 group relative overflow-hidden bg-slate-100 hidden md:block"
                             >
-                                <Link href="/products" className="block w-full h-full cursor-pointer">
-                                    <img src={showcaseImages[5]} alt="Product Detail 5" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                                <Link href="/products" prefetch className="block w-full h-full cursor-pointer">
+                                    <Image src={showcaseImages[5]} alt="Product Detail 5" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                          <div className="bg-white/10 backdrop-blur-md rounded-full p-3 text-white"><ArrowRight className="w-6 h-6" /></div>
                                     </div>
@@ -366,8 +380,8 @@ export default function CategoryClientPage({
                                 transition={{ delay: 0.1 }}
                                 className="md:col-span-6 group relative overflow-hidden bg-slate-100 hidden md:block"
                             >
-                                <Link href="/products" className="block w-full h-full cursor-pointer">
-                                    <img src={showcaseImages[6]} alt="Product Detail 6" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                                <Link href="/products" prefetch className="block w-full h-full cursor-pointer">
+                                    <Image src={showcaseImages[6]} alt="Product Detail 6" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                          <div className="bg-white/10 backdrop-blur-md rounded-full p-3 text-white"><ArrowRight className="w-6 h-6" /></div>
                                     </div>
@@ -381,8 +395,8 @@ export default function CategoryClientPage({
                                 transition={{ delay: 0.2 }}
                                 className="md:col-span-6 group relative overflow-hidden bg-slate-100 hidden md:block"
                             >
-                                <Link href="/products" className="block w-full h-full cursor-pointer">
-                                    <img src={showcaseImages[7]} alt="Product Detail 7" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                                <Link href="/products" prefetch className="block w-full h-full cursor-pointer">
+                                    <Image src={showcaseImages[7]} alt="Product Detail 7" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                          <div className="bg-white/10 backdrop-blur-md rounded-full p-3 text-white"><ArrowRight className="w-6 h-6" /></div>
                                     </div>

@@ -11,6 +11,15 @@ export const metadata: Metadata = {
     },
     description: "Direct from our 120,000m² smart factory. Source 10,000+ PPR, PEX, and brass valves at unbeatable wholesale prices. Request your custom B2B quote today!",
     keywords: ["Plumbing System Manufacturer", "PPR pipe wholesale", "Brass valves factory", "PEX manufacturer China", "OEM plumbing supplier"],
+    robots: {
+        index: false,
+        follow: false,
+        googleBot: {
+            index: false,
+            follow: false,
+            noimageindex: true,
+        },
+    },
     openGraph: {
         title: "IFAN Group | Top Plumbing Manufacturer & Wholesale Supplier",
         description: "Source 10,000+ PPR, PEX, and brass valves directly from our 120,000m² mega-factory.",

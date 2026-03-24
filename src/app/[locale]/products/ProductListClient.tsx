@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, FileText, ArrowRight, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 interface ProductVariant {
@@ -114,12 +115,15 @@ export default function ProductListClient({ initialProducts }: { initialProducts
                                 >
                                     <div className="w-full sm:w-32 sm:min-w-[128px] lg:w-36 lg:min-w-[144px] sm:min-h-[144px] bg-slate-50 flex items-center justify-center shrink-0 overflow-hidden relative">
                                         {product.mainImage?.asset?.url || `/images/products/${product.slug}/main.webp` ? (
-                                            <img
+                                            <Image
                                                 src={product.mainImage?.asset?.url || `/images/products/${product.slug}/main.webp`}
                                                 alt={product.name}
-                                                className="absolute inset-0 w-full h-full object-contain p-4 mix-blend-multiply transition-transform duration-500 group-hover:scale-110 select-none"
+                                                fill
+                                                sizes="144px"
+                                                className="object-contain p-4 mix-blend-multiply transition-transform duration-500 group-hover:scale-110 select-none"
                                                 draggable={false}
                                                 onContextMenu={(e) => e.preventDefault()}
+                                                unoptimized={Boolean(product.mainImage?.asset?.url)}
                                             />
                                         ) : (
                                             <div className="text-slate-300 absolute inset-0 flex items-center justify-center"><FileText size={48} /></div>

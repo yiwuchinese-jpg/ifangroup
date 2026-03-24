@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export interface ShowcaseBrand {
@@ -25,6 +27,29 @@ interface BrandShowcaseClientProps {
     otherBrands: ShowcaseBrand[];
 }
 
+const gallerySlides = [
+    {
+        title: "PPR system production",
+        subtitle: "Clean pipe runs and workshop output selected from the PPR category gallery",
+        image: "/images/categories/ppr/gallery-3.webp",
+    },
+    {
+        title: "PEX installation details",
+        subtitle: "Flexible heating and plumbing components drawn from the PEX & PPSU range",
+        image: "/images/categories/pex-ppsu/gallery-2.webp",
+    },
+    {
+        title: "Valve and manifold lineup",
+        subtitle: "Sharper brass product presentation sourced from the HVAC valves collection",
+        image: "/images/categories/hvac-valves/gallery-4.webp",
+    },
+    {
+        title: "Faucet product highlights",
+        subtitle: "Cleaner retail-facing visuals selected from the faucets and accessories set",
+        image: "/images/categories/faucets/gallery-1.webp",
+    },
+];
+
 export default function BrandShowcaseClient({
     flagships,
     subBrands,
@@ -32,9 +57,26 @@ export default function BrandShowcaseClient({
     otherBrands: _otherBrands,
 }: BrandShowcaseClientProps) {
     const t = useTranslations("brandShowcase");
+    const [activeSlide, setActiveSlide] = useState(0);
 
     const ifan = flagships.find(b => b.name === "IFAN");
     const ifanPlus = flagships.find(b => b.name === "IFANPlus");
+
+    useEffect(() => {
+        const timer = window.setInterval(() => {
+            setActiveSlide((current) => (current + 1) % gallerySlides.length);
+        }, 4500);
+
+        return () => window.clearInterval(timer);
+    }, []);
+
+    const nextSlide = () => {
+        setActiveSlide((current) => (current + 1) % gallerySlides.length);
+    };
+
+    const previousSlide = () => {
+        setActiveSlide((current) => (current - 1 + gallerySlides.length) % gallerySlides.length);
+    };
 
     return (
         <section className="bg-white">
@@ -175,6 +217,95 @@ export default function BrandShowcaseClient({
                                 </div>
                             </motion.div>
                         ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="border-b border-slate-200 bg-white py-24 lg:py-32">
+                <div className="container mx-auto px-6">
+                    <div className="grid gap-0 border border-slate-200 lg:grid-cols-[0.95fr_1.45fr]">
+                        <div className="flex flex-col justify-between border-b border-slate-200 bg-slate-50 p-8 md:p-10 lg:border-b-0 lg:border-r lg:p-14">
+                            <div>
+                                <span className="mb-6 block text-xs font-bold uppercase tracking-[0.3em] text-brand-600">
+                                    Visual Gallery
+                                </span>
+                                <h3 className="max-w-md text-4xl font-black tracking-tighter text-slate-900 md:text-5xl">
+                                    Factory and product highlights.
+                                </h3>
+                                <p className="mt-6 max-w-md text-base leading-8 text-slate-500 md:text-lg">
+                                    A simple visual carousel placed between the brand grid and the global labels section.
+                                </p>
+                            </div>
+
+                            <div className="mt-12 flex items-center gap-3">
+                                <button
+                                    type="button"
+                                    onClick={previousSlide}
+                                    className="flex h-12 w-12 items-center justify-center border border-slate-300 bg-white text-slate-900 transition hover:border-brand-600 hover:text-brand-600"
+                                    aria-label="Previous slide"
+                                >
+                                    <ArrowLeft className="h-5 w-5" />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={nextSlide}
+                                    className="flex h-12 w-12 items-center justify-center border border-slate-300 bg-white text-slate-900 transition hover:border-brand-600 hover:text-brand-600"
+                                    aria-label="Next slide"
+                                >
+                                    <ArrowRight className="h-5 w-5" />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="bg-slate-900">
+                            <div className="relative h-[420px] overflow-hidden md:h-[520px] lg:h-[620px]">
+                                {gallerySlides.map((slide, index) => (
+                                    <div
+                                        key={slide.image}
+                                        className={`absolute inset-0 transition-opacity duration-700 ${index === activeSlide ? "opacity-100" : "pointer-events-none opacity-0"}`}
+                                    >
+                                        <Image
+                                            src={slide.image}
+                                            alt={slide.title}
+                                            fill
+                                            sizes="(min-width: 1024px) 58vw, 100vw"
+                                            className="object-cover"
+                                            draggable={false}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/40 to-transparent" />
+                                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-transparent px-8 py-8 md:px-10 md:py-10 lg:px-14 lg:py-12">
+                                            <p className="text-xs font-bold uppercase tracking-[0.28em] text-brand-300">
+                                                {String(index + 1).padStart(2, "0")}
+                                            </p>
+                                            <h4 className="mt-4 max-w-2xl text-3xl font-black tracking-tight text-white md:text-4xl">
+                                                {slide.title}
+                                            </h4>
+                                            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
+                                                {slide.subtitle}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="grid grid-cols-2 border-t border-white/10 md:grid-cols-4">
+                                {gallerySlides.map((slide, index) => (
+                                    <button
+                                        key={slide.title}
+                                        type="button"
+                                        onClick={() => setActiveSlide(index)}
+                                        className={`border-r border-white/10 px-5 py-4 text-left transition last:border-r-0 ${index === activeSlide ? "bg-brand-600 text-white" : "bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white"}`}
+                                    >
+                                        <p className="text-[11px] font-bold uppercase tracking-[0.22em]">
+                                            {String(index + 1).padStart(2, "0")}
+                                        </p>
+                                        <p className="mt-2 text-sm font-bold uppercase tracking-[0.12em]">
+                                            {slide.title}
+                                        </p>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

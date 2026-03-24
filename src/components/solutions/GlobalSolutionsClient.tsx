@@ -7,6 +7,7 @@ import * as THREE from"three";
 import { motion, AnimatePresence } from"framer-motion";
 import { X, ArrowRight, ShieldAlert, Zap, Factory, Globe } from"lucide-react";
 import Link from"next/link";
+import Image from "next/image";
 import { REGIONS_DATA, RegionData } from"@/lib/regionsData";
 import { useTranslations } from "next-intl";
 
@@ -446,10 +447,13 @@ export default function GlobalSolutionsClient() {
 
  {/* Regional Visual Area */}
  <div className="mb-10 aspect-video bg-slate-800 border border-white/10 overflow-hidden relative group">
- <img 
- src={activeRegion.images?.[0] || `/images/solutions/${activeRegion.id}/img-1.webp`} 
- alt={activeRegion.name} 
- className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+ <Image
+ src={activeRegion.images?.[0] || `/images/solutions/${activeRegion.id}/img-1.webp`}
+ alt={activeRegion.name}
+ fill
+ sizes="(min-width: 768px) 500px, 100vw"
+ className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+ unoptimized={Boolean(activeRegion.images?.[0])}
  />
  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
  <div className="absolute bottom-4 left-4">

@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Globe, ArrowUpRight, Users, PlayCircle } from "lucide-react";
 import ProductListClient from "@/app/[locale]/products/ProductListClient";
 import SecureGallery from "@/components/brands/SecureGallery";
@@ -290,7 +291,7 @@ export default function BrandClientPage({ brand, products, relatedBrands = [] }:
                         <div className="md:w-1/2 relative min-h-[400px]">
                             <div className="absolute inset-0 bg-brand-600 mix-blend-multiply opacity-20 z-10" />
                             {brand.heroImage?.asset?.url ? (
-                                <img src={brand.heroImage.asset.url} alt="Strategy" className="w-full h-full object-cover grayscale" />
+                                <Image src={brand.heroImage.asset.url} alt="Strategy" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover grayscale" unoptimized />
                             ) : (
                                 <div className="w-full h-full bg-slate-800 flex items-center justify-center">
                                     <Globe2 className="w-32 h-32 text-slate-700" />

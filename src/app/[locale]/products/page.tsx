@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { 
     Box, 
@@ -25,8 +26,7 @@ export const metadata: Metadata = {
     keywords: ["PPR pipe sizes", "Brass valve specifications", "Plumbing bulk pricing", "IFAN wholesale catalog", "Plumbing specifications search"],
 };
 
-// Force dynamic rendering or shorter revalidation to ensure fresh Sanity data is visible
-export const revalidate = 0;
+export const revalidate = 3600;
 
 export default async function ProductsPage() {
     const t = await getTranslations("productsPage");
@@ -63,14 +63,18 @@ export default async function ProductsPage() {
                 <section className="relative w-full min-h-[500px] lg:min-h-[70vh] flex items-center justify-start overflow-hidden bg-slate-900 border-b border-slate-200 pt-32 lg:pt-40 pb-24 lg:pb-32 mb-20 lg:mb-32">
                     {/* Background Image / Overlay */}
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-                        <img
+                        <Image
                             src="/images/static/products-hero.webp"
                             alt="IFAN Global Engineering Components"
-                            className="w-full h-full object-cover opacity-75 select-none scale-105"
+                            fill
+                            priority
+                            sizes="100vw"
+                            className="object-cover opacity-75 select-none scale-105"
                             draggable={false}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-slate-950/35" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-900/45" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
                     </div>
 
                     <div className="container mx-auto px-6 max-w-7xl relative z-10">
@@ -175,8 +179,8 @@ export default async function ProductsPage() {
                             <div className="w-full lg:w-1/2">
                                 {/* Large visual grid to represent 'Factory' scale */}
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="w-full h-64 bg-slate-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                                        <img src="/images/static/products-factory.webp" alt="Factory Floor" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                    <div className="relative w-full h-64 bg-slate-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+                                        <Image src="/images/static/products-factory.webp" alt="Factory Floor" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover hover:scale-105 transition-transform duration-700" />
                                     </div>
                                     <div className="grid grid-rows-2 gap-4 h-64">
                                         <div className="w-full bg-brand-600 rounded-3xl overflow-hidden shadow-lg p-6 flex flex-col justify-between text-white hover:bg-brand-700 transition-colors">
@@ -186,8 +190,8 @@ export default async function ProductsPage() {
                                                 <div className="text-sm font-medium opacity-80 uppercase tracking-wider">{t("factory.topDesc")}</div>
                                             </div>
                                         </div>
-                                        <div className="w-full bg-slate-200 rounded-3xl overflow-hidden shadow-lg">
-                                            <img src="/images/static/products-lab.webp" alt="Laboratory Testing" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                        <div className="relative w-full bg-slate-200 rounded-3xl overflow-hidden shadow-lg">
+                                            <Image src="/images/static/products-lab.webp" alt="Laboratory Testing" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover hover:scale-105 transition-transform duration-700" />
                                         </div>
                                     </div>
                                 </div>

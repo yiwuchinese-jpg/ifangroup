@@ -4,6 +4,7 @@ import { ArrowRight, Trophy, BookOpen } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export default function AboutPage() {
@@ -18,10 +19,13 @@ export default function AboutPage() {
                 <section className="relative w-full min-h-[500px] lg:min-h-[80vh] flex items-center justify-start overflow-hidden bg-slate-900 border-b border-slate-200 pt-32 lg:pt-40 pb-24 lg:pb-32 mb-20 lg:mb-32">
                     {/* Background Image / Overlay */}
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-                        <img
+                        <Image
                             src="/images/static/about-hero.webp"
                             alt="IFAN Global Infrastructure"
-                            className="w-full h-full object-cover opacity-75 select-none scale-105"
+                            fill
+                            priority
+                            sizes="100vw"
+                            className="object-cover opacity-75 select-none scale-105"
                             draggable={false}
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
@@ -89,7 +93,7 @@ export default function AboutPage() {
                                             </p>
                                         </div>
                                         <div className="relative h-64 border border-slate-200 overflow-hidden">
-                                            <img src="/images/static/about-timeline-1.webp" alt="Early hardware manufacturing" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <Image src="/images/static/about-timeline-1.webp" alt="Early hardware manufacturing" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +108,7 @@ export default function AboutPage() {
                                             </p>
                                         </div>
                                         <div className="relative h-64 border border-slate-200 overflow-hidden lg:order-1">
-                                            <img src="/images/static/about-timeline-2.webp" alt="Automated precision manufacturing lines" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <Image src="/images/static/about-timeline-2.webp" alt="Automated precision manufacturing lines" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +123,7 @@ export default function AboutPage() {
                                             </p>
                                         </div>
                                         <div className="relative h-64 border border-slate-200 overflow-hidden">
-                                            <img src="/images/static/about-timeline-3.webp" alt="Global logistics and export" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <Image src="/images/static/about-timeline-3.webp" alt="Global logistics and export" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +138,7 @@ export default function AboutPage() {
                                             </p>
                                         </div>
                                         <div className="relative h-64 border border-slate-200 overflow-hidden lg:order-1">
-                                            <img src="/images/static/about-timeline-4.webp" alt="Modern massive infrastructure" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <Image src="/images/static/about-timeline-4.webp" alt="Modern massive infrastructure" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +184,7 @@ export default function AboutPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-slate-200 bg-white">
                             <div className="relative p-12 lg:p-20 border-b border-r border-slate-200 overflow-hidden flex flex-col h-full justify-between group">
                                 <div className="absolute inset-0 z-0">
-                                    <img src="/images/static/about-quality.webp" alt="Laboratory Quality Control" className="w-full h-full object-cover filter grayscale opacity-20 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" />
+                                    <Image src="/images/static/about-quality.webp" alt="Laboratory Quality Control" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover filter grayscale opacity-20 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/90 to-slate-900/60 transition-colors duration-700 group-hover:bg-slate-900/70" />
                                 </div>
                                 <div className="relative z-10">

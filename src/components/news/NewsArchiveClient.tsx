@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar, User, Tag, Search, ArrowDownRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const ITEMS_PER_PAGE = 9;
@@ -168,17 +169,22 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
 
                             <div className="h-[40vh] lg:h-full w-full bg-slate-900 relative border-l border-slate-200 order-1 lg:order-2 overflow-hidden">
                                 {featuredArticle.mainImage?.asset?.url ? (
-                                    <img
+                                    <Image
                                         src={featuredArticle.mainImage.asset.url}
                                         alt={featuredArticle.title}
-                                        className="w-full h-full object-cover filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                                        fill
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
+                                        className="object-cover filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                                        unoptimized
                                     />
                                 ) : (
                                     <div className="w-full h-full flex flex-col items-center justify-center bg-slate-900">
-                                        <img 
-                                            src="/images/media/news-placeholder.webp" 
-                                            alt="IFAN News Placeholder" 
-                                            className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale"
+                                        <Image
+                                            src="/images/media/news-placeholder.webp"
+                                            alt="IFAN News Placeholder"
+                                            fill
+                                            sizes="(min-width: 1024px) 50vw, 100vw"
+                                            className="object-cover opacity-30 grayscale"
                                         />
                                         <ArrowDownRight className="w-16 h-16 text-slate-800 mb-4 relative z-10" />
                                         <span className="font-mono text-xs text-slate-700 uppercase tracking-[0.3em] relative z-10">Featured Media</span>
@@ -204,17 +210,22 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                                     {/* Image Container */}
                                     <div className="h-64 sm:h-72 w-full bg-slate-900 relative overflow-hidden border-b border-slate-200">
                                         {article.mainImage?.asset?.url ? (
-                                            <img
+                                            <Image
                                                 src={article.mainImage.asset.url}
                                                 alt={article.title}
-                                                className="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                                                fill
+                                                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                className="object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                                                unoptimized
                                             />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center bg-slate-900 text-slate-800 relative">
-                                                <img 
-                                                    src="/images/media/news-placeholder.webp" 
-                                                    alt="IFAN News Placeholder" 
-                                                    className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale"
+                                                <Image
+                                                    src="/images/media/news-placeholder.webp"
+                                                    alt="IFAN News Placeholder"
+                                                    fill
+                                                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                    className="object-cover opacity-20 grayscale"
                                                 />
                                                 <span className="font-black text-6xl tracking-tighter relative z-10">IFAN</span>
                                             </div>

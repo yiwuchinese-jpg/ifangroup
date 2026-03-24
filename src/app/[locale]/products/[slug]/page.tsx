@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ArrowRight, FileText, ShieldCheck, Box } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 type StaticProductSlug = {
@@ -64,10 +65,13 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
                         {/* Image Section */}
                         <div className="w-full lg:w-1/2">
                             <div className="aspect-square bg-slate-50 border border-slate-100 rounded-3xl overflow-hidden relative group">
-                                <img 
-                                    src={product.mainImage?.asset?.url || localImagePath} 
+                                <Image
+                                    src={product.mainImage?.asset?.url || localImagePath}
                                     alt={product.name}
-                                    className="w-full h-full object-contain p-12 transition-transform duration-700 group-hover:scale-110"
+                                    fill
+                                    sizes="(min-width: 1024px) 50vw, 100vw"
+                                    className="object-contain p-12 transition-transform duration-700 group-hover:scale-110"
+                                    unoptimized={Boolean(product.mainImage?.asset?.url)}
                                 />
                                 <div className="absolute top-6 left-6">
                                     <span className="px-3 py-1 bg-brand-600 text-white text-[10px] font-bold tracking-widest uppercase rounded-full">

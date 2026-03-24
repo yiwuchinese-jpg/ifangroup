@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
 
@@ -12,7 +13,7 @@ export default function Footer() {
                     
                     {/* Brand Column */}
                     <div className="lg:col-span-1">
-                        <img src="/logo-white.png" alt="IFAN Group" className="h-10 mb-8" />
+                        <Image src="/logo-white.png" alt="IFAN Group" width={160} height={40} className="h-10 w-auto mb-8" priority={false} />
                         <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-xs">
                             {t("desc")}
                         </p>

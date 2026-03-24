@@ -7,6 +7,7 @@ import { PortableText } from "@portabletext/react";
 import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import Image from "next/image";
 import ReadingProgress from "@/components/news/ReadingProgress";
 import ArticleTOC from "@/components/news/ArticleTOC";
 import ArticleShare from "@/components/news/ArticleShare";
@@ -169,7 +170,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                             <span className="block text-slate-400 mb-2 text-[10px]">Authorizing Officer</span>
                                             <span className="flex items-center gap-2 text-slate-900 font-bold">
                                                 {article.authorImage ? (
-                                                    <img src={article.authorImage} alt={article.authorName} className="w-6 h-6 object-cover grayscale" />
+                                                    <Image src={article.authorImage} alt={article.authorName} width={24} height={24} className="w-6 h-6 object-cover grayscale" unoptimized />
                                                 ) : (
                                                     <User className="w-4 h-4 text-brand-600" />
                                                 )}
@@ -185,10 +186,13 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                     {/* Full-Bleed Structural Image Divider */}
                     {article.mainImage?.asset?.url && (
                         <div className="w-full h-[60vh] lg:h-[75vh] bg-slate-900 border-b border-slate-200 relative group overflow-hidden">
-                            <img
+                            <Image
                                 src={article.mainImage.asset.url}
                                 alt={article.title}
-                                className="w-full h-full object-cover filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                                fill
+                                sizes="100vw"
+                                className="object-cover filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                                unoptimized
                             />
                             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.2)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none mix-blend-overlay" />
                         </div>
@@ -254,10 +258,13 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
 
                                             <div className="h-56 w-full bg-slate-900 relative overflow-hidden border-b border-slate-200">
                                                 {relArticle.mainImage?.asset?.url ? (
-                                                    <img
+                                                    <Image
                                                         src={relArticle.mainImage.asset.url}
                                                         alt={relArticle.title}
-                                                        className="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                                                        fill
+                                                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                        className="object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                                                        unoptimized
                                                     />
                                                 ) : (
                                                     <div className="w-full h-full flex items-center justify-center bg-slate-900 text-slate-800">
