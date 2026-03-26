@@ -64,7 +64,7 @@ export default async function ProductsPage() {
                     {/* Background Image / Overlay */}
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                         <Image
-                            src="/images/static/products-hero.webp"
+                            src="https://cdn.sanity.io/images/m2e07kon/production/3660936ae89c0d7a15ce5ef1867ab020f93365a1-1000x667.jpg"
                             alt="IFAN Global Engineering Components"
                             fill
                             priority
@@ -180,7 +180,7 @@ export default async function ProductsPage() {
                                 {/* Large visual grid to represent 'Factory' scale */}
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="relative w-full h-64 bg-slate-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                                        <Image src="/images/static/products-factory.webp" alt="Factory Floor" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover hover:scale-105 transition-transform duration-700" />
+                                        <Image src="https://cdn.sanity.io/images/m2e07kon/production/c93e1d6659ee50966f05ec4c7b640139261f1f2d-1000x667.jpg" alt="Factory Floor" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover hover:scale-105 transition-transform duration-700" />
                                     </div>
                                     <div className="grid grid-rows-2 gap-4 h-64">
                                         <div className="w-full bg-brand-600 rounded-3xl overflow-hidden shadow-lg p-6 flex flex-col justify-between text-white hover:bg-brand-700 transition-colors">
@@ -191,7 +191,7 @@ export default async function ProductsPage() {
                                             </div>
                                         </div>
                                         <div className="relative w-full bg-slate-200 rounded-3xl overflow-hidden shadow-lg">
-                                            <Image src="/images/static/products-lab.webp" alt="Laboratory Testing" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover hover:scale-105 transition-transform duration-700" />
+                                            <Image src="https://cdn.sanity.io/images/m2e07kon/production/21577957c789aaa1b79b79de6d86078c07f13480-1000x667.jpg" alt="Laboratory Testing" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover hover:scale-105 transition-transform duration-700" />
                                         </div>
                                     </div>
                                 </div>

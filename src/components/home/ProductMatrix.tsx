@@ -9,7 +9,7 @@ const categories = [
     id: "ppr",
     title: "PPR Potable Water Systems",
     description: "Engineered from 100% Hyosung R200P. The undisputed industry standard for zero-leakage, 50-year lifespan water distribution.",
-    image: "/images/static/home-cat-ppr.webp",
+    image: "https://cdn.sanity.io/images/m2e07kon/production/652824310cdbe7f4c48eb5a887974abb33dc32fe-1000x667.jpg",
     features: ["Acoustic Insulation", "Antimicrobial Layers", "PN20 / PN25 Class Rated"],
     link: "/categories/ppr"
     },
@@ -17,7 +17,7 @@ const categories = [
     id: "pex",
     title: "PEX & Radiant Heating",
     description: "High-flexibility, cross-linked tubing with EVOH oxygen barriers. Designed for extreme thermal cycling in modern radiant heating.",
-    image: "/images/static/home-cat-pex.webp",
+    image: "https://cdn.sanity.io/images/m2e07kon/production/1782650a46f74ecc170495cfff71cd400e7ddbf4-1000x667.jpg",
     features: ["EVOH Oxygen Barrier", "PEX-a / PEX-b", "Complete Underfloor Manifolds"],
     link: "/categories/pex-ppsu"
     },
@@ -25,7 +25,7 @@ const categories = [
     id: "brass",
     title: "Forged Brass Valves",
     description: "Precision-machined European standard brass. Heavy-weight forging ensures absolute tolerance against burst pressure and corrosion.",
-    image: "/images/static/home-cat-brass.webp",
+    image: "https://cdn.sanity.io/images/m2e07kon/production/ebfccb028632f2fe0b4a1e3b1985ff5dfd3f93f0-1000x667.jpg",
     features: ["CW617N Pure Brass", "Heavy Duty Forged Body", "Ball Valves & Bibcocks"],
     link: "/categories/hvac-valves"
     },
@@ -33,7 +33,7 @@ const categories = [
     id: "hdpe",
     title: "HDPE Infrastructure",
     description: "High-density infrastructure piping for municipal water grids, mining, and industrial chemical transport. Unyielding strength.",
-    image: "/images/static/home-cat-hdpe.webp",
+    image: "https://cdn.sanity.io/images/m2e07kon/production/3ca80723d6de9d17bd64d31d306f245cae5824fc-1000x667.jpg",
     features: ["Butt Fusion Ready", "Absolute Chemical Immunity", "Large Diameter Capable"],
     link: "/categories/hdpe"
     }

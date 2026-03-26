@@ -102,7 +102,7 @@ export default function ContactUsPage() {
                     {/* Background Image / Overlay */}
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                         <img
-                            src="/images/static/contact-hero.webp"
+                            src="https://cdn.sanity.io/images/m2e07kon/production/3ed3a3799cce88a431cd3913c4dabe45041ca50d-1000x750.jpg"
                             alt={t("title")}
                             className="w-full h-full object-cover opacity-75 select-none scale-105"
                             draggable={false}

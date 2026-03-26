@@ -68,14 +68,14 @@ export default function WhyChooseUs() {
  <div className="lg:w-1/2 w-full">
  <div className="grid grid-cols-2 gap-4">
  <img
- src="/images/static/home-why-1.webp"
+ src="https://cdn.sanity.io/images/m2e07kon/production/9302f30e8404394aec8da33fdb856ead7d289536-1000x1333.jpg"
  alt="Automated production line"
  className="w-full h-80 object-cover shadow-sm select-none"
  draggable={false}
  onContextMenu={(e) => e.preventDefault()}
  />
  <img
- src="/images/static/home-why-2.webp"
+ src="https://cdn.sanity.io/images/m2e07kon/production/756f033bc061de00fa8b8a6cc049a9854870b966-1000x667.jpg"
  alt="CNAS Lab Testing"
  className="w-full h-80 object-cover mt-12 shadow-sm select-none"
  draggable={false}

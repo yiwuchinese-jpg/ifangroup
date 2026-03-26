@@ -10,28 +10,28 @@ const collections = [
  id:"ppr-piping",
  title:"PPR Potable Water Network",
  description:"Hyosung R200P material. Impeccable hygiene and seamless fusion for drinking water grids.",
- image:"/images/static/home-feat-1.webp",
+ image:"https://cdn.sanity.io/images/m2e07kon/production/652824310cdbe7f4c48eb5a887974abb33dc32fe-1000x667.jpg",
  link:"/categories/ppr"
  },
  {
  id:"pex-systems",
  title:"PEX Radiant Heating",
  description:"Cross-linked flexibility with EVOH oxygen barrier for maximal thermal energy transfer.",
- image:"/images/static/home-feat-2.webp",
+ image:"https://cdn.sanity.io/images/m2e07kon/production/1782650a46f74ecc170495cfff71cd400e7ddbf4-1000x667.jpg",
  link:"/categories/pex-ppsu"
  },
  {
  id:"brass-valves",
  title:"Precision Flow",
  description:"Forged Brass Valves for reliable control in diverse plumbing and industrial applications.",
- image:"/images/static/home-feat-3.webp",
+ image:"https://cdn.sanity.io/images/m2e07kon/production/ebfccb028632f2fe0b4a1e3b1985ff5dfd3f93f0-1000x667.jpg",
  link:"/categories/hvac-valves"
  },
  {
  id:"hdpe-infrastructure",
  title:"HDPE Infrastructure",
  description:"High-density strength for large-scale municipal water grids and chemical transport.",
- image:"/images/static/home-feat-4.webp",
+ image:"https://cdn.sanity.io/images/m2e07kon/production/3ca80723d6de9d17bd64d31d306f245cae5824fc-1000x667.jpg",
  link:"/categories/hdpe"
  }
 ];

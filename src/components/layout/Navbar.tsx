@@ -283,7 +283,7 @@ export default function Navbar() {
                                 <div className="col-span-4 bg-slate-50 border border-slate-100 flex flex-col justify-between overflow-hidden relative group">
                                     <div className="absolute inset-0 z-0">
                                         <img
-                                            src="/images/static/nav-products-bg.webp"
+                                            src="https://cdn.sanity.io/images/m2e07kon/production/652824310cdbe7f4c48eb5a887974abb33dc32fe-1000x667.jpg"
                                             alt="IFAN Products"
                                             className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 group-hover:scale-105"
                                         />
@@ -370,7 +370,7 @@ export default function Navbar() {
                                 <div className="col-span-4 bg-slate-50 border border-slate-100 flex flex-col justify-between overflow-hidden relative group">
                                     <div className="absolute inset-0 z-0">
                                         <img
-                                            src="/images/static/nav-company-bg.webp"
+                                            src="https://cdn.sanity.io/images/m2e07kon/production/5396721f3133e7f2d01534d7950da9574bacf34d-1000x667.jpg"
                                             alt="IFAN Manufacturing"
                                             className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 group-hover:scale-105"
                                         />
@@ -445,7 +445,7 @@ export default function Navbar() {
                                 <div className="col-span-4 bg-slate-50 border border-slate-100 flex flex-col justify-between overflow-hidden relative group">
                                     <div className="absolute inset-0 z-0">
                                         <img
-                                            src="/images/static/nav-resources-bg.webp"
+                                            src="https://cdn.sanity.io/images/m2e07kon/production/5c41f82ca6e6bd6cd73a70f538ea5160ccf0bfaf-1000x667.jpg"
                                             alt="IFAN Resources"
                                             className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 group-hover:scale-105"
                                         />

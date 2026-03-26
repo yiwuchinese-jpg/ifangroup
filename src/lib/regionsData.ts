@@ -28,9 +28,9 @@ export const REGIONS_DATA: RegionData[] = [
         benefit: "Lifetime outdoor durability. Total immunity to softening, guaranteeing zero-defect approvals on luxury villas and municipal networks.",
         color: "#f59e0b",
         images: [
-            "/images/static/mfg-hero.webp",
-            "/images/static/mat-brass.webp",
-            "/images/static/home-factory.webp",
+            "https://cdn.sanity.io/images/m2e07kon/production/966190299581547e2d029b775be4baa93efc76ae-1000x751.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/ebfccb028632f2fe0b4a1e3b1985ff5dfd3f93f0-1000x667.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/8170baee91d8ea785f294a8b0a3ba018b59a5088-1000x751.jpg",
         ],
         details: {
             intro: "The MENA region demands absolute resilience. Coastal desalination plants produce highly corrosive water, while inland projects face relentless solar radiation. IFAN's armored multi-layer systems are engineered specifically to neutralize these desert conditions.",
@@ -53,9 +53,9 @@ export const REGIONS_DATA: RegionData[] = [
         benefit: "Freeze-proof, fire-proof, and lead-free compliance. Slashes installation time by 60% while meeting the highest commercial safety standards.",
         color: "#3b82f6",
         images: [
-            "/images/static/home-cat-pex.webp",
-            "/images/static/products-factory.webp",
-            "/images/static/products-lab.webp",
+            "https://cdn.sanity.io/images/m2e07kon/production/1782650a46f74ecc170495cfff71cd400e7ddbf4-1000x667.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/c93e1d6659ee50966f05ec4c7b640139261f1f2d-1000x667.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/21577957c789aaa1b79b79de6d86078c07f13480-1000x667.jpg",
         ],
         details: {
             intro: "North America features the world's strictest drinking water regulations alongside uniquely brutal freeze-thaw cycles. IFAN's North American matrix focuses entirely on lead-free compliance and ultra-fast, flame-free installation methods to bypass the massive local labor costs.",
@@ -78,9 +78,9 @@ export const REGIONS_DATA: RegionData[] = [
         benefit: "Absolute protection for premium heating matrices and ultra-pure residential drinking water, securing the highest-tier real estate contracts.",
         color: "#10b981",
         images: [
-            "/images/static/home-feat-2.webp",
-            "/images/static/mat-pex.webp",
-            "/images/static/about-quality.webp",
+            "https://cdn.sanity.io/images/m2e07kon/production/1782650a46f74ecc170495cfff71cd400e7ddbf4-1000x667.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/a718308a35254900733daa81dd911178ed7ae5f0-1000x667.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/57a6549ec7046142d0cdac087144494608bd73df-1000x667.jpg",
         ],
         details: {
             intro: "Europe leads the world in low-carbon hydronic heating and micro-plastic elimination. IFAN supplies the heavy-duty oxygen barriers and thermostatic controls required to pass EU strict energy efficiency ratings (A++).",
@@ -103,9 +103,9 @@ export const REGIONS_DATA: RegionData[] = [
         benefit: "Captures both mass-market high-rises (with cost-effective antimicrobial PPR) and elite luxury developments (with premium stainless steel).",
         color: "#ec4899",
         images: [
-            "/images/static/home-cat-ppr.webp",
-            "/images/static/mat-ppr.webp",
-            "/images/static/home-brand-standard.webp",
+            "https://cdn.sanity.io/images/m2e07kon/production/652824310cdbe7f4c48eb5a887974abb33dc32fe-1000x667.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/f984abdaceab4d856a2cd2586d35ede3e3ef1602-1000x608.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/3ea62cc8ce082c37e90af35fdf66a20e6449955e-1000x562.jpg",
         ],
         details: {
             intro: "Spanning the hyper-dense Mega-cities of China, Japan, Korea, and the tropical expansion of Southeast Asia, this region requires a dual-pronged approach: absolute cost-efficiency for mass housing and uncompromising hygiene for luxury real estate.",
@@ -128,9 +128,9 @@ export const REGIONS_DATA: RegionData[] = [
         benefit: "Rock-solid, perfectly straight pipelines. Built to permanently withstand the ruthless pressure of massive district heating grids.",
         color: "#8b5cf6",
         images: [
-            "/images/static/home-feat-1.webp",
-            "/images/static/mfg-engineering-2.webp",
-            "/images/static/products-hero.webp",
+            "https://cdn.sanity.io/images/m2e07kon/production/652824310cdbe7f4c48eb5a887974abb33dc32fe-1000x667.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/a33688fd490fec1e980c25b17bbb4cc3d3653c5e-1000x549.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/3660936ae89c0d7a15ce5ef1867ab020f93365a1-1000x667.jpg",
         ],
         details: {
             intro: "The CIS region relies entirely on massive, high-temperature District Heating networks. IFAN’s fiberglass-infused systems are specifically designed to survive internal boiling temperatures while resisting massive external freeze shock.",
@@ -153,9 +153,9 @@ export const REGIONS_DATA: RegionData[] = [
         benefit: "Unbeatable wholesale velocity. Immediately replaces inferior rusty iron pipes with modern polymers without retraining the local workforce.",
         color: "#eab308",
         images: [
-            "/images/static/home-cat-hdpe.webp",
-            "/images/static/home-shipping.webp",
-            "/images/static/home-feat-4.webp",
+            "https://cdn.sanity.io/images/m2e07kon/production/3ca80723d6de9d17bd64d31d306f245cae5824fc-1000x667.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/37e467f653e92fb465fda3f10aefebed92407299-1000x750.jpg",
+            "https://cdn.sanity.io/images/m2e07kon/production/3ca80723d6de9d17bd64d31d306f245cae5824fc-1000x667.jpg",
         ],
         details: {
             intro: "Latin America provides massive wholesale volume opportunities driven by cost and legacy habits. IFAN dominates this sector by providing extreme value via perfectly compliant ASTM PVC glued systems and highly aggressive pricing on standard PPR.",

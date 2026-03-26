@@ -9,7 +9,7 @@ const YOUTUBE_VIDEOS = [
     {
         id: "1",
         videoId: "dQw4w9WgXcQ",
-        imageUrl: "/images/media/yt-cover-1.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/720bc4a8444441bb4e0f6dc3a9c4ce69769c001b-1000x667.jpg",
         title: "Inside the IFAN Mega-Factory: Automation Tour",
         category: "Factory Tour",
         duration: "12:45",
@@ -20,7 +20,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "2",
-        imageUrl: "/images/media/yt-cover-2.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/b99b57a8252f19970b0173dde912be7eb78e6df0-1000x667.jpg",
         title: "How It's Made: PPR Piping Systems",
         category: "Product Tech",
         duration: "08:20",
@@ -31,7 +31,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "3",
-        imageUrl: "/images/media/yt-cover-3.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/73ce3cef668f4c70c310f1c46e76a594275360c9-1000x667.jpg",
         title: "Understanding CW617N Brass Certification",
         category: "Engineering",
         duration: "05:15",
@@ -42,7 +42,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "4",
-        imageUrl: "/images/media/yt-cover-4.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/db60132aba0bc311dbc6b62e662df094e1b3cb39-1000x667.jpg",
         title: "IFAN Group Corporate Profile",
         category: "Corporate",
         duration: "03:45",
@@ -53,7 +53,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "5",
-        imageUrl: "/images/media/yt-cover-5.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/5323a501d48055d8318b8a6e3289f80237fb413c-1000x667.jpg",
         title: "Global Distribution Network Explained",
         category: "Logistics",
         duration: "06:30",
@@ -64,7 +64,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "6",
-        imageUrl: "/images/media/yt-cover-6.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/f2995fae702188bd7962b0b326d1b2c1ee791201-1000x750.jpg",
         title: "Quality Control: The 50-Point Inspection",
         category: "Engineering",
         duration: "09:12",
@@ -75,7 +75,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "7",
-        imageUrl: "/images/media/yt-cover-7.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/e9a379158eb5191ae3a6907671db898d8317858d-1000x750.jpg",
         title: "Installation Guide: PEX vs PPR",
         category: "Product Tech",
         duration: "14:20",
@@ -86,7 +86,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "8",
-        imageUrl: "/images/media/yt-cover-8.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/27c79fe5409bf7fbcff8f771507839cd1e1564fb-1000x667.jpg",
         title: "Future of Heating: Radiant Systems",
         category: "Innovation",
         duration: "11:05",
@@ -97,7 +97,7 @@ const YOUTUBE_VIDEOS = [
     },
     {
         id: "9",
-        imageUrl: "/images/media/yt-cover-9.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/a336de00434444d242588f4363de7802be5f5a2a-1000x562.jpg",
         title: "Behind the Scenes: R&D Laboratory",
         category: "Innovation",
         duration: "07:45",

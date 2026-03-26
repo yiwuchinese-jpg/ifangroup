@@ -8,19 +8,19 @@ const materials = [
  id:"brass",
  name:"CW617N Pure Brass",
  description:"European standard forged brass ensuring absolute tolerance against burst pressure and zero heavy-metal leaching.",
- image: "/images/static/mat-brass.webp", // Working Unsplash metal image
+ image: "https://cdn.sanity.io/images/m2e07kon/production/ebfccb028632f2fe0b4a1e3b1985ff5dfd3f93f0-1000x667.jpg", // Working Unsplash metal image
  },
  {
  id:"ppr",
  name:"100% Hyosung R200P",
  description:"Sourced globally from top-tier chemical conglomerates. The foundational polymer for our 50-year lifespan guarantee.",
- image: "/images/static/mat-ppr.webp", // Working Unsplash pipes
+ image: "https://cdn.sanity.io/images/m2e07kon/production/f984abdaceab4d856a2cd2586d35ede3e3ef1602-1000x608.jpg", // Working Unsplash pipes
  },
  {
  id:"pex",
  name:"Cross-Linked EVOH",
  description:"Advanced multi-layer engineering incorporating an impeccable oxygen barrier to preserve heating system integrity.",
- image: "/images/static/mat-pex.webp", // Working Unsplash tubes
+ image: "https://cdn.sanity.io/images/m2e07kon/production/a718308a35254900733daa81dd911178ed7ae5f0-1000x667.jpg", // Working Unsplash tubes
  }
 ];
 

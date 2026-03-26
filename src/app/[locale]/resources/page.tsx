@@ -39,7 +39,7 @@ export default function ResourcesPage() {
  {/* Background Image / Overlay */}
  <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
  <img
- src="/images/static/resources-hero.webp"
+ src="https://cdn.sanity.io/images/m2e07kon/production/2f43884f0cdbf7225395b613da89fdad072ab271-1000x667.jpg"
  alt="IFAN Engineering Data Repository"
  className="w-full h-full object-cover opacity-75 select-none scale-105"
  draggable={false}
@@ -92,7 +92,7 @@ export default function ResourcesPage() {
 
      <div className="mt-8 border border-slate-200 bg-slate-50">
       <img
-       src="/images/static/nav-resources-bg.webp"
+       src="https://cdn.sanity.io/images/m2e07kon/production/5c41f82ca6e6bd6cd73a70f538ea5160ccf0bfaf-1000x667.jpg"
        alt="IFAN resource center"
        className="h-56 w-full object-cover"
        draggable={false}
@@ -169,7 +169,7 @@ export default function ResourcesPage() {
     <div className="bg-white">
      <div className="border-b border-slate-200 bg-slate-100">
       <img
-       src="/images/static/products-factory.webp"
+       src="https://cdn.sanity.io/images/m2e07kon/production/c93e1d6659ee50966f05ec4c7b640139261f1f2d-1000x667.jpg"
        alt="IFAN factory support"
        className="h-56 w-full object-cover"
        draggable={false}

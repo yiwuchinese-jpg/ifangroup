@@ -8,7 +8,7 @@ import { useState, useMemo } from "react";
 const INSTAGRAM_POSTS = [
     {
         id: "1",
-        imageUrl: "/images/media/ig-post-1.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/231faa11741f9c1ce9ea9afd2448628518048f37-1000x750.jpg",
         caption: "Precision engineering at our core. State-of-the-art CNC machining ensuring perfect tolerances for our new CW617N brass valve series.",
         category: "Factory",
         likes: 342,
@@ -17,7 +17,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "2",
-        imageUrl: "/images/media/ig-post-2.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/12b7b52a70c993c96ad74b31ea8737947fb95813-1000x750.jpg",
         caption: "Global infrastructure built on IFAN reliability. Over 10,000 km of our PPR pipes installed this year alone.",
         category: "Projects",
         likes: 512,
@@ -26,7 +26,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "3",
-        imageUrl: "/images/media/ig-post-3.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/f43e152f68a265ec2f79c7a3f2ccb4fa00429c31-1000x581.jpg",
         caption: "Our automated assembly line pushing the boundaries of daily production output without compromising a single quality check.",
         category: "Factory",
         likes: 289,
@@ -35,7 +35,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "4",
-        imageUrl: "/images/media/ig-post-4.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/cd4d3cc7e54291c61d9ccfd731a1cbd652ab7fc9-1000x750.jpg",
         caption: "Team IFAN at the International Builders' Show. Thank you to everyone who stopped by our booth!",
         category: "Events",
         likes: 678,
@@ -44,7 +44,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "5",
-        imageUrl: "/images/media/ig-post-5.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/fd90bb8a4faca5625082d4339f974611eb359ea9-1000x750.jpg",
         caption: "Quality control is not an afterthought, it's our foundation. Every batch tested to exceed international standards.",
         category: "Quality",
         likes: 421,
@@ -53,7 +53,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "6",
-        imageUrl: "/images/media/ig-post-6.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/c9665306e03454c24bd5ac2d43a797e7469226c1-1000x750.jpg",
         caption: "The scale of our logistics network ensures your project stays on schedule, no matter where in the world you are.",
         category: "Logistics",
         likes: 890,
@@ -62,7 +62,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "7",
-        imageUrl: "/images/media/ig-post-7.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/bf0c6736066ebe39e44fa2062bf32bedf4fbc7ef-1000x667.jpg",
         caption: "Innovation never sleeps. Our R&D team testing the next generation of radiant heating systems.",
         category: "R&D",
         likes: 534,
@@ -71,7 +71,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "8",
-        imageUrl: "/images/media/ig-post-8.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/e52e6ee7e0b71594d5045fdf2219dd7c5953c71e-1000x750.jpg",
         caption: "Seamless integration. See how our PEX systems provide flexibility and durability in complex installations.",
         category: "Projects",
         likes: 412,
@@ -80,7 +80,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "9",
-        imageUrl: "/images/media/ig-post-9.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/b01d5cb669a0ffb77db69f33a8e4f5774415c5c7-1000x750.jpg",
         caption: "Sustainability in manufacturing. We're proud to announce our new water recycling initiative on the factory floor.",
         category: "Sustainability",
         likes: 921,
@@ -89,7 +89,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "10",
-        imageUrl: "/images/media/ig-post-10.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/720bc4a8444441bb4e0f6dc3a9c4ce69769c001b-1000x667.jpg",
         caption: "Throwback to our founding in 1993. Over 30 years of engineering excellence.",
         category: "Culture",
         likes: 645,
@@ -98,7 +98,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "11",
-        imageUrl: "/images/media/ig-post-11.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/b99b57a8252f19970b0173dde912be7eb78e6df0-1000x667.jpg",
         caption: "Molding the future. Inside our high-pressure injection molding facility.",
         category: "Factory",
         likes: 312,
@@ -107,7 +107,7 @@ const INSTAGRAM_POSTS = [
     },
     {
         id: "12",
-        imageUrl: "/images/media/ig-post-12.webp",
+        imageUrl: "https://cdn.sanity.io/images/m2e07kon/production/73ce3cef668f4c70c310f1c46e76a594275360c9-1000x667.jpg",
         caption: "Every single fitting matters to the master architect. Build with IFAN.",
         category: "Projects",
         likes: 723,

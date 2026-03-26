@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         siteName: "IFAN Group",
         images: [
             {
-                url: "/images/static/og-image.webp",
+                url: "https://cdn.sanity.io/images/m2e07kon/production/0e0247d4fdac183d018fe72ec7b5079243abf18b-1000x562.jpg",
                 width: 1200,
                 height: 630,
                 alt: "IFAN Group Manufacturing Facility",

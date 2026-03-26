@@ -33,7 +33,7 @@ export default function BrandMatrix() {
                         <div className="h-64 relative bg-slate-200">
                             {/* Placeholder for massive warehouse/volume shipments */}
                             <img
-                                src="/images/static/home-brand-standard.webp"
+                                src="https://cdn.sanity.io/images/m2e07kon/production/3ea62cc8ce082c37e90af35fdf66a20e6449955e-1000x562.jpg"
                                 alt={t("ifanStandardBadge")}
                                 className="w-full h-full object-cover grayscale opacity-90 select-none"
                                 draggable={false}
@@ -88,7 +88,7 @@ export default function BrandMatrix() {
                         <div className="h-64 relative bg-slate-900">
                             {/* Placeholder for high-end luxury bathroom/architecture */}
                             <img
-                                src="/images/static/home-brand-plus.webp"
+                                src="https://cdn.sanity.io/images/m2e07kon/production/b01d5cb669a0ffb77db69f33a8e4f5774415c5c7-1000x750.jpg"
                                 alt={t("ifanPlusBadge")}
                                 className="w-full h-full object-cover border-b border-white/10 select-none"
                                 draggable={false}

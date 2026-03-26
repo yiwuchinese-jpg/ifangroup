@@ -28,7 +28,7 @@ export default async function NewsIndexPage({ params }: { params: Promise<{ loca
                     {/* Background Image / Overlay */}
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                         <img
-                            src="/images/static/news-hero.webp"
+                            src="https://cdn.sanity.io/images/m2e07kon/production/ca99458f91d585c2c71fd9a9ba4d3b1c843948d5-1000x750.jpg"
                             alt="IFAN Global Insights"
                             className="w-full h-full object-cover opacity-75 select-none scale-105"
                             draggable={false}

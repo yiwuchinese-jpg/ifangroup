@@ -76,7 +76,7 @@ export default function GlobalFootprint() {
  <div className="lg:w-1/2 w-full">
  <div className="relative overflow-hidden shadow-sm h-[600px] border border-slate-200">
  <img
- src="/images/static/home-shipping.webp"
+ src="https://cdn.sanity.io/images/m2e07kon/production/37e467f653e92fb465fda3f10aefebed92407299-1000x750.jpg"
  alt="Global shipping containers port"
  className="w-full h-full object-cover select-none"
  draggable={false}

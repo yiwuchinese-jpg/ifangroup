@@ -25,7 +25,7 @@ export default function FactoryScale() {
  className="absolute inset-0 w-full h-[120%] -top-[10%]"
  >
  <img
- src="/images/static/home-factory.webp"
+ src="https://cdn.sanity.io/images/m2e07kon/production/8170baee91d8ea785f294a8b0a3ba018b59a5088-1000x751.jpg"
  alt="IFAN Advanced Manufacturing Facility"
  className="w-full h-full object-cover select-none"
  draggable={false}

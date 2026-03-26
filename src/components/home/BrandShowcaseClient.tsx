@@ -31,22 +31,22 @@ const gallerySlides = [
     {
         title: "PPR system production",
         subtitle: "Clean pipe runs and workshop output selected from the PPR category gallery",
-        image: "/images/categories/ppr/gallery-3.webp",
+        image: "https://cdn.sanity.io/images/m2e07kon/production/cf091355b30f8a13ea651ca0ffba64826d7cf5f0-1000x750.jpg",
     },
     {
         title: "PEX installation details",
         subtitle: "Flexible heating and plumbing components drawn from the PEX & PPSU range",
-        image: "/images/categories/pex-ppsu/gallery-2.webp",
+        image: "https://cdn.sanity.io/images/m2e07kon/production/0980d72f75faa3af27c19a57c58170da6bf50bba-1000x538.jpg",
     },
     {
         title: "Valve and manifold lineup",
         subtitle: "Sharper brass product presentation sourced from the HVAC valves collection",
-        image: "/images/categories/hvac-valves/gallery-4.webp",
+        image: "https://cdn.sanity.io/images/m2e07kon/production/a4e07e29e1265063706bde47561d6176298b746f-1000x751.jpg",
     },
     {
         title: "Faucet product highlights",
         subtitle: "Cleaner retail-facing visuals selected from the faucets and accessories set",
-        image: "/images/categories/faucets/gallery-1.webp",
+        image: "https://cdn.sanity.io/images/m2e07kon/production/9c84e8d39dafc37d88fc604a32f523ebfa26f874-1000x745.jpg",
     },
 ];
 

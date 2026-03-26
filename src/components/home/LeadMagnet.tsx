@@ -10,7 +10,7 @@ export default function LeadMagnet() {
             {/* Background Image Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/images/static/home-lead-bg.webp"
+                    src="https://cdn.sanity.io/images/m2e07kon/production/0e0247d4fdac183d018fe72ec7b5079243abf18b-1000x562.jpg"
                     alt={t("title")}
                     className="w-full h-full object-cover opacity-10 mix-blend-luminosity grayscale select-none"
                     draggable={false}
