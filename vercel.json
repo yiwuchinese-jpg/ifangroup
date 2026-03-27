@@ -8,12 +8,5 @@
   "regions": ["sfo1"],
   "env": {
     "NEXT_PUBLIC_VERCEL_ENV": "production"
-  },
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/en",
-      "permanent": false
-    }
-  ]
+  }
 }
