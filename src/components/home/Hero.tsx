@@ -24,6 +24,8 @@ export default function Hero() {
 
             {/* Immersive Background Video */}
             <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+                {/* Fallback gradient background when video is unavailable, placed behind the video */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800 -z-20" />
                 <video
                     ref={videoRef}
                     autoPlay
@@ -31,14 +33,12 @@ export default function Hero() {
                     muted
                     playsInline
                     onError={handleVideoError}
-                    className="w-full h-full object-cover scale-105"
+                    className="relative w-full h-full object-cover scale-105 -z-10"
                 >
                     <source src={videoSrc} type="video/mp4" />
                 </video>
-                {/* Fallback gradient background when video is unavailable */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" />
                 {/* Subtle gradient at the bottom to ensure the white text pops without washing out the video */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
             </div>
 
             <div className="container relative z-10 px-6 mx-auto">
