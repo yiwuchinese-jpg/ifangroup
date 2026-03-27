@@ -4,7 +4,7 @@ import React from "react";
 import { RegionData } from "@/lib/regionsData";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShieldAlert, Zap, Factory, ArrowRight, Cog, HardHat, FileCheck2, Globe2 } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export default function SolutionDetailClient({ region }: { region: RegionData }) {

@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { ArrowRight, Globe, ArrowUpRight, Users, PlayCircle } from "lucide-react";
 import ProductListClient from "@/app/[locale]/products/ProductListClient";

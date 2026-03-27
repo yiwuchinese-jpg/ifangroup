@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight, CheckCircle2, ShieldCheck, TrendingUp, Globe, Award } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { CategoryCopy } from "@/lib/categoryCopywriting";

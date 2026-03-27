@@ -6,7 +6,7 @@ import { OrbitControls, Html, useTexture, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { ArrowRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 interface Brand {

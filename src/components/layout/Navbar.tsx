@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { Menu, X, Globe, ChevronDown, Droplets, Flame, Hexagon, Component, Factory, Diamond, ArrowRight } from "lucide-react";

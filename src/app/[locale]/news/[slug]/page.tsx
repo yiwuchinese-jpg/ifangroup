@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Metadata } from "next";
 import Image from "next/image";
 import ReadingProgress from "@/components/news/ReadingProgress";

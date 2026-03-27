@@ -2,7 +2,7 @@ import { client } from "@/lib/sanity";
 import { allBrandsQuery } from "@/lib/queries";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import BrandSolarSystemClient from "./BrandSolarSystemClient";
 
