@@ -35,8 +35,13 @@ type ProductDetail = {
 };
 
 export async function generateStaticParams() {
-    const products: StaticProductSlug[] = await client.fetch(`*[_type == "product"]{ "slug": slug.current }`);
-    return products.map((p) => ({ slug: p.slug }));
+    try {
+        const products: StaticProductSlug[] = await client.fetch(`*[_type == "product"]{ "slug": slug.current }`);
+        return products?.map((p) => ({ slug: p.slug })) || [];
+    } catch (error) {
+        console.error("Products generateStaticParams failed:", error);
+        return [];
+    }
 }
 
 export default async function ProductDetailPage(props: { params: Promise<{ slug: string }> }) {
