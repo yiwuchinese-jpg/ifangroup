@@ -4,23 +4,39 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
 
 export default function Hero() {
     const t = useTranslations("hero");
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    const handleVideoError = () => {
+        if (videoRef.current) {
+            videoRef.current.style.display = "none";
+        }
+    };
+
+    // 优先使用环境变量中的 CDN URL，否则回退到本地路径
+    const videoSrc = process.env.NEXT_PUBLIC_HERO_VIDEO_URL || "/images/static/home-hero.mp4";
+
     return (
         <section className="relative w-full h-screen min-h-[500px] md:min-h-[800px] flex items-end pb-20 md:pb-32 justify-start overflow-hidden bg-black">
 
             {/* Immersive Background Video */}
             <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                 <video
+                    ref={videoRef}
                     autoPlay
                     loop
                     muted
                     playsInline
+                    onError={handleVideoError}
                     className="w-full h-full object-cover scale-105"
                 >
-                    <source src="/images/static/home-hero.mp4" type="video/mp4" />
+                    <source src={videoSrc} type="video/mp4" />
                 </video>
+                {/* Fallback gradient background when video is unavailable */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" />
                 {/* Subtle gradient at the bottom to ensure the white text pops without washing out the video */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             </div>
