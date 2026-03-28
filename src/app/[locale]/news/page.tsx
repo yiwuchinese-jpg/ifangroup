@@ -9,8 +9,20 @@ import { getTranslations } from "next-intl/server";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-    title: "News & Insights | IFAN Group",
-    description: "Latest news, industry insights, and technical articles from IFAN Group - a global leader in premium plumbing systems.",
+    title: "News & Insights | Plumbing Industry Trends | IFAN Group",
+    description: "Latest news, industry insights, and technical articles from IFAN Group - a global leader in premium plumbing systems. Stay ahead with market analyses, product launches, and engineering breakthroughs.",
+    keywords: ["plumbing industry news", "PPR pipe market trends", "B2B plumbing insights", "IFAN Group news", "plumbing manufacturer updates"],
+    alternates: {
+        canonical: "https://ifanholding.com/en/news",
+        languages: {
+            en: "https://ifanholding.com/en/news",
+            es: "https://ifanholding.com/es/news",
+            pt: "https://ifanholding.com/pt/news",
+            ru: "https://ifanholding.com/ru/news",
+            ar: "https://ifanholding.com/ar/news",
+            fr: "https://ifanholding.com/fr/news",
+        },
+    },
 };
 
 export default async function NewsIndexPage({ params }: { params: Promise<{ locale: string }> }) {

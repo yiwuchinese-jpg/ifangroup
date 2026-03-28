@@ -34,6 +34,61 @@ type ProductDetail = {
     variants?: ProductVariant[];
 };
 
+export async function generateMetadata(props: { params: Promise<{ slug: string; locale: string }> }) {
+    const { slug, locale } = await props.params;
+    try {
+        const product: Pick<ProductDetail, "name" | "description" | "mainImage" | "categoryTitle" | "brandName"> | null =
+            await client.fetch(
+                `*[_type == "product" && slug.current == $slug][0]{
+                    name, description,
+                    mainImage { asset->{ url } },
+                    "categoryTitle": category->title,
+                    "brandName": brand->name
+                }`,
+                { slug }
+            );
+        if (!product) return {};
+        const baseUrl = "https://ifanholding.com";
+        const title = `${product.name} | Wholesale B2B | IFAN Group`;
+        const description =
+            product.description ||
+            `Buy ${product.name} wholesale direct from IFAN factory. CE certified, 50-year guarantee, bulk pricing for 120+ countries.`;
+        return {
+            title,
+            description,
+            keywords: [
+                product.name,
+                product.categoryTitle || "",
+                product.brandName || "",
+                "wholesale plumbing",
+                "OEM manufacturer China",
+                "factory direct pricing",
+            ].filter(Boolean),
+            openGraph: {
+                title: `${product.name} - Factory Direct Wholesale`,
+                description,
+                url: `${baseUrl}/${locale}/products/${slug}`,
+                images: product.mainImage?.asset?.url
+                    ? [{ url: product.mainImage.asset.url, width: 800, height: 800, alt: product.name }]
+                    : [],
+            },
+            alternates: {
+                canonical: `${baseUrl}/en/products/${slug}`,
+                languages: {
+                    en: `${baseUrl}/en/products/${slug}`,
+                    es: `${baseUrl}/es/products/${slug}`,
+                    pt: `${baseUrl}/pt/products/${slug}`,
+                    ru: `${baseUrl}/ru/products/${slug}`,
+                    ar: `${baseUrl}/ar/products/${slug}`,
+                    fr: `${baseUrl}/fr/products/${slug}`,
+                },
+            },
+        };
+    } catch {
+        return {};
+    }
+}
+
 export async function generateStaticParams() {
     try {
         const products: StaticProductSlug[] = await client.fetch(`*[_type == "product"]{ "slug": slug.current }`);

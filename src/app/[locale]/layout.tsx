@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "IFAN Group | Top Plumbing Manufacturer & Wholesale Supplier",
         description: "Source 10,000+ PPR, PEX, and brass valves directly from our 120,000m² mega-factory.",
-        url: "https://ifangroup.com",
+        url: "https://ifanholding.com",
         siteName: "IFAN Group",
         images: [
             {
@@ -42,14 +42,15 @@ export const metadata: Metadata = {
         description: "Direct B2B wholesale plumbing supplies. PPR, PEX & Brass.",
     },
     alternates: {
-        canonical: "/",
+        canonical: "https://ifanholding.com/en",
         languages: {
-            "en": "/",
-            "es": "/es",
-            "pt": "/pt",
-            "ru": "/ru",
-            "ar": "/ar",
-            "fr": "/fr",
+            "en": "https://ifanholding.com/en",
+            "es": "https://ifanholding.com/es",
+            "pt": "https://ifanholding.com/pt",
+            "ru": "https://ifanholding.com/ru",
+            "ar": "https://ifanholding.com/ar",
+            "fr": "https://ifanholding.com/fr",
+            "x-default": "https://ifanholding.com/en",
         },
     },
 };
