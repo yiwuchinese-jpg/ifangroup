@@ -1,0 +1,46 @@
+
+> ifangroup-web@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.4s
+  Running TypeScript ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/6) ...
+  Generating static pages using 9 workers (1/6) 
+  Generating static pages using 9 workers (2/6) 
+  Generating static pages using 9 workers (4/6) 
+✓ Generating static pages using 9 workers (6/6) in 60.6ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/about-us
+├ ƒ /[locale]/brands
+├ ● /[locale]/brands/[slug]
+├ ƒ /[locale]/categories/[slug]
+├ ƒ /[locale]/contact
+├ ƒ /[locale]/global-solutions
+├ ● /[locale]/global-solutions/[slug]
+├ ƒ /[locale]/manufacturing-oem
+├ ƒ /[locale]/media
+├ ƒ /[locale]/news
+├ ƒ /[locale]/news/[slug]
+├ ƒ /[locale]/products
+├ ● /[locale]/products/[slug]
+├ ƒ /[locale]/resources
+├ ƒ /api/revalidate
+└ ƒ /api/subscribe
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
