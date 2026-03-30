@@ -3,11 +3,15 @@ import { notFound } from"next/navigation";
 import Navbar from"@/components/layout/Navbar";
 import Footer from"@/components/layout/Footer";
 import SolutionDetailClient from"@/components/solutions/SolutionDetailClient";
+import { routing } from"@/i18n/routing";
 
 export function generateStaticParams() {
- return REGIONS_DATA.map((region) => ({
- slug: region.id,
- }));
+ return routing.locales.flatMap((locale) =>
+  REGIONS_DATA.map((region) => ({
+   locale,
+   slug: region.id,
+  }))
+ );
 }
 
 export async function generateMetadata(
