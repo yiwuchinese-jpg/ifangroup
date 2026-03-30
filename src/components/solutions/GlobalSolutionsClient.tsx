@@ -6,7 +6,7 @@ import { OrbitControls, Html } from"@react-three/drei";
 import * as THREE from"three";
 import { motion, AnimatePresence } from"framer-motion";
 import { X, ArrowRight, ShieldAlert, Zap, Factory, Globe } from"lucide-react";
-import Link from"next/link";
+import { Link } from"@/i18n/navigation";
 import Image from "next/image";
 import { REGIONS_DATA, RegionData } from"@/lib/regionsData";
 import { useTranslations } from "next-intl";
