@@ -105,7 +105,11 @@
     "brandMatrix": "Matrice de marque",
     "allRightsReserved": "Tous droits réservés.",
     "privacyPolicy": "politique de confidentialité",
-    "termsConditions": "Conditions générales"
+    "termsConditions": "Conditions générales",
+    "tutorialCenter": "Tutorial Center",
+    "tool731": "IFAN 731 Tool Manual",
+    "tool732": "IFAN 732 Tool Manual",
+    "tool733": "IFAN 733 Tool Manual"
   },
   "contact": {
     "title": "Contactez-nous",

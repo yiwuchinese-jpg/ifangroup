@@ -9,10 +9,10 @@ export default function Footer() {
     return (
         <footer className="bg-slate-950 text-white pt-24 pb-12 border-t border-white/5">
             <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
                     
                     {/* Brand Column */}
-                    <div className="lg:col-span-1">
+                    <div className="lg:col-span-2">
                         <Image src="/logo-white.png" alt="IFAN Group" width={160} height={40} className="h-10 w-auto mb-8" priority={false} />
                         <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-xs">
                             {t("desc")}
@@ -43,6 +43,19 @@ export default function Footer() {
                             <li><Link href="/brands" className="text-slate-400 hover:text-white transition-colors">{t("brandMatrix")}</Link></li>
                             <li><Link href="/resources" className="text-slate-400 hover:text-white transition-colors">{t("resources")}</Link></li>
                             <li><Link href="/contact" className="text-slate-400 hover:text-white transition-colors">{t("contact")}</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Tutorial Center */}
+                    <div>
+                        <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-sm flex items-center gap-2">
+                             <span className="w-2 h-2 rounded-full bg-brand-500" />
+                             {t("tutorialCenter")}
+                        </h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                            <li><Link href="/Tutorial/tools/731" className="text-slate-400 hover:text-white transition-colors">{t("tool731")}</Link></li>
+                            <li><Link href="/Tutorial/tools/732" className="text-slate-400 hover:text-white transition-colors">{t("tool732")}</Link></li>
+                            <li><Link href="/Tutorial/tools/733" className="text-slate-400 hover:text-white transition-colors">{t("tool733")}</Link></li>
                         </ul>
                     </div>
 

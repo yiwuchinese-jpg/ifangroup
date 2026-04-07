@@ -65,5 +65,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error("[sitemap] Failed to fetch brands:", error);
     }
 
-    return [...staticRoutes, ...productRoutes, ...brandRoutes];
+    // 动态工具指南页
+    let toolRoutes: MetadataRoute.Sitemap = [];
+    try {
+        const toolsData = { "731": {}, "732": {}, "733": {} }; // Quick mock of toolsData keys
+        toolRoutes = LOCALES.flatMap((locale) =>
+            Object.keys(toolsData).map((id) => ({
+                url: `${BASE_URL}/${locale}/Tutorial/tools/${id}`,
+                lastModified: new Date(),
+                changeFrequency: "monthly" as const,
+                priority: 0.85,
+            }))
+        );
+    } catch (error) {
+        console.error("[sitemap] Failed to generate tool routes:", error);
+    }
+
+    return [...staticRoutes, ...productRoutes, ...brandRoutes, ...toolRoutes];
 }
