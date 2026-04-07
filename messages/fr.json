@@ -1084,5 +1084,12 @@
         }
       }
     }
+  },
+  "tools": {
+    "video": "Vidéo d'Opération",
+    "manual": "Manuel d'Opération",
+    "backToProducts": "Retour aux Produits",
+    "requestQuote": "Demander un Devis",
+    "title": "Manuel de l'Outil IFAN {id}"
   }
 }

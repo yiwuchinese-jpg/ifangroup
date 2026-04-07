@@ -1084,5 +1084,12 @@
       "getQuote": "Get a Quote",
       "salesHotline": "Sales Hotline"
     }
+  },
+  "tools": {
+    "video": "Video de Operación",
+    "manual": "Manual de Operación",
+    "backToProducts": "Volver a Productos",
+    "requestQuote": "Solicitar Cotización",
+    "title": "Manual de Herramienta IFAN {id}"
   }
 }

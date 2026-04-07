@@ -59,12 +59,19 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 }
 
 // Optional: static generation for known brands
+const locales = ['en', 'es', 'pt', 'ru', 'ar', 'fr'];
+
 export async function generateStaticParams() {
     try {
         const brands = await client.fetch(`*[_type =="brand"]{"slug": slug.current }`);
-        return brands?.map((b: { slug: string }) => ({
-            slug: b.slug,
-        })) || [];
+        const slugs = brands?.map((b: { slug: string }) => b.slug) || [];
+        
+        return locales.flatMap((locale) => 
+            slugs.map((slug: string) => ({
+                locale,
+                slug,
+            }))
+        );
     } catch (error) {
         console.error("Brands generateStaticParams failed:", error);
         return [];

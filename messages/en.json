@@ -754,16 +754,40 @@
       "desc": "Explore our comprehensive engineering components. Select products to view deep technical specifications, tolerances, and packaging metrics. Contact our enterprise team for volume manufacturing quotes."
     },
     "quickJump": {
-      "ppr": { "name": "PPR Systems", "desc": "Potable Water & Heating" },
-      "pex": { "name": "PEX Series", "desc": "Radiant Floor Heating" },
-      "brass": { "name": "Brass Valves", "desc": "Heavy-Duty Control" },
-      "pe": { "name": "PE Fittings", "desc": "Municipal & Industrial" }
+      "ppr": {
+        "name": "PPR Systems",
+        "desc": "Potable Water & Heating"
+      },
+      "pex": {
+        "name": "PEX Series",
+        "desc": "Radiant Floor Heating"
+      },
+      "brass": {
+        "name": "Brass Valves",
+        "desc": "Heavy-Duty Control"
+      },
+      "pe": {
+        "name": "PE Fittings",
+        "desc": "Municipal & Industrial"
+      }
     },
     "stats": {
-      "skus": { "title": "10,000+", "desc": "Active SKUs" },
-      "years": { "title": "30+ Years", "desc": "Manufacturing" },
-      "quality": { "title": "100% Quality", "desc": "ISO 9001 Tested" },
-      "scale": { "title": "Global Scale", "desc": "Exporting to 120+ Countries" }
+      "skus": {
+        "title": "10,000+",
+        "desc": "Active SKUs"
+      },
+      "years": {
+        "title": "30+ Years",
+        "desc": "Manufacturing"
+      },
+      "quality": {
+        "title": "100% Quality",
+        "desc": "ISO 9001 Tested"
+      },
+      "scale": {
+        "title": "Global Scale",
+        "desc": "Exporting to 120+ Countries"
+      }
     },
     "catalog": {
       "title": "Complete Catalog Directory",
@@ -1016,5 +1040,12 @@
         }
       }
     }
+  },
+  "tools": {
+    "video": "Operation Video",
+    "manual": "Operation Manual",
+    "backToProducts": "Back to Products",
+    "requestQuote": "Request a Quote",
+    "title": "IFAN {id} Tool Manual"
   }
 }
