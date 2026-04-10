@@ -58,3 +58,45 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: 'Post creation failed', error: error.message }, { status: 500, headers: getCorsHeaders() });
   }
 }
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const perPage = parseInt(searchParams.get('per_page') || '100', 10);
+    
+    // Fetch latest articles from Sanity to build internal links pool
+    const query = `*[_type == "article"] | order(_createdAt desc)[0...$perPage] {
+      title,
+      slug,
+      wordpressId,
+      publishedAt,
+      _createdAt
+    }`;
+    const posts = await client.fetch(query, { perPage });
+
+    const protocol = request.headers.get('x-forwarded-proto') || 'https';
+    const host = request.headers.get('host') || 'your-domain.com';
+
+    const formattedPosts = posts.map((post: any) => ({
+      id: parseInt(post.wordpressId) || Math.floor(Math.random() * 1000000),
+      date: post.publishedAt || post._createdAt,
+      slug: post.slug?.current || 'unknown-slug',
+      status: 'publish',
+      type: 'post',
+      link: `${protocol}://${host}/${post.slug?.current || ''}`,
+      title: { rendered: post.title },
+    }));
+
+    return NextResponse.json(formattedPosts, { 
+      status: 200, 
+      headers: {
+        ...getCorsHeaders(),
+        'X-WP-Total': String(posts.length),
+        'X-WP-TotalPages': '1'
+      }
+    });
+  } catch (error: any) {
+    return NextResponse.json({ message: 'Fetch posts failed', error: error.message }, { status: 500, headers: getCorsHeaders() });
+  }
+}
+
