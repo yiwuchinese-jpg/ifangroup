@@ -7,6 +7,19 @@ export async function OPTIONS() {
   return new NextResponse(null, { status: 200, headers: getCorsHeaders() });
 }
 
+export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  // Evolution 301 会先 GET 确认文章存在，我们返回 mock 数据让它继续走后续写入流程
+  return NextResponse.json({
+    id: parseInt(id),
+    date: new Date().toISOString(),
+    status: 'draft',
+    type: 'post',
+    title: { rendered: 'Draft Article' },
+    content: { rendered: '' },
+  }, { status: 200, headers: getCorsHeaders() });
+}
+
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
