@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { writeClient } from '@/lib/sanity-write';
 import { getCorsHeaders } from '../cors';
+import { setMediaUrl } from '../media-cache';
 
 export async function OPTIONS() {
   return NextResponse.json({}, { headers: getCorsHeaders() });
@@ -44,7 +45,10 @@ export async function POST(request: Request) {
     }
 
     const asset = await writeClient.assets.upload('image', buffer, { filename });
-    const numericId = Math.floor(Math.random() * 10000000); 
+    const numericId = Math.floor(Math.random() * 10000000);
+
+    // 缓存 numericId → Sanity CDN URL，供写文章时替换 HTML 图片链接使用
+    setMediaUrl(numericId, asset.url);
 
     await writeClient.patch(asset._id).set({
       title: numericId.toString(),

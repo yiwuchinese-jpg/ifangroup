@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { writeClient } from '@/lib/sanity-write';
 import { client } from '@/lib/sanity';
 import { getCorsHeaders } from '../cors';
+import { replaceWpImagesWithSanityUrls } from '../media-cache';
 
 export async function OPTIONS() {
   return NextResponse.json({}, { headers: getCorsHeaders() });
@@ -19,6 +20,9 @@ export async function POST(request: Request) {
     const seoTitle = meta?.rank_math_title || meta?.['_yoast_wpseo_title'] || '';
     const seoDescription = meta?.rank_math_description || meta?.['_yoast_wpseo_metadesc'] || '';
 
+    // 替换 AI 生成 HTML 里的 WordPress 内部图片链接 → Sanity CDN URL
+    const processedHtml = replaceWpImagesWithSanityUrls(contentHtml);
+
     let mainImageRef = undefined;
     if (featured_media && featured_media > 0) {
       // 从最新的 image 资产中去找，以匹配前面上传的图片
@@ -31,10 +35,10 @@ export async function POST(request: Request) {
     const numericWpId = String(Date.now()).slice(-6);
 
     const sanityDoc = {
-      _type: 'article', // 修改为 article, 原本为 post
+      _type: 'article',
       title: titleText,
       slug: { _type: 'slug', current: finalSlug },
-      htmlContent: contentHtml,
+      htmlContent: processedHtml,  // 使用替换图片链接后的 HTML
       seoTitle: seoTitle || undefined,
       seoDescription: seoDescription || undefined,
       wordpressId: numericWpId,

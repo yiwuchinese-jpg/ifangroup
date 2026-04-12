@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { writeClient } from '@/lib/sanity-write';
 import { client } from '@/lib/sanity';
 import { getCorsHeaders } from '../../cors';
+import { replaceWpImagesWithSanityUrls } from '../../media-cache';
 
 export async function OPTIONS() {
   return new NextResponse(null, { status: 200, headers: getCorsHeaders() });
@@ -44,6 +45,9 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     const seoTitle = meta?.rank_math_title || meta?.['_yoast_wpseo_title'] || meta?.['_aioseo_title'] || undefined;
     const seoDescription = meta?.rank_math_description || meta?.['_yoast_wpseo_metadesc'] || meta?.['_aioseo_description'] || undefined;
 
+    // 替换 AI 生成 HTML 里的 WordPress 内部图片链接 → Sanity CDN URL
+    const processedHtml = contentHtml ? replaceWpImagesWithSanityUrls(contentHtml) : undefined;
+
     // 寻找封面图（关联最新上传的图片资产）
     let mainImageRef = undefined;
     if (featured_media && featured_media > 0) {
@@ -62,7 +66,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       const patch = writeClient.patch(existingDoc._id);
       if (titleText) patch.set({ title: titleText });
       if (finalSlug) patch.set({ slug: { _type: 'slug', current: finalSlug } });
-      if (contentHtml) patch.set({ htmlContent: contentHtml });
+      if (processedHtml) patch.set({ htmlContent: processedHtml }); // 使用替换图片后的 HTML
       if (excerpt || seoDescription) patch.set({ description: excerpt || seoDescription });
       if (seoTitle) patch.set({ seoTitle });
       if (seoDescription) patch.set({ seoDescription });
@@ -74,7 +78,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
         _type: 'article',
         title: titleText || 'Untitled',
         slug: finalSlug ? { _type: 'slug', current: finalSlug } : undefined,
-        htmlContent: contentHtml,
+        htmlContent: processedHtml, // 使用替换图片后的 HTML
         description: excerpt || seoDescription,
         seoTitle,
         seoDescription,
