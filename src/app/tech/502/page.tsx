@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "IFAN 501 | Technical Specifications",
+  title: "IFAN 502 | Technical Specifications",
   description: "IFAN Group product technical documentation - 501 series.",
   robots: { index: false, follow: false },
 };
@@ -83,7 +83,7 @@ export default function Tech501Page() {
             }}
           />
           <span style={{ fontSize: "0.8rem", color: "#4a9eff", fontWeight: 600, letterSpacing: "0.1em" }}>
-            系列 · 501
+            系列 · 502
           </span>
         </div>
 
