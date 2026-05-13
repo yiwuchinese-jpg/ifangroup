@@ -14,9 +14,19 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="lg:col-span-2">
                         <Image src="/logo-white.png" alt="IFAN Group" width={160} height={40} className="h-10 w-auto mb-8" priority={false} />
-                        <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-xs">
+                        <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">
                             {t("desc")}
                         </p>
+                        <div className="space-y-3 text-sm text-slate-400 font-medium">
+                            <p className="flex items-center gap-3">
+                                <span className="text-brand-500 font-bold uppercase tracking-widest text-[10px]">Email:</span>
+                                <a href="mailto:ifanholding@gmail.com" className="hover:text-white transition-colors">ifanholding@gmail.com</a>
+                            </p>
+                            <p className="flex items-center gap-3">
+                                <span className="text-brand-500 font-bold uppercase tracking-widest text-[10px]">WhatsApp:</span>
+                                <a href="https://wa.me/8617858451677" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">+86 178 5845 1677</a>
+                            </p>
+                        </div>
                     </div>
 
                     {/* Quick Links */}
