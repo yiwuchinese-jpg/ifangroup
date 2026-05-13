@@ -17,7 +17,7 @@ export default function Hero() {
     };
 
     // 优先使用环境变量中的 CDN URL，否则回退到本地路径
-    const videoSrc = process.env.NEXT_PUBLIC_HERO_VIDEO_URL || "/images/static/home-hero.mp4";
+    const videoSrc = process.env.NEXT_PUBLIC_HERO_VIDEO_URL || "/images/static/home-hero-optimized.mp4";
 
     return (
         <section className="relative w-full h-screen min-h-[500px] md:min-h-[800px] flex items-end pb-20 md:pb-32 justify-start overflow-hidden bg-black">
@@ -32,6 +32,8 @@ export default function Hero() {
                     loop
                     muted
                     playsInline
+                    preload="auto"
+                    poster="/images/static/home-hero-poster.jpg"
                     onError={handleVideoError}
                     className="relative w-full h-full object-cover scale-105 -z-10"
                 >
