@@ -6,7 +6,7 @@ import Navbar from"@/components/layout/Navbar";
 import Footer from"@/components/layout/Footer";
 import Link from"next/link";
 
-const whatsappNumber = "8613656666030";
+const whatsappNumber = "8617858451677";
 const whatsappBaseUrl = `https://wa.me/${whatsappNumber}`;
 
 const catalogGroups = [

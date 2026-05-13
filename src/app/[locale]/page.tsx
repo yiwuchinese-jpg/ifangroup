@@ -30,7 +30,7 @@ export default function Home() {
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "sales",
-            "email": "sales@ifangroup.com",
+            "email": "ifanholding@gmail.com",
             "availableLanguage": ["English", "Chinese", "Spanish", "French", "Arabic", "Portuguese", "Russian"]
         },
         "sameAs": []

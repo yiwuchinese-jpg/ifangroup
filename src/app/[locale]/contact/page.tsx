@@ -162,8 +162,8 @@ export default function ContactUsPage() {
                                         <div className="flex items-start gap-4">
                                             <Phone className="w-6 h-6 text-brand-300 shrink-0" />
                                             <div>
-                                                <p className="font-bold mb-1">{t("procurementDesk")}</p>
-                                                <p className="text-brand-100/80 text-sm">WhatsApp / WeChat: +86 136 5666 6030</p>
+                                                <p className="font-bold text-lg text-white">Direct Line</p>
+                                                <p className="text-brand-100/80 text-sm">WhatsApp / WeChat: +86 178 5845 1677</p>
                                             </div>
                                         </div>
 
@@ -172,8 +172,8 @@ export default function ContactUsPage() {
                                         <div className="flex items-start gap-4">
                                             <Mail className="w-6 h-6 text-brand-300 shrink-0" />
                                             <div>
-                                                <p className="font-bold mb-1">{t("corporateComm")}</p>
-                                                <p className="text-brand-100/80 text-sm">sales@ifangroup.com</p>
+                                                <p className="font-bold text-lg text-white">Email Address</p>
+                                                <p className="text-brand-100/80 text-sm">ifanholding@gmail.com</p>
                                             </div>
                                         </div>
                                     </div>
