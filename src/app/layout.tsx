@@ -29,6 +29,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5WC6SHBR');`
                 }} />
+                
+                {/* Google tag (gtag.js) */}
+                <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=AW-18159357442" />
+                <Script id="gtag-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
+                    __html: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'AW-18159357442');
+                    `
+                }} />
             </head>
             <body className="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 min-h-screen flex flex-col">
                 <noscript>
