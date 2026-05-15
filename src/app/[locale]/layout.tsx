@@ -41,18 +41,6 @@ export const metadata: Metadata = {
         title: "IFAN Group | B2B Plumbing Manufacturer",
         description: "Direct B2B wholesale plumbing supplies. PPR, PEX & Brass.",
     },
-    alternates: {
-        canonical: "https://ifanholding.com/en",
-        languages: {
-            "en": "https://ifanholding.com/en",
-            "es": "https://ifanholding.com/es",
-            "pt": "https://ifanholding.com/pt",
-            "ru": "https://ifanholding.com/ru",
-            "ar": "https://ifanholding.com/ar",
-            "fr": "https://ifanholding.com/fr",
-            "x-default": "https://ifanholding.com/en",
-        },
-    },
 };
 
 type Props = {

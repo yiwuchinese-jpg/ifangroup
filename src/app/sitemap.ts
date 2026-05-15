@@ -81,5 +81,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error("[sitemap] Failed to generate tool routes:", error);
     }
 
-    return [...staticRoutes, ...productRoutes, ...brandRoutes, ...toolRoutes];
+    // 动态新闻页
+    let newsRoutes: MetadataRoute.Sitemap = [];
+    try {
+        const posts: SanitySlug[] = await client.fetch(
+            `*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`
+        );
+        newsRoutes = LOCALES.flatMap((locale) =>
+            posts.map(({ slug }) => ({
+                url: `${BASE_URL}/${locale}/news/${slug}`,
+                lastModified: new Date(),
+                changeFrequency: "weekly" as const,
+                priority: 0.8,
+            }))
+        );
+    } catch (error) {
+        console.error("[sitemap] Failed to fetch news:", error);
+    }
+
+    return [...staticRoutes, ...productRoutes, ...brandRoutes, ...toolRoutes, ...newsRoutes];
 }
