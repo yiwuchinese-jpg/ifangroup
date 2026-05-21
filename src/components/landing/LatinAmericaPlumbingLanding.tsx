@@ -29,6 +29,7 @@ const email = "ifanholding@gmail.com";
 const formspreeEndpoint = "https://formspree.io/f/xjglqzvz";
 
 const productImages = {
+  hero: "/latin-america-plumbing/hero-plumbing-products.jpg",
   ppr: "/latin-america-plumbing/product-ppr.jpg",
   pe: "/latin-america-plumbing/product-pe-pp.jpg",
   pvc: "/latin-america-plumbing/product-pvc.jpg",
@@ -589,12 +590,12 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
       <main>
         <section className="relative min-h-[760px] overflow-hidden bg-slate-950 pt-24 text-white">
           <Image
-            src={productImages.pe}
-            alt="Wholesale PE and HDPE pipe fittings"
+            src={productImages.hero}
+            alt="IFAN plumbing pipes, valves and fittings for wholesale buyers"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[70%_50%] opacity-75"
+            className="object-cover object-[70%_52%] opacity-95"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.96),rgba(2,6,23,0.76),rgba(2,6,23,0.18))]" />
           <div className="relative mx-auto flex min-h-[680px] max-w-7xl flex-col justify-center px-5 py-20 lg:px-8">
