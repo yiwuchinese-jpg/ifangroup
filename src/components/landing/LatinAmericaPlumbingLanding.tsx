@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -20,6 +20,7 @@ import {
   Send,
   ShieldCheck,
   Truck,
+  X,
 } from "lucide-react";
 
 type Language = "en" | "es";
@@ -98,6 +99,7 @@ const copy = {
     productsTitle: "Plumbing products matched to your keyword demand",
     productsSubtitle:
       "The page is built for buyers searching for plumbing wholesalers, pipe manufacturers, fittings suppliers and price lists.",
+    productContact: "Contact us",
     products: [
       {
         title: "PE / HDPE Pipe & PP Fittings",
@@ -211,14 +213,14 @@ const copy = {
     ],
     form: {
       title: "Request plumbing materials price list",
-      text: "Tell us what you need. The form opens WhatsApp with your inquiry details so our team can respond faster.",
+      text: "Tell us what you need. The form sends your inquiry to our sales email so our team can respond with a relevant quotation.",
       name: "Name",
       country: "Country",
       company: "Company",
       contact: "WhatsApp / Email",
       products: "Products needed",
       quantity: "Estimated quantity",
-      submit: "Send on WhatsApp",
+      submit: "Send inquiry",
       email: "Email sales team",
       defaults: {
         products: "HDPE / PPR / brass fittings / valves",
@@ -236,6 +238,13 @@ const copy = {
       title: "Ready to compare supplier pricing?",
       text: "Send your product list and destination country. We will help you match the right plumbing materials for your market.",
       button: "Request Quote on WhatsApp",
+    },
+    popup: {
+      eyebrow: "B2B procurement inquiry",
+      title: "Request wholesale pricing, MOQ and catalog support",
+      text: "Tell us your product category, destination country and estimated order quantity. We will match suitable plumbing materials for your distribution or project order.",
+      button: "Send B2B Inquiry",
+      close: "Close inquiry popup",
     },
   },
   es: {
@@ -270,6 +279,7 @@ const copy = {
     productsTitle: "Productos de plomería alineados con la demanda B2B",
     productsSubtitle:
       "La página está diseñada para compradores que buscan mayoristas, fabricantes de tuberías, proveedores de conexiones y listas de precios.",
+    productContact: "Contáctenos",
     products: [
       {
         title: "Tubería PE / HDPE y conexiones PP",
@@ -383,14 +393,14 @@ const copy = {
     ],
     form: {
       title: "Solicite lista de precios de materiales de plomería",
-      text: "Cuéntenos qué necesita. El formulario abre WhatsApp con los detalles para responder más rápido.",
+      text: "Cuéntenos qué necesita. El formulario envía su solicitud a nuestro correo de ventas para preparar una cotización relevante.",
       name: "Nombre",
       country: "País",
       company: "Empresa",
       contact: "WhatsApp / Email",
       products: "Productos requeridos",
       quantity: "Cantidad estimada",
-      submit: "Enviar por WhatsApp",
+      submit: "Enviar solicitud",
       email: "Enviar email",
       defaults: {
         products: "HDPE / PPR / conexiones de latón / válvulas",
@@ -408,6 +418,13 @@ const copy = {
       title: "¿Listo para comparar precios de proveedor?",
       text: "Envíe su lista de productos y país de destino. Le ayudaremos a elegir los materiales adecuados para su mercado.",
       button: "Solicitar por WhatsApp",
+    },
+    popup: {
+      eyebrow: "Consulta B2B de compra",
+      title: "Solicite precios mayoristas, MOQ y soporte de catálogo",
+      text: "Comparta categoría de producto, país de destino y cantidad estimada. Le ayudaremos a seleccionar materiales para distribución o proyectos.",
+      button: "Enviar consulta B2B",
+      close: "Cerrar ventana de consulta",
     },
   },
 } satisfies Record<Language, Record<string, unknown>>;
@@ -485,7 +502,6 @@ function QuoteForm({ c, language }: { c: LandingCopy; language: Language }) {
 
   function submit() {
     setSubmitState("sending");
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     window.setTimeout(() => setSubmitState("sent"), 800);
   }
 
@@ -515,13 +531,6 @@ function QuoteForm({ c, language }: { c: LandingCopy; language: Language }) {
           <Send className="h-4 w-4" />
           {c.form.submit}
         </button>
-        <a
-          href={`mailto:${email}?subject=${encodeURIComponent("Plumbing materials price list")}&body=${encodeURIComponent(message)}`}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-slate-300 px-6 py-3 text-sm font-bold uppercase tracking-wide text-slate-800 transition hover:border-brand-600 hover:text-brand-700"
-        >
-          <Mail className="h-4 w-4" />
-          {c.form.email}
-        </a>
       </div>
       {submitState !== "idle" && (
         <p
@@ -531,7 +540,7 @@ function QuoteForm({ c, language }: { c: LandingCopy; language: Language }) {
           }`}
         >
           {submitState === "sending" &&
-            (language === "en" ? "Submitting inquiry by email and opening WhatsApp..." : "Enviando la solicitud por correo y abriendo WhatsApp...")}
+            (language === "en" ? "Submitting inquiry to our sales email..." : "Enviando la solicitud a nuestro correo de ventas...")}
           {submitState === "sent" &&
             (language === "en" ? "Inquiry submitted. Please check the Formspree confirmation tab." : "Solicitud enviada. Revise la pestaña de confirmación de Formspree.")}
           {submitState === "error" &&
@@ -546,11 +555,23 @@ function QuoteForm({ c, language }: { c: LandingCopy; language: Language }) {
 
 export default function LatinAmericaPlumbingLanding({ language = "en" }: { language?: Language }) {
   const c = copy[language] as LandingCopy;
+  const [showInquiryPopup, setShowInquiryPopup] = useState(false);
   const quoteMessage =
     language === "en"
       ? "Hello IFAN, please send me a plumbing materials price list for Latin America."
       : "Hola IFAN, por favor envíeme una lista de precios de materiales de plomería para América Latina.";
   const sectionCtaLabel = c.hero.quote;
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowInquiryPopup(true), 10000);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  function productMessage(productTitle: string) {
+    return language === "en"
+      ? `Hello IFAN, I am interested in ${productTitle}. Please send catalog, MOQ and price list for Latin America.`
+      : `Hola IFAN, estoy interesado en ${productTitle}. Por favor envíeme catálogo, MOQ y lista de precios para América Latina.`;
+  }
 
   return (
     <div className="min-h-screen bg-white text-slate-950">
@@ -664,11 +685,11 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
             </div>
             <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {c.products.map((product) => (
-                <article key={product.title} className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+                <article key={product.title} className="group flex h-full flex-col overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+                  <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-slate-100">
                     <Image src={product.image} alt={product.title} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-700 group-hover:scale-105" />
                   </div>
-                  <div className="p-5">
+                  <div className="flex flex-1 flex-col p-5">
                     <h3 className="text-lg font-black text-slate-950">{product.title}</h3>
                     <p className="mt-3 text-sm leading-6 text-slate-600">{product.text}</p>
                     <div className="mt-5 flex flex-wrap gap-2">
@@ -677,6 +698,15 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
                           {tag}
                         </span>
                       ))}
+                    </div>
+                    <div className="mt-auto pt-5">
+                      <WhatsAppButton
+                        message={productMessage(product.title)}
+                        className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-slate-950 px-4 py-3 text-xs font-black uppercase tracking-wide text-white transition hover:bg-brand-700"
+                      >
+                        <MessageCircle className="h-4 w-4" />
+                        {c.productContact}
+                      </WhatsAppButton>
                     </div>
                   </div>
                 </article>
@@ -951,6 +981,48 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
           </div>
         </div>
       </footer>
+
+      {showInquiryPopup && (
+        <div className="fixed inset-0 z-[80] flex items-end justify-center bg-slate-950/55 px-4 pb-4 backdrop-blur-sm sm:items-center sm:pb-0">
+          <div className="relative w-full max-w-md rounded-md border border-white/10 bg-white p-6 shadow-2xl">
+            <button
+              type="button"
+              onClick={() => setShowInquiryPopup(false)}
+              aria-label={c.popup.close}
+              className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-slate-400 hover:text-slate-950"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <p className="pr-10 text-xs font-black uppercase tracking-[0.18em] text-brand-700">{c.popup.eyebrow}</p>
+            <h2 className="mt-3 pr-8 text-2xl font-black leading-tight text-slate-950">{c.popup.title}</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">{c.popup.text}</p>
+            <div className="mt-6 flex flex-col gap-3">
+              <WhatsAppButton
+                message={quoteMessage}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-brand-600 px-5 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-brand-700"
+              >
+                <MessageCircle className="h-4 w-4" />
+                {c.popup.button}
+              </WhatsAppButton>
+              <a
+                href="#quote"
+                onClick={() => setShowInquiryPopup(false)}
+                className="inline-flex min-h-11 items-center justify-center rounded-md border border-slate-200 px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-brand-600 hover:text-brand-700"
+              >
+                {c.hero.quote}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <WhatsAppButton
+        message={quoteMessage}
+        className="fixed bottom-4 left-4 right-4 z-[70] inline-flex min-h-14 items-center justify-center gap-2 rounded-md bg-brand-600 px-5 py-4 text-sm font-black uppercase tracking-wide text-white shadow-2xl shadow-brand-900/25 transition hover:bg-brand-700 md:hidden"
+      >
+        <MessageCircle className="h-5 w-5" />
+        {c.hero.whatsapp}
+      </WhatsAppButton>
     </div>
   );
 }
