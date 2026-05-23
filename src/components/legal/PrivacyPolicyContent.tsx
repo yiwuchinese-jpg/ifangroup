@@ -22,7 +22,7 @@ const privacyCopy = {
           "Contact information such as name, company name, email address, phone number, WhatsApp number and country.",
           "Inquiry details such as product category, sizes, quantities, destination country, project needs and quotation requirements.",
           "Technical and usage data such as IP address, browser type, device information, pages viewed, referring URL and interaction events.",
-          "Advertising and analytics data from tools such as Google Tag Manager, Google Ads, Microsoft Clarity and similar measurement technologies.",
+          "Advertising and analytics data from tools such as Google Tag Manager, Google Ads, Meta Pixel, Microsoft Clarity and similar measurement technologies.",
         ],
       },
       {
@@ -95,7 +95,7 @@ const privacyCopy = {
           "Datos de contacto como nombre, empresa, email, teléfono, número de WhatsApp y país.",
           "Detalles de la consulta como categoría de producto, medidas, cantidades, país de destino, necesidades del proyecto y requisitos de cotización.",
           "Datos técnicos y de uso como dirección IP, navegador, dispositivo, páginas visitadas, URL de referencia e interacciones.",
-          "Datos de publicidad y analítica de herramientas como Google Tag Manager, Google Ads, Microsoft Clarity y tecnologías similares de medición.",
+          "Datos de publicidad y analítica de herramientas como Google Tag Manager, Google Ads, Meta Pixel, Microsoft Clarity y tecnologías similares de medición.",
         ],
       },
       {
