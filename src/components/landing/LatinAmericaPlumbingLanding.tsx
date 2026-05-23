@@ -718,36 +718,36 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
           </div>
         </section>
 
-        <section id="markets" className="bg-slate-950 py-24 text-white">
+        <section id="markets" className="border-y border-slate-200 bg-slate-50 py-24 text-slate-950">
           <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-300">Latin America</p>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">Latin America</p>
               <h2 className="mt-3 text-4xl font-black tracking-normal md:text-5xl">{c.buyersTitle}</h2>
-              <p className="mt-5 text-lg leading-8 text-slate-300">{c.buyersText}</p>
+              <p className="mt-5 text-lg leading-8 text-slate-600">{c.buyersText}</p>
               <div className="mt-8">
-                <SectionInquiryButton label={sectionCtaLabel} message={quoteMessage} dark />
+                <SectionInquiryButton label={sectionCtaLabel} message={quoteMessage} />
               </div>
               <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {c.buyers.map((buyer) => (
-                  <div key={buyer} className="flex min-h-12 items-center gap-2 rounded-md border border-white/10 bg-white/5 px-3 text-sm font-bold text-white">
-                    <Building2 className="h-4 w-4 text-brand-300" />
+                  <div key={buyer} className="flex min-h-12 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-sm font-bold text-slate-800 shadow-sm">
+                    <Building2 className="h-4 w-4 text-brand-700" />
                     {buyer}
                   </div>
                 ))}
               </div>
             </div>
             <div className="grid content-start gap-6">
-              <div className="rounded-md border border-white/10 bg-white/[0.03] p-7">
+              <div className="rounded-md border border-slate-200 bg-white p-7 shadow-sm">
                 <div className="flex items-start gap-4">
-                  <MapPin className="mt-1 h-6 w-6 shrink-0 text-brand-300" />
+                  <MapPin className="mt-1 h-6 w-6 shrink-0 text-brand-700" />
                   <div>
                     <h3 className="text-2xl font-black">{c.marketsTitle}</h3>
-                    <p className="mt-3 text-base leading-7 text-slate-300">{c.marketsText}</p>
+                    <p className="mt-3 text-base leading-7 text-slate-600">{c.marketsText}</p>
                   </div>
                 </div>
                 <div className="mt-7 flex flex-wrap gap-3">
                   {c.marketChips.map((market) => (
-                    <span key={market} className="rounded-full border border-brand-300/30 bg-brand-300/10 px-4 py-2 text-sm font-bold text-brand-100">
+                    <span key={market} className="rounded-full border border-brand-600/20 bg-brand-50 px-4 py-2 text-sm font-bold text-brand-800">
                       {market}
                     </span>
                   ))}
@@ -757,10 +757,10 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
                 {c.marketSupport.map(([title, text], index) => {
                   const Icon = [Globe2, PackageCheck, Truck][index] ?? Globe2;
                   return (
-                    <div key={title} className="rounded-md border border-white/10 bg-white/[0.04] p-5">
-                      <Icon className="h-6 w-6 text-brand-300" />
-                      <h3 className="mt-4 text-base font-black text-white">{title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-slate-300">{text}</p>
+                    <div key={title} className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+                      <Icon className="h-6 w-6 text-brand-700" />
+                      <h3 className="mt-4 text-base font-black text-slate-950">{title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
                     </div>
                   );
                 })}
