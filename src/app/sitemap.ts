@@ -17,6 +17,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: "/news", priority: 0.8, changeFrequency: "daily" as const },
         { path: "/manufacturing-oem", priority: 0.9, changeFrequency: "monthly" as const },
         { path: "/global-solutions", priority: 0.75, changeFrequency: "monthly" as const },
+        { path: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
+        { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" as const },
     ];
 
     // 静态页面 × 所有语言

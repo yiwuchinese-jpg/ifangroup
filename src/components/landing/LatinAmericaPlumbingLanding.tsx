@@ -978,6 +978,9 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
             <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="hover:text-white">
               WhatsApp: +86 178 5845 1677
             </a>
+            <Link href="/privacy" className="hover:text-white">
+              {language === "es" ? "Política de privacidad" : "Privacy Policy"}
+            </Link>
           </div>
         </div>
       </footer>
