@@ -466,6 +466,20 @@ function reportInquiryConversion() {
   browserWindow.gtag?.("event", "conversion", googleAdsConversion);
 }
 
+const googleAdsWhatsAppConversion = {
+  send_to: "AW-18159357442/hKhxCMLyyrQcEIKch9ND",
+  value: 1.0,
+  currency: "CNY",
+};
+
+function reportWhatsAppConversion() {
+  const browserWindow = window as Window & {
+    gtag?: (command: string, action: string, params: Record<string, string | number>) => void;
+  };
+
+  browserWindow.gtag?.("event", "conversion", googleAdsWhatsAppConversion);
+}
+
 function QuoteForm({ c, language, selectedProduct }: { c: LandingCopy; language: Language; selectedProduct: string }) {
   const [form, setForm] = useState({
     name: "",
@@ -958,6 +972,7 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(quoteMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={reportWhatsAppConversion}
                   className="flex items-center gap-3 text-base font-bold text-slate-800 transition hover:text-brand-700"
                 >
                   <MessageCircle className="h-5 w-5 text-brand-700" />
@@ -1025,7 +1040,7 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
           </div>
           <div className="flex flex-wrap gap-5 text-sm font-semibold text-slate-300">
             <a href={`mailto:${email}`} className="hover:text-white">{email}</a>
-            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" onClick={reportWhatsAppConversion} className="hover:text-white">
               WhatsApp: +86 1736 9685 997
             </a>
             <Link href="/privacy" className="hover:text-white">
@@ -1048,6 +1063,7 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${c.hero.whatsapp}: +86 1736 9685 997`}
+        onClick={reportWhatsAppConversion}
         className="group fixed bottom-24 right-4 z-[75] inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-slate-950/20 transition hover:-translate-y-0.5 hover:bg-[#1ebe5d] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/30 md:bottom-6 md:right-6 md:h-13 md:w-13"
       >
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-75"></span>
