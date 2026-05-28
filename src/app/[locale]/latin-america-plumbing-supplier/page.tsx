@@ -8,7 +8,8 @@ type PageProps = {
 };
 
 const pageUrl = "https://ifanholding.com/latin-america-plumbing-supplier";
-const englishUrl = `${pageUrl}?lang=en`;
+const spanishUrl = "https://ifanholding.com/es/latin-america-plumbing-supplier";
+const englishUrl = "https://ifanholding.com/latin-america-plumbing-supplier";
 
 const metadataByLanguage = {
   es: {
@@ -16,18 +17,18 @@ const metadataByLanguage = {
     description:
       "Tuberías PE/HDPE, PPR, PVC y PPH, conexiones, válvulas de latón y sistemas multicapa para distribuidores y proyectos en América Latina.",
     alternates: {
-      canonical: pageUrl,
+      canonical: spanishUrl,
       languages: {
         en: englishUrl,
-        es: pageUrl,
-        "x-default": pageUrl,
+        es: spanishUrl,
+        "x-default": englishUrl,
       },
     },
     openGraph: {
       title: "Proveedor mayorista de plomería y tuberías para América Latina",
       description:
         "Tuberías, conexiones, válvulas de latón y sistemas multicapa para compradores B2B en América Latina.",
-      url: pageUrl,
+      url: spanishUrl,
       siteName: "IFAN Group",
       images: [
         {
@@ -49,8 +50,8 @@ const metadataByLanguage = {
       canonical: englishUrl,
       languages: {
         en: englishUrl,
-        es: pageUrl,
-        "x-default": pageUrl,
+        es: spanishUrl,
+        "x-default": englishUrl,
       },
     },
     openGraph: {
