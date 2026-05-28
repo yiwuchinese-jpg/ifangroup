@@ -28,7 +28,7 @@ const whatsappNumber = "8617369685997";
 const email = "ifanholding@gmail.com";
 const formspreeEndpoint = "https://formspree.io/f/xjglqzvz";
 const googleAdsConversion = {
-  send_to: "AW-18159357442/3eAGCLaeqK0cEIKch9ND",
+  send_to: "AW-18159357442/gurQCOy8yrQcEIKch9ND",
   value: 1.0,
   currency: "CNY",
 };
