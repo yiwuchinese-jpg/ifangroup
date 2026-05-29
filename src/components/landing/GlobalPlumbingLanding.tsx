@@ -1,5 +1,7 @@
 "use client";
 
+declare let gtag: any;
+
 import Image from "next/image";
 import Link from "next/link";
 import { type FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -70,7 +72,7 @@ const projectImages = [
 
 // ─── Animation Variants ──────────────────────────────────────────────
 
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
   visible: (i = 0) => ({
     opacity: 1,
@@ -79,7 +81,7 @@ const fadeUp = {
   }),
 };
 
-const stagger = {
+const stagger: any = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -87,7 +89,7 @@ const stagger = {
   },
 };
 
-const cardUp = {
+const cardUp: any = {
   hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
