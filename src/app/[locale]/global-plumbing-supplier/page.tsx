@@ -35,6 +35,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GlobalPlumbingSupplierPage() {
-  return <GlobalPlumbingLanding language="en" market="global" />;
+type PageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function GlobalPlumbingSupplierPage({ params }: PageProps) {
+  const { locale } = await params;
+  return <GlobalPlumbingLanding />;
 }
