@@ -35,7 +35,13 @@ const googleAdsWhatsAppConversion = {
   currency: "CNY",
 };
 
-const heroBg = "/images/ppr-landing/横幅海报7.jpeg";
+const heroCarouselImages = [
+  "/images/ppr-landing/横幅海报2.jpeg",
+  "/images/ppr-landing/横幅海报4.jpeg",
+  "/images/ppr-landing/横幅海报5.jpeg",
+  "/images/ppr-landing/横幅海报6.webp",
+  "/images/ppr-landing/横幅海报7.jpeg",
+];
 
 const pipeImages = [
   { src: "/images/ppr-landing/ppr 管产品图2.webp", alt: "PPR pipes DN20-DN160 green color for plumbing systems" },
@@ -54,8 +60,8 @@ const seriesImages = [
 const carouselImages = [
   { src: "/images/ppr-landing/横幅海报2.jpeg", alt: "PPR plumbing products showcase for B2B wholesale export" },
   { src: "/images/ppr-landing/横幅海报6.webp", alt: "PPR pipe and fitting factory direct from China" },
-  { src: "/images/mexico-landing/products/管子包装.jpg", alt: "Plumbing pipes packaging for Mexico export" },
-  { src: "/images/mexico-landing/products/管件包装.jpg", alt: "Plumbing fittings packaging for wholesale export" },
+  { src: "/images/mexico-landing/products/管子包装.jpg", alt: "PPR pipes professional packaging for export" },
+  { src: "/images/mexico-landing/products/管件包装.jpg", alt: "PPR fittings packaging for wholesale export" },
   { src: "/images/ppr-landing/横幅海报4.jpeg", alt: "IFAN factory exterior and logistics center" },
   { src: "/images/ppr-landing/横幅海报5.jpeg", alt: "IFAN warehouse and inventory management" },
 ];
@@ -70,17 +76,17 @@ const mexicoFactoryImages = [
   { src: "/images/mexico-landing/factory/生产线.jpg", alt: "IFAN automated production line manufacturing" },
   { src: "/images/mexico-landing/factory/08947223d686d957a5a79367ee69a6d0.jpg", alt: "IFAN factory workshop and equipment" },
   { src: "/images/mexico-landing/factory/157a23182b6cdb27826c9029db1aac22.jpg", alt: "IFAN production facility and quality control" },
-  { src: "/images/mexico-landing/factory/e1d737752eafb0df8875016822c01e2a.jpg", alt: "IFAN manufacturing plant and storage" },
+  { src: "/images/mexico-landing/factory/e1d737752eafb0df8875016822c01e2a.jpg", alt: "IFAN manufacturing plant and global logistics" },
 ];
 
 const caseImages = [
-  { src: "/images/mexico-landing/cases/03c9f37b1c5aef4c3519269cdc9c9555.jpg", alt: "IFAN Mexico market project case study - plumbing installation" },
-  { src: "/images/mexico-landing/cases/07f917d1ff4712130d304aa741c869ae.jpg", alt: "IFAN Mexico export project reference - building plumbing" },
-  { src: "/images/mexico-landing/cases/61c2f8105f3adce99ce6516451add850.jpg", alt: "IFAN Mexico wholesale client case - pipe supply" },
-  { src: "/images/mexico-landing/cases/6430229fd9208b1770328d99fbb0b854.jpg", alt: "IFAN Mexico market cooperation case - water system" },
-  { src: "/images/mexico-landing/cases/7e10c2bfd679c4525ca5012eb72b3fa6.jpg", alt: "IFAN Mexico B2B client project - plumbing products" },
-  { src: "/images/mexico-landing/cases/c45139cfc798101975d9dd121bc18ded.jpg", alt: "IFAN Mexico export success case - factory direct" },
-  { src: "/images/mexico-landing/cases/f9bbf6735109b583d53faf1f0eda3dd0.jpg", alt: "IFAN Mexico market reference - wholesale supply" },
+  { src: "/images/mexico-landing/cases/03c9f37b1c5aef4c3519269cdc9c9555.jpg", alt: "IFAN global export project case study - plumbing installation" },
+  { src: "/images/mexico-landing/cases/07f917d1ff4712130d304aa741c869ae.jpg", alt: "IFAN export project reference - building plumbing" },
+  { src: "/images/mexico-landing/cases/61c2f8105f3adce99ce6516451add850.jpg", alt: "IFAN global wholesale client case - pipe supply" },
+  { src: "/images/mexico-landing/cases/6430229fd9208b1770328d99fbb0b854.jpg", alt: "IFAN international cooperation case - water system" },
+  { src: "/images/mexico-landing/cases/7e10c2bfd679c4525ca5012eb72b3fa6.jpg", alt: "IFAN B2B client project - plumbing products" },
+  { src: "/images/mexico-landing/cases/c45139cfc798101975d9dd121bc18ded.jpg", alt: "IFAN export success case - factory direct" },
+  { src: "/images/mexico-landing/cases/f9bbf6735109b583d53faf1f0eda3dd0.jpg", alt: "IFAN global market reference - wholesale supply" },
 ];
 
 const certImages = [
@@ -94,23 +100,21 @@ const landingCopy = {
   nav: {
     products: "Products",
     factory: "Factory",
-    cases: "Cases",
-    certs: "Certifications",
+    compare: "Compare",
     quote: "Get Quote",
   },
   hero: {
-    badge: "B2B PPR Manufacturer — Factory Direct from China",
-    title: "China's Lowest Price PPR Pipe & Fittings Manufacturer",
+    badge: "B2B Factory-Direct — No Trading Company Markup",
+    title: "Factory-Direct PPR Pricing That Beats Any China Broker By 15–30%",
     subtitle:
-      "DIN 8077/8078 certified · 100% virgin PP-R · DN20–DN160 · PN12.5–PN25 · Factory-direct, no middlemen, strictly B2B wholesale.",
-    cta1: "Get Lowest China Price",
-    cta2: "Free PPR Price List",
-    whatsapp: "WhatsApp",
+      "120,000m² manufacturer. 100% virgin PP-R. DIN 8077/8078. No middlemen, no retail, no marketplace. Container-level pricing shipped to your port.",
+    cta1: "Get Factory Price List",
+    cta2: "WhatsApp Now",
     proofs: [
-      "Lowest PPR pricing in China — guaranteed",
-      "100% virgin PP-R raw material",
-      "Full DIN 8077/8078 compliance",
-      "B2B only — MOQ 1 container",
+      "Manufacturer-direct pricing — no broker layer",
+      "100% virgin PP-R — batch certificates provided",
+      "DIN 8077/8078 · ISO 15874 · CE · SGS tested",
+      "Strictly B2B — MOQ 1 container",
     ],
   },
   stats: [
@@ -119,68 +123,143 @@ const landingCopy = {
     { value: "3,000+", label: "PPR SKUs" },
     { value: "120+", label: "Export countries" },
   ],
-  products: {
-    title: "PPR & Plumbing Product Lines",
-    subtitle: "All products below are B2B wholesale only — no retail, no consumer sales. Click any image to enlarge.",
-    pipes: {
-      title: "PPR Pipes",
-      label: "DN20–DN160 · PN12.5–PN25 · Green/White/Custom · 100% virgin PP-R",
-    },
-    series: {
-      title: "PPR Fittings & Systems",
-      label: "Complete PPR plumbing systems: fittings, composite pipes, floor heating components",
-    },
+  pain: {
+    badge: "The Hidden Cost",
+    title: "Most B2B Importers Overpay 15–30% On PPR — Without Knowing It",
+    subtitle: "Three hidden costs of sourcing PPR through trading companies instead of directly from the manufacturer.",
+    items: [
+      {
+        title: "Trading Company Markup",
+        text: "Every middleman adds 8–15% to your unit cost. That margin comes out of your profit — and you're paying for an office you've never visited.",
+      },
+      {
+        title: "Recycled Material Mixed In",
+        text: "Some suppliers blend recycled PP-R to cut costs. The pipes look the same — until they fail under pressure. Without batch certificates, you're gambling on every container.",
+      },
+      {
+        title: "No Production Visibility",
+        text: "When you buy through a broker, you don't know which factory made your pipes. Lead times stretch, quality drifts, and there's no one to hold accountable.",
+      },
+    ],
   },
   why: {
-    badge: "Why B2B Buyers Choose IFAN",
-    title: "Factory-direct pricing with no channel conflict",
-    subtitle: "We are a 120,000m² manufacturer serving 120+ countries. Strictly B2B — no retail, no Amazon, no channel competition.",
+    badge: "How IFAN Is Different",
+    title: "One Factory. Lower Prices. Higher Quality.",
+    subtitle: "We eliminated every layer between production and your container. The savings go to you — not distributors, agents, or trading desks.",
     items: [
       {
         icon: TrendingDown,
-        title: "China's Lowest PPR Pricing",
-        text: "Manufacturer-direct, no trading company markup. Container-level pricing beats any broker quote.",
+        title: "No Middleman Markup",
+        text: "You pay the factory price. No agent commission, no trading company margin. Compare our quote against any China supplier.",
       },
       {
         icon: ShieldCheck,
-        title: "100% Virgin Raw Material",
-        text: "PP-R 100 grade only. Batch certificates and third-party lab reports available for every shipment.",
+        title: "Lab-Verified Virgin PP-R",
+        text: "PP-R 100 grade only. Batch certificates per shipment. Third-party SGS reports available on request — standard for every export order.",
       },
       {
         icon: Factory,
-        title: "120,000m² Smart Factory",
-        text: "Automated extrusion lines, injection molding workshop, ISO-certified in-house testing lab. Factory audits welcome.",
+        title: "You Can Audit The Factory",
+        text: "120,000m² facility in Zhejiang. 30+ extrusion lines, injection molding, in-house ISO testing lab. Send your QC team anytime.",
       },
       {
         icon: Globe2,
-        title: "B2B-Only Supply Chain",
-        text: "No retail, no marketplace selling, no end-consumer sales. Your territory and margins stay protected.",
+        title: "Your Market Stays Protected",
+        text: "We do not sell on Amazon, Alibaba retail, or to end-consumers. No channel conflict. Your import territory and margins are secure.",
       },
     ],
   },
-  cases: {
-    badge: "Proven Track Record",
-    title: "Mexico Market Cooperation Cases",
-    subtitle: "Real projects, real clients. IFAN plumbing products trusted across Latin America.",
+  factory: {
+    badge: "See The Factory",
+    title: "120,000m² Manufacturing Facility — Audit It Yourself",
+    subtitle: "30+ automated extrusion lines. In-house mold workshop. ISO-certified testing lab. Warehouse capacity for 200+ containers.",
   },
-  cert: {
-    badge: "Quality Certified",
-    title: "International Certifications",
-    subtitle: "DIN 8077/8078 · ISO 15874 · CE · SGS tested. Regional certs (SASO, SONCAP, etc.) arranged per destination.",
+  proof: {
+    badge: "Trusted Across 120+ Countries",
+    title: "Certifications, Export Cases & Real Projects",
+    subtitle: "DIN 8077/8078 · ISO 15874 · CE · SGS. Proven across Latin America, Middle East, Africa, and Southeast Asia.",
   },
-  process: {
-    badge: "4-Step Sourcing",
-    title: "How to source PPR from IFAN",
-    steps: [
-      { title: "Send Requirements", text: "Share pipe sizes, fittings, quantities and destination." },
-      { title: "Get Catalog & Quote", text: "Tailored PPR catalog with China's lowest factory pricing." },
-      { title: "Confirm Samples", text: "Review physical samples and test reports before order." },
-      { title: "Production & Ship", text: "QC inspection, container loading, full export documentation." },
+  products: {
+    title: "PPR Products Available For Immediate Export",
+    subtitle: "B2B wholesale only — click any image to enlarge and request a quote.",
+    pipes: {
+      title: "PPR Pipes",
+      label: "DN20–DN160 · PN12.5–PN25 · Green / White / Custom · 100% virgin PP-R",
+    },
+    series: {
+      title: "PPR Fittings & Systems",
+      label: "Elbows, tees, couplings, valves, composite pipes, floor heating components",
+    },
+  },
+  compare: {
+    badge: "Apples To Apples",
+    title: "IFAN vs Typical China PPR Supplier",
+    subtitle: "Not all 'factory prices' are equal. Here's what actually differs when you go direct with IFAN.",
+    rows: [
+      { label: "Pricing Model", ifan: "Ex-factory price — no layers", typical: "Factory + agent + trading co. markup" },
+      { label: "Raw Material", ifan: "100% virgin PP-R, batch cert", typical: "Unverified — may contain recycled" },
+      { label: "MOQ Flexibility", ifan: "1 container, mix sizes OK", typical: "Often 3–5 containers minimum" },
+      { label: "QC Reports", ifan: "SGS / in-house per shipment", typical: "On request only, often delayed" },
+      { label: "Factory Audit", ifan: "Welcome — send your QC team", typical: "Discouraged, 'agent will handle'" },
+      { label: "Channel Conflict", ifan: "No retail, no Amazon", typical: "Same supplier sells to your competitors" },
     ],
   },
+  process: {
+    badge: "How To Start",
+    title: "From Inquiry To Container In 4 Steps",
+    steps: [
+      { title: "Send Your Product List", text: "Pipe sizes, fitting types, quantities. Excel or PDF — we handle both." },
+      { title: "Review Quote & Samples", text: "Factory pricing within 24h. Physical samples shipped to your office." },
+      { title: "Confirm & Produce", text: "Deposit → production → QC inspection → lab report." },
+      { title: "Ship To Your Port", text: "FCL/LCL, full export docs, customs clearance support." },
+    ],
+  },
+  risk: {
+    badge: "Zero Risk",
+    title: "You're Protected At Every Step",
+    items: [
+      { icon: ShieldCheck, title: "Sample First, Order Later", text: "Request physical samples before committing to a container. Test the quality in your own hands." },
+      { icon: BadgeCheck, title: "QC Report Per Shipment", text: "Every container includes batch test certificates. Third-party SGS or BV inspection arranged on request." },
+      { icon: CheckCircle2, title: "Factory Audit Welcome", text: "Send your QC team or hire a third-party inspector. We encourage transparency." },
+    ],
+  },
+  faq: {
+    title: "PPR Sourcing Questions — Answered Directly",
+    items: [
+      {
+        q: "How do you guarantee the lowest price?",
+        a: "We are the manufacturer — no agents, no trading desks. Compare our ex-factory quote against any China PPR supplier. If you find a lower genuine factory price for equivalent spec, we match it.",
+      },
+      {
+        q: "How do I verify the PP-R material is 100% virgin?",
+        a: "Every batch ships with a material certificate. Third-party SGS or BV lab reports on request. Pre-shipment inspection or send samples to your own lab — we encourage it.",
+      },
+      {
+        q: "What is the MOQ for PPR pipes and fittings?",
+        a: "Standard: 3,000–5,000m pipes (mix sizes DN20–DN160), 5,000pcs fittings (mix types). Trial orders with lower quantities available at a small surcharge.",
+      },
+      {
+        q: "Do you sell on Amazon, Alibaba, or to end-consumers?",
+        a: "No. Strictly B2B wholesale. No retail, no marketplace, no consumer sales. Your import market stays protected from channel conflict.",
+      },
+      {
+        q: "Can I customize pipe color or branding?",
+        a: "Yes. OEM/ODM: custom colors (green, white, grey, blue), private label printing, custom packaging. MOQ applies — ask your sales contact for details.",
+      },
+      {
+        q: "What certifications do you have for my country?",
+        a: "DIN 8077/8078, ISO 15874, CE, SGS as standard. Regional certs — SASO, SONCAP, NOM — arranged per destination. Tell us your market and we'll confirm.",
+      },
+    ],
+  },
+  finalCta: {
+    title: "Ready To See Your Factory-Direct PPR Pricing?",
+    subtitle: "Send your product list. We reply with a tailored quotation within 24 hours — no obligation.",
+    button: "Get Factory Price List",
+  },
   form: {
-    title: "Request China's Lowest PPR Price List",
-    subtitle: "Tell us your PPR needs — Excel/PDF import lists preferred.",
+    title: "Request Factory-Direct PPR Pricing",
+    subtitle: "Tell us what you need. Excel/PDF import lists preferred — we quote within 24 hours.",
     name: "Name *",
     country: "Country",
     company: "Company",
@@ -189,38 +268,12 @@ const landingCopy = {
     methodOptions: ["Email", "Phone call", "WhatsApp"],
     products: "PPR products needed",
     quantity: "Estimated quantity",
-    submit: "Send PPR Inquiry",
+    submit: "Get PPR Factory Price",
     emailBtn: "Email Sales Team",
     noWhatsapp: "No WhatsApp required — email or phone is fine.",
     sending: "Sending...",
-    sent: "Sent! Our PPR team replies within 24 hours.",
-    error: "Send failed. Please use the email button.",
-  },
-  faq: {
-    title: "PPR Sourcing FAQ",
-    items: [
-      {
-        q: "Is IFAN PPR pricing really the lowest in China?",
-        a: "Yes — we are the manufacturer. No trading company layers, no broker fees. Compare our quote against any China PPR supplier.",
-      },
-      {
-        q: "How do you guarantee 100% virgin PP-R material?",
-        a: "We use only PP-R 100 grade raw material. Every batch includes a material certificate — third-party lab reports available on request.",
-      },
-      {
-        q: "What is the MOQ for PPR products?",
-        a: "Standard: 3,000–5,000m pipes (mix sizes), 5,000pcs fittings (mix types). OEM/private label MOQ negotiable.",
-      },
-      {
-        q: "What certifications do your PPR products have?",
-        a: "DIN 8077/8078, ISO 15874, CE, SGS. Regional certs (SASO, SONCAP) arranged per destination country requirements.",
-      },
-    ],
-  },
-  finalCta: {
-    title: "Ready to get China's lowest PPR factory pricing?",
-    subtitle: "Send your product list — we reply with a tailored quotation within 24 hours.",
-    button: "Get PPR Price List Now",
+    sent: "Quote request received. Our team replies within 24 hours.",
+    error: "Send failed. Please email us directly.",
   },
   footer: {
     privacy: "Privacy Policy",
@@ -422,6 +475,29 @@ function Lightbox({
   );
 }
 
+function HeroCarousel() {
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setCurrent((c) => (c + 1) % heroCarouselImages.length), 5000);
+    return () => clearInterval(timer);
+  }, []);
+  return (
+    <>
+      {heroCarouselImages.map((src, i) => (
+        <Image
+          key={src}
+          src={src}
+          alt=""
+          fill
+          priority={i === 0}
+          sizes="100vw"
+          className={`object-cover transition-opacity duration-1000 ${i === current ? "opacity-90" : "opacity-0"}`}
+        />
+      ))}
+    </>
+  );
+}
+
 function Carousel({ images, interval = 4000 }: { images: { src: string; alt: string }[]; interval?: number }) {
   const [current, setCurrent] = useState(0);
 
@@ -543,8 +619,7 @@ export default function PPRLanding() {
           <nav className="hidden items-center gap-6 text-xs font-bold uppercase tracking-[0.16em] text-white/70 lg:flex">
             <a href="#products" className="transition hover:text-white">{landingCopy.nav.products}</a>
             <a href="#factory" className="transition hover:text-white">{landingCopy.nav.factory}</a>
-            <a href="#cases" className="transition hover:text-white">{landingCopy.nav.cases}</a>
-            <a href="#certs" className="transition hover:text-white">{landingCopy.nav.certs}</a>
+            <a href="#compare" className="transition hover:text-white">{landingCopy.nav.compare}</a>
             <a href="#quote" className="inline-flex min-h-9 items-center gap-1.5 rounded-md bg-brand-500 px-4 text-white transition hover:bg-brand-400">
               <Send className="h-3.5 w-3.5" />
               {landingCopy.nav.quote}
@@ -554,9 +629,9 @@ export default function PPRLanding() {
       </header>
 
       <main>
-        {/* ===== A – ATTENTION: Hero ===== */}
+        {/* ===== A – ATTENTION: Hero with carousel background ===== */}
         <section className="relative flex min-h-[600px] items-center overflow-hidden bg-slate-950 pt-16 text-white md:min-h-[680px]">
-          <Image src={heroBg} alt="PPR pipes and fittings factory wholesale" fill priority sizes="100vw" className="object-cover opacity-90" />
+          <HeroCarousel />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.96),rgba(2,6,23,0.78),rgba(2,6,23,0.2))]" />
           <div className="relative z-10 mx-auto w-full max-w-7xl px-5 py-16 lg:px-8">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-brand-200">
@@ -587,6 +662,19 @@ export default function PPRLanding() {
                 </div>
               ))}
             </div>
+            <div className="mt-8">
+              <h3 className="mb-4 text-sm font-black uppercase tracking-wide text-slate-500">Behind the "factory" claims — real IFAN production floors</h3>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                {mexicoFactoryImages.map((img) => (
+                  <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                    <div className="relative aspect-[4/3]">
+                      <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw" className="object-cover" />
+                    </div>
+                    <figcaption className="sr-only">{img.alt}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -605,8 +693,8 @@ export default function PPRLanding() {
           </div>
         </section>
 
-        {/* ===== I – INTEREST: All Products (direct display, no tabs) ===== */}
-        <section id="products" className="py-14 md:py-18">
+        {/* ===== I – INTEREST: Products (right after credibility) ===== */}
+        <section id="products" className="py-14 md:py-18 bg-white">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -615,7 +703,6 @@ export default function PPRLanding() {
               </div>
               <CtaButton label={ctaLabel} />
             </div>
-
             <div className="mt-8">
               <ProductGrid
                 title={landingCopy.products.pipes.title}
@@ -629,31 +716,75 @@ export default function PPRLanding() {
                 images={seriesImages}
                 onImageClick={(i) => openLightbox(seriesImages, i)}
               />
-
             </div>
           </div>
         </section>
 
-        {/* ===== D – DESIRE: Why IFAN + Factory ===== */}
-        <section id="factory" className="border-t border-slate-200 bg-slate-950 py-16 text-white md:py-20">
+        {/* ===== I – INTEREST: Pain/Problem ===== */}
+        <section className="py-14 md:py-18 bg-white">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
-            <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
-              <div>
-                <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-300">{landingCopy.why.badge}</span>
-                <h2 className="mt-3 text-3xl font-black tracking-normal md:text-4xl">{landingCopy.why.title}</h2>
-                <p className="mt-4 text-base leading-7 text-slate-300">{landingCopy.why.subtitle}</p>
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  {landingCopy.why.items.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={item.title} className="rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur">
-                        <Icon className="h-5 w-5 text-brand-400" />
-                        <h3 className="mt-3 text-sm font-black">{item.title}</h3>
-                        <p className="mt-1.5 text-xs leading-5 text-slate-400">{item.text}</p>
-                      </div>
-                    );
-                  })}
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-red-600">{landingCopy.pain.badge}</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-normal md:text-4xl">{landingCopy.pain.title}</h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">{landingCopy.pain.subtitle}</p>
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {landingCopy.pain.items.map((item, i) => (
+                <div key={item.title} className="group rounded-xl border border-red-100 bg-red-50/50 p-6 transition hover:border-red-200 hover:shadow-md">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100 text-lg font-black text-red-600">{i + 1}</span>
+                  <h3 className="mt-4 text-base font-black text-slate-900">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== D – DESIRE: Why IFAN ===== */}
+        <section className="border-t border-slate-200 bg-slate-50 py-14 md:py-18">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">{landingCopy.why.badge}</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-normal md:text-4xl">{landingCopy.why.title}</h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">{landingCopy.why.subtitle}</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {landingCopy.why.items.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50">
+                      <Icon className="h-5 w-5 text-brand-600" />
+                    </div>
+                    <h3 className="mt-4 text-sm font-black text-slate-900">{item.title}</h3>
+                    <p className="mt-2 text-xs leading-5 text-slate-500">{item.text}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="mt-6 text-center">
+              <CtaButton label={ctaLabel} />
+            </div>
+            <div className="mt-8">
+              <h3 className="mb-4 text-sm font-black uppercase tracking-wide text-brand-700">Factory Facilities — See Our Production Lines</h3>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                {mexicoFactoryImages.map((img) => (
+                  <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                    <div className="relative aspect-[4/3]">
+                      <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw" className="object-cover" />
+                    </div>
+                    <figcaption className="sr-only">{img.alt}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== D – DESIRE: Factory Proof ===== */}
+        <section id="factory" className="bg-slate-950 py-16 text-white md:py-20">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-300">{landingCopy.factory.badge}</span>
+            <div className="mt-3 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+              <div>
+                <h2 className="text-3xl font-black tracking-normal md:text-4xl">{landingCopy.factory.title}</h2>
+                <p className="mt-4 text-base leading-7 text-slate-300">{landingCopy.factory.subtitle}</p>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {factoryImages.map((img, i) => (
@@ -666,87 +797,96 @@ export default function PPRLanding() {
                 ))}
               </div>
             </div>
-
-            {/* Mexico factory images */}
-            <div className="mt-10">
-              <h3 className="mb-4 text-lg font-black text-white/80">Factory Facilities — Mexico Export Base</h3>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                {mexicoFactoryImages.map((img) => (
-                  <figure key={img.src} className="overflow-hidden rounded-lg">
-                    <div className="relative aspect-[4/3] bg-slate-800">
-                      <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw" className="object-cover" />
-                    </div>
-                    <figcaption className="sr-only">{img.alt}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* ===== D – DESIRE: Case Studies ===== */}
-        <section id="cases" className="py-14 md:py-18">
+        {/* ===== D – DESIRE: Proof (Certs + Cases) ===== */}
+        <section className="py-14 md:py-18 bg-white">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">{landingCopy.cases.badge}</span>
-            <h2 className="mt-3 text-3xl font-black tracking-normal md:text-4xl">{landingCopy.cases.title}</h2>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">{landingCopy.cases.subtitle}</p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {caseImages.slice(0, 4).map((img) => (
-                <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                  <div className="relative aspect-[4/3]">
-                    <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
-                  </div>
-                  <figcaption className="sr-only">{img.alt}</figcaption>
-                </figure>
-              ))}
-            </div>
-            <div className="mt-3 grid gap-3 sm:grid-cols-3">
-              {caseImages.slice(4).map((img) => (
-                <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                  <div className="relative aspect-[16/10]">
-                    <Image src={img.src} alt={img.alt} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
-                  </div>
-                  <figcaption className="sr-only">{img.alt}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">{landingCopy.proof.badge}</span>
+            <h2 className="mt-3 text-3xl font-black tracking-normal md:text-4xl">{landingCopy.proof.title}</h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">{landingCopy.proof.subtitle}</p>
 
-        {/* Certifications */}
-        <section id="certs" className="py-14 md:py-18 bg-slate-50">
-          <div className="mx-auto max-w-7xl px-5 lg:px-8">
-            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1fr]">
               <div>
-                <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">{landingCopy.cert.badge}</span>
-                <h2 className="mt-3 text-3xl font-black tracking-normal md:text-4xl">{landingCopy.cert.title}</h2>
-                <p className="mt-4 text-base leading-7 text-slate-600">{landingCopy.cert.subtitle}</p>
-                <div className="mt-6">
-                  <CtaButton label={ctaLabel} />
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-black">
+                  <ShieldCheck className="h-5 w-5 text-brand-600" />
+                  International Certifications
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {certImages.map((src) => (
+                    <div key={src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                      <div className="relative aspect-[4/3]">
+                        <Image src={src} alt="PPR certification" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                {certImages.map((src) => (
-                  <div key={src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                    <div className="relative aspect-[4/3]">
-                      <Image src={src} alt="PPR certification" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
-                    </div>
-                  </div>
-                ))}
+              <div>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-black">
+                  <Globe2 className="h-5 w-5 text-brand-600" />
+                  Global Export Cooperation Cases
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {caseImages.slice(0, 4).map((img) => (
+                    <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 shadow-sm">
+                      <div className="relative aspect-square">
+                        <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+                      </div>
+                      <figcaption className="sr-only">{img.alt}</figcaption>
+                    </figure>
+                  ))}
+                </div>
               </div>
+            </div>
+            <div className="mt-3 grid grid-cols-3 gap-3">
+              {caseImages.slice(4).map((img) => (
+                <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 shadow-sm">
+                  <div className="relative aspect-[16/10]">
+                    <Image src={img.src} alt={img.alt} fill sizes="33vw" className="object-cover" />
+                  </div>
+                  <figcaption className="sr-only">{img.alt}</figcaption>
+                </figure>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Product showcase carousel */}
+        {/* Showcase Carousel */}
         <section className="bg-slate-50 py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             <Carousel images={carouselImages} interval={4000} />
           </div>
         </section>
 
+        {/* ===== D – DESIRE: Comparison ===== */}
+        <section id="compare" className="border-t border-slate-200 bg-slate-50 py-14 md:py-18">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">{landingCopy.compare.badge}</span>
+            <h2 className="mt-3 text-3xl font-black tracking-normal md:text-4xl">{landingCopy.compare.title}</h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">{landingCopy.compare.subtitle}</p>
+            <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+              <div className="grid grid-cols-[2fr_3fr_3fr] border-b border-slate-200 bg-slate-100 px-6 py-3 text-xs font-black uppercase tracking-wide text-slate-500">
+                <span></span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-brand-600" /> IFAN
+                </span>
+                <span className="text-slate-400">Typical Supplier</span>
+              </div>
+              {landingCopy.compare.rows.map((row, i) => (
+                <div key={row.label} className={`grid grid-cols-[2fr_3fr_3fr] px-6 py-4 text-sm ${i % 2 === 0 ? "bg-white" : "bg-slate-50"}`}>
+                  <span className="font-bold text-slate-800">{row.label}</span>
+                  <span className="font-semibold text-brand-700">{row.ifan}</span>
+                  <span className="text-slate-500">{row.typical}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ===== A – ACTION: Process + Form ===== */}
-        <section id="quote" className="py-16 md:py-20">
+        <section id="quote" className="py-16 md:py-20 bg-white">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
               <div>
@@ -789,6 +929,28 @@ export default function PPRLanding() {
           </div>
         </section>
 
+        {/* ===== A – ACTION: Risk Reversal ===== */}
+        <section className="border-t border-slate-200 bg-brand-50/50 py-14 md:py-16">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">{landingCopy.risk.badge}</span>
+            <h2 className="mt-3 text-3xl font-black tracking-normal md:text-4xl">{landingCopy.risk.title}</h2>
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {landingCopy.risk.items.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="rounded-xl border border-brand-100 bg-white p-6 shadow-sm">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100">
+                      <Icon className="h-5 w-5 text-brand-700" />
+                    </div>
+                    <h3 className="mt-4 text-base font-black text-slate-900">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="border-t border-slate-200 bg-slate-50 py-14 md:py-16">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -809,7 +971,7 @@ export default function PPRLanding() {
 
         {/* Final CTA */}
         <section className="relative overflow-hidden bg-slate-950 py-14 text-white md:py-16">
-          <Image src={heroBg} alt="" fill sizes="100vw" className="object-cover opacity-15" />
+          <Image src={heroCarouselImages[0]} alt="" fill sizes="100vw" className="object-cover opacity-15" />
           <div className="absolute inset-0 bg-slate-950/80" />
           <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-6 px-5 lg:flex-row lg:items-center lg:px-8">
             <div className="max-w-2xl">
@@ -871,7 +1033,7 @@ export default function PPRLanding() {
       >
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-75" />
         <span className="pointer-events-none absolute right-full mr-2.5 hidden whitespace-nowrap rounded-md bg-slate-950 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-white opacity-0 shadow-xl transition group-hover:opacity-100 md:block">
-          {landingCopy.hero.whatsapp}
+          {landingCopy.hero.cta2}
         </span>
         <MessageCircle className="relative z-10 h-5 w-5 md:h-6 md:w-6" />
       </a>
