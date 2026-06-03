@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
     const titleText = typeof body.title === 'object' ? body.title.rendered : (body.title || '');
     const contentHtml = typeof body.content === 'object' ? body.content.rendered : (body.content || '');
-    const { slug, featured_media, meta } = body;
+    const { slug, featured_media, meta, status } = body;
 
     const finalSlug = slug || titleText.toLowerCase().replace(/[^a-z0-9]+/g, '-').substring(0, 80);
     const seoTitle = meta?.rank_math_title || meta?.['_yoast_wpseo_title'] || '';
@@ -25,16 +25,20 @@ export async function POST(request: Request) {
 
     let mainImageRef = undefined;
     if (featured_media && featured_media > 0) {
-      // 从最新的 image 资产中去找，以匹配前面上传的图片
-      const latestAsset = await client.fetch(`*[_type == "sanity.imageAsset"] | order(_createdAt desc)[0] { _id }`);
-      if (latestAsset?._id) {
-        mainImageRef = { _type: 'image', asset: { _type: 'reference', _ref: latestAsset._id } };
+      // 通过 wordpressMediaId 精准查找匹配的 asset
+      const matchedAsset = await client.fetch(
+        `*[_type == "sanity.imageAsset" && wordpressMediaId == $wpMediaId][0] { _id }`,
+        { wpMediaId: String(featured_media) }
+      );
+      if (matchedAsset?._id) {
+        mainImageRef = { _type: 'image', asset: { _type: 'reference', _ref: matchedAsset._id } };
       }
     }
 
     const numericWpId = String(Date.now()).slice(-6);
+    const isPublish = status === 'publish';
 
-    const sanityDoc = {
+    const sanityDoc: Record<string, unknown> = {
       _type: 'article',
       title: titleText,
       slug: { _type: 'slug', current: finalSlug },
@@ -42,17 +46,20 @@ export async function POST(request: Request) {
       seoTitle: seoTitle || undefined,
       seoDescription: seoDescription || undefined,
       wordpressId: numericWpId,
-      publishedAt: new Date().toISOString(),
       ...(mainImageRef ? { mainImage: mainImageRef } : {}),
     };
+    // 仅 status=publish 时才设置 publishedAt，避免空草稿出现在博客列表
+    if (isPublish) {
+      sanityDoc.publishedAt = new Date().toISOString();
+    }
 
-    await writeClient.create(sanityDoc);
+    await writeClient.create(sanityDoc as any);
 
     return NextResponse.json({
       id: parseInt(numericWpId),
       date: new Date().toISOString(),
       slug: finalSlug,
-      status: 'publish',
+      status: isPublish ? 'publish' : 'draft',
       type: 'post',
       link: `https://${request.headers.get('host') || 'your-domain.com'}/${finalSlug}`,
       title: { rendered: titleText },
@@ -67,9 +74,9 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const perPage = parseInt(searchParams.get('per_page') || '100', 10);
-    
-    // Fetch latest articles from Sanity to build internal links pool
-    const query = `*[_type == "article"] | order(_createdAt desc)[0...$perPage] {
+
+    // 只返回有 publishedAt 的文章（已发布的），草稿不显示
+    const query = `*[_type == "article" && defined(slug.current) && defined(publishedAt)] | order(publishedAt desc)[0...$perPage] {
       title,
       slug,
       wordpressId,
@@ -87,12 +94,12 @@ export async function GET(request: Request) {
       slug: post.slug?.current || 'unknown-slug',
       status: 'publish',
       type: 'post',
-      link: `${protocol}://${host}/${post.slug?.current || ''}`,
+      link: `${protocol}://${host}/articles/${post.slug?.current || ''}`,
       title: { rendered: post.title },
     }));
 
-    return NextResponse.json(formattedPosts, { 
-      status: 200, 
+    return NextResponse.json(formattedPosts, {
+      status: 200,
       headers: {
         ...getCorsHeaders(),
         'X-WP-Total': String(posts.length),
@@ -103,4 +110,3 @@ export async function GET(request: Request) {
     return NextResponse.json({ message: 'Fetch posts failed', error: error.message }, { status: 500, headers: getCorsHeaders() });
   }
 }
-

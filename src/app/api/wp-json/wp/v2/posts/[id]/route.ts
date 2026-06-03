@@ -10,15 +10,66 @@ export async function OPTIONS() {
 
 export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  // Evolution 301 会先 GET 确认文章存在，我们返回 mock 数据让它继续走后续写入流程
-  return NextResponse.json({
-    id: parseInt(id),
-    date: new Date().toISOString(),
-    status: 'draft',
-    type: 'post',
-    title: { rendered: 'Draft Article' },
-    content: { rendered: '' },
-  }, { status: 200, headers: getCorsHeaders() });
+
+  try {
+    // 从 Sanity 查询真实 post 数据，301 写作发布后会调此接口验证 featured_media > 0
+    const post = await client.fetch(`*[_type == "article" && wordpressId == $id][0]{
+      title,
+      wordpressId,
+      "slug": slug.current,
+      htmlContent,
+      category,
+      tags,
+      publishedAt,
+      seoTitle,
+      seoDescription,
+      "featured_media": coalesce(mainImage.asset->wordpressMediaId, 0)
+    }`, { id });
+
+    if (!post) {
+      return NextResponse.json(
+        { code: 'rest_post_invalid_id', message: 'Invalid post ID.', data: { status: 404 } },
+        { status: 404, headers: getCorsHeaders() }
+      );
+    }
+
+    const protocol = _request.headers.get('x-forwarded-proto') || 'https';
+    const host = _request.headers.get('host') || 'www.ifanholding.com';
+
+    return NextResponse.json({
+      id: parseInt(post.wordpressId || id),
+      date: post.publishedAt || new Date().toISOString(),
+      date_gmt: post.publishedAt || new Date().toISOString(),
+      modified: post.publishedAt || new Date().toISOString(),
+      modified_gmt: post.publishedAt || new Date().toISOString(),
+      status: post.publishedAt ? 'publish' : 'draft',
+      type: 'post',
+      slug: post.slug || id,
+      link: `${protocol}://${host}/articles/${post.slug || id}`,
+      title: { rendered: post.title || '' },
+      content: { rendered: post.htmlContent || '', protected: false },
+      excerpt: { rendered: post.seoDescription?.substring(0, 200) || '', protected: false },
+      featured_media: parseInt(post.featured_media) || 0,
+      categories: post.category ? [post.category] : [],
+      tags: post.tags ? post.tags.split(',').map((t: string) => t.trim()).filter(Boolean) : [],
+      meta: {
+        rank_math_title: post.seoTitle || '',
+        rank_math_description: post.seoDescription || '',
+        _yoast_wpseo_title: post.seoTitle || '',
+        _yoast_wpseo_metadesc: post.seoDescription || '',
+      },
+      _links: {
+        'wp:featuredmedia': [{ embeddable: true, href: `${protocol}://${host}/wp-json/wp/v2/media/${post.featured_media || 0}` }],
+        'wp:attachment': [{ href: `${protocol}://${host}/wp-json/wp/v2/media?parent=${post.wordpressId || id}` }],
+      },
+    }, { status: 200, headers: getCorsHeaders() });
+  } catch (error: any) {
+    console.error('[GET /posts/[id]] 错误:', error);
+    return NextResponse.json(
+      { code: 'rest_post_invalid_id', message: 'Invalid post ID.', data: { status: 404 } },
+      { status: 404, headers: getCorsHeaders() }
+    );
+  }
 }
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -48,18 +99,24 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     // 替换 AI 生成 HTML 里的 WordPress 内部图片链接 → Sanity CDN URL
     const processedHtml = contentHtml ? replaceWpImagesWithSanityUrls(contentHtml) : undefined;
 
-    // 寻找封面图（关联最新上传的图片资产）
+    // 通过 wordpressMediaId 精准查找匹配的 asset
     let mainImageRef = undefined;
     if (featured_media && featured_media > 0) {
       try {
-        const latestAsset = await client.fetch(`*[_type == "sanity.imageAsset"] | order(_createdAt desc)[0] { _id }`);
-        if (latestAsset?._id) {
-          mainImageRef = { _type: 'image', asset: { _type: 'reference', _ref: latestAsset._id } };
+        const matchedAsset = await client.fetch(
+          `*[_type == "sanity.imageAsset" && wordpressMediaId == $wpMediaId][0] { _id }`,
+          { wpMediaId: String(featured_media) }
+        );
+        if (matchedAsset?._id) {
+          mainImageRef = { _type: 'image', asset: { _type: 'reference', _ref: matchedAsset._id } };
         }
       } catch (e) {
         console.warn('封面图查找失败', e);
       }
     }
+
+    // status=publish 时才设置 publishedAt，避免空草稿出现在博客列表
+    const isPublish = status === 'publish';
 
     if (existingDoc) {
       // 更新已有文档
@@ -71,10 +128,11 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       if (seoTitle) patch.set({ seoTitle });
       if (seoDescription) patch.set({ seoDescription });
       if (mainImageRef) patch.set({ mainImage: mainImageRef });
+      if (isPublish) patch.set({ publishedAt: new Date().toISOString() });
       await patch.commit();
     } else {
       // 文档不存在则创建新的（兜底逻辑）
-      const sanityDoc = {
+      const sanityDoc: Record<string, unknown> = {
         _type: 'article',
         title: titleText || 'Untitled',
         slug: finalSlug ? { _type: 'slug', current: finalSlug } : undefined,
@@ -83,10 +141,13 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
         seoTitle,
         seoDescription,
         wordpressId: id,
-        publishedAt: new Date().toISOString(),
         ...(mainImageRef ? { mainImage: mainImageRef } : {}),
       };
-      await writeClient.create(sanityDoc);
+      // 仅 publish 时设置 publishedAt
+      if (isPublish) {
+        sanityDoc.publishedAt = new Date().toISOString();
+      }
+      await writeClient.create(sanityDoc as any);
     }
 
     return NextResponse.json({
