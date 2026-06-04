@@ -7,13 +7,13 @@ export const articleType = defineType({
     fields: [
         defineField({
             name: 'title',
-            title: '文章标题 (英文)',
+            title: 'Title',
             type: 'string',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'slug',
-            title: '唯一标识 (Slug)',
+            title: 'Slug',
             type: 'slug',
             options: {
                 source: 'title',
@@ -22,13 +22,14 @@ export const articleType = defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
-            name: 'author',
-            title: '作者',
-            type: 'string',
+            name: 'description',
+            title: 'Excerpt / Description',
+            type: 'text',
+            rows: 3,
         }),
         defineField({
             name: 'mainImage',
-            title: '封面图',
+            title: 'Cover Image',
             type: 'image',
             options: {
                 hotspot: true,
@@ -36,59 +37,50 @@ export const articleType = defineType({
         }),
         defineField({
             name: 'publishedAt',
-            title: '发布时间',
+            title: 'Published At',
             type: 'datetime',
         }),
-        defineField({
-            name: 'body',
-            title: '正文内容 (英文)',
-            type: 'array',
-            of: [
-                { type: 'block' },
-                { type: 'image' },
-            ],
-        }),
         // ── 适配 Evolution 301 及 SEO 相关字段 ──────────────────────────────
-        defineField({ 
-            name: 'htmlContent', 
-            title: 'Raw HTML Content (301 Auto)', 
-            type: 'text', 
+        defineField({
+            name: 'htmlContent',
+            title: 'Raw HTML Content',
+            type: 'text',
             rows: 20,
             description: '从 Evolution 301 自动导入的原生带样式的HTML内容区'
         }),
-        defineField({ 
-            name: 'wordpressId', 
-            title: 'WordPress ID (301 Sync)', 
+        defineField({
+            name: 'wordpressId',
+            title: 'WordPress ID',
             type: 'string',
-            description: '保留由 Evolution 301 指定的一一关联重写用 ID' 
+            description: '保留由 Evolution 301 指定的一一关联重写用 ID'
         }),
-        defineField({ 
-            name: 'wordpressMediaId', 
-            title: 'WP Media ID (封面图)', 
+        defineField({
+            name: 'wordpressMediaId',
+            title: 'WP Media ID',
             type: 'string',
-            description: '封面图对应的 wordpressMediaId，冗余存储便于查询' 
+            description: '封面图对应的 wordpressMediaId，冗余存储便于查询'
         }),
-        defineField({ 
-            name: 'category', 
-            title: '分类', 
+        defineField({
+            name: 'category',
+            title: 'Category',
             type: 'string',
             description: '文章分类名称（支持动态新增，不受 options.list 限制）'
         }),
-        defineField({ 
-            name: 'tags', 
-            title: '标签', 
+        defineField({
+            name: 'tags',
+            title: 'Tags',
             type: 'string',
             description: '逗号分隔的标签列表'
         }),
-        defineField({ 
-            name: 'seoTitle', 
-            title: 'SEO Title (301 Auto)', 
-            type: 'string' 
+        defineField({
+            name: 'seoTitle',
+            title: 'SEO Title',
+            type: 'string'
         }),
-        defineField({ 
-            name: 'seoDescription', 
-            title: 'SEO Description (301 Auto)', 
-            type: 'text' 
+        defineField({
+            name: 'seoDescription',
+            title: 'SEO Description',
+            type: 'text'
         }),
 
         // ── 多语言翻译字段 ──────────────────────────────
