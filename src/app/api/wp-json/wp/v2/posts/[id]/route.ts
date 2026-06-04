@@ -3,9 +3,20 @@ import { writeClient } from '@/lib/sanity-write';
 import { client } from '@/lib/sanity';
 import { getCorsHeaders } from '../../cors';
 import { replaceWpImagesWithSanityUrls } from '../../media-cache';
+import { findCategoryIdByName } from '../../utils';
 
 export async function OPTIONS() {
   return new NextResponse(null, { status: 200, headers: getCorsHeaders() });
+}
+
+// 简单的 hash 函数：从 asset._ref 生成稳定的数字 ID 作为 featured_media 兜底
+function hashRef(ref: string): number {
+  let hash = 0;
+  for (let i = 0; i < ref.length; i++) {
+    hash = ((hash << 5) - hash) + ref.charCodeAt(i);
+    hash = hash & hash;
+  }
+  return Math.abs(hash);
 }
 
 export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -23,7 +34,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
       publishedAt,
       seoTitle,
       seoDescription,
-      "featured_media": coalesce(mainImage.asset->wordpressMediaId, 0)
+      "featured_media": coalesce(mainImage.asset->wordpressMediaId, 0),
+      "imageRef": mainImage.asset._ref
     }`, { id });
 
     if (!post) {
@@ -32,6 +44,9 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
         { status: 404, headers: getCorsHeaders() }
       );
     }
+
+    // 优先 wordpressMediaId，无则用 imageRef hash 生成数字 ID 兜底
+    const featuredMedia = post.featured_media || (post.imageRef ? hashRef(post.imageRef) : 0);
 
     const protocol = _request.headers.get('x-forwarded-proto') || 'https';
     const host = _request.headers.get('host') || 'www.ifanholding.com';
@@ -49,8 +64,11 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
       title: { rendered: post.title || '' },
       content: { rendered: post.htmlContent || '', protected: false },
       excerpt: { rendered: post.seoDescription?.substring(0, 200) || '', protected: false },
-      featured_media: parseInt(post.featured_media) || 0,
-      categories: post.category ? [post.category] : [],
+      featured_media: featuredMedia,
+      // ⚠️ categories 必须返回数字 ID，不能返回分类名称字符串（301 Python 后端会 int(item) 遍历）
+      categories: post.category
+        ? [findCategoryIdByName(post.category)].filter(Boolean) as number[]
+        : [],
       tags: post.tags ? post.tags.split(',').map((t: string) => t.trim()).filter(Boolean) : [],
       meta: {
         rank_math_title: post.seoTitle || '',
@@ -59,7 +77,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
         _yoast_wpseo_metadesc: post.seoDescription || '',
       },
       _links: {
-        'wp:featuredmedia': [{ embeddable: true, href: `${protocol}://${host}/wp-json/wp/v2/media/${post.featured_media || 0}` }],
+        'wp:featuredmedia': [{ embeddable: true, href: `${protocol}://${host}/wp-json/wp/v2/media/${featuredMedia}` }],
         'wp:attachment': [{ href: `${protocol}://${host}/wp-json/wp/v2/media?parent=${post.wordpressId || id}` }],
       },
     }, { status: 200, headers: getCorsHeaders() });
@@ -80,7 +98,22 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     const titleText = typeof body.title === 'object' ? body.title.rendered : (body.title || undefined);
     const contentHtml = typeof body.content === 'object' ? body.content.rendered : (body.content || undefined);
     const excerpt = typeof body.excerpt === 'object' ? body.excerpt.rendered : (body.excerpt || undefined);
-    const { status, slug, featured_media, meta } = body;
+    const { status, slug, featured_media, meta, categories: bodyCats, tags: bodyTags } = body;
+
+    // 提取分类名称：301 传 categories 为数字 ID 数组，需通过 categories 列表反向查找名称
+    let categoryName: string | undefined;
+    if (bodyCats && Array.isArray(bodyCats) && bodyCats.length > 0) {
+      const { categories: catList } = await import('../../utils');
+      const catId = typeof bodyCats[0] === 'object' ? bodyCats[0].id : bodyCats[0];
+      const found = catList.find(c => c.id === Number(catId));
+      if (found) categoryName = found.name;
+    }
+    // 提取标签：301 传 tags 为数组
+    let tagsString: string | undefined;
+    if (bodyTags && Array.isArray(bodyTags)) {
+      const tagNames = bodyTags.map((t: any) => typeof t === 'object' ? t.name : String(t)).filter(Boolean);
+      if (tagNames.length > 0) tagsString = tagNames.join(', ');
+    }
 
     // 根据 wordpressId 找到 Sanity 里已有的文档
     const existingDoc = await client.fetch(`*[_type == "article" && wordpressId == $id][0]`, { id });
@@ -99,9 +132,35 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     // 替换 AI 生成 HTML 里的 WordPress 内部图片链接 → Sanity CDN URL
     const processedHtml = contentHtml ? replaceWpImagesWithSanityUrls(contentHtml) : undefined;
 
-    // 通过 wordpressMediaId 精准查找匹配的 asset
+    // 特色图片优先级：
+    //   1. 优先从正文 HTML 中随机选一张 Sanity 图片作为封面（避免多篇文章封面雷同）
+    //   2. 正文无 Sanity 图时，才用写作系统传的 featured_media
     let mainImageRef = undefined;
-    if (featured_media && featured_media > 0) {
+
+    // Step 1: 从正文随机选图
+    if (processedHtml) {
+      const imgMatches = [...processedHtml.matchAll(/<img[^>]+src=["']([^"']+)["']/gi)];
+      if (imgMatches.length > 0) {
+        const randomImg = imgMatches[Math.floor(Math.random() * imgMatches.length)];
+        const srcUrl = randomImg[1];
+        // 匹配 Sanity CDN URL 中的 asset hash
+        const sanityHashMatch = srcUrl.match(
+          /cdn\.sanity\.io\/images\/[^/]+\/[^/]+\/([a-f0-9]+)-\d+x\d+\.[a-z]+/i
+        );
+        if (sanityHashMatch) {
+          const assetByUrl = await client.fetch(
+            `*[_type == "sanity.imageAsset" && _id match $pattern][0] { _id }`,
+            { pattern: `image-${sanityHashMatch[1]}-*` }
+          );
+          if (assetByUrl?._id) {
+            mainImageRef = { _type: 'image', asset: { _type: 'reference', _ref: assetByUrl._id } };
+          }
+        }
+      }
+    }
+
+    // Step 2: 正文无图时回退到写作系统的 featured_media
+    if (!mainImageRef && featured_media && featured_media > 0) {
       try {
         const matchedAsset = await client.fetch(
           `*[_type == "sanity.imageAsset" && wordpressMediaId == $wpMediaId][0] { _id }`,
@@ -123,11 +182,13 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       const patch = writeClient.patch(existingDoc._id);
       if (titleText) patch.set({ title: titleText });
       if (finalSlug) patch.set({ slug: { _type: 'slug', current: finalSlug } });
-      if (processedHtml) patch.set({ htmlContent: processedHtml }); // 使用替换图片后的 HTML
+      if (processedHtml) patch.set({ htmlContent: processedHtml });
       if (excerpt || seoDescription) patch.set({ description: excerpt || seoDescription });
       if (seoTitle) patch.set({ seoTitle });
       if (seoDescription) patch.set({ seoDescription });
       if (mainImageRef) patch.set({ mainImage: mainImageRef });
+      if (categoryName) patch.set({ category: categoryName });
+      if (tagsString) patch.set({ tags: tagsString });
       if (isPublish) patch.set({ publishedAt: new Date().toISOString() });
       await patch.commit();
     } else {
@@ -136,12 +197,14 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
         _type: 'article',
         title: titleText || 'Untitled',
         slug: finalSlug ? { _type: 'slug', current: finalSlug } : undefined,
-        htmlContent: processedHtml, // 使用替换图片后的 HTML
+        htmlContent: processedHtml,
         description: excerpt || seoDescription,
         seoTitle,
         seoDescription,
         wordpressId: id,
         ...(mainImageRef ? { mainImage: mainImageRef } : {}),
+        ...(categoryName ? { category: categoryName } : {}),
+        ...(tagsString ? { tags: tagsString } : {}),
       };
       // 仅 publish 时设置 publishedAt
       if (isPublish) {
