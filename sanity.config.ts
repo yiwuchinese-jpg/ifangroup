@@ -10,6 +10,7 @@ import { articleType } from './sanity/schemaTypes/articleType'
 export default defineConfig({
   name: 'default',
   title: 'IFAN 集团管理系统',
+  basePath: '/studio',
 
   projectId: 'm2e07kon',
   dataset: 'production',
