@@ -4,24 +4,24 @@ import PPRLanding from "@/components/landing/PPRLanding";
 const englishUrl = "https://ifanholding.com/ppr-supplier";
 
 export const metadata: Metadata = {
-  title: "China's Lowest Price PPR Pipe & Fittings Manufacturer | IFAN Group",
+  title: "PPR Pipe Manufacturer & Supplier for African Markets | IFAN Group",
   description:
-    "PPR pipes DIN 8077/8078, fittings, valves, PPR-AL-PPR composite pipes and floor heating systems for B2B importers, distributors and contractors. Factory direct pricing in China.",
+    "Factory direct supply of PPR pipes and fittings for plumbing, water supply and construction. Bulk orders, OEM, product catalog and export service for Ghana, Cameroon, Nigeria, Kenya and other African markets.",
   alternates: {
     canonical: englishUrl,
   },
   openGraph: {
-    title: "China's Lowest Price PPR Pipe & Fittings Manufacturer",
+    title: "PPR Pipe Manufacturer & Supplier for African Markets",
     description:
-      "PPR pipes, fittings, valves and composite systems for B2B buyers. Factory direct pricing, DIN 8077/8078 certified.",
+      "Factory direct PPR pipes and fittings for B2B buyers. Bulk orders, OEM, export service to Ghana, Cameroon, Nigeria, Kenya and across Africa.",
     url: englishUrl,
     siteName: "IFAN Group",
     images: [
       {
-        url: "https://ifanholding.com/images/ppr-landing/横幅海报7.jpeg",
+        url: "https://ifanholding.com/images/ppr-landing/横幅海报7.webp",
         width: 1200,
         height: 800,
-        alt: "IFAN PPR pipes and fittings for B2B buyers",
+        alt: "IFAN PPR pipes and fittings for African B2B buyers",
       },
     ],
     locale: "en_US",

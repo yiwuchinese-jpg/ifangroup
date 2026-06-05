@@ -20,6 +20,15 @@ import {
   TrendingDown,
   X,
 } from "lucide-react";
+import {
+  pipeImages,
+  seriesImages,
+  factoryImages,
+  mexicoFactoryImages,
+  carouselImages,
+  caseImages,
+  certImages,
+} from "./pprData";
 
 const whatsappNumber = "8617369685997";
 const email = "ifanholding@gmail.com";
@@ -35,67 +44,6 @@ const googleAdsWhatsAppConversion = {
   currency: "CNY",
 };
 
-const heroCarouselImages = [
-  "/images/ppr-landing/横幅海报2.jpeg",
-  "/images/ppr-landing/横幅海报4.jpeg",
-  "/images/ppr-landing/横幅海报5.jpeg",
-  "/images/ppr-landing/横幅海报6.webp",
-  "/images/ppr-landing/横幅海报7.jpeg",
-];
-
-const pipeImages = [
-  { src: "/images/ppr-landing/ppr 管产品图2.webp", alt: "PPR pipes DN20-DN160 green color for plumbing systems" },
-  { src: "/images/ppr-landing/ppr 管产品图5.webp", alt: "PPR pipes white color factory direct wholesale" },
-  { src: "/images/ppr-landing/ppr 管产品图6.webp", alt: "PPR pipes bundle for B2B export wholesale" },
-  { src: "/images/ppr-landing/ppr 管产品图7.webp", alt: "PPR pipes DN20-DN160 various sizes factory stock" },
-  { src: "/images/ppr-landing/ppr 管产品图8.webp", alt: "PPR pipes close-up showing material quality" },
-];
-
-const seriesImages = [
-  { src: "/images/ppr-landing/ppr 管产品组合图1.webp", alt: "PPR fittings and pipe complete system" },
-  { src: "/images/ppr-landing/ppr 管产品组合图2.webp", alt: "PPR plumbing system components and accessories" },
-  { src: "/images/ppr-landing/ppr 管产品组合图3.webp", alt: "PPR pipe and fitting combination for water supply" },
-];
-
-const carouselImages = [
-  { src: "/images/ppr-landing/横幅海报2.jpeg", alt: "PPR plumbing products showcase for B2B wholesale export" },
-  { src: "/images/ppr-landing/横幅海报6.webp", alt: "PPR pipe and fitting factory direct from China" },
-  { src: "/images/mexico-landing/products/管子包装.jpg", alt: "PPR pipes professional packaging for export" },
-  { src: "/images/mexico-landing/products/管件包装.jpg", alt: "PPR fittings packaging for wholesale export" },
-  { src: "/images/ppr-landing/横幅海报4.jpeg", alt: "IFAN factory exterior and logistics center" },
-  { src: "/images/ppr-landing/横幅海报5.jpeg", alt: "IFAN warehouse and inventory management" },
-];
-
-const factoryImages = [
-  { src: "/images/ppr-landing/工厂效果图1.webp", alt: "IFAN PPR pipe manufacturing factory workshop" },
-  { src: "/images/ppr-landing/工厂效果图2.webp", alt: "IFAN automated extrusion production line" },
-];
-
-const mexicoFactoryImages = [
-  { src: "/images/mexico-landing/factory/厂区大门.jpg", alt: "IFAN factory entrance and main gate" },
-  { src: "/images/mexico-landing/factory/生产线.jpg", alt: "IFAN automated production line manufacturing" },
-  { src: "/images/mexico-landing/factory/08947223d686d957a5a79367ee69a6d0.jpg", alt: "IFAN factory workshop and equipment" },
-  { src: "/images/mexico-landing/factory/157a23182b6cdb27826c9029db1aac22.jpg", alt: "IFAN production facility and quality control" },
-  { src: "/images/mexico-landing/factory/e1d737752eafb0df8875016822c01e2a.jpg", alt: "IFAN manufacturing plant and global logistics" },
-];
-
-const caseImages = [
-  { src: "/images/mexico-landing/cases/03c9f37b1c5aef4c3519269cdc9c9555.jpg", alt: "IFAN global export project case study - plumbing installation" },
-  { src: "/images/mexico-landing/cases/07f917d1ff4712130d304aa741c869ae.jpg", alt: "IFAN export project reference - building plumbing" },
-  { src: "/images/mexico-landing/cases/61c2f8105f3adce99ce6516451add850.jpg", alt: "IFAN global wholesale client case - pipe supply" },
-  { src: "/images/mexico-landing/cases/6430229fd9208b1770328d99fbb0b854.jpg", alt: "IFAN international cooperation case - water system" },
-  { src: "/images/mexico-landing/cases/7e10c2bfd679c4525ca5012eb72b3fa6.jpg", alt: "IFAN B2B client project - plumbing products" },
-  { src: "/images/mexico-landing/cases/c45139cfc798101975d9dd121bc18ded.jpg", alt: "IFAN export success case - factory direct" },
-  { src: "/images/mexico-landing/cases/f9bbf6735109b583d53faf1f0eda3dd0.jpg", alt: "IFAN global market reference - wholesale supply" },
-];
-
-const certImages = [
-  "/images/ppr-landing/证书1.webp",
-  "/images/ppr-landing/证书2.webp",
-  "/images/ppr-landing/证书3.webp",
-  "/images/ppr-landing/证书4.webp",
-];
-
 const landingCopy = {
   nav: {
     products: "Products",
@@ -105,11 +53,12 @@ const landingCopy = {
   },
   hero: {
     badge: "B2B Factory-Direct — No Trading Company Markup",
-    title: "Factory-Direct PPR Pricing That Beats Any China Broker By 15–30%",
+    title: "Looking for a PPR Pipe Manufacturer & Supplier That Ships to Africa?",
     subtitle:
-      "120,000m² manufacturer. 100% virgin PP-R. DIN 8077/8078. No middlemen, no retail, no marketplace. Container-level pricing shipped to your port.",
-    cta1: "Get Factory Price List",
-    cta2: "WhatsApp Now",
+      "Factory direct supply of PPR pipes and fittings for plumbing, water supply and construction projects. We support bulk orders, OEM requirements, product catalog requests and export service for buyers in Ghana, Cameroon, Nigeria, Kenya and other African markets.",
+    cta1: "Request a Quote",
+    cta2: "Get Product Catalog",
+    whatsapp: "Contact on WhatsApp",
     proofs: [
       "Manufacturer-direct pricing — no broker layer",
       "100% virgin PP-R — batch certificates provided",
@@ -171,7 +120,7 @@ const landingCopy = {
   },
   factory: {
     badge: "See The Factory",
-    title: "120,000m² Manufacturing Facility — Audit It Yourself",
+    title: "PPR Pipe Manufacturing / Factory",
     subtitle: "30+ automated extrusion lines. In-house mold workshop. ISO-certified testing lab. Warehouse capacity for 200+ containers.",
   },
   proof: {
@@ -180,14 +129,13 @@ const landingCopy = {
     subtitle: "DIN 8077/8078 · ISO 15874 · CE · SGS. Proven across Latin America, Middle East, Africa, and Southeast Asia.",
   },
   products: {
-    title: "PPR Products Available For Immediate Export",
     subtitle: "B2B wholesale only — click any image to enlarge and request a quote.",
     pipes: {
-      title: "PPR Pipes",
+      title: "PPR Pipe Supplier",
       label: "DN20–DN160 · PN12.5–PN25 · Green / White / Custom · 100% virgin PP-R",
     },
     series: {
-      title: "PPR Fittings & Systems",
+      title: "PPR Pipe Fittings Supplier",
       label: "Elbows, tees, couplings, valves, composite pipes, floor heating components",
     },
   },
@@ -253,7 +201,7 @@ const landingCopy = {
     ],
   },
   finalCta: {
-    title: "Ready To See Your Factory-Direct PPR Pricing?",
+    title: "Request a Quote for PPR Pipes and Fittings",
     subtitle: "Send your product list. We reply with a tailored quotation within 24 hours — no obligation.",
     button: "Get Factory Price List",
   },
@@ -475,29 +423,6 @@ function Lightbox({
   );
 }
 
-function HeroCarousel() {
-  const [current, setCurrent] = useState(0);
-  useEffect(() => {
-    const timer = setInterval(() => setCurrent((c) => (c + 1) % heroCarouselImages.length), 5000);
-    return () => clearInterval(timer);
-  }, []);
-  return (
-    <>
-      {heroCarouselImages.map((src, i) => (
-        <Image
-          key={src}
-          src={src}
-          alt=""
-          fill
-          priority={i === 0}
-          sizes="100vw"
-          className={`object-cover transition-opacity duration-1000 ${i === current ? "opacity-90" : "opacity-0"}`}
-        />
-      ))}
-    </>
-  );
-}
-
 function Carousel({ images, interval = 4000 }: { images: { src: string; alt: string }[]; interval?: number }) {
   const [current, setCurrent] = useState(0);
 
@@ -515,7 +440,7 @@ function Carousel({ images, interval = 4000 }: { images: { src: string; alt: str
             key={img.src}
             className={`absolute inset-0 transition-opacity duration-700 ${i === current ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           >
-            <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 90vw, 100vw" className="object-cover" priority={i === 0} />
+            <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 90vw, 100vw" className="object-cover" priority={i === 0} loading={i === 0 ? undefined : "lazy"} />
             <figcaption className="sr-only">{img.alt}</figcaption>
           </figure>
         ))}
@@ -547,8 +472,12 @@ function ProductGrid({
 }) {
   return (
     <div className="mb-8">
-      <h3 className="text-lg font-black tracking-normal text-slate-900">{title}</h3>
-      <p className="mt-1.5 mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">{label}</p>
+      {title && (
+        <>
+          <h3 className="text-lg font-black tracking-normal text-slate-900">{title}</h3>
+          <p className="mt-1.5 mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">{label}</p>
+        </>
+      )}
       <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {images.map((img, i) => (
           <figure
@@ -563,6 +492,7 @@ function ProductGrid({
                 fill
                 sizes="(min-width: 1280px) 20vw, (min-width: 768px) 25vw, 50vw"
                 className="object-contain p-2 transition duration-500 group-hover:scale-105"
+                loading="lazy"
               />
             </div>
             <figcaption className="sr-only">{img.alt}</figcaption>
@@ -611,6 +541,7 @@ export default function PPRLanding() {
 
   return (
     <div className="min-h-screen bg-white text-slate-950">
+      {/* ===== HEADER ===== */}
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/15 bg-slate-950/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
           <Link href="/" className="relative h-9 w-32" aria-label="IFAN Group">
@@ -629,10 +560,17 @@ export default function PPRLanding() {
       </header>
 
       <main>
-        {/* ===== A – ATTENTION: Hero with carousel background ===== */}
+        {/* ===== A – ATTENTION: Hero ===== */}
         <section className="relative flex min-h-[600px] items-center overflow-hidden bg-slate-950 pt-16 text-white md:min-h-[680px]">
-          <HeroCarousel />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.96),rgba(2,6,23,0.78),rgba(2,6,23,0.2))]" />
+          <Image
+            src="/images/ppr-landing/mfg-engineering.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-slate-950/60" />
           <div className="relative z-10 mx-auto w-full max-w-7xl px-5 py-16 lg:px-8">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-brand-200">
               <Globe2 className="h-3.5 w-3.5" />
@@ -653,6 +591,15 @@ export default function PPRLanding() {
                 <ClipboardList className="h-4 w-4" />
                 {landingCopy.hero.cta2}
               </a>
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(quoteMessage)}`}
+                target="_blank" rel="noopener noreferrer"
+                onClick={reportWhatsAppConversion}
+                className="inline-flex min-h-12 items-center gap-2 rounded-md border border-white/25 bg-white/10 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white backdrop-blur transition hover:bg-white hover:text-slate-950"
+              >
+                <MessageCircle className="h-4 w-4" />
+                {landingCopy.hero.whatsapp}
+              </a>
             </div>
             <div className="mt-8 grid max-w-3xl gap-2 sm:grid-cols-2 lg:grid-cols-4">
               {landingCopy.hero.proofs.map((p) => (
@@ -661,19 +608,6 @@ export default function PPRLanding() {
                   {p}
                 </div>
               ))}
-            </div>
-            <div className="mt-8">
-              <h3 className="mb-4 text-sm font-black uppercase tracking-wide text-slate-500">Behind the "factory" claims — real IFAN production floors</h3>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                {mexicoFactoryImages.map((img) => (
-                  <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                    <div className="relative aspect-[4/3]">
-                      <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw" className="object-cover" />
-                    </div>
-                    <figcaption className="sr-only">{img.alt}</figcaption>
-                  </figure>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -693,26 +627,41 @@ export default function PPRLanding() {
           </div>
         </section>
 
-        {/* ===== I – INTEREST: Products (right after credibility) ===== */}
+        {/* ===== I – INTEREST: Products - PPR Pipe Supplier ===== */}
         <section id="products" className="py-14 md:py-18 bg-white">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h2 className="text-3xl font-black tracking-normal md:text-4xl">{landingCopy.products.title}</h2>
+                <h2 className="text-3xl font-black tracking-normal md:text-4xl">{landingCopy.products.pipes.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-500">{landingCopy.products.subtitle}</p>
               </div>
               <CtaButton label={ctaLabel} />
             </div>
             <div className="mt-8">
               <ProductGrid
-                title={landingCopy.products.pipes.title}
-                label={landingCopy.products.pipes.label}
+                title=""
+                label=""
                 images={pipeImages}
                 onImageClick={(i) => openLightbox(pipeImages, i)}
               />
+            </div>
+          </div>
+        </section>
+
+        {/* ===== I – INTEREST: Products - PPR Pipe Fittings Supplier ===== */}
+        <section className="border-t border-slate-200 py-14 md:py-18 bg-white">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 className="text-3xl font-black tracking-normal md:text-4xl">{landingCopy.products.series.title}</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-500">{landingCopy.products.series.label}</p>
+              </div>
+              <CtaButton label={ctaLabel} />
+            </div>
+            <div className="mt-8">
               <ProductGrid
-                title={landingCopy.products.series.title}
-                label={landingCopy.products.series.label}
+                title=""
+                label=""
                 images={seriesImages}
                 onImageClick={(i) => openLightbox(seriesImages, i)}
               />
@@ -720,8 +669,8 @@ export default function PPRLanding() {
           </div>
         </section>
 
-        {/* ===== I – INTEREST: Pain/Problem ===== */}
-        <section className="py-14 md:py-18 bg-white">
+        {/* ===== P – PROBLEM: Pain Points ===== */}
+        <section className="border-t border-slate-200 bg-white py-14 md:py-18">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             <span className="text-sm font-black uppercase tracking-[0.18em] text-red-600">{landingCopy.pain.badge}</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-normal md:text-4xl">{landingCopy.pain.title}</h2>
@@ -767,7 +716,7 @@ export default function PPRLanding() {
                 {mexicoFactoryImages.map((img) => (
                   <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
                     <div className="relative aspect-[4/3]">
-                      <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw" className="object-cover" />
+                      <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw" className="object-cover" loading="lazy" />
                     </div>
                     <figcaption className="sr-only">{img.alt}</figcaption>
                   </figure>
@@ -790,7 +739,7 @@ export default function PPRLanding() {
                 {factoryImages.map((img, i) => (
                   <figure key={img.src} className={`overflow-hidden rounded-lg ${i === 0 ? "col-span-2" : ""}`}>
                     <div className={`relative bg-slate-800 ${i === 0 ? "aspect-[16/7]" : "aspect-[4/3]"}`}>
-                      <Image src={img.src} alt={img.alt} fill sizes={i === 0 ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"} className="object-cover" />
+                      <Image src={img.src} alt={img.alt} fill sizes={i === 0 ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"} className="object-cover" loading="lazy" />
                     </div>
                     <figcaption className="sr-only">{img.alt}</figcaption>
                   </figure>
@@ -817,7 +766,7 @@ export default function PPRLanding() {
                   {certImages.map((src) => (
                     <div key={src} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
                       <div className="relative aspect-[4/3]">
-                        <Image src={src} alt="PPR certification" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
+                        <Image src={src} alt="PPR certification" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" loading="lazy" />
                       </div>
                     </div>
                   ))}
@@ -832,7 +781,7 @@ export default function PPRLanding() {
                   {caseImages.slice(0, 4).map((img) => (
                     <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 shadow-sm">
                       <div className="relative aspect-square">
-                        <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+                        <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" loading="lazy" />
                       </div>
                       <figcaption className="sr-only">{img.alt}</figcaption>
                     </figure>
@@ -844,7 +793,7 @@ export default function PPRLanding() {
               {caseImages.slice(4).map((img) => (
                 <figure key={img.src} className="overflow-hidden rounded-lg border border-slate-200 shadow-sm">
                   <div className="relative aspect-[16/10]">
-                    <Image src={img.src} alt={img.alt} fill sizes="33vw" className="object-cover" />
+                    <Image src={img.src} alt={img.alt} fill sizes="33vw" className="object-cover" loading="lazy" />
                   </div>
                   <figcaption className="sr-only">{img.alt}</figcaption>
                 </figure>
@@ -971,7 +920,7 @@ export default function PPRLanding() {
 
         {/* Final CTA */}
         <section className="relative overflow-hidden bg-slate-950 py-14 text-white md:py-16">
-          <Image src={heroCarouselImages[0]} alt="" fill sizes="100vw" className="object-cover opacity-15" />
+          <Image src="/images/ppr-landing/mfg-engineering.webp" alt="" fill sizes="100vw" className="object-cover opacity-15" loading="lazy" />
           <div className="absolute inset-0 bg-slate-950/80" />
           <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-6 px-5 lg:flex-row lg:items-center lg:px-8">
             <div className="max-w-2xl">
@@ -992,7 +941,7 @@ export default function PPRLanding() {
       <footer className="bg-slate-950 px-5 py-8 text-white lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-white/10 pt-6 md:flex-row md:items-center md:justify-between">
           <div className="relative h-8 w-28">
-            <Image src="/logo-white.png" alt="IFAN Group" fill sizes="112px" className="object-contain object-left" />
+            <Image src="/logo-white.png" alt="IFAN Group" fill sizes="112px" className="object-contain object-left" loading="lazy" />
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold text-slate-400">
             <a href={`mailto:${email}`} className="hover:text-white">{email}</a>
