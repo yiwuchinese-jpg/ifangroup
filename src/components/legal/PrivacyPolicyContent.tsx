@@ -76,7 +76,7 @@ const privacyCopy = {
     contactTitle: "Contact Us",
     contactText: "For privacy questions or requests, contact us using the details below.",
     email: "ifanholding@gmail.com",
-    whatsapp: "+86 178 5845 1677",
+    whatsapp: "+86 1736 9685 997",
     cta: "Contact IFAN Group",
   },
   es: {
@@ -149,7 +149,7 @@ const privacyCopy = {
     contactTitle: "Contáctenos",
     contactText: "Para preguntas o solicitudes de privacidad, contáctenos usando los datos siguientes.",
     email: "ifanholding@gmail.com",
-    whatsapp: "+86 178 5845 1677",
+    whatsapp: "+86 1736 9685 997",
     cta: "Contactar a IFAN Group",
   },
 } satisfies Record<PrivacyLanguage, {
@@ -195,7 +195,7 @@ export function PrivacyPolicyContent({ locale }: { locale: string }) {
                   <Mail className="h-4 w-4 text-brand-700" />
                   {c.email}
                 </a>
-                <a href="https://wa.me/8617858451677" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-brand-700">
+                <a href="https://wa.me/8617369685997" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-brand-700">
                   <MessageCircle className="h-4 w-4 text-brand-700" />
                   {c.whatsapp}
                 </a>
@@ -231,7 +231,7 @@ export function PrivacyPolicyContent({ locale }: { locale: string }) {
                     <Mail className="h-4 w-4" />
                     {c.email}
                   </a>
-                  <a href="https://wa.me/8617858451677" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-brand-600 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-600 hover:text-white">
+                  <a href="https://wa.me/8617369685997" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-brand-600 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-600 hover:text-white">
                     <MessageCircle className="h-4 w-4" />
                     WhatsApp
                   </a>

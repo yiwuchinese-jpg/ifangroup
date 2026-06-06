@@ -24,7 +24,7 @@ export default function Footer() {
                             </p>
                             <p className="flex items-center gap-3">
                                 <span className="text-brand-500 font-bold uppercase tracking-widest text-[10px]">WhatsApp:</span>
-                                <a href="https://wa.me/8617858451677" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">+86 178 5845 1677</a>
+                                <a href="https://wa.me/8617369685997" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">+86 1736 9685 997</a>
                             </p>
                         </div>
                     </div>

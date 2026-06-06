@@ -163,7 +163,7 @@ export default function ContactUsPage() {
                                             <Phone className="w-6 h-6 text-brand-300 shrink-0" />
                                             <div>
                                                 <p className="font-bold text-lg text-white">Direct Line</p>
-                                                <p className="text-brand-100/80 text-sm">WhatsApp / WeChat: +86 178 5845 1677</p>
+                                                <p className="text-brand-100/80 text-sm">WhatsApp / WeChat: +86 1736 9685 997</p>
                                             </div>
                                         </div>
 

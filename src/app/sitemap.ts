@@ -31,6 +31,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }))
     );
 
+    const globalLandingRoutes: MetadataRoute.Sitemap = [
+        {
+            url: `${BASE_URL}/global-plumbing-supplier`,
+            lastModified: new Date(),
+            changeFrequency: "monthly" as const,
+            priority: 0.9,
+        },
+        {
+            url: `${BASE_URL}/es/global-plumbing-supplier`,
+            lastModified: new Date(),
+            changeFrequency: "monthly" as const,
+            priority: 0.9,
+        },
+    ];
+
     // 动态产品页
     let productRoutes: MetadataRoute.Sitemap = [];
     try {
@@ -101,5 +116,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error("[sitemap] Failed to fetch news:", error);
     }
 
-    return [...staticRoutes, ...productRoutes, ...brandRoutes, ...toolRoutes, ...newsRoutes];
+    return [...staticRoutes, ...globalLandingRoutes, ...productRoutes, ...brandRoutes, ...toolRoutes, ...newsRoutes];
 }

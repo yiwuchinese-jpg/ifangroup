@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { type FormEvent, useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
@@ -432,6 +432,224 @@ const copy = {
 } satisfies Record<Language, Record<string, unknown>>;
 
 type LandingCopy = typeof copy.en;
+type LandingMarket = "latinAmerica" | "global";
+
+const globalCopy: Record<Language, LandingCopy> = {
+  en: {
+    ...copy.en,
+    meta: {
+      languageUrl: "/es/global-plumbing-supplier",
+      languageLabel: "Español",
+    },
+    hero: {
+      eyebrow: "For global distributors, importers, wholesalers and project buyers",
+      title: "Global Wholesale Plumbing & Pipe Products Supplier",
+      subtitle:
+        "Source PE/HDPE, PPR, PVC and PPH pipes, plumbing fittings, brass valves, faucets and multilayer pipe systems direct from IFAN Group in China.",
+      quote: "Request a Global Quote",
+      priceList: "Get Lowest China Price List",
+      whatsapp: "WhatsApp",
+      proof: ["Lowest product pricing in China market", "Direct factory supply", "Global export documentation", "OEM / ODM available"],
+    },
+    stats: [
+      ["1993", "Manufacturing experience since"],
+      ["120,000m²", "Smart manufacturing base in China"],
+      ["10,000+", "Plumbing SKUs available"],
+      ["120+", "Export markets served worldwide"],
+    ],
+    productsTitle: "Complete plumbing products for global market buyers",
+    productsSubtitle:
+      "Built for importers searching for pipe manufacturers, plumbing wholesalers, fittings suppliers and China factory price lists.",
+    buyersTitle: "Built for global B2B importers and distributors",
+    buyersText:
+      "We support importers, distributors, wholesalers, hardware chains, contractors and project procurement teams that need reliable plumbing materials at aggressive China factory pricing.",
+    buyers: ["Importers", "Distributors", "Wholesalers", "Hardware chains", "Contractors", "Project buyers"],
+    marketsTitle: "Serving wholesale buyers worldwide",
+    marketsText:
+      "Export support for Latin America, Africa, Europe, the Middle East, Asia-Pacific and CIS markets, with catalog and packaging programs adaptable to each channel.",
+    marketChips: ["Latin America", "Africa", "Europe", "Middle East", "Asia-Pacific", "CIS", "North America"],
+    marketSupport: [
+      ["Global catalog support", "Product catalogs can be matched by region, channel, standard and buyer type."],
+      ["Lowest China price positioning", "Comparable product lists are quoted to compete at the lowest China-market factory price level."],
+      ["Export-ready coordination", "Packaging, documents and shipment planning for B2B importers worldwide."],
+    ],
+    casesTitle: "Global cooperation cases and project supply records",
+    casesText:
+      "Real-world supply visuals help buyers evaluate packing, order handling and product mix before starting an international wholesale cooperation.",
+    cases: [
+      "Distributor stock supply",
+      "Mixed plumbing material orders",
+      "Project procurement support",
+      "Catalog-based product matching",
+      "Wholesale packing review",
+      "Export order preparation",
+      "On-site supply confirmation",
+    ],
+    factoryTitle: "China factory strength for global supplier evaluation",
+    factoryText:
+      "For global B2B buyers, factory visibility matters. Review our gate, production line, workshop and material handling visuals before requesting a quote.",
+    catalogsTitle: "Request global catalogs and China lowest price lists",
+    catalogsText:
+      "Send your destination country, product list and estimated quantities. Our sales team will prepare a suitable catalog and lowest China-market quotation.",
+    whyTitle: "Why global importers choose IFAN Group",
+    why: [
+      {
+        icon: Factory,
+        title: "Direct China factory supply",
+        text: "Direct manufacturer support for pipe, fittings, brass products and private label programs.",
+      },
+      {
+        icon: PackageCheck,
+        title: "Wholesale packaging & export coordination",
+        text: "Export document support (CO, BL, certificates) and reinforced packing for long-distance international transit.",
+      },
+      {
+        icon: ClipboardList,
+        title: "Lowest China-market pricing",
+        text: "Quotation by product category, size, material, destination and estimated order quantity, positioned at the lowest China factory price level.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Quality control",
+        text: "Inspection and product consistency control before shipment for international B2B orders.",
+      },
+    ],
+    processTitle: "A simple global buying process",
+    process: [
+      ["Send requirements", "Share product category, sizes, quantities and destination country."],
+      ["Confirm catalog", "We match suitable products, packaging options and technical details."],
+      ["Get lowest quote", "Receive China factory price list, MOQ, lead time and shipment planning information."],
+      ["Start order", "Confirm samples, private label details or bulk order arrangement."],
+    ],
+    form: {
+      ...copy.en.form,
+      title: "Request global plumbing materials price list",
+      text: "Tell us what you need. Excel / PDF lists are highly preferred - you can upload/send them directly to our email or WhatsApp.",
+      defaults: {
+        products: "HDPE / PPR / PVC / brass fittings / valves",
+        country: "Destination country",
+      },
+    },
+    faqs: [
+      ["Can I get a China factory price list?", "Yes. Send product categories, sizes, quantities and destination country so we can prepare a relevant lowest China-market quotation."],
+      ["Are your prices the lowest in China market?", "For comparable specifications and bulk quantities, our quotation is positioned at the lowest China-market factory price level while keeping inspection and export packing included."],
+      ["Do you support OEM or private label?", "Yes. We can support private label packaging, customized specifications and OEM / ODM requirements."],
+      ["Can you ship worldwide?", "Yes. We coordinate export documents, certificates, inspection needs and reinforced packing for importers across global markets."],
+    ],
+    finalCta: {
+      title: "Ready to compare China factory pricing?",
+      text: "Send your product list and destination country. We will help you match the right plumbing materials for your global market.",
+      button: "Send inquiry",
+    },
+  },
+  es: {
+    ...copy.es,
+    meta: {
+      languageUrl: "/global-plumbing-supplier",
+      languageLabel: "English",
+    },
+    hero: {
+      eyebrow: "Para distribuidores, importadores, mayoristas y compradores de proyectos globales",
+      title: "Proveedor mayorista global de productos de plomería y tuberías",
+      subtitle:
+        "Suministre tuberías PE/HDPE, PPR, PVC y PPH, conexiones, válvulas de latón, grifería y sistemas multicapa directamente con IFAN Group en China.",
+      quote: "Solicitar cotización global",
+      priceList: "Obtener precio más bajo de China",
+      whatsapp: "WhatsApp",
+      proof: ["Precios de producto más bajos del mercado chino", "Suministro directo de fábrica", "Documentación global de exportación", "OEM / ODM disponible"],
+    },
+    stats: [
+      ["1993", "Experiencia de fabricación desde"],
+      ["120,000m²", "Base de fabricación inteligente en China"],
+      ["10,000+", "SKUs de plomería disponibles"],
+      ["120+", "Mercados de exportación globales"],
+    ],
+    productsTitle: "Productos de plomería completos para compradores globales",
+    productsSubtitle:
+      "Diseñado para importadores que buscan fabricantes de tuberías, mayoristas de plomería, proveedores de conexiones y listas de precios de fábrica en China.",
+    buyersTitle: "Pensado para importadores y distribuidores B2B globales",
+    buyersText:
+      "Apoyamos a importadores, distribuidores, mayoristas, cadenas ferreteras, contratistas y equipos de compras que necesitan materiales confiables con precios agresivos de fábrica en China.",
+    buyers: ["Importadores", "Distribuidores", "Mayoristas", "Cadenas ferreteras", "Contratistas", "Compradores de proyectos"],
+    marketsTitle: "Atendemos compradores mayoristas en todo el mundo",
+    marketsText:
+      "Soporte de exportación para América Latina, África, Europa, Medio Oriente, Asia-Pacífico y CIS, con catálogos y empaques adaptables a cada canal.",
+    marketChips: ["América Latina", "África", "Europa", "Medio Oriente", "Asia-Pacífico", "CIS", "Norteamérica"],
+    marketSupport: [
+      ["Soporte de catálogos globales", "Catálogos adaptados por región, canal, norma y tipo de comprador."],
+      ["Precio más bajo de China", "Las listas comparables se cotizan para competir al nivel más bajo de precio de fábrica en el mercado chino."],
+      ["Coordinación de exportación", "Empaque, documentos y planificación de envío para importadores B2B globales."],
+    ],
+    casesTitle: "Casos globales de cooperación y suministro para proyectos",
+    casesText:
+      "Las imágenes reales de suministro ayudan a evaluar empaque, manejo de pedidos y mezcla de productos antes de iniciar una cooperación internacional.",
+    cases: [
+      "Suministro para distribuidores",
+      "Pedidos mixtos de plomería",
+      "Soporte para proyectos",
+      "Selección por catálogo",
+      "Revisión de empaque mayorista",
+      "Preparación de exportación",
+      "Confirmación de suministro",
+    ],
+    factoryTitle: "Fuerza de fábrica en China para evaluación global",
+    factoryText:
+      "Para compradores B2B globales, la visibilidad de fábrica importa. Revise nuestra entrada, línea de producción, taller y manejo de materiales antes de cotizar.",
+    catalogsTitle: "Solicite catálogos globales y listas con el precio más bajo de China",
+    catalogsText:
+      "Envíe su país de destino, lista de productos y cantidades estimadas. Nuestro equipo preparará el catálogo y la cotización adecuados al mercado chino más bajo.",
+    whyTitle: "Por qué los importadores globales eligen IFAN Group",
+    why: [
+      {
+        icon: Factory,
+        title: "Suministro directo de fábrica en China",
+        text: "Soporte directo del fabricante para tuberías, conexiones, productos de latón y marca privada.",
+      },
+      {
+        icon: PackageCheck,
+        title: "Empaque mayorista y coordinación de exportación",
+        text: "Documentación de exportación (CO, BL, certificados) y empaque reforzado para tránsito internacional de larga distancia.",
+      },
+      {
+        icon: ClipboardList,
+        title: "Precio más bajo del mercado chino",
+        text: "Cotización por categoría, tamaño, material, destino y cantidad estimada, posicionada al nivel más bajo de precio de fábrica en China.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Control de calidad",
+        text: "Inspección y control de consistencia antes del envío para pedidos B2B internacionales.",
+      },
+    ],
+    processTitle: "Proceso de compra global simple",
+    process: [
+      ["Envíe requisitos", "Comparta categoría, tamaños, cantidades y país de destino."],
+      ["Confirme catálogo", "Relacionamos productos, empaque y detalles técnicos adecuados."],
+      ["Reciba el precio más bajo", "Obtenga lista de precios de fábrica en China, MOQ, plazo y planificación de envío."],
+      ["Inicie pedido", "Confirme muestras, marca privada o pedido al por mayor."],
+    ],
+    form: {
+      ...copy.es.form,
+      title: "Solicite lista global de precios de materiales de plomería",
+      text: "Cuéntenos qué necesita. Preferimos listas de compra en Excel o PDF - puede enviarlas directamente a nuestro correo o por WhatsApp.",
+      defaults: {
+        products: "HDPE / PPR / PVC / conexiones de latón / válvulas",
+        country: "País de destino",
+      },
+    },
+    faqs: [
+      ["¿Puedo recibir una lista de precios de fábrica en China?", "Sí. Envíe categorías, tamaños, cantidades y país de destino para preparar una cotización relevante al nivel más bajo del mercado chino."],
+      ["¿Sus precios son los más bajos del mercado chino?", "Para especificaciones comparables y pedidos al por mayor, nuestra cotización se posiciona al nivel más bajo de precio de fábrica en China, manteniendo inspección y empaque de exportación."],
+      ["¿Hacen OEM o marca privada?", "Sí. Podemos apoyar empaque de marca privada, especificaciones personalizadas y requisitos OEM / ODM."],
+      ["¿Pueden enviar a todo el mundo?", "Sí. Coordinamos documentos de exportación, certificados, necesidades de inspección y empaque reforzado para importadores en mercados globales."],
+    ],
+    finalCta: {
+      title: "¿Listo para comparar precios de fábrica en China?",
+      text: "Envíe su lista de productos y país de destino. Le ayudaremos a elegir los materiales adecuados para su mercado global.",
+      button: "Enviar solicitud",
+    },
+  },
+};
 
 function SectionInquiryButton({
   label,
@@ -480,7 +698,17 @@ function reportWhatsAppConversion() {
   browserWindow.gtag?.("event", "conversion", googleAdsWhatsAppConversion);
 }
 
-function QuoteForm({ c, language, selectedProduct }: { c: LandingCopy; language: Language; selectedProduct: string }) {
+function QuoteForm({
+  c,
+  language,
+  market,
+  selectedProduct,
+}: {
+  c: LandingCopy;
+  language: Language;
+  market: LandingMarket;
+  selectedProduct: string;
+}) {
   const [form, setForm] = useState({
     name: "",
     country: c.form.defaults.country,
@@ -493,10 +721,17 @@ function QuoteForm({ c, language, selectedProduct }: { c: LandingCopy; language:
   const [submitState, setSubmitState] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const message = useMemo(() => {
-    const intro =
-      language === "en"
+    const intro = (() => {
+      if (market === "global") {
+        return language === "en"
+          ? "Hello IFAN, I need a global plumbing materials price list."
+          : "Hola IFAN, necesito una lista global de precios de materiales de plomería.";
+      }
+
+      return language === "en"
         ? "Hello IFAN, I need a plumbing materials price list for Latin America."
         : "Hola IFAN, necesito una lista de precios de materiales de plomería para América Latina.";
+    })();
 
     return [
       intro,
@@ -508,12 +743,17 @@ function QuoteForm({ c, language, selectedProduct }: { c: LandingCopy; language:
       `Products: ${form.products || "-"}`,
       `Estimated quantity: ${form.quantity || "-"}`,
     ].join("\n");
-  }, [form, language]);
+  }, [form, language, market]);
 
   const emailSubject =
-    language === "en"
-      ? "Latin America plumbing materials inquiry"
-      : "Consulta de materiales de plomería para América Latina";
+    market === "global"
+      ? language === "en"
+        ? "Global plumbing materials inquiry"
+        : "Consulta global de materiales de plomería"
+      : language === "en"
+        ? "Latin America plumbing materials inquiry"
+        : "Consulta de materiales de plomería para América Latina";
+  const landingPageName = market === "global" ? "Global plumbing supplier" : "Latin America plumbing supplier";
   const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(message)}`;
 
   useEffect(() => {
@@ -556,7 +796,7 @@ function QuoteForm({ c, language, selectedProduct }: { c: LandingCopy; language:
     <form action={formspreeEndpoint} method="POST" onSubmit={submit} className="grid gap-4">
       <input type="hidden" name="_subject" value={emailSubject} />
       <input type="hidden" name="Message" value={message} />
-      <input type="hidden" name="Landing page" value="Latin America plumbing supplier" />
+      <input type="hidden" name="Landing page" value={landingPageName} />
       <div className="grid gap-4 md:grid-cols-2">
         <input required name="Name" className={inputClass} placeholder={c.form.name} value={form.name} onChange={(event) => updateField("name", event.target.value)} />
         <input name="Country" className={inputClass} placeholder={c.form.country} value={form.country} onChange={(event) => updateField("country", event.target.value)} />
@@ -619,13 +859,29 @@ function QuoteForm({ c, language, selectedProduct }: { c: LandingCopy; language:
   );
 }
 
-export default function LatinAmericaPlumbingLanding({ language = "en" }: { language?: Language }) {
-  const c = copy[language] as LandingCopy;
+export default function LatinAmericaPlumbingLanding({
+  language = "en",
+  market = "latinAmerica",
+}: {
+  language?: Language;
+  market?: LandingMarket;
+}) {
+  const isGlobal = market === "global";
+  const c = (isGlobal ? globalCopy : copy)[language] as LandingCopy;
   const [selectedProduct, setSelectedProduct] = useState("");
-  const quoteMessage =
-    language === "en"
+  const quoteMessage = isGlobal
+    ? language === "en"
+      ? "Hello IFAN, please send me a global plumbing materials price list with the lowest China-market pricing."
+      : "Hola IFAN, por favor envíeme una lista global de precios de plomería con el precio más bajo del mercado chino."
+    : language === "en"
       ? "Hello IFAN, please send me a plumbing materials price list for Latin America."
       : "Hola IFAN, por favor envíeme una lista de precios de materiales de plomería para América Latina.";
+  const marketEyebrow = isGlobal ? (language === "es" ? "Mercado global" : "Global market") : "Latin America";
+  const contactMarkets = isGlobal
+    ? language === "es"
+      ? "América Latina, África, Europa, Medio Oriente, Asia-Pacífico y CIS"
+      : "Latin America, Africa, Europe, Middle East, Asia-Pacific and CIS"
+    : "Mexico, Colombia, Peru, Chile, Ecuador, Bolivia, Argentina";
   const sectionCtaLabel = c.hero.quote;
 
   return (
@@ -776,7 +1032,7 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
         <section id="markets" className="border-y border-slate-200 bg-slate-50 py-24 text-slate-950">
           <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">Latin America</p>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">{marketEyebrow}</p>
               <h2 className="mt-3 text-4xl font-black tracking-normal md:text-5xl">{c.buyersTitle}</h2>
               <p className="mt-5 text-lg leading-8 text-slate-600">{c.buyersText}</p>
               <div className="mt-8">
@@ -923,7 +1179,7 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
             <div className="grid grid-cols-2 gap-4">
               {catalogImages.map((src, index) => (
                 <div key={src} className={`relative overflow-hidden rounded-md bg-white shadow-sm ${index === 0 ? "col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
-                  <Image src={src} alt={`Latin America catalog cover ${index + 1}`} fill sizes="(min-width: 1024px) 28vw, 50vw" className="object-cover" />
+                  <Image src={src} alt={`${marketEyebrow} catalog cover ${index + 1}`} fill sizes="(min-width: 1024px) 28vw, 50vw" className="object-cover" />
                 </div>
               ))}
             </div>
@@ -980,12 +1236,12 @@ export default function LatinAmericaPlumbingLanding({ language = "en" }: { langu
                 </a>
                 <p className="flex items-center gap-3 text-base font-bold text-slate-800">
                   <Truck className="h-5 w-5 text-brand-700" />
-                  Mexico, Colombia, Peru, Chile, Ecuador, Bolivia, Argentina
+                  {contactMarkets}
                 </p>
               </div>
             </div>
             <div className="rounded-md border border-slate-200 bg-white p-6 shadow-xl md:p-8">
-              <QuoteForm c={c} language={language} selectedProduct={selectedProduct} />
+              <QuoteForm c={c} language={language} market={market} selectedProduct={selectedProduct} />
             </div>
           </div>
         </section>
