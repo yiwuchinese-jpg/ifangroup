@@ -4,6 +4,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://ifanholding.com"),
+    verification: {
+        google: "zhVijSuQyrDiyNJcNz0jYy_JvrK5uzDQF2HtwAMnpeQ",
+    },
     icons: {
         icon: [
             { url: "/logo-green.png", type: "image/png" },
