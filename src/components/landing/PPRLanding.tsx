@@ -53,7 +53,7 @@ const landingCopy = {
   },
   hero: {
     badge: "B2B Factory-Direct — No Trading Company Markup",
-    title: "Looking for a PPR Pipe Manufacturer & Supplier That Ships to Africa?",
+    title: "Looking for a PPR Pipes and Fittings Manufacturer That Ships to Africa?",
     subtitle:
       "Factory direct supply of PPR pipes and fittings for plumbing, water supply and construction projects. We support bulk orders, OEM requirements, product catalog requests and export service for buyers in Ghana, Cameroon, Nigeria, Kenya and other African markets.",
     cta1: "Request a Quote",
@@ -136,7 +136,7 @@ const landingCopy = {
     },
     series: {
       title: "PPR Pipe Fittings Supplier",
-      label: "Elbows, tees, couplings, valves, composite pipes, floor heating components",
+      label: "PPR plumbing fittings: elbows, tees, couplings, valves, composite pipes, floor heating components",
     },
   },
   compare: {
@@ -211,14 +211,13 @@ const landingCopy = {
     name: "Name *",
     country: "Country",
     company: "Company",
-    contact: "Email / Phone / WhatsApp *",
-    contactMethod: "Preferred contact",
-    methodOptions: ["Email", "Phone call", "WhatsApp"],
+    email: "Email *",
+    whatsapp: "WhatsApp (with country code) *",
     products: "PPR products needed",
     quantity: "Estimated quantity",
     submit: "Get PPR Factory Price",
     emailBtn: "Email Sales Team",
-    noWhatsapp: "No WhatsApp required — email or phone is fine.",
+    replyNote: "We reply by email and WhatsApp within 24 hours.",
     sending: "Sending...",
     sent: "Quote request received. Our team replies within 24 hours.",
     error: "Send failed. Please email us directly.",
@@ -259,8 +258,8 @@ function QuoteForm({ selectedProduct }: { selectedProduct: string }) {
     name: "",
     country: "",
     company: "",
-    contact: "",
-    contactMethod: landingCopy.form.methodOptions[0],
+    email: "",
+    whatsapp: "",
     products: "",
     quantity: "",
   });
@@ -273,8 +272,8 @@ function QuoteForm({ selectedProduct }: { selectedProduct: string }) {
       `Name: ${form.name || "-"}`,
       `Country: ${form.country || "-"}`,
       `Company: ${form.company || "-"}`,
-      `Contact: ${form.contact || "-"}`,
-      `Preferred contact: ${form.contactMethod || "-"}`,
+      `Email: ${form.email || "-"}`,
+      `WhatsApp: ${form.whatsapp || "-"}`,
       `Products: ${form.products || "-"}`,
       `Quantity: ${form.quantity || "-"}`,
     ].join("\n");
@@ -318,18 +317,16 @@ function QuoteForm({ selectedProduct }: { selectedProduct: string }) {
         <input required name="Name" className={inputCls} placeholder={landingCopy.form.name} value={form.name} onChange={(e) => updateField("name", e.target.value)} />
         <input name="Country" className={inputCls} placeholder={landingCopy.form.country} value={form.country} onChange={(e) => updateField("country", e.target.value)} />
       </div>
+      <input name="Company" className={inputCls} placeholder={landingCopy.form.company} value={form.company} onChange={(e) => updateField("company", e.target.value)} />
       <div className="grid gap-3 sm:grid-cols-2">
-        <input name="Company" className={inputCls} placeholder={landingCopy.form.company} value={form.company} onChange={(e) => updateField("company", e.target.value)} />
-        <input required name="Email / phone / WhatsApp" className={inputCls} placeholder={landingCopy.form.contact} value={form.contact} onChange={(e) => updateField("contact", e.target.value)} />
+        <input required type="email" name="Email" className={inputCls} placeholder={landingCopy.form.email} value={form.email} onChange={(e) => updateField("email", e.target.value)} />
+        <input required type="tel" name="WhatsApp" className={inputCls} placeholder={landingCopy.form.whatsapp} value={form.whatsapp} onChange={(e) => updateField("whatsapp", e.target.value)} />
       </div>
-      <select name="Preferred contact method" className={inputCls} value={form.contactMethod} onChange={(e) => updateField("contactMethod", e.target.value)}>
-        {landingCopy.form.methodOptions.map((o) => <option key={o} value={o}>{o}</option>)}
-      </select>
       <textarea name="Products needed" className={`${inputCls} min-h-20 resize-y`} placeholder={landingCopy.form.products} value={form.products} onChange={(e) => updateField("products", e.target.value)} />
       <input name="Estimated quantity" className={inputCls} placeholder={landingCopy.form.quantity} value={form.quantity} onChange={(e) => updateField("quantity", e.target.value)} />
       <p className="flex items-center gap-2 text-xs font-semibold text-slate-500">
         <CheckCircle2 className="h-3.5 w-3.5 text-brand-600" />
-        {landingCopy.form.noWhatsapp}
+        {landingCopy.form.replyNote}
       </p>
       <div className="flex flex-col gap-2 sm:flex-row">
         <button type="submit" disabled={submitState === "sending"} className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md bg-brand-600 px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-700">

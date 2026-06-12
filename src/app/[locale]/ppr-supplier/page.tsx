@@ -4,7 +4,7 @@ import PPRLanding from "@/components/landing/PPRLanding";
 const englishUrl = "https://ifanholding.com/ppr-supplier";
 
 export const metadata: Metadata = {
-  title: "PPR Pipe Manufacturer & Supplier for African Markets | IFAN Group",
+  title: "PPR Pipes and Fittings Manufacturer & Supplier",
   description:
     "Factory direct supply of PPR pipes and fittings for plumbing, water supply and construction. Bulk orders, OEM, product catalog and export service for Ghana, Cameroon, Nigeria, Kenya and other African markets.",
   alternates: {
