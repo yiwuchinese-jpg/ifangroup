@@ -43,6 +43,12 @@ const googleAdsWhatsAppConversion = {
   value: 1.0,
   currency: "CNY",
 };
+const landingPageName = "ppr-supplier";
+
+type BrowserWindow = Window & {
+  gtag?: (cmd: string, action: string, params: Record<string, string | number>) => void;
+  fbq?: (...args: unknown[]) => void;
+};
 
 const landingCopy = {
   nav: {
@@ -228,13 +234,68 @@ const landingCopy = {
 };
 
 function reportInquiryConversion() {
-  const w = window as Window & { gtag?: (cmd: string, action: string, params: Record<string, string | number>) => void };
+  const w = window as BrowserWindow;
   w.gtag?.("event", "conversion", googleAdsConversion);
 }
 
 function reportWhatsAppConversion() {
-  const w = window as Window & { gtag?: (cmd: string, action: string, params: Record<string, string | number>) => void };
+  const w = window as BrowserWindow;
   w.gtag?.("event", "conversion", googleAdsWhatsAppConversion);
+}
+
+function createEventId(prefix: string) {
+  return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+function readCookie(name: string) {
+  if (typeof document === "undefined") return undefined;
+  const target = document.cookie
+    .split("; ")
+    .find((cookie) => cookie.startsWith(`${name}=`));
+  return target?.slice(name.length + 1);
+}
+
+function reportMetaBrowserEvent(eventName: "Lead" | "Contact", eventId: string) {
+  const w = window as BrowserWindow;
+  w.fbq?.("track", eventName, { landing_page: landingPageName }, { eventID: eventId });
+}
+
+async function reportMetaServerEvent({
+  eventName,
+  eventId,
+  userData,
+  customData,
+}: {
+  eventName: "Lead" | "Contact";
+  eventId: string;
+  userData?: {
+    email?: string;
+    whatsapp?: string;
+    name?: string;
+  };
+  customData?: Record<string, string | number | boolean>;
+}) {
+  try {
+    await fetch("/api/meta-conversions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      keepalive: true,
+      body: JSON.stringify({
+        eventName,
+        eventId,
+        eventSourceUrl: window.location.href,
+        landingPage: landingPageName,
+        fbp: readCookie("_fbp"),
+        fbc: readCookie("_fbc"),
+        userData,
+        customData,
+      }),
+    });
+  } catch (error) {
+    console.error("Meta conversion report failed:", error);
+  }
 }
 
 function CtaButton({ label, dark = false }: { label: string; dark?: boolean }) {
@@ -301,6 +362,20 @@ function QuoteForm({ selectedProduct }: { selectedProduct: string }) {
       if (!res.ok) throw new Error("failed");
       setSubmitState("sent");
       reportInquiryConversion();
+      const eventId = createEventId("ppr-lead");
+      reportMetaBrowserEvent("Lead", eventId);
+      void reportMetaServerEvent({
+        eventName: "Lead",
+        eventId,
+        userData: {
+          email: form.email,
+          whatsapp: form.whatsapp,
+          name: form.name,
+        },
+        customData: {
+          content_name: "PPR supplier inquiry",
+        },
+      });
     } catch {
       setSubmitState("error");
     }
@@ -507,6 +582,19 @@ export default function PPRLanding() {
   const ctaLabel = landingCopy.hero.cta1;
   const quoteMessage = "Hello IFAN, please send me a PPR products price list with China's lowest factory pricing.";
 
+  function handleWhatsAppClick() {
+    reportWhatsAppConversion();
+    const eventId = createEventId("ppr-whatsapp");
+    reportMetaBrowserEvent("Contact", eventId);
+    void reportMetaServerEvent({
+      eventName: "Contact",
+      eventId,
+      customData: {
+        content_name: "PPR supplier WhatsApp click",
+      },
+    });
+  }
+
   function openLightbox(images: { src: string; alt: string }[], index: number) {
     setLightboxGroup(images);
     setLightboxIndex(index);
@@ -591,7 +679,7 @@ export default function PPRLanding() {
               <a
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(quoteMessage)}`}
                 target="_blank" rel="noopener noreferrer"
-                onClick={reportWhatsAppConversion}
+                onClick={handleWhatsAppClick}
                 className="inline-flex min-h-12 items-center gap-2 rounded-md border border-white/25 bg-white/10 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white backdrop-blur transition hover:bg-white hover:text-slate-950"
               >
                 <MessageCircle className="h-4 w-4" />
@@ -857,7 +945,7 @@ export default function PPRLanding() {
                   <a
                     href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(quoteMessage)}`}
                     target="_blank" rel="noopener noreferrer"
-                    onClick={reportWhatsAppConversion}
+                    onClick={handleWhatsAppClick}
                     className="flex items-center gap-2 text-sm font-bold transition hover:text-brand-700"
                   >
                     <MessageCircle className="h-4 w-4 text-brand-700" />WhatsApp: +86 1736 9685 997
@@ -942,7 +1030,7 @@ export default function PPRLanding() {
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold text-slate-400">
             <a href={`mailto:${email}`} className="hover:text-white">{email}</a>
-            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" onClick={reportWhatsAppConversion} className="hover:text-white">WhatsApp</a>
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick} className="hover:text-white">WhatsApp</a>
             <Link href="/privacy" className="hover:text-white">{landingCopy.footer.privacy}</Link>
           </div>
         </div>
@@ -973,7 +1061,7 @@ export default function PPRLanding() {
       <a
         href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(quoteMessage)}`}
         target="_blank" rel="noopener noreferrer"
-        onClick={reportWhatsAppConversion}
+        onClick={handleWhatsAppClick}
         className="group fixed bottom-20 right-4 z-75 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition hover:-translate-y-0.5 md:bottom-6 md:right-6 md:h-12 md:w-12"
         aria-label="WhatsApp"
       >

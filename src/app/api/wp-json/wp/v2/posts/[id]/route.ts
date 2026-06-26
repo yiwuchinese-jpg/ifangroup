@@ -130,12 +130,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     const seoDescription = meta?.rank_math_description || meta?.['_yoast_wpseo_metadesc'] || meta?.['_aioseo_description'] || undefined;
 
     // 替换 AI 生成 HTML 里的 WordPress 内部图片链接 → Sanity CDN URL
-    let processedHtml = contentHtml ? replaceWpImagesWithSanityUrls(contentHtml) : undefined;
-
-    // 【重要修复】清洗 HTML 中的内链：将 /api/ 前缀从内链中移除
-    if (processedHtml) {
-      processedHtml = processedHtml.replace(/https?:\/\/www\.ifanholding\.com\/api\//g, 'https://www.ifanholding.com/');
-    }
+    const processedHtml = contentHtml ? replaceWpImagesWithSanityUrls(contentHtml) : undefined;
 
     // 特色图片优先级：
     //   1. 优先从正文 HTML 中随机选一张 Sanity 图片作为封面（避免多篇文章封面雷同）

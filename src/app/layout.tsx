@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 
+const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || process.env.META_PIXEL_ID || "1277417160921542";
+
 export const metadata: Metadata = {
     metadataBase: new URL("https://ifanholding.com"),
     verification: {
@@ -67,7 +69,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         t.src=v;s=b.getElementsByTagName(e)[0];
                         s.parentNode.insertBefore(t,s)}(window, document,'script',
                         'https://connect.facebook.net/en_US/fbevents.js');
-                        fbq('init', '867173352444106');
+                        fbq('init', '${META_PIXEL_ID}');
                         fbq('track', 'PageView');
                     `
                 }} />
@@ -83,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         height="1"
                         width="1"
                         style={{ display: "none" }}
-                        src="https://www.facebook.com/tr?id=867173352444106&ev=PageView&noscript=1"
+                        src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
                         alt=""
                     />
                 </noscript>
