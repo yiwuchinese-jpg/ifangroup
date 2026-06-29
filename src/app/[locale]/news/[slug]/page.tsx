@@ -222,13 +222,12 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                     <div className="prose prose-xl prose-slate max-w-none">
                                         {article.htmlContent ? (
                                             // 优先渲染 Evolution 301 写入的原始 HTML 富文本
+                                            // 文章页固定白底，强制深色正文，避免系统暗色模式下继承近白色 --foreground 导致白底白字
                                             <div
-                                                className="article-html-content"
+                                                className="article-html-content text-slate-700"
+                                                style={{ color: "#334155" }}
                                                 dangerouslySetInnerHTML={{
                                                     __html: article.htmlContent
-                                                        // 去除 AI 生成内容中的亮色模式内联样式，适配暗色背景
-                                                        .replace(/background-color\s*:\s*(#f[0-9a-f]{5}|#e[0-9a-f]{5}|white|#fff[f]?)\s*;?/gi, '')
-                                                        .replace(/(?<![a-z-])color\s*:\s*(#[0-3][0-9a-f]{5}|black)\s*;?/gi, '')
                                                 }}
                                             />
                                         ) : article.body ? (
