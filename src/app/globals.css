@@ -58,3 +58,17 @@ body {
     text-wrap: balance;
   }
 }
+
+/* News article inline links (internal + external anchor text) — brand color + underline.
+   Scoped to paragraph/list text so it does not affect the CTA button link. */
+.article-html-content p a,
+.article-html-content li a {
+  color: #007f3c;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+.article-html-content p a:hover,
+.article-html-content li a:hover {
+  color: #0f172a;
+}
