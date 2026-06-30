@@ -7,9 +7,10 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-type StaticProductSlug = {
-    slug: string;
-};
+// Render on demand and cache (ISR) instead of statically generating all 7146
+// product pages at build time. Static generation forced getTranslations to run
+// without a request context, which threw and 500'd every product page.
+export const revalidate = 3600;
 
 type ProductVariant = {
     _key: string;
@@ -87,16 +88,6 @@ export async function generateMetadata(props: { params: Promise<{ slug: string; 
         };
     } catch {
         return {};
-    }
-}
-
-export async function generateStaticParams() {
-    try {
-        const products: StaticProductSlug[] = await client.fetch(`*[_type == "product"]{ "slug": slug.current }`);
-        return products?.map((p) => ({ slug: p.slug })) || [];
-    } catch (error) {
-        console.error("Products generateStaticParams failed:", error);
-        return [];
     }
 }
 
