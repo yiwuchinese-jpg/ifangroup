@@ -15,15 +15,47 @@ import { ReactNode } from "react";
 
 export const revalidate = 3600;
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+const SITE_URL = "https://www.ifanholding.com";
+const LOCALES = ["en", "es", "pt", "ru", "ar", "fr"] as const;
+type Locale = (typeof LOCALES)[number];
+const RTL_LOCALES: Locale[] = ["ar"];
+
+type ArticleTranslation = { title?: string; htmlContent?: string; description?: string; body?: unknown };
+
+// Pick the localized view of an article; fall back to the English source when a
+// translation is missing so a half-translated article still renders cleanly.
+function localizedView(article: { title: string; htmlContent?: string; excerpt?: string; body?: unknown; translations?: Partial<Record<Locale, ArticleTranslation>> }, locale: string) {
+    const t = locale !== "en" ? article.translations?.[locale as Locale] : undefined;
+    return {
+        title: t?.title || article.title,
+        htmlContent: t?.htmlContent || article.htmlContent,
+        description: t?.description || article.excerpt,
+        body: (t?.htmlContent ? undefined : t?.body) ?? article.body,
+        isRtl: RTL_LOCALES.includes(locale as Locale),
+    };
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
     const resolvedParams = await params;
     const article = await client.fetch(articleBySlugQuery, { slug: resolvedParams.slug });
 
     if (!article) return { title: "Article Not Found" };
 
+    const view = localizedView(article, resolvedParams.locale);
+    const slug = resolvedParams.slug;
+    // hreflang cluster: one entry per locale + x-default → English.
+    const languages: Record<string, string> = Object.fromEntries(
+        LOCALES.map((l) => [l, `${SITE_URL}/${l}/news/${slug}`])
+    );
+    languages["x-default"] = `${SITE_URL}/en/news/${slug}`;
+
     return {
-        title: `${article.title} | IFAN News & Insights`,
-        description: article.excerpt || `Read the latest insights from IFAN Group about ${article.title}.`,
+        title: `${view.title} | IFAN News & Insights`,
+        description: view.description || `Read the latest insights from IFAN Group about ${view.title}.`,
+        alternates: {
+            canonical: `${SITE_URL}/${resolvedParams.locale}/news/${slug}`,
+            languages,
+        },
     };
 }
 
@@ -119,7 +151,7 @@ const components = {
     }
 };
 
-export default async function NewsArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function NewsArticlePage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
     const resolvedParams = await params;
     const article = await client.fetch(articleBySlugQuery, { slug: resolvedParams.slug });
     const relatedArticles: RelatedArticle[] = await client.fetch(relatedArticlesQuery, { slug: resolvedParams.slug });
@@ -127,6 +159,8 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
     if (!article) {
         notFound();
     }
+
+    const view = localizedView(article, resolvedParams.locale);
 
     return (
         <div className="flex min-h-screen flex-col bg-white">
@@ -150,8 +184,8 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                             {article.category}
                                         </div>
                                     )}
-                                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black text-slate-900 tracking-tighter leading-[0.85] uppercase break-words">
-                                        {article.title}
+                                    <h1 dir={view.isRtl ? "rtl" : undefined} className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black text-slate-900 tracking-tighter leading-[0.85] uppercase break-words">
+                                        {view.title}
                                     </h1>
                                 </div>
 
@@ -213,26 +247,27 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
 
                                 {/* Main Content */}
                                 <div className="lg:col-span-6 lg:col-start-4">
-                                    {article.excerpt && (
-                                        <p className="text-2xl lg:text-3xl font-bold text-slate-900 leading-[1.4] mb-16 pb-16 border-b-2 border-slate-100">
-                                            {article.excerpt}
+                                    {view.description && (
+                                        <p dir={view.isRtl ? "rtl" : undefined} className="text-2xl lg:text-3xl font-bold text-slate-900 leading-[1.4] mb-16 pb-16 border-b-2 border-slate-100">
+                                            {view.description}
                                         </p>
                                     )}
 
                                     <div className="prose prose-xl prose-slate max-w-none">
-                                        {article.htmlContent ? (
-                                            // 优先渲染 Evolution 301 写入的原始 HTML 富文本
+                                        {view.htmlContent ? (
+                                            // 优先渲染 Evolution 301 写入的原始 HTML 富文本（按 locale 选翻译版）
                                             // 文章页固定白底，强制深色正文，避免系统暗色模式下继承近白色 --foreground 导致白底白字
                                             <div
+                                                dir={view.isRtl ? "rtl" : undefined}
                                                 className="article-html-content text-slate-700"
                                                 style={{ color: "#334155" }}
                                                 dangerouslySetInnerHTML={{
-                                                    __html: article.htmlContent
+                                                    __html: view.htmlContent
                                                 }}
                                             />
-                                        ) : article.body ? (
+                                        ) : view.body ? (
                                             // 降级：使用 Portable Text 渲染手动编辑的内容
-                                            <PortableText value={article.body} components={components as never} />
+                                            <PortableText value={view.body as never} components={components as never} />
                                         ) : (
                                             <div className="text-center py-32 border-2 border-dashed border-slate-200 bg-slate-50">
                                                 <span className="font-mono text-xs uppercase tracking-widest text-slate-400">Content Matrix Empty</span>

@@ -101,6 +101,8 @@ export const articleType = defineType({
                             name: 'body', title: '正文', type: 'array',
                             of: [{ type: 'block' }],
                         }),
+                        defineField({ name: 'htmlContent', title: '正文 HTML', type: 'text', rows: 20 }),
+                        defineField({ name: 'description', title: 'SEO 描述', type: 'text', rows: 3 }),
                     ],
                 }),
                 // 葡萄牙语
@@ -114,6 +116,8 @@ export const articleType = defineType({
                             name: 'body', title: '正文', type: 'array',
                             of: [{ type: 'block' }],
                         }),
+                        defineField({ name: 'htmlContent', title: '正文 HTML', type: 'text', rows: 20 }),
+                        defineField({ name: 'description', title: 'SEO 描述', type: 'text', rows: 3 }),
                     ],
                 }),
                 // 俄语
@@ -127,6 +131,8 @@ export const articleType = defineType({
                             name: 'body', title: '正文', type: 'array',
                             of: [{ type: 'block' }],
                         }),
+                        defineField({ name: 'htmlContent', title: '正文 HTML', type: 'text', rows: 20 }),
+                        defineField({ name: 'description', title: 'SEO 描述', type: 'text', rows: 3 }),
                     ],
                 }),
                 // 阿拉伯语
@@ -140,6 +146,8 @@ export const articleType = defineType({
                             name: 'body', title: '正文', type: 'array',
                             of: [{ type: 'block' }],
                         }),
+                        defineField({ name: 'htmlContent', title: '正文 HTML', type: 'text', rows: 20 }),
+                        defineField({ name: 'description', title: 'SEO 描述', type: 'text', rows: 3 }),
                     ],
                 }),
                 // 法语
@@ -153,6 +161,8 @@ export const articleType = defineType({
                             name: 'body', title: '正文', type: 'array',
                             of: [{ type: 'block' }],
                         }),
+                        defineField({ name: 'htmlContent', title: '正文 HTML', type: 'text', rows: 20 }),
+                        defineField({ name: 'description', title: 'SEO 描述', type: 'text', rows: 3 }),
                     ],
                 }),
             ],

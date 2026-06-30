@@ -134,11 +134,11 @@ export const articleBySlugQuery = groq`*[_type == "article" && slug.current == $
     "authorName": author->name,
     "authorImage": author->image.asset->url,
     translations {
-        es { title, body },
-        pt { title, body },
-        ru { title, body },
-        ar { title, body },
-        fr { title, body }
+        es { title, htmlContent, description, body },
+        pt { title, htmlContent, description, body },
+        ru { title, htmlContent, description, body },
+        ar { title, htmlContent, description, body },
+        fr { title, htmlContent, description, body }
     }
 }`;
 
