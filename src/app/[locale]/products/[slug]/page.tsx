@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import { ArrowRight, FileText, ShieldCheck, Box } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 type StaticProductSlug = {
     slug: string;
@@ -36,6 +36,7 @@ type ProductDetail = {
 
 export async function generateMetadata(props: { params: Promise<{ slug: string; locale: string }> }) {
     const { slug, locale } = await props.params;
+    setRequestLocale(locale);
     try {
         const product: Pick<ProductDetail, "name" | "description" | "mainImage" | "categoryTitle" | "brandName"> | null =
             await client.fetch(
@@ -99,8 +100,9 @@ export async function generateStaticParams() {
     }
 }
 
-export default async function ProductDetailPage(props: { params: Promise<{ slug: string }> }) {
+export default async function ProductDetailPage(props: { params: Promise<{ slug: string; locale: string }> }) {
     const params = await props.params;
+    setRequestLocale(params.locale);
     const t = await getTranslations("products");
     const product: ProductDetail | null = await client.fetch(`*[_type == "product" && slug.current == $slug][0]{
         name,
