@@ -102,7 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     let newsRoutes: MetadataRoute.Sitemap = [];
     try {
         const posts: SanitySlug[] = await client.fetch(
-            `*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`
+            `*[_type == "article" && defined(slug.current) && defined(publishedAt)]{ "slug": slug.current }`
         );
         newsRoutes = LOCALES.flatMap((locale) =>
             posts.map(({ slug }) => ({
