@@ -56,14 +56,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const products: SanitySlug[] = await client.fetch(
             `*[_type == "product" && defined(slug.current)]{ "slug": slug.current }`
         );
-        productRoutes = LOCALES.flatMap((locale) =>
-            products.map(({ slug }) => ({
-                url: `${BASE_URL}/${locale}/products/${slug}`,
-                lastModified: new Date(),
-                changeFrequency: "monthly" as const,
-                priority: 0.7,
-            }))
-        );
+        // Product content is single-language (English) and every locale canonicals
+        // to /en, so only the canonical /en URL belongs in the sitemap — not 6 duplicates.
+        productRoutes = products.map(({ slug }) => ({
+            url: `${BASE_URL}/en/products/${slug}`,
+            lastModified: new Date(),
+            changeFrequency: "monthly" as const,
+            priority: 0.7,
+        }));
     } catch (error) {
         console.error("[sitemap] Failed to fetch products:", error);
     }
@@ -74,14 +74,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const brands: SanitySlug[] = await client.fetch(
             `*[_type == "brand" && defined(slug.current)]{ "slug": slug.current }`
         );
-        brandRoutes = LOCALES.flatMap((locale) =>
-            brands.map(({ slug }) => ({
-                url: `${BASE_URL}/${locale}/brands/${slug}`,
-                lastModified: new Date(),
-                changeFrequency: "monthly" as const,
-                priority: 0.75,
-            }))
-        );
+        // Brand content is single-language and canonicals to /en — list /en only.
+        brandRoutes = brands.map(({ slug }) => ({
+            url: `${BASE_URL}/en/brands/${slug}`,
+            lastModified: new Date(),
+            changeFrequency: "monthly" as const,
+            priority: 0.75,
+        }));
     } catch (error) {
         console.error("[sitemap] Failed to fetch brands:", error);
     }
