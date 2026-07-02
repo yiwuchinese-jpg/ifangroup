@@ -138,17 +138,31 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                             <Link
                                 key={p._id}
                                 href={`/news/${p.slug}`}
-                                className="group relative flex flex-col justify-between p-6 border-2 border-brand-600 bg-white hover:bg-brand-600 transition-colors duration-300 min-h-[160px]"
+                                className="group flex flex-col border-2 border-brand-600 bg-white overflow-hidden hover:shadow-xl transition-shadow duration-300"
                             >
-                                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-brand-600 group-hover:text-white/80 mb-4">
-                                    <BookOpen className="w-3.5 h-3.5" /> {p.category || "Guide"} · Pillar
+                                <div className="relative aspect-video bg-slate-900 overflow-hidden">
+                                    {p.mainImage?.asset?.url ? (
+                                        <img
+                                            src={p.mainImage.asset.url}
+                                            alt={p.title}
+                                            loading="lazy"
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center text-slate-700 font-black text-3xl tracking-tighter">IFAN</div>
+                                    )}
+                                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-brand-600 text-white font-mono text-[10px] uppercase tracking-widest px-2.5 py-1">
+                                        <BookOpen className="w-3 h-3" /> {p.category || "Guide"} · Complete Guide
+                                    </span>
                                 </div>
-                                <h3 className="text-lg font-black text-slate-900 group-hover:text-white tracking-tight leading-snug uppercase">
-                                    {p.title}
-                                </h3>
-                                <span className="mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-slate-900 group-hover:text-white">
-                                    Read guide <ArrowRight className="w-3.5 h-3.5" />
-                                </span>
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <h3 className="text-lg font-black text-slate-900 group-hover:text-brand-600 transition-colors tracking-tight leading-snug uppercase mb-4">
+                                        {p.title}
+                                    </h3>
+                                    <span className="mt-auto inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-slate-900 group-hover:text-brand-600 transition-colors">
+                                        Read guide <ArrowRight className="w-3.5 h-3.5" />
+                                    </span>
+                                </div>
                             </Link>
                         ))}
                     </div>
