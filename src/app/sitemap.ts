@@ -4,6 +4,10 @@ import { client } from "@/lib/sanity";
 const BASE_URL = "https://www.ifanholding.com";
 const LOCALES = ["en", "es", "pt", "ru", "ar", "fr"];
 
+// Cache the generated sitemap for 1h (ISR) so Googlebot always gets a fast
+// response instead of re-querying every product/news slug from Sanity per fetch.
+export const revalidate = 3600;
+
 type SanitySlug = { slug: string };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
