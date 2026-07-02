@@ -50,7 +50,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string; 
                 { slug }
             );
         if (!product) return {};
-        const baseUrl = "https://ifanholding.com";
+        const baseUrl = "https://www.ifanholding.com";
         const title = `${product.name} | Wholesale B2B | IFAN Group`;
         const description =
             product.description ||

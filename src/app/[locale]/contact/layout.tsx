@@ -15,17 +15,17 @@ export const metadata: Metadata = {
         title: "Contact IFAN Group | Factory-Direct B2B Inquiry",
         description:
             "Skip the middleman. Contact our regional sales directors directly for wholesale pricing, OEM manufacturing, and custom project procurement.",
-        url: "https://ifanholding.com/en/contact",
+        url: "https://www.ifanholding.com/en/contact",
     },
     alternates: {
-        canonical: "https://ifanholding.com/en/contact",
+        canonical: "https://www.ifanholding.com/en/contact",
         languages: {
-            en: "https://ifanholding.com/en/contact",
-            es: "https://ifanholding.com/es/contact",
-            pt: "https://ifanholding.com/pt/contact",
-            ru: "https://ifanholding.com/ru/contact",
-            ar: "https://ifanholding.com/ar/contact",
-            fr: "https://ifanholding.com/fr/contact",
+            en: "https://www.ifanholding.com/en/contact",
+            es: "https://www.ifanholding.com/es/contact",
+            pt: "https://www.ifanholding.com/pt/contact",
+            ru: "https://www.ifanholding.com/ru/contact",
+            ar: "https://www.ifanholding.com/ar/contact",
+            fr: "https://www.ifanholding.com/fr/contact",
         },
     },
 };

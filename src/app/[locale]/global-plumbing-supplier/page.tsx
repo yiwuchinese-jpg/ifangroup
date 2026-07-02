@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import GlobalPlumbingLanding from "@/components/landing/GlobalPlumbingLanding";
 
-const englishUrl = "https://ifanholding.com/global-plumbing-supplier";
-const spanishUrl = "https://ifanholding.com/es/global-plumbing-supplier";
+const englishUrl = "https://www.ifanholding.com/global-plumbing-supplier";
+const spanishUrl = "https://www.ifanholding.com/es/global-plumbing-supplier";
 
 export const metadata: Metadata = {
   title: "Global Wholesale Plumbing & Pipe Products Supplier | IFAN Group",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "IFAN Group",
     images: [
       {
-        url: "https://ifanholding.com/latin-america-plumbing/product-pe-pp.jpg",
+        url: "https://www.ifanholding.com/latin-america-plumbing/product-pe-pp.jpg",
         width: 1200,
         height: 800,
         alt: "IFAN wholesale pipe and plumbing products for global markets",

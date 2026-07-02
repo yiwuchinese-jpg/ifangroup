@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ifanholding.com/sitemap.xml
+Sitemap: https://www.ifanholding.com/sitemap.xml

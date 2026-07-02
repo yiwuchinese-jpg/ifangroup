@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PPRLanding from "@/components/landing/PPRLanding";
 
-const englishUrl = "https://ifanholding.com/ppr-supplier";
+const englishUrl = "https://www.ifanholding.com/ppr-supplier";
 
 export const metadata: Metadata = {
   title: "PPR Pipes and Fittings Manufacturer & Supplier",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "IFAN Group",
     images: [
       {
-        url: "https://ifanholding.com/images/ppr-landing/横幅海报7.webp",
+        url: "https://www.ifanholding.com/images/ppr-landing/横幅海报7.webp",
         width: 1200,
         height: 800,
         alt: "IFAN PPR pipes and fittings for African B2B buyers",

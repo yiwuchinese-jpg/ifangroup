@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     description: "Search, filter, and instantly access technical specifications for 10,000+ IFAN Group plumbing components. Build your bulk quote directly from our factory matrix.",
     keywords: ["PPR pipe sizes", "Brass valve specifications", "Plumbing bulk pricing", "IFAN wholesale catalog", "Plumbing specifications search"],
     alternates: {
-        canonical: "https://ifanholding.com/en/products",
+        canonical: "https://www.ifanholding.com/en/products",
         languages: {
-            en: "https://ifanholding.com/en/products",
-            es: "https://ifanholding.com/es/products",
-            pt: "https://ifanholding.com/pt/products",
-            ru: "https://ifanholding.com/ru/products",
-            ar: "https://ifanholding.com/ar/products",
-            fr: "https://ifanholding.com/fr/products",
+            en: "https://www.ifanholding.com/en/products",
+            es: "https://www.ifanholding.com/es/products",
+            pt: "https://www.ifanholding.com/pt/products",
+            ru: "https://www.ifanholding.com/ru/products",
+            ar: "https://www.ifanholding.com/ar/products",
+            fr: "https://www.ifanholding.com/fr/products",
         },
     },
 };

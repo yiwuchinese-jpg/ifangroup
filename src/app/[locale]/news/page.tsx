@@ -13,14 +13,14 @@ export const metadata: Metadata = {
     description: "Latest news, industry insights, and technical articles from IFAN Group - a global leader in premium plumbing systems. Stay ahead with market analyses, product launches, and engineering breakthroughs.",
     keywords: ["plumbing industry news", "PPR pipe market trends", "B2B plumbing insights", "IFAN Group news", "plumbing manufacturer updates"],
     alternates: {
-        canonical: "https://ifanholding.com/en/news",
+        canonical: "https://www.ifanholding.com/en/news",
         languages: {
-            en: "https://ifanholding.com/en/news",
-            es: "https://ifanholding.com/es/news",
-            pt: "https://ifanholding.com/pt/news",
-            ru: "https://ifanholding.com/ru/news",
-            ar: "https://ifanholding.com/ar/news",
-            fr: "https://ifanholding.com/fr/news",
+            en: "https://www.ifanholding.com/en/news",
+            es: "https://www.ifanholding.com/es/news",
+            pt: "https://www.ifanholding.com/pt/news",
+            ru: "https://www.ifanholding.com/ru/news",
+            ar: "https://www.ifanholding.com/ar/news",
+            fr: "https://www.ifanholding.com/fr/news",
         },
     },
 };

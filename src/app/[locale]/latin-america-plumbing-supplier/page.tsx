@@ -7,9 +7,9 @@ type PageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
-const pageUrl = "https://ifanholding.com/latin-america-plumbing-supplier";
-const spanishUrl = "https://ifanholding.com/es/latin-america-plumbing-supplier";
-const englishUrl = "https://ifanholding.com/latin-america-plumbing-supplier";
+const pageUrl = "https://www.ifanholding.com/latin-america-plumbing-supplier";
+const spanishUrl = "https://www.ifanholding.com/es/latin-america-plumbing-supplier";
+const englishUrl = "https://www.ifanholding.com/latin-america-plumbing-supplier";
 
 const metadataByLanguage = {
   es: {
@@ -32,7 +32,7 @@ const metadataByLanguage = {
       siteName: "IFAN Group",
       images: [
         {
-          url: "https://ifanholding.com/latin-america-plumbing/product-ppr.jpg",
+          url: "https://www.ifanholding.com/latin-america-plumbing/product-ppr.jpg",
           width: 1200,
           height: 800,
           alt: "Productos de plomería IFAN para América Latina",
@@ -62,7 +62,7 @@ const metadataByLanguage = {
       siteName: "IFAN Group",
       images: [
         {
-          url: "https://ifanholding.com/latin-america-plumbing/product-pe-pp.jpg",
+          url: "https://www.ifanholding.com/latin-america-plumbing/product-pe-pp.jpg",
           width: 1200,
           height: 800,
           alt: "IFAN wholesale PE and HDPE pipe products",

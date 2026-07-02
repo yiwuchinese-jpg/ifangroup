@@ -5,7 +5,7 @@ import "./globals.css";
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || process.env.META_PIXEL_ID || "1277417160921542";
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://ifanholding.com"),
+    metadataBase: new URL("https://www.ifanholding.com"),
     verification: {
         google: "zhVijSuQyrDiyNJcNz0jYy_JvrK5uzDQF2HtwAMnpeQ",
     },

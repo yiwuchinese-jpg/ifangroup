@@ -13,14 +13,14 @@ export const metadata = {
     description: "Explore the full IFAN Group brand portfolio: IFAN (global volume), IFANPlus (premium tier), IFANPRO (West Africa), IFANNova (French elegance), and IFANUltra (European standard). Each brand serves a distinct market segment.",
     keywords: ["IFAN brand", "IFANPlus premium plumbing", "IFANPRO West Africa", "plumbing brand portfolio", "B2B plumbing brands China"],
     alternates: {
-        canonical: "https://ifanholding.com/en/brands",
+        canonical: "https://www.ifanholding.com/en/brands",
         languages: {
-            en: "https://ifanholding.com/en/brands",
-            es: "https://ifanholding.com/es/brands",
-            pt: "https://ifanholding.com/pt/brands",
-            ru: "https://ifanholding.com/ru/brands",
-            ar: "https://ifanholding.com/ar/brands",
-            fr: "https://ifanholding.com/fr/brands",
+            en: "https://www.ifanholding.com/en/brands",
+            es: "https://www.ifanholding.com/es/brands",
+            pt: "https://www.ifanholding.com/pt/brands",
+            ru: "https://www.ifanholding.com/ru/brands",
+            ar: "https://www.ifanholding.com/ar/brands",
+            fr: "https://www.ifanholding.com/fr/brands",
         },
     },
 };

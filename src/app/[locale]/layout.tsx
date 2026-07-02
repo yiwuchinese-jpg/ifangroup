@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "IFAN Group | Top Plumbing Manufacturer & Wholesale Supplier",
         description: "Source 10,000+ PPR, PEX, and brass valves directly from our 120,000m² mega-factory.",
-        url: "https://ifanholding.com",
+        url: "https://www.ifanholding.com",
         siteName: "IFAN Group",
         images: [
             {

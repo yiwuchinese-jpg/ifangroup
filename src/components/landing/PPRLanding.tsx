@@ -260,6 +260,11 @@ function reportMetaBrowserEvent(eventName: "Lead" | "Contact", eventId: string) 
   w.fbq?.("track", eventName, { landing_page: landingPageName }, { eventID: eventId });
 }
 
+function readTestEventCode() {
+  const url = new URL(window.location.href);
+  return url.searchParams.get("test_event_code") || undefined;
+}
+
 async function reportMetaServerEvent({
   eventName,
   eventId,
@@ -276,6 +281,7 @@ async function reportMetaServerEvent({
   customData?: Record<string, string | number | boolean>;
 }) {
   try {
+    const testEventCode = readTestEventCode();
     await fetch("/api/meta-conversions", {
       method: "POST",
       headers: {
@@ -286,6 +292,7 @@ async function reportMetaServerEvent({
         eventName,
         eventId,
         eventSourceUrl: window.location.href,
+        testEventCode,
         landingPage: landingPageName,
         fbp: readCookie("_fbp"),
         fbc: readCookie("_fbc"),

@@ -8,6 +8,7 @@ type ConversionRequestBody = {
   eventName?: string;
   eventId?: string;
   eventSourceUrl?: string;
+  testEventCode?: string;
   landingPage?: string;
   fbp?: string;
   fbc?: string;
@@ -86,6 +87,8 @@ export async function POST(request: NextRequest) {
       ...body.customData,
     });
 
+    const testEventCode = body.testEventCode?.trim() || process.env.META_TEST_EVENT_CODE;
+
     const metaResponse = await fetch(`https://graph.facebook.com/v23.0/${META_PIXEL_ID}/events`, {
       method: "POST",
       headers: {
@@ -103,6 +106,7 @@ export async function POST(request: NextRequest) {
             custom_data: Object.keys(customData).length ? customData : undefined,
           }),
         ],
+        test_event_code: testEventCode,
         access_token: META_CONVERSIONS_ACCESS_TOKEN,
       }),
     });

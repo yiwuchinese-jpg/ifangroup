@@ -11,11 +11,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ? "Política de privacidad de IFAN Group para consultas B2B, formularios, WhatsApp, email, cookies, analítica y campañas publicitarias."
       : "IFAN Group privacy policy for B2B inquiries, forms, WhatsApp, email, cookies, analytics and advertising campaigns.",
     alternates: {
-      canonical: isSpanish ? "https://ifanholding.com/es/privacy" : "https://ifanholding.com/privacy",
+      canonical: isSpanish ? "https://www.ifanholding.com/es/privacy" : "https://www.ifanholding.com/privacy",
       languages: {
-        en: "https://ifanholding.com/privacy",
-        es: "https://ifanholding.com/es/privacy",
-        "x-default": "https://ifanholding.com/privacy",
+        en: "https://www.ifanholding.com/privacy",
+        es: "https://www.ifanholding.com/es/privacy",
+        "x-default": "https://www.ifanholding.com/privacy",
       },
     },
   };

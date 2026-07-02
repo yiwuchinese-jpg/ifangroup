@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { client } from "@/lib/sanity";
 
-const BASE_URL = "https://ifanholding.com";
+const BASE_URL = "https://www.ifanholding.com";
 const LOCALES = ["en", "es", "pt", "ru", "ar", "fr"];
 
 type SanitySlug = { slug: string };
