@@ -1,66 +1,89 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowDownRight } from "lucide-react";
 
-type ArticleHeading = { id: string; text: string; level: string };
+type ArticleHeading = { id: string; text: string };
+
+function slugify(text: string): string {
+    return (text || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^\p{L}\p{N}]+/gu, "-")
+        .replace(/(^-|-$)+/g, "")
+        .slice(0, 60);
+}
 
 export default function ArticleTOC() {
-    const [headingElements, setHeadingElements] = useState<Element[]>([]);
+    const [headings, setHeadings] = useState<ArticleHeading[]>([]);
     const [activeId, setActiveId] = useState("");
 
-    const headings = useMemo<ArticleHeading[]>(() => {
-        return headingElements.map((elem) => ({
-            id: elem.id,
-            text: (elem as HTMLElement).innerText || "",
-            level: elem.tagName.toLowerCase(),
-        }));
-    }, [headingElements]);
-
     useEffect(() => {
-        // Find all injected h2 and h3 elements within the article body
-        const elements = Array.from(document.querySelectorAll("h2[id], h3[id]"));
-        setHeadingElements(elements);
+        // The article body renders inside .prose (raw HTML or Portable Text).
+        // Its H2s usually have no id, so assign a stable slug id on the fly.
+        const container = document.querySelector(".prose");
+        if (!container) return;
+        const els = Array.from(container.querySelectorAll("h2")) as HTMLElement[];
+        const used = new Set<string>();
+        const items: ArticleHeading[] = [];
+        els.forEach((el, i) => {
+            if (!el.id) {
+                const base = slugify(el.textContent || "") || `section-${i + 1}`;
+                let id = base;
+                let n = 2;
+                while (used.has(id) || (document.getElementById(id) && document.getElementById(id) !== el)) {
+                    id = `${base}-${n++}`;
+                }
+                el.id = id;
+            }
+            used.add(el.id);
+            el.style.scrollMarginTop = "96px"; // clear the fixed navbar on jump
+            items.push({ id: el.id, text: el.innerText || el.textContent || "" });
+        });
+        setHeadings(items);
 
         const observer = new IntersectionObserver(
             (entries) => {
-                // Determine which headings are currently visible
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveId(entry.target.id);
-                    }
+                    if (entry.isIntersecting) setActiveId(entry.target.id);
                 });
             },
-            { rootMargin: "0px 0px -80% 0px" } // trigger when near top
+            { rootMargin: "0px 0px -80% 0px" }
         );
-
-        elements.forEach((elem) => observer.observe(elem));
-
+        els.forEach((el) => observer.observe(el));
         return () => observer.disconnect();
     }, []);
+
+    function jump(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", `#${id}`);
+        setActiveId(id);
+    }
 
     if (headings.length === 0) return null;
 
     return (
-        <div className="flex flex-col gap-4">
-            <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-2 mb-2">Index</span>
-            <ul className="space-y-3 font-mono text-xs uppercase tracking-wider">
-                {headings.map((heading) => (
-                    <li
-                        key={heading.id}
-                        className={`transition-colors duration-300 flex items-start gap-2 ${heading.level === "h3" ? "pl-4" : ""
-                            }`}
-                    >
-                        {activeId === heading.id && <ArrowDownRight className="w-3 h-3 text-brand-600 shrink-0 mt-0.5" />}
+        <nav aria-label="Table of contents" className="flex flex-col gap-4">
+            <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-2 mb-2">
+                On this page
+            </span>
+            <ul className="space-y-3 text-sm">
+                {headings.map((h) => (
+                    <li key={h.id} className="flex items-start gap-2 leading-snug">
+                        {activeId === h.id && <ArrowDownRight className="w-3.5 h-3.5 text-brand-600 shrink-0 mt-1" />}
                         <a
-                            href={`#${heading.id}`}
-                            className={`${activeId === heading.id ? "text-brand-600 font-bold" : "text-slate-500 hover:text-slate-900"} block leading-tight`}
+                            href={`#${h.id}`}
+                            onClick={(e) => jump(e, h.id)}
+                            className={`block transition-colors ${activeId === h.id ? "text-brand-600 font-bold" : "text-slate-500 hover:text-slate-900"}`}
                         >
-                            {heading.text}
+                            {h.text}
                         </a>
                     </li>
                 ))}
             </ul>
-        </div>
+        </nav>
     );
 }

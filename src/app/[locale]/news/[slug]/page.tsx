@@ -237,7 +237,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                     <div className="bg-white py-24 lg:py-32 relative">
                         <ReadingProgress />
                         <div className="container mx-auto px-6 max-w-7xl">
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
                                 {/* TOC Sidebar */}
                                 <aside className="hidden lg:block lg:col-span-3">
                                     <div className="sticky top-32">
@@ -246,7 +246,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                 </aside>
 
                                 {/* Main Content */}
-                                <div className="lg:col-span-6 lg:col-start-4">
+                                <div className="lg:col-span-7 lg:col-start-4">
                                     {view.description && (
                                         <p dir={view.isRtl ? "rtl" : undefined} className="text-2xl lg:text-3xl font-bold text-slate-900 leading-[1.4] mb-16 pb-16 border-b-2 border-slate-100">
                                             {view.description}
@@ -277,7 +277,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                 </div>
 
                                 {/* Share Sidebar */}
-                                <aside className="lg:col-span-3">
+                                <aside className="lg:col-span-2">
                                     <div className="sticky top-32">
                                         <ArticleShare />
                                     </div>
