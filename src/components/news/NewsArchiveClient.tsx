@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { ArrowRight, Calendar, User, Tag, Search, ArrowDownRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Calendar, User, Tag, Search, ArrowDownRight, ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
 
 const ITEMS_PER_PAGE = 9;
 
@@ -12,6 +12,8 @@ type NewsArticle = {
     title: string;
     slug: string;
     category?: string;
+    topic?: string;
+    isPillar?: boolean;
     publishedAt?: string;
     excerpt?: string;
     authorName?: string;
@@ -24,51 +26,62 @@ type NewsArticle = {
 
 export default function NewsArchiveClient({ initialArticles }: { initialArticles: NewsArticle[] }) {
     const [searchQuery, setSearchQuery] = useState("");
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [activeCategory, setActiveCategory] = useState("All");   // axis 1: product line
+    const [activeTopic, setActiveTopic] = useState("All");         // axis 2: function
     const [currentPage, setCurrentPage] = useState(1);
 
-    // Deep-link support: /news?category=HDPE lands directly on that cluster.
+    // Deep-link support: /news?category=HDPE&topic=Comparison lands pre-filtered.
     useEffect(() => {
-        const cat = new URLSearchParams(window.location.search).get("category");
-        if (cat && initialArticles.some((a) => a.category === cat)) {
-            setActiveCategory(cat);
-        }
+        const p = new URLSearchParams(window.location.search);
+        const cat = p.get("category");
+        const top = p.get("topic");
+        if (cat && initialArticles.some((a) => a.category === cat)) setActiveCategory(cat);
+        if (top && initialArticles.some((a) => a.topic === top)) setActiveTopic(top);
     }, [initialArticles]);
 
-    // Change category + reflect it in the URL so the cluster view is shareable.
-    const selectCategory = (cat: string) => {
-        setActiveCategory(cat);
-        setCurrentPage(1);
+    // Write both axes back to the URL so any filtered view is shareable.
+    const syncUrl = (cat: string, top: string) => {
         const url = new URL(window.location.href);
-        if (cat === "All") url.searchParams.delete("category");
-        else url.searchParams.set("category", cat);
+        cat === "All" ? url.searchParams.delete("category") : url.searchParams.set("category", cat);
+        top === "All" ? url.searchParams.delete("topic") : url.searchParams.set("topic", top);
         window.history.replaceState(null, "", url.toString());
     };
+    const selectCategory = (cat: string) => { setActiveCategory(cat); setCurrentPage(1); syncUrl(cat, activeTopic); };
+    const selectTopic = (top: string) => { setActiveTopic(top); setCurrentPage(1); syncUrl(activeCategory, top); };
 
-    // Extract unique categories
+    // Pillar guides: pinned at the top, always visible (filtered only by product line).
+    const pillars = useMemo(
+        () => initialArticles.filter((a) => a.isPillar && (activeCategory === "All" || a.category === activeCategory)),
+        [initialArticles, activeCategory]
+    );
+
+    // Filter chips for each axis
     const categories = useMemo(() => {
-        const cats = new Set<string>();
-        initialArticles.forEach(a => {
-            if (a.category) cats.add(a.category);
-        });
-        return ["All", ...Array.from(cats)];
+        const s = new Set<string>();
+        initialArticles.forEach((a) => { if (a.category) s.add(a.category); });
+        return ["All", ...Array.from(s)];
+    }, [initialArticles]);
+    const topics = useMemo(() => {
+        const s = new Set<string>();
+        initialArticles.forEach((a) => { if (a.topic) s.add(a.topic); });
+        return ["All", ...Array.from(s)];
     }, [initialArticles]);
 
-    // Filter articles
+    // Main grid = non-pillar articles matching both axes + search (pillars live in the pinned band).
     const filteredArticles = useMemo(() => {
-        return initialArticles.filter(article => {
+        const term = searchQuery.toLowerCase();
+        return initialArticles.filter((article) => {
+            if (article.isPillar) return false;
             const matchesCategory = activeCategory === "All" || article.category === activeCategory;
-            const searchTerm = searchQuery.toLowerCase();
+            const matchesTopic = activeTopic === "All" || article.topic === activeTopic;
             const matchesSearch =
-                (article.title?.toLowerCase().includes(searchTerm)) ||
-                (article.excerpt?.toLowerCase().includes(searchTerm));
-
-            return matchesCategory && matchesSearch;
+                article.title?.toLowerCase().includes(term) || article.excerpt?.toLowerCase().includes(term);
+            return matchesCategory && matchesTopic && matchesSearch;
         });
-    }, [initialArticles, searchQuery, activeCategory]);
+    }, [initialArticles, searchQuery, activeCategory, activeTopic]);
 
     // Pagination logic
-    const isSearching = searchQuery.length > 0 || activeCategory !== "All";
+    const isSearching = searchQuery.length > 0 || activeCategory !== "All" || activeTopic !== "All";
 
     // Determine layout: if not searching and on page 1, show hero feature + 9 grid items. 
     // Otherwise, just show a straight grid of items.
@@ -112,38 +125,81 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
 
     return (
         <div id="archive-top" className="container mx-auto px-6 max-w-7xl relative z-10 scroll-mt-24">
-            {/* Filter & Search Bar */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12 border-b-2 border-slate-900 pb-8">
-                {/* Categories */}
-                <div className="flex flex-wrap items-center gap-2">
-                    {categories.map(cat => (
-                        <button
-                            key={cat}
-                        onClick={() => selectCategory(cat)}
-                            className={`px-4 py-2 font-mono text-[10px] md:text-xs uppercase tracking-widest border transition-colors ${activeCategory === cat
-                                ? "bg-brand-600 text-white border-brand-600"
-                                : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900"
-                                }`}
-                        >
-                            {cat}
-                        </button>
-                    ))}
+            {/* Pinned pillar guides — the most comprehensive articles, always at the top */}
+            {pillars.length > 0 && (
+                <div className="mb-12">
+                    <div className="flex items-center gap-2 mb-5">
+                        <BookOpen className="w-4 h-4 text-brand-600" />
+                        <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest text-slate-900 font-bold">Complete Guides</span>
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400">— start here</span>
+                    </div>
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        {pillars.map((p) => (
+                            <Link
+                                key={p._id}
+                                href={`/news/${p.slug}`}
+                                className="group relative flex flex-col justify-between p-6 border-2 border-brand-600 bg-white hover:bg-brand-600 transition-colors duration-300 min-h-[160px]"
+                            >
+                                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-brand-600 group-hover:text-white/80 mb-4">
+                                    <BookOpen className="w-3.5 h-3.5" /> {p.category || "Guide"} · Pillar
+                                </div>
+                                <h3 className="text-lg font-black text-slate-900 group-hover:text-white tracking-tight leading-snug uppercase">
+                                    {p.title}
+                                </h3>
+                                <span className="mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-slate-900 group-hover:text-white">
+                                    Read guide <ArrowRight className="w-3.5 h-3.5" />
+                                </span>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
+            )}
 
-                {/* Search Input */}
-                <div className="relative w-full lg:w-96">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                    <input
-                        type="text"
-                        placeholder="SEARCH BRIEFINGS..."
-                        value={searchQuery}
-                        onChange={(e) => {
-                            setSearchQuery(e.target.value);
-                            setCurrentPage(1);
-                        }}
-                        className="w-full bg-white border border-slate-200 py-3 pl-12 pr-4 font-mono text-xs uppercase tracking-widest text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all rounded-none"
-                    />
+            {/* Filter & Search Bar — two axes: product line + function */}
+            <div className="mb-12 border-b-2 border-slate-900 pb-8 space-y-5">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400 mr-1 w-16 shrink-0">Product</span>
+                        {categories.map(cat => (
+                            <button
+                                key={cat}
+                                onClick={() => selectCategory(cat)}
+                                className={`px-4 py-2 font-mono text-[10px] md:text-xs uppercase tracking-widest border transition-colors ${activeCategory === cat
+                                    ? "bg-brand-600 text-white border-brand-600"
+                                    : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900"}`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                    {/* Search Input */}
+                    <div className="relative w-full lg:w-80 shrink-0">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                        <input
+                            type="text"
+                            placeholder="SEARCH BRIEFINGS..."
+                            value={searchQuery}
+                            onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
+                            className="w-full bg-white border border-slate-200 py-3 pl-12 pr-4 font-mono text-xs uppercase tracking-widest text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all rounded-none"
+                        />
+                    </div>
                 </div>
+                {topics.length > 1 && (
+                    <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400 mr-1 w-16 shrink-0">Topic</span>
+                        {topics.map(top => (
+                            <button
+                                key={top}
+                                onClick={() => selectTopic(top)}
+                                className={`px-4 py-2 font-mono text-[10px] md:text-xs uppercase tracking-widest border transition-colors ${activeTopic === top
+                                    ? "bg-slate-900 text-white border-slate-900"
+                                    : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900"}`}
+                            >
+                                {top}
+                            </button>
+                        ))}
+                    </div>
+                )}
             </div>
 
             {filteredArticles.length === 0 ? (

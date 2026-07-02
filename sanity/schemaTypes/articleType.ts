@@ -62,9 +62,22 @@ export const articleType = defineType({
         }),
         defineField({
             name: 'category',
-            title: 'Category',
+            title: 'Category (Product line)',
             type: 'string',
-            description: '文章分类名称（支持动态新增，不受 options.list 限制）'
+            description: '产品线集群，如 PPR / HDPE / PEX / Guides（筛选轴 1）'
+        }),
+        defineField({
+            name: 'topic',
+            title: 'Topic (Function)',
+            type: 'string',
+            description: '功能分类：Buyer Guide / Comparison / Specs & Sizing / Installation & Jointing / Sourcing & Import / Maintenance / Standards & Certification（筛选轴 2）'
+        }),
+        defineField({
+            name: 'isPillar',
+            title: 'Pillar guide (pin to top)',
+            type: 'boolean',
+            initialValue: false,
+            description: '标记为支柱/完整指南，永久置顶于 /news 顶部'
         }),
         defineField({
             name: 'tags',

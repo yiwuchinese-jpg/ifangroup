@@ -99,6 +99,8 @@ export const allArticlesQuery = groq`*[_type == "article"] | order(publishedAt d
     title,
     "slug": slug.current,
     category,
+    topic,
+    isPillar,
     publishedAt,
     excerpt,
     mainImage {
