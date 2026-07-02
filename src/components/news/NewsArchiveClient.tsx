@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { ArrowRight, Calendar, User, Tag, Search, ArrowDownRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -26,6 +26,24 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
     const [currentPage, setCurrentPage] = useState(1);
+
+    // Deep-link support: /news?category=HDPE lands directly on that cluster.
+    useEffect(() => {
+        const cat = new URLSearchParams(window.location.search).get("category");
+        if (cat && initialArticles.some((a) => a.category === cat)) {
+            setActiveCategory(cat);
+        }
+    }, [initialArticles]);
+
+    // Change category + reflect it in the URL so the cluster view is shareable.
+    const selectCategory = (cat: string) => {
+        setActiveCategory(cat);
+        setCurrentPage(1);
+        const url = new URL(window.location.href);
+        if (cat === "All") url.searchParams.delete("category");
+        else url.searchParams.set("category", cat);
+        window.history.replaceState(null, "", url.toString());
+    };
 
     // Extract unique categories
     const categories = useMemo(() => {
@@ -101,10 +119,7 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                     {categories.map(cat => (
                         <button
                             key={cat}
-                        onClick={() => {
-                            setActiveCategory(cat);
-                            setCurrentPage(1);
-                        }}
+                        onClick={() => selectCategory(cat)}
                             className={`px-4 py-2 font-mono text-[10px] md:text-xs uppercase tracking-widest border transition-colors ${activeCategory === cat
                                 ? "bg-brand-600 text-white border-brand-600"
                                 : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900"
