@@ -175,6 +175,56 @@ const components = {
     }
 };
 
+// Article + BreadcrumbList JSON-LD emitted per-article to strengthen E-E-A-T
+// signals for AI Overviews, Search Generative Experience, and rich results.
+// FAQPage schema, when the article body contains its own FAQ block, is emitted
+// inline by the article HTML — we do not duplicate it here.
+function buildArticleSchemas(article: {
+    title: string;
+    slug: string;
+    excerpt?: string;
+    seoDescription?: string;
+    publishedAt?: string;
+    _updatedAt?: string;
+    category?: string;
+    mainImage?: { asset?: { url?: string } };
+    authorName?: string;
+}, locale: string, viewTitle: string) {
+    const canonical = `${SITE_URL}/${locale}/news/${article.slug}`;
+    const desc = article.excerpt || article.seoDescription;
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: viewTitle,
+        description: desc,
+        image: article.mainImage?.asset?.url ? [article.mainImage.asset.url] : undefined,
+        datePublished: article.publishedAt,
+        dateModified: article._updatedAt || article.publishedAt,
+        author: {
+            "@type": "Organization",
+            name: article.authorName || "IFAN Group",
+            url: SITE_URL,
+        },
+        publisher: {
+            "@type": "Organization",
+            name: "IFAN Group",
+            url: SITE_URL,
+        },
+        mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+        articleSection: article.category,
+    };
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/${locale}` },
+            { "@type": "ListItem", position: 2, name: "News", item: `${SITE_URL}/${locale}/news` },
+            { "@type": "ListItem", position: 3, name: viewTitle, item: canonical },
+        ],
+    };
+    return { articleSchema, breadcrumbSchema };
+}
+
 export default async function NewsArticlePage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
     const resolvedParams = await params;
     const article = await client.fetch(articleBySlugQuery, { slug: resolvedParams.slug });
@@ -185,9 +235,12 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
     }
 
     const view = localizedView(article, resolvedParams.locale);
+    const { articleSchema, breadcrumbSchema } = buildArticleSchemas(article, resolvedParams.locale, view.title);
 
     return (
         <div className="flex min-h-screen flex-col bg-white">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <Navbar />
 
             <main className="flex-grow pt-24 lg:pt-32">
@@ -298,6 +351,27 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                             </div>
                                         )}
                                     </div>
+
+                                    {/* Author / E-E-A-T box — a visible provenance signal for readers and Google */}
+                                    <aside className="mt-16 pt-8 border-t-2 border-slate-200 text-sm text-slate-600 leading-relaxed">
+                                        <div className="font-mono text-[10px] uppercase tracking-widest text-slate-400 mb-3">
+                                            Written by
+                                        </div>
+                                        <p className="text-lg font-bold text-slate-900 mb-2">
+                                            The {article.category ? `${article.category} technical team` : "IFAN Group editorial team"} at IFAN Group
+                                        </p>
+                                        <p className="text-slate-600">
+                                            Manufacturing plastic piping systems in Zhejiang, China since 1993 through Zhuji Fengfan Piping Co., Ltd. Exports to 120+ countries. Quality control against DIN 8077/8078, ISO 15874, CE and SGS/BV third-party testing. This guide reflects the standards, tolerances and inspection routines that govern shipments leaving the factory today.
+                                        </p>
+                                        {article.publishedAt && (
+                                            <p className="mt-4 text-slate-400 text-xs">
+                                                Published <time dateTime={article.publishedAt}>{new Date(article.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</time>
+                                                {article._updatedAt && article._updatedAt !== article.publishedAt && (
+                                                    <> · Updated <time dateTime={article._updatedAt}>{new Date(article._updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</time></>
+                                                )}
+                                            </p>
+                                        )}
+                                    </aside>
                                 </div>
 
                                 {/* Share Sidebar */}
