@@ -515,7 +515,9 @@ export default function Navbar() {
                         exit={{ opacity: 0, height: 0 }}
                         className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-200 shadow-xl overflow-hidden"
                     >
-                        <div className="flex flex-col p-6 space-y-4">
+                        {/* Inner scroll container: cap to viewport height minus header, allow inner scroll,
+                            contain overscroll so the body doesn't scroll along on iOS. */}
+                        <div className="flex flex-col p-6 space-y-4 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain">
                             {/* Language switcher for mobile */}
                             <div className="pb-4 border-b border-slate-100">
                                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Language / 语言</p>
