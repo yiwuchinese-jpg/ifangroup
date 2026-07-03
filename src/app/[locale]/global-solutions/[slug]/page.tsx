@@ -4,6 +4,7 @@ import Navbar from"@/components/layout/Navbar";
 import Footer from"@/components/layout/Footer";
 import SolutionDetailClient from"@/components/solutions/SolutionDetailClient";
 import { routing } from"@/i18n/routing";
+import { localeAlternates } from "@/lib/seo";
 
 export function generateStaticParams() {
  return routing.locales.flatMap((locale) =>
@@ -15,7 +16,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(
- props: { params: Promise<{ slug: string }> }
+ props: { params: Promise<{ slug: string; locale: string }> }
 ) {
  const params = await props.params;
  const regionData = REGIONS_DATA.find((r) => r.id === params.slug);
@@ -23,6 +24,7 @@ export async function generateMetadata(
  return {
  title: `${regionData.name} Pipeline Solutions | IFAN Global Hub`,
  description: regionData.details.intro,
+ alternates: localeAlternates(params.locale, `/global-solutions/${params.slug}`),
  };
 }
 

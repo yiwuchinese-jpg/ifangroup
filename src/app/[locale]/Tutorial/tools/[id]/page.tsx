@@ -5,6 +5,7 @@ import { client } from "@/lib/sanity";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ToolSliderViewer from "@/components/tools/ToolSliderViewer";
+import { localeAlternates } from "@/lib/seo";
 
 const locales = ['en', 'es', 'pt', 'ru', 'ar', 'fr'];
 
@@ -18,8 +19,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale, id } = await params;
   const t = await getTranslations({ locale, namespace: "tools" });
   return {
-    title: `${t("title", { id })} | IFAN Group`,
+    // 品牌后缀由 [locale]/layout 的 title.template 追加，这里不重复。
+    title: t("title", { id }),
     description: `Official operation manual and tutorial video for IFAN tool ${id}.`,
+    alternates: localeAlternates(locale, `/Tutorial/tools/${id}`),
   };
 }
 

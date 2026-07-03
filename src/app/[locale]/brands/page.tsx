@@ -5,25 +5,19 @@ import Footer from "@/components/layout/Footer";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import BrandSolarSystemClient from "./BrandSolarSystemClient";
+import { localeAlternates } from "@/lib/seo";
 
 export const revalidate = 0;
 
-export const metadata = {
-    title: "Our Brand Portfolio | IFAN, IFANPlus, IFANPRO & More | IFAN Group",
-    description: "Explore the full IFAN Group brand portfolio: IFAN (global volume), IFANPlus (premium tier), IFANPRO (West Africa), IFANNova (French elegance), and IFANUltra (European standard). Each brand serves a distinct market segment.",
-    keywords: ["IFAN brand", "IFANPlus premium plumbing", "IFANPRO West Africa", "plumbing brand portfolio", "B2B plumbing brands China"],
-    alternates: {
-        canonical: "https://www.ifanholding.com/en/brands",
-        languages: {
-            en: "https://www.ifanholding.com/en/brands",
-            es: "https://www.ifanholding.com/es/brands",
-            pt: "https://www.ifanholding.com/pt/brands",
-            ru: "https://www.ifanholding.com/ru/brands",
-            ar: "https://www.ifanholding.com/ar/brands",
-            fr: "https://www.ifanholding.com/fr/brands",
-        },
-    },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    return {
+        title: "Our Brand Portfolio | IFAN, IFANPlus, IFANPRO & More",
+        description: "Explore the full IFAN Group brand portfolio: IFAN (global volume), IFANPlus (premium tier), IFANPRO (West Africa), IFANNova (French elegance), and IFANUltra (European standard). Each brand serves a distinct market segment.",
+        keywords: ["IFAN brand", "IFANPlus premium plumbing", "IFANPRO West Africa", "plumbing brand portfolio", "B2B plumbing brands China"],
+        alternates: localeAlternates(locale, "/brands"),
+    };
+}
 
 export default async function BrandsDirectoryPage() {
     const brands = await client.fetch(allBrandsQuery);

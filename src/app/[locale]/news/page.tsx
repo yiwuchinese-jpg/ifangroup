@@ -5,25 +5,19 @@ import Footer from "@/components/layout/Footer";
 import NewsArchiveClient from "@/components/news/NewsArchiveClient";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { localeAlternates } from "@/lib/seo";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-    title: "News & Insights | Plumbing Industry Trends | IFAN Group",
-    description: "Latest news, industry insights, and technical articles from IFAN Group - a global leader in premium plumbing systems. Stay ahead with market analyses, product launches, and engineering breakthroughs.",
-    keywords: ["plumbing industry news", "PPR pipe market trends", "B2B plumbing insights", "IFAN Group news", "plumbing manufacturer updates"],
-    alternates: {
-        canonical: "https://www.ifanholding.com/en/news",
-        languages: {
-            en: "https://www.ifanholding.com/en/news",
-            es: "https://www.ifanholding.com/es/news",
-            pt: "https://www.ifanholding.com/pt/news",
-            ru: "https://www.ifanholding.com/ru/news",
-            ar: "https://www.ifanholding.com/ar/news",
-            fr: "https://www.ifanholding.com/fr/news",
-        },
-    },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+        title: "News & Insights | Plumbing Industry Trends",
+        description: "Latest news, industry insights, and technical articles from IFAN Group - a global leader in premium plumbing systems. Stay ahead with market analyses, product launches, and engineering breakthroughs.",
+        keywords: ["plumbing industry news", "PPR pipe market trends", "B2B plumbing insights", "IFAN Group news", "plumbing manufacturer updates"],
+        alternates: localeAlternates(locale, "/news"),
+    };
+}
 
 export default async function NewsIndexPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

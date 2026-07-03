@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import { notFound } from "next/navigation";
 import BrandClientPage from "./BrandClientPage";
 import { Metadata } from "next";
+import { localeUrl } from "@/lib/seo";
 
 export const revalidate = 3600;
 
@@ -20,8 +21,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: `${brand.name} | Premium Plumbing Systems & Wholesale Manufacturer`,
         description: `Source authentic ${brand.name} products direct from the factory. High-performance plumbing systems designed for 50-year lifespans. Increase your margins with our B2B wholesale pricing.`,
         keywords: [`${brand.name} wholesale`, `${brand.name} manufacturer`, "PPR pipe supplier", "Brass valves factory", "B2B plumbing exporter"],
+        // 品牌内容为英文单语，各语言路径 canonical 到无前缀英文 URL。
         alternates: {
-            canonical: `/brands/${resolvedParams.slug}`,
+            canonical: localeUrl("en", `/brands/${resolvedParams.slug}`),
         }
     };
 }

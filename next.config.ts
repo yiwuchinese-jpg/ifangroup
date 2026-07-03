@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
     ];
   },
   async headers() {
+    // 非内容路由（后台/接口/占位页）统一声明 noindex，防止进搜索索引。
+    const noindex = { key: 'X-Robots-Tag', value: 'noindex, nofollow' };
     return [
       {
         source: '/wp-json/:path*',
@@ -25,8 +27,13 @@ const nextConfig: NextConfig = {
           { key: 'Access-Control-Allow-Origin', value: '*' },
           { key: 'Access-Control-Allow-Methods', value: 'GET, POST, PUT, DELETE, OPTIONS' },
           { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization, Content-Disposition, X-WP-Nonce, X-Requested-With, Accept' },
+          noindex,
         ],
       },
+      { source: '/studio', headers: [noindex] },
+      { source: '/studio/:path*', headers: [noindex] },
+      { source: '/api/:path*', headers: [noindex] },
+      { source: '/tech/:path*', headers: [noindex] },
     ];
   },
 };

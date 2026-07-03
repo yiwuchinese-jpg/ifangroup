@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /studio
+Disallow: /api/
+Disallow: /wp-json/
+Disallow: /tech/
 Sitemap: https://www.ifanholding.com/sitemap.xml

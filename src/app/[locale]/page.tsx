@@ -7,8 +7,17 @@ import MaterialScience from "@/components/home/MaterialScience";
 import FeaturedCollections from "@/components/home/FeaturedCollections";
 import GlobalFootprint from "@/components/home/GlobalFootprint";
 import Footer from "@/components/layout/Footer";
+import { localeAlternates } from "@/lib/seo";
 
 export const revalidate = 0; // 强制刷新数据，不在此处缓存
+
+// 首页 canonical + 六语言 hreflang（title/description 继承 [locale]/layout 的默认值）。
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    return {
+        alternates: localeAlternates(locale, ""),
+    };
+}
 
 export default function Home() {
     const jsonLd = {

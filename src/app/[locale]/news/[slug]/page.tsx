@@ -15,8 +15,8 @@ import { ReactNode } from "react";
 
 export const revalidate = 3600;
 
-const SITE_URL = "https://www.ifanholding.com";
-const LOCALES = ["en", "es", "pt", "ru", "ar", "fr"] as const;
+import { localeUrl, SITE_URL, LOCALES } from "@/lib/seo";
+
 type Locale = (typeof LOCALES)[number];
 const RTL_LOCALES: Locale[] = ["ar"];
 
@@ -43,22 +43,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const view = localizedView(article, resolvedParams.locale);
     const slug = resolvedParams.slug;
-    // hreflang cluster: one entry per locale + x-default → English.
+    // hreflang cluster: one entry per locale + x-default → English (unprefixed URL).
     const languages: Record<string, string> = Object.fromEntries(
-        LOCALES.map((l) => [l, `${SITE_URL}/${l}/news/${slug}`])
+        LOCALES.map((l) => [l, localeUrl(l, `/news/${slug}`)])
     );
-    languages["x-default"] = `${SITE_URL}/en/news/${slug}`;
+    languages["x-default"] = localeUrl("en", `/news/${slug}`);
 
     // Head title: prefer SEO-tuned title when set; fall back to display title.
     // For non-English locales, only the display title is translated today, so use view.title.
     const headTitle = resolvedParams.locale === "en" && article.seoTitle ? article.seoTitle : view.title;
     // Meta description resolution order: locale-specific translation → SEO field → excerpt → generic.
     const metaDescription = view.description || article.seoDescription || `Read the latest insights from IFAN Group about ${view.title}.`;
-    const canonical = `${SITE_URL}/${resolvedParams.locale}/news/${slug}`;
+    const canonical = localeUrl(resolvedParams.locale, `/news/${slug}`);
     const ogImageUrl: string | undefined = article.mainImage?.asset?.url;
 
     return {
-        title: `${headTitle} | IFAN News & Insights`,
+        // absolute：避免 [locale]/layout 的 title.template 再追加 "| IFAN Group"。
+        title: { absolute: `${headTitle} | IFAN News & Insights` },
         description: metaDescription,
         alternates: {
             canonical,
@@ -190,7 +191,7 @@ function buildArticleSchemas(article: {
     mainImage?: { asset?: { url?: string } };
     authorName?: string;
 }, locale: string, viewTitle: string) {
-    const canonical = `${SITE_URL}/${locale}/news/${article.slug}`;
+    const canonical = localeUrl(locale, `/news/${article.slug}`);
     const desc = article.excerpt || article.seoDescription;
     const articleSchema = {
         "@context": "https://schema.org",
@@ -217,8 +218,8 @@ function buildArticleSchemas(article: {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/${locale}` },
-            { "@type": "ListItem", position: 2, name: "News", item: `${SITE_URL}/${locale}/news` },
+            { "@type": "ListItem", position: 1, name: "Home", item: localeUrl(locale) },
+            { "@type": "ListItem", position: 2, name: "News", item: localeUrl(locale, "/news") },
             { "@type": "ListItem", position: 3, name: viewTitle, item: canonical },
         ],
     };

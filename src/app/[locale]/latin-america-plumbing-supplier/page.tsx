@@ -13,7 +13,7 @@ const englishUrl = "https://www.ifanholding.com/latin-america-plumbing-supplier"
 
 const metadataByLanguage = {
   es: {
-    title: "Proveedor mayorista de plomería y tuberías para América Latina | IFAN Group",
+    title: "Proveedor mayorista de plomería y tuberías para América Latina",
     description:
       "Tuberías PE/HDPE, PPR, PVC y PPH, conexiones, válvulas de latón y sistemas multicapa para distribuidores y proyectos en América Latina.",
     alternates: {
@@ -43,7 +43,7 @@ const metadataByLanguage = {
     },
   },
   en: {
-    title: "Wholesale Plumbing & Pipe Products Supplier for Latin America | IFAN Group",
+    title: "Wholesale Plumbing & Pipe Products Supplier for Latin America",
     description:
       "Source PE/HDPE, PPR, PVC and PPH pipes, plumbing fittings, brass valves and multilayer pipe systems for Latin American distributors and project buyers.",
     alternates: {

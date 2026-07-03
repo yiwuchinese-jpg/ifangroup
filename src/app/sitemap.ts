@@ -1,17 +1,20 @@
 import { MetadataRoute } from "next";
 import { client } from "@/lib/sanity";
-
-const BASE_URL = "https://www.ifanholding.com";
-const LOCALES = ["en", "es", "pt", "ru", "ar", "fr"];
+import { localeUrl, LOCALES } from "@/lib/seo";
+import { toolsData } from "@/lib/data/tools";
+import { REGIONS_DATA } from "@/lib/regionsData";
 
 // Cache the generated sitemap for 1h (ISR) so Googlebot always gets a fast
 // response instead of re-querying every product/news slug from Sanity per fetch.
 export const revalidate = 3600;
 
-type SanitySlug = { slug: string };
+type SanityEntry = { slug: string; updatedAt?: string };
+
+// Category slugs mirror src/lib/categoryCopywriting.ts.
+const CATEGORY_SLUGS = ["ppr", "brass-fittings", "pp", "pvc", "pex-ppsu", "hvac-valves"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    // 静态页面路径
+    // 静态页面路径（六语言均有翻译，全部列出；英文为无前缀 URL）
     const staticPages = [
         { path: "", priority: 1.0, changeFrequency: "weekly" as const },
         { path: "/about-us", priority: 0.9, changeFrequency: "monthly" as const },
@@ -21,46 +24,63 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: "/news", priority: 0.8, changeFrequency: "daily" as const },
         { path: "/manufacturing-oem", priority: 0.9, changeFrequency: "monthly" as const },
         { path: "/global-solutions", priority: 0.75, changeFrequency: "monthly" as const },
+        { path: "/resources", priority: 0.7, changeFrequency: "monthly" as const },
+        { path: "/media", priority: 0.6, changeFrequency: "monthly" as const },
         { path: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
-        { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" as const },
     ];
 
-    // 静态页面 × 所有语言
     const staticRoutes: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
         staticPages.map(({ path, priority, changeFrequency }) => ({
-            url: `${BASE_URL}/${locale}${path}`,
-            lastModified: new Date(),
+            url: localeUrl(locale, path),
             changeFrequency,
             priority,
         }))
     );
 
-    const globalLandingRoutes: MetadataRoute.Sitemap = [
-        {
-            url: `${BASE_URL}/global-plumbing-supplier`,
-            lastModified: new Date(),
+    // 分类页 / 区域方案页 / 工具指南页（slug 来自本地数据源）
+    const categoryRoutes: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+        CATEGORY_SLUGS.map((slug) => ({
+            url: localeUrl(locale, `/categories/${slug}`),
+            changeFrequency: "weekly" as const,
+            priority: 0.85,
+        }))
+    );
+
+    const solutionRoutes: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+        REGIONS_DATA.map((region) => ({
+            url: localeUrl(locale, `/global-solutions/${region.id}`),
             changeFrequency: "monthly" as const,
-            priority: 0.9,
-        },
-        {
-            url: `${BASE_URL}/es/global-plumbing-supplier`,
-            lastModified: new Date(),
+            priority: 0.7,
+        }))
+    );
+
+    const toolRoutes: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+        Object.keys(toolsData).map((id) => ({
+            url: localeUrl(locale, `/Tutorial/tools/${id}`),
             changeFrequency: "monthly" as const,
-            priority: 0.9,
-        },
+            priority: 0.6,
+        }))
+    );
+
+    // 落地页：只列有真实内容的语言版本
+    const landingRoutes: MetadataRoute.Sitemap = [
+        { url: localeUrl("en", "/ppr-supplier"), changeFrequency: "monthly" as const, priority: 0.9 },
+        { url: localeUrl("en", "/global-plumbing-supplier"), changeFrequency: "monthly" as const, priority: 0.9 },
+        { url: localeUrl("es", "/global-plumbing-supplier"), changeFrequency: "monthly" as const, priority: 0.9 },
+        { url: localeUrl("en", "/latin-america-plumbing-supplier"), changeFrequency: "monthly" as const, priority: 0.9 },
+        { url: localeUrl("es", "/latin-america-plumbing-supplier"), changeFrequency: "monthly" as const, priority: 0.9 },
+        { url: localeUrl("en", "/fabrica-ifanholding-mexico"), changeFrequency: "monthly" as const, priority: 0.85 },
     ];
 
-    // 动态产品页
+    // 动态产品页：内容为英文单语，只列规范的无前缀 URL
     let productRoutes: MetadataRoute.Sitemap = [];
     try {
-        const products: SanitySlug[] = await client.fetch(
-            `*[_type == "product" && defined(slug.current)]{ "slug": slug.current }`
+        const products: SanityEntry[] = await client.fetch(
+            `*[_type == "product" && defined(slug.current)]{ "slug": slug.current, "updatedAt": _updatedAt }`
         );
-        // Product content is single-language (English) and every locale canonicals
-        // to /en, so only the canonical /en URL belongs in the sitemap — not 6 duplicates.
-        productRoutes = products.map(({ slug }) => ({
-            url: `${BASE_URL}/en/products/${slug}`,
-            lastModified: new Date(),
+        productRoutes = products.map(({ slug, updatedAt }) => ({
+            url: localeUrl("en", `/products/${slug}`),
+            ...(updatedAt ? { lastModified: new Date(updatedAt) } : {}),
             changeFrequency: "monthly" as const,
             priority: 0.7,
         }));
@@ -68,16 +88,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error("[sitemap] Failed to fetch products:", error);
     }
 
-    // 动态品牌页
+    // 动态品牌页：同为英文单语，只列规范 URL
     let brandRoutes: MetadataRoute.Sitemap = [];
     try {
-        const brands: SanitySlug[] = await client.fetch(
-            `*[_type == "brand" && defined(slug.current)]{ "slug": slug.current }`
+        const brands: SanityEntry[] = await client.fetch(
+            `*[_type == "brand" && defined(slug.current)]{ "slug": slug.current, "updatedAt": _updatedAt }`
         );
-        // Brand content is single-language and canonicals to /en — list /en only.
-        brandRoutes = brands.map(({ slug }) => ({
-            url: `${BASE_URL}/en/brands/${slug}`,
-            lastModified: new Date(),
+        brandRoutes = brands.map(({ slug, updatedAt }) => ({
+            url: localeUrl("en", `/brands/${slug}`),
+            ...(updatedAt ? { lastModified: new Date(updatedAt) } : {}),
             changeFrequency: "monthly" as const,
             priority: 0.75,
         }));
@@ -85,32 +104,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error("[sitemap] Failed to fetch brands:", error);
     }
 
-    // 动态工具指南页
-    let toolRoutes: MetadataRoute.Sitemap = [];
-    try {
-        const toolsData = { "731": {}, "732": {}, "733": {} }; // Quick mock of toolsData keys
-        toolRoutes = LOCALES.flatMap((locale) =>
-            Object.keys(toolsData).map((id) => ({
-                url: `${BASE_URL}/${locale}/Tutorial/tools/${id}`,
-                lastModified: new Date(),
-                changeFrequency: "monthly" as const,
-                priority: 0.85,
-            }))
-        );
-    } catch (error) {
-        console.error("[sitemap] Failed to generate tool routes:", error);
-    }
-
-    // 动态新闻页
+    // 动态新闻页：文章带多语言翻译，按六语言列出
     let newsRoutes: MetadataRoute.Sitemap = [];
     try {
-        const posts: SanitySlug[] = await client.fetch(
-            `*[_type == "article" && defined(slug.current) && defined(publishedAt)]{ "slug": slug.current }`
+        const posts: SanityEntry[] = await client.fetch(
+            `*[_type == "article" && defined(slug.current) && defined(publishedAt)]{ "slug": slug.current, "updatedAt": _updatedAt }`
         );
         newsRoutes = LOCALES.flatMap((locale) =>
-            posts.map(({ slug }) => ({
-                url: `${BASE_URL}/${locale}/news/${slug}`,
-                lastModified: new Date(),
+            posts.map(({ slug, updatedAt }) => ({
+                url: localeUrl(locale, `/news/${slug}`),
+                ...(updatedAt ? { lastModified: new Date(updatedAt) } : {}),
                 changeFrequency: "weekly" as const,
                 priority: 0.8,
             }))
@@ -119,5 +122,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error("[sitemap] Failed to fetch news:", error);
     }
 
-    return [...staticRoutes, ...globalLandingRoutes, ...productRoutes, ...brandRoutes, ...toolRoutes, ...newsRoutes];
+    return [
+        ...staticRoutes,
+        ...categoryRoutes,
+        ...solutionRoutes,
+        ...toolRoutes,
+        ...landingRoutes,
+        ...productRoutes,
+        ...brandRoutes,
+        ...newsRoutes,
+    ];
 }

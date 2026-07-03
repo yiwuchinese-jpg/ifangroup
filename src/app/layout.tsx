@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || process.env.META_PIXEL_ID || "1277417160921542";
@@ -20,13 +21,16 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    // 路由段之上拿不到 [locale] 参数，通过 next-intl 请求上下文取当前语言；
+    // proxy 未覆盖的路由（如 /studio）会回退到默认语言 en。
+    const locale = await getLocale();
     return (
-        <html lang="en" className="scroll-smooth">
+        <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="scroll-smooth">
             <head>
                 <Script id="gtm" strategy="beforeInteractive" dangerouslySetInnerHTML={{
                     __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

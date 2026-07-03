@@ -5,7 +5,7 @@ const englishUrl = "https://www.ifanholding.com/global-plumbing-supplier";
 const spanishUrl = "https://www.ifanholding.com/es/global-plumbing-supplier";
 
 export const metadata: Metadata = {
-  title: "Global Wholesale Plumbing & Pipe Products Supplier | IFAN Group",
+  title: "Global Wholesale Plumbing & Pipe Products Supplier",
   description:
     "Source PE/HDPE, PPR, PVC and PPH pipes, plumbing fittings, brass valves and multilayer pipe systems for global distributors, with product pricing positioned at the lowest China market level.",
   alternates: {

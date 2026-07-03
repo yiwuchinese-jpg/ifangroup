@@ -6,6 +6,7 @@ import { ArrowRight, FileText, ShieldCheck, Box } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { localeUrl } from "@/lib/seo";
 
 // Render on demand and cache (ISR) instead of statically generating all 7146
 // product pages at build time. Static generation forced getTranslations to run
@@ -50,8 +51,8 @@ export async function generateMetadata(props: { params: Promise<{ slug: string; 
                 { slug }
             );
         if (!product) return {};
-        const baseUrl = "https://www.ifanholding.com";
-        const title = `${product.name} | Wholesale B2B | IFAN Group`;
+        // [locale]/layout 的 title.template 会追加 "| IFAN Group"，这里不能再带品牌后缀。
+        const title = `${product.name} | Wholesale B2B`;
         const description =
             product.description ||
             `Buy ${product.name} wholesale direct from IFAN factory. CE certified, 50-year guarantee, bulk pricing for 120+ countries.`;
@@ -69,21 +70,15 @@ export async function generateMetadata(props: { params: Promise<{ slug: string; 
             openGraph: {
                 title: `${product.name} - Factory Direct Wholesale`,
                 description,
-                url: `${baseUrl}/${locale}/products/${slug}`,
+                url: localeUrl(locale, `/products/${slug}`),
                 images: product.mainImage?.asset?.url
                     ? [{ url: product.mainImage.asset.url, width: 800, height: 800, alt: product.name }]
                     : [],
             },
+            // 产品内容是英文单语，各语言路径互为重复页——全部 canonical 到无前缀英文 URL，
+            // 不声明 hreflang 集群（那些不是翻译版本）。
             alternates: {
-                canonical: `${baseUrl}/en/products/${slug}`,
-                languages: {
-                    en: `${baseUrl}/en/products/${slug}`,
-                    es: `${baseUrl}/es/products/${slug}`,
-                    pt: `${baseUrl}/pt/products/${slug}`,
-                    ru: `${baseUrl}/ru/products/${slug}`,
-                    ar: `${baseUrl}/ar/products/${slug}`,
-                    fr: `${baseUrl}/fr/products/${slug}`,
-                },
+                canonical: localeUrl("en", `/products/${slug}`),
             },
         };
     } catch {
@@ -109,8 +104,38 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
 
     const localImagePath = `/images/products/${product.slug}/main.webp`;
 
+    const productUrl = localeUrl("en", `/products/${product.slug}`);
+    const productJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: product.name,
+        url: productUrl,
+        ...(product.description ? { description: product.description } : {}),
+        ...(product.mainImage?.asset?.url ? { image: product.mainImage.asset.url } : {}),
+        ...(product.brandName ? { brand: { "@type": "Brand", name: product.brandName } } : {}),
+        ...(product.categoryTitle ? { category: product.categoryTitle } : {}),
+        manufacturer: { "@type": "Organization", name: "IFAN Group", url: "https://www.ifanholding.com" },
+    };
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: localeUrl("en") },
+            { "@type": "ListItem", position: 2, name: "Products", item: localeUrl("en", "/products") },
+            { "@type": "ListItem", position: 3, name: product.name, item: productUrl },
+        ],
+    };
+
     return (
         <div className="min-h-screen bg-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
             <Navbar />
             <main className="pt-32 pb-24">
                 <div className="container mx-auto px-6 max-w-7xl">

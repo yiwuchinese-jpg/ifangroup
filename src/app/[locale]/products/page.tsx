@@ -6,7 +6,8 @@ import { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { 
+import { localeAlternates } from "@/lib/seo";
+import {
     Box, 
     Droplets, 
     Settings, 
@@ -20,22 +21,15 @@ import {
     Factory
 } from "lucide-react";
 
-export const metadata: Metadata = {
-    title: "10,000+ Plumbing SKUs | Specs, Sizes & Volume Pricing",
-    description: "Search, filter, and instantly access technical specifications for 10,000+ IFAN Group plumbing components. Build your bulk quote directly from our factory matrix.",
-    keywords: ["PPR pipe sizes", "Brass valve specifications", "Plumbing bulk pricing", "IFAN wholesale catalog", "Plumbing specifications search"],
-    alternates: {
-        canonical: "https://www.ifanholding.com/en/products",
-        languages: {
-            en: "https://www.ifanholding.com/en/products",
-            es: "https://www.ifanholding.com/es/products",
-            pt: "https://www.ifanholding.com/pt/products",
-            ru: "https://www.ifanholding.com/ru/products",
-            ar: "https://www.ifanholding.com/ar/products",
-            fr: "https://www.ifanholding.com/fr/products",
-        },
-    },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+        title: "10,000+ Plumbing SKUs | Specs, Sizes & Volume Pricing",
+        description: "Search, filter, and instantly access technical specifications for 10,000+ IFAN Group plumbing components. Build your bulk quote directly from our factory matrix.",
+        keywords: ["PPR pipe sizes", "Brass valve specifications", "Plumbing bulk pricing", "IFAN wholesale catalog", "Plumbing specifications search"],
+        alternates: localeAlternates(locale, "/products"),
+    };
+}
 
 export const revalidate = 3600;
 

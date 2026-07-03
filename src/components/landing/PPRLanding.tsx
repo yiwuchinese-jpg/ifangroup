@@ -656,7 +656,7 @@ export default function PPRLanding() {
         <section className="relative flex min-h-[600px] items-center overflow-hidden bg-slate-950 pt-16 text-white md:min-h-[680px]">
           <Image
             src="/images/ppr-landing/mfg-engineering.webp"
-            alt=""
+            alt="IFAN PPR pipe manufacturing facility with automated production lines"
             fill
             priority
             sizes="100vw"
