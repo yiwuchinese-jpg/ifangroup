@@ -49,12 +49,36 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     );
     languages["x-default"] = `${SITE_URL}/en/news/${slug}`;
 
+    // Head title: prefer SEO-tuned title when set; fall back to display title.
+    // For non-English locales, only the display title is translated today, so use view.title.
+    const headTitle = resolvedParams.locale === "en" && article.seoTitle ? article.seoTitle : view.title;
+    // Meta description resolution order: locale-specific translation → SEO field → excerpt → generic.
+    const metaDescription = view.description || article.seoDescription || `Read the latest insights from IFAN Group about ${view.title}.`;
+    const canonical = `${SITE_URL}/${resolvedParams.locale}/news/${slug}`;
+    const ogImageUrl: string | undefined = article.mainImage?.asset?.url;
+
     return {
-        title: `${view.title} | IFAN News & Insights`,
-        description: view.description || `Read the latest insights from IFAN Group about ${view.title}.`,
+        title: `${headTitle} | IFAN News & Insights`,
+        description: metaDescription,
         alternates: {
-            canonical: `${SITE_URL}/${resolvedParams.locale}/news/${slug}`,
+            canonical,
             languages,
+        },
+        openGraph: {
+            type: "article",
+            url: canonical,
+            title: headTitle,
+            description: metaDescription,
+            siteName: "IFAN Group",
+            locale: resolvedParams.locale,
+            publishedTime: article.publishedAt,
+            ...(ogImageUrl ? { images: [{ url: ogImageUrl, alt: view.title }] } : {}),
+        },
+        twitter: {
+            card: ogImageUrl ? "summary_large_image" : "summary",
+            title: headTitle,
+            description: metaDescription,
+            ...(ogImageUrl ? { images: [ogImageUrl] } : {}),
         },
     };
 }

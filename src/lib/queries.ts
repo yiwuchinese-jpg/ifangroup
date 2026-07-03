@@ -124,8 +124,11 @@ export const articleBySlugQuery = groq`*[_type == "article" && slug.current == $
     title,
     "slug": slug.current,
     category,
+    topic,
     publishedAt,
-    excerpt,
+    "excerpt": description,
+    seoTitle,
+    seoDescription,
     htmlContent,
     mainImage {
         asset->{
