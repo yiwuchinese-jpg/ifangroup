@@ -1,14 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+// 给 Cloudinary 视频 URL 注入转码参数：自动格式、经济画质、限宽 1280。
+// 原始 mp4 约 30MB，转码后约 2-3MB；非 Cloudinary 链接原样返回。
+function optimizeVideoUrl(url: string): string {
+    if (url.includes("res.cloudinary.com") && url.includes("/video/upload/") && !url.includes("q_auto")) {
+        return url.replace("/video/upload/", "/video/upload/f_auto:video,q_auto:eco,w_1280/");
+    }
+    return url;
+}
 
 export default function Hero() {
     const t = useTranslations("hero");
     const videoRef = useRef<HTMLVideoElement>(null);
+    // 首屏只渲染海报图（LCP），视频等页面加载完再挂载，不与首屏资源抢带宽
+    const [showVideo, setShowVideo] = useState(false);
+    const [videoReady, setVideoReady] = useState(false);
+
+    useEffect(() => {
+        const start = () => {
+            // 页面空闲后再开始拉视频
+            if ("requestIdleCallback" in window) {
+                (window as Window & typeof globalThis).requestIdleCallback(() => setShowVideo(true), { timeout: 3000 });
+            } else {
+                setTimeout(() => setShowVideo(true), 1500);
+            }
+        };
+        if (document.readyState === "complete") {
+            start();
+        } else {
+            window.addEventListener("load", start, { once: true });
+            return () => window.removeEventListener("load", start);
+        }
+    }, []);
 
     const handleVideoError = () => {
         if (videoRef.current) {
@@ -17,28 +47,42 @@ export default function Hero() {
     };
 
     // 优先使用环境变量中的 CDN URL，否则回退到本地路径
-    const videoSrc = process.env.NEXT_PUBLIC_HERO_VIDEO_URL || "/images/static/home-hero-optimized.mp4";
+    const videoSrc = optimizeVideoUrl(
+        process.env.NEXT_PUBLIC_HERO_VIDEO_URL || "/images/static/home-hero-optimized.mp4"
+    );
 
     return (
         <section className="relative w-full h-screen min-h-[500px] md:min-h-[800px] flex items-end pb-20 md:pb-32 justify-start overflow-hidden bg-black">
 
-            {/* Immersive Background Video */}
+            {/* Immersive Background: poster first (LCP), video fades in when ready */}
             <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-                {/* Fallback gradient background when video is unavailable, placed behind the video */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800 -z-20" />
-                <video
-                    ref={videoRef}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    poster="/images/static/home-hero-poster.jpg"
-                    onError={handleVideoError}
-                    className="relative w-full h-full object-cover scale-105 -z-10"
-                >
-                    <source src={videoSrc} type="video/mp4" />
-                </video>
+                {/* Fallback gradient background, behind everything */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" />
+                <Image
+                    src="/images/static/home-hero-poster.jpg"
+                    alt=""
+                    fill
+                    priority
+                    fetchPriority="high"
+                    sizes="100vw"
+                    quality={70}
+                    className="object-cover scale-105"
+                />
+                {showVideo && (
+                    <video
+                        ref={videoRef}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        onError={handleVideoError}
+                        onPlaying={() => setVideoReady(true)}
+                        className={`absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
+                    >
+                        <source src={videoSrc} type="video/mp4" />
+                    </video>
+                )}
                 {/* Subtle gradient at the bottom to ensure the white text pops without washing out the video */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
             </div>

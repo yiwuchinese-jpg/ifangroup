@@ -22,6 +22,13 @@ const nextConfig: NextConfig = {
     const noindex = { key: 'X-Robots-Tag', value: 'noindex, nofollow' };
     return [
       {
+        // 静态资源长缓存：内容不改名不变，命中即免重复下载（PSI「高效缓存生命周期」项）
+        source: '/images/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
         source: '/wp-json/:path*',
         headers: [
           { key: 'Access-Control-Allow-Origin', value: '*' },
