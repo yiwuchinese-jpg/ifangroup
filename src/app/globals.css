@@ -72,3 +72,14 @@ body {
 .article-html-content li a:hover {
   color: #0f172a;
 }
+/* Hero 入场动画走纯 CSS：不依赖 JS 水合，SSR 首帧即可开始渲染。
+   （framer-motion 的入场要等 hydration，低端机上 h1 会 opacity:0 卡到 ~10s，直接拖垮 LCP） */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: none; }
+}
+.hero-enter   { animation: hero-fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+.hero-enter-2 { animation: hero-fade-up 1s ease-out 0.45s both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter, .hero-enter-2 { animation: none; }
+}

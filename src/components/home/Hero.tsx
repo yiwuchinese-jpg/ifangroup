@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
@@ -92,21 +91,13 @@ export default function Hero() {
             </div>
 
             <div className="container relative z-10 px-6 mx-auto">
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-5xl sm:text-6xl lg:text-[8rem] font-bold text-white tracking-tighter leading-[0.9] mb-8 md:mb-12 max-w-5xl"
-                >
+                {/* 入场动画用 CSS（.hero-enter），不等 JS 水合 —— h1 是本页 LCP 元素 */}
+                <h1 className="hero-enter text-5xl sm:text-6xl lg:text-[8rem] font-bold text-white tracking-tighter leading-[0.9] mb-8 md:mb-12 max-w-5xl">
                     {t("headline1")} <br />
                     {t("subheadline")}
-                </motion.h1>
+                </h1>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-                >
+                <div className="hero-enter-2">
                     <Link
                         href="#featured-collections"
                         className="group flex flex-col items-start gap-2 max-w-max"
@@ -117,7 +108,7 @@ export default function Hero() {
                         </span>
                         <div className="h-[1px] w-full bg-white/30 group-hover:bg-white transition-colors duration-300" />
                     </Link>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
