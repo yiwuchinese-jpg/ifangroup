@@ -101,10 +101,13 @@ export const allArticlesQuery = groq`*[_type == "article"] | order(publishedAt d
     category,
     topic,
     isPillar,
+    series,
     publishedAt,
     excerpt,
     // 无 excerpt 的文章用正文首段兜底（服务端剥标签生成摘要，供卡片展示 + 站内搜索）
     "snippet": string::split(coalesce(htmlContent, ""), "</p>")[0],
+    // 阅读时长估算用词数（服务端换算为分钟）
+    "wordCount": length(string::split(coalesce(htmlContent, ""), " ")),
     mainImage {
         asset->{
             url

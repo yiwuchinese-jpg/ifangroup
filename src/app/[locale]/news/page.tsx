@@ -33,10 +33,11 @@ function deriveExcerpt(snippet?: string): string | undefined {
 
 export default async function NewsIndexPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    const raw: (NewsArticle & { snippet?: string })[] = await client.fetch(allArticlesQuery);
-    const articles: NewsArticle[] = raw.map(({ snippet, ...a }) => ({
+    const raw: (NewsArticle & { snippet?: string; wordCount?: number })[] = await client.fetch(allArticlesQuery);
+    const articles: NewsArticle[] = raw.map(({ snippet, wordCount, ...a }) => ({
         ...a,
         excerpt: a.excerpt || deriveExcerpt(snippet),
+        readingTime: wordCount ? Math.max(1, Math.round(wordCount / 220)) : undefined,
     }));
     const t = await getTranslations({ locale, namespace: 'news_page' });
 
