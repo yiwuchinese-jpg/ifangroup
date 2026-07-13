@@ -32,6 +32,8 @@ export default async function RootLayout({
     return (
         <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="scroll-smooth">
             <head>
+                {/* 导航栏 logo 是多数页面的 LCP 元素——head 解析即开始抓取，消除发现延迟 */}
+                <link rel="preload" as="image" href="/logo-white.png" fetchPriority="high" />
                 <Script id="gtm" strategy="afterInteractive" dangerouslySetInnerHTML={{
                     __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
