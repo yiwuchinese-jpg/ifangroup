@@ -32,7 +32,7 @@ export default async function RootLayout({
     return (
         <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="scroll-smooth">
             <head>
-                <Script id="gtm" strategy="beforeInteractive" dangerouslySetInnerHTML={{
+                <Script id="gtm" strategy="afterInteractive" dangerouslySetInnerHTML={{
                     __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -41,8 +41,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 }} />
                 
                 {/* Google tag (gtag.js) */}
-                <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=AW-18159357442" />
-                <Script id="gtag-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
+                <Script strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=AW-18159357442" />
+                <Script id="gtag-init" strategy="lazyOnload" dangerouslySetInnerHTML={{
                     __html: `
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
@@ -52,7 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 }} />
                 
                 {/* Microsoft Clarity */}
-                <Script id="microsoft-clarity" strategy="afterInteractive" dangerouslySetInnerHTML={{
+                <Script id="microsoft-clarity" strategy="lazyOnload" dangerouslySetInnerHTML={{
                     __html: `
                         (function(c,l,a,r,i,t,y){
                             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -63,7 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 }} />
 
                 {/* Meta Pixel */}
-                <Script id="meta-pixel" strategy="afterInteractive" dangerouslySetInnerHTML={{
+                <Script id="meta-pixel" strategy="lazyOnload" dangerouslySetInnerHTML={{
                     __html: `
                         !function(f,b,e,v,n,t,s)
                         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

@@ -24,6 +24,10 @@ export default function Hero() {
     const [videoReady, setVideoReady] = useState(false);
 
     useEffect(() => {
+        // 手机端不加载背景视频：海报 + 文字已足够，省下 ~7MB 流量且不干扰 LCP；
+        // 用户开了省流模式（Save-Data）时同样跳过
+        const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+        if (!window.matchMedia("(min-width: 768px)").matches || conn?.saveData) return;
         const start = () => {
             // 页面空闲后再开始拉视频
             if ("requestIdleCallback" in window) {
