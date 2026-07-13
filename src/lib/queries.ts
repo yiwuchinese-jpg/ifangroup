@@ -103,6 +103,8 @@ export const allArticlesQuery = groq`*[_type == "article"] | order(publishedAt d
     isPillar,
     publishedAt,
     excerpt,
+    // 无 excerpt 的文章用正文首段兜底（服务端剥标签生成摘要，供卡片展示 + 站内搜索）
+    "snippet": string::split(coalesce(htmlContent, ""), "</p>")[0],
     mainImage {
         asset->{
             url

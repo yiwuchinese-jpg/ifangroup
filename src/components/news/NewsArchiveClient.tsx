@@ -3,11 +3,11 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { ArrowRight, Calendar, User, Tag, Search, ArrowDownRight, ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
+import { ArrowRight, Calendar, User, Tag, Search, ArrowDownRight, ChevronLeft, ChevronRight, BookOpen, FlaskConical, X } from "lucide-react";
 
 const ITEMS_PER_PAGE = 9;
 
-type NewsArticle = {
+export type NewsArticle = {
     _id: string;
     title: string;
     slug: string;
@@ -24,10 +24,13 @@ type NewsArticle = {
     };
 };
 
+type SortOrder = "newest" | "oldest" | "az";
+
 export default function NewsArchiveClient({ initialArticles }: { initialArticles: NewsArticle[] }) {
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");   // axis 1: product line
     const [activeTopic, setActiveTopic] = useState("All");         // axis 2: function
+    const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
     const [currentPage, setCurrentPage] = useState(1);
 
     // Deep-link support: /news?category=HDPE&topic=Comparison lands pre-filtered.
@@ -46,8 +49,16 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
         top === "All" ? url.searchParams.delete("topic") : url.searchParams.set("topic", top);
         window.history.replaceState(null, "", url.toString());
     };
-    const selectCategory = (cat: string) => { setActiveCategory(cat); setCurrentPage(1); syncUrl(cat, activeTopic); };
+    // 切换产品线时，若当前主题在新产品线下不存在则自动归位 All
+    const selectCategory = (cat: string) => {
+        const topicStillValid =
+            activeTopic === "All" ||
+            initialArticles.some((a) => a.topic === activeTopic && (cat === "All" || a.category === cat));
+        const nextTopic = topicStillValid ? activeTopic : "All";
+        setActiveCategory(cat); setActiveTopic(nextTopic); setCurrentPage(1); syncUrl(cat, nextTopic);
+    };
     const selectTopic = (top: string) => { setActiveTopic(top); setCurrentPage(1); syncUrl(activeCategory, top); };
+    const clearAll = () => { setSearchQuery(""); setActiveCategory("All"); setActiveTopic("All"); setCurrentPage(1); syncUrl("All", "All"); };
 
     // Pillar guides: pinned at the top, always visible (filtered only by product line).
     const pillars = useMemo(
@@ -61,24 +72,35 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
         initialArticles.forEach((a) => { if (a.category) s.add(a.category); });
         return ["All", ...Array.from(s)];
     }, [initialArticles]);
+    // 主题 chips 跟随当前产品线联动，避免 20+ 主题混排
     const topics = useMemo(() => {
         const s = new Set<string>();
-        initialArticles.forEach((a) => { if (a.topic) s.add(a.topic); });
-        return ["All", ...Array.from(s)];
-    }, [initialArticles]);
+        initialArticles.forEach((a) => {
+            if (a.topic && (activeCategory === "All" || a.category === activeCategory)) s.add(a.topic);
+        });
+        return ["All", ...Array.from(s).sort()];
+    }, [initialArticles, activeCategory]);
 
     // Main grid = non-pillar articles matching both axes + search (pillars live in the pinned band).
+    // 搜索覆盖标题 / 摘要 / 产品线 / 主题，多关键词按 AND 匹配
     const filteredArticles = useMemo(() => {
-        const term = searchQuery.toLowerCase();
-        return initialArticles.filter((article) => {
+        const terms = searchQuery.toLowerCase().split(/\s+/).filter(Boolean);
+        const list = initialArticles.filter((article) => {
             if (article.isPillar) return false;
             const matchesCategory = activeCategory === "All" || article.category === activeCategory;
             const matchesTopic = activeTopic === "All" || article.topic === activeTopic;
-            const matchesSearch =
-                article.title?.toLowerCase().includes(term) || article.excerpt?.toLowerCase().includes(term);
+            const haystack = `${article.title ?? ""} ${article.excerpt ?? ""} ${article.category ?? ""} ${article.topic ?? ""}`.toLowerCase();
+            const matchesSearch = terms.every((t) => haystack.includes(t));
             return matchesCategory && matchesTopic && matchesSearch;
         });
-    }, [initialArticles, searchQuery, activeCategory, activeTopic]);
+        if (sortOrder === "oldest") {
+            return [...list].sort((a, b) => (a.publishedAt ?? "").localeCompare(b.publishedAt ?? ""));
+        }
+        if (sortOrder === "az") {
+            return [...list].sort((a, b) => (a.title ?? "").localeCompare(b.title ?? ""));
+        }
+        return list; // newest = server order (publishedAt desc)
+    }, [initialArticles, searchQuery, activeCategory, activeTopic, sortOrder]);
 
     // Pagination logic
     const isSearching = searchQuery.length > 0 || activeCategory !== "All" || activeTopic !== "All";
@@ -169,6 +191,23 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                 </div>
             )}
 
+            {/* Product Test series — column entry */}
+            <Link
+                href="/news/product-tests"
+                className="group flex items-center justify-between gap-4 border border-brand-600/40 bg-gradient-to-r from-brand-600/5 to-transparent px-6 py-4 mb-12 hover:border-brand-600 transition-colors"
+            >
+                <div className="flex items-center gap-3 min-w-0">
+                    <FlaskConical className="w-5 h-5 text-brand-600 shrink-0" />
+                    <div className="min-w-0">
+                        <span className="block font-mono text-[10px] uppercase tracking-widest text-brand-600 font-bold">Product Test Series</span>
+                        <span className="block text-sm text-slate-600 font-medium truncate">Filmed bench tests — cut, sheared, assembled dry — each replicable on samples</span>
+                    </div>
+                </div>
+                <span className="shrink-0 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-slate-900 group-hover:text-brand-600 transition-colors">
+                    Watch the tests <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </span>
+            </Link>
+
             {/* Filter & Search Bar — two axes: product line + function */}
             <div className="mb-12 border-b-2 border-slate-900 pb-8 space-y-5">
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -214,12 +253,50 @@ export default function NewsArchiveClient({ initialArticles }: { initialArticles
                         ))}
                     </div>
                 )}
+
+                {/* Result count + active-filter clear + sort */}
+                <div className="flex flex-wrap items-center justify-between gap-4 pt-1">
+                    <div className="flex items-center gap-3">
+                        <span className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-slate-500">
+                            <span className="text-brand-600 font-bold">{filteredArticles.length}</span> briefing{filteredArticles.length === 1 ? "" : "s"}
+                            {pillars.length > 0 && <span className="text-slate-400"> + {pillars.length} guide{pillars.length === 1 ? "" : "s"}</span>}
+                        </span>
+                        {isSearching && (
+                            <button
+                                onClick={clearAll}
+                                className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-slate-500 border border-slate-200 bg-white px-3 py-1.5 hover:border-brand-600 hover:text-brand-600 transition-colors"
+                            >
+                                <X className="w-3 h-3" /> Clear filters
+                            </button>
+                        )}
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400">Sort</span>
+                        {([["newest", "Newest"], ["oldest", "Oldest"], ["az", "A–Z"]] as [SortOrder, string][]).map(([key, label]) => (
+                            <button
+                                key={key}
+                                onClick={() => { setSortOrder(key); setCurrentPage(1); }}
+                                className={`px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest border transition-colors ${sortOrder === key
+                                    ? "bg-slate-900 text-white border-slate-900"
+                                    : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-900"}`}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
 
             {filteredArticles.length === 0 ? (
                 <div className="py-32 text-center border-2 border-dashed border-slate-200 bg-white mb-24">
                     <p className="text-slate-900 font-black text-2xl uppercase tracking-tighter mb-4">No results acquired</p>
-                    <p className="text-slate-500 font-mono text-xs uppercase tracking-widest">Adjust filters or search parameters</p>
+                    <p className="text-slate-500 font-mono text-xs uppercase tracking-widest mb-8">Adjust filters or search parameters</p>
+                    <button
+                        onClick={clearAll}
+                        className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white bg-brand-600 px-6 py-3 hover:bg-brand-500 transition-colors"
+                    >
+                        <X className="w-4 h-4" /> Clear all filters
+                    </button>
                 </div>
             ) : (
                 <div className="space-y-0 relative mb-24">

@@ -2,7 +2,7 @@ import { client } from "@/lib/sanity";
 import { allArticlesQuery } from "@/lib/queries";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import NewsArchiveClient from "@/components/news/NewsArchiveClient";
+import NewsArchiveClient, { type NewsArticle } from "@/components/news/NewsArchiveClient";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { localeAlternates } from "@/lib/seo";
@@ -19,9 +19,25 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     };
 }
 
+// 从正文首段生成摘要：剥 HTML 标签、解实体、截断到整词
+function deriveExcerpt(snippet?: string): string | undefined {
+    if (!snippet) return undefined;
+    const text = snippet
+        .replace(/<[^>]*>/g, " ")
+        .replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+        .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ")
+        .replace(/\s+/g, " ").trim();
+    if (text.length <= 180) return text || undefined;
+    return text.slice(0, 180).replace(/\s+\S*$/, "") + "…";
+}
+
 export default async function NewsIndexPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    const articles = await client.fetch(allArticlesQuery);
+    const raw: (NewsArticle & { snippet?: string })[] = await client.fetch(allArticlesQuery);
+    const articles: NewsArticle[] = raw.map(({ snippet, ...a }) => ({
+        ...a,
+        excerpt: a.excerpt || deriveExcerpt(snippet),
+    }));
     const t = await getTranslations({ locale, namespace: 'news_page' });
 
     return (
