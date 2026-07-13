@@ -163,9 +163,11 @@ export default function Navbar() {
             <div className="container mx-auto px-6 relative flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center group relative w-36 h-12 md:w-44 md:h-14">
+                    {/* 白色 logo 是首屏 LCP 元素——高优先级抓取，避免被其他资源排队拖后 */}
                     <img
                         src="/logo-white.png"
                         alt="IFAN Group"
+                        fetchPriority="high"
                         className={`absolute inset-0 w-full h-full object-contain object-left transition-opacity duration-300 ${useWhiteText ? 'opacity-100' : 'opacity-0'}`}
                     />
                     <img
