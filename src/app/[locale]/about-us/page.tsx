@@ -82,6 +82,27 @@ export default function AboutPage() {
                     </div>
                 </section>
 
+                {/* Company Overview */}
+                <section className="bg-white py-24 lg:py-32 border-t border-slate-200">
+                    <div className="container mx-auto px-6">
+                        <div className="max-w-4xl">
+                            <span className="text-slate-400 font-bold tracking-[0.3em] uppercase text-xs mb-8 block">
+                                {t("overview.badge")}
+                            </span>
+                            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-10 leading-[1.0]">
+                                {t("overview.title")}
+                            </h2>
+                            <div className="h-[1px] w-16 bg-slate-300 mb-10" />
+                            <p className="text-xl text-slate-600 font-light leading-relaxed mb-6">
+                                {t("overview.para1")}
+                            </p>
+                            <p className="text-lg text-slate-500 font-medium leading-relaxed">
+                                {t("overview.para2")}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Timeline Section */}
                 <section className="bg-slate-50 py-32 lg:py-48 border-t border-slate-200">
                     <div className="container mx-auto px-6">
