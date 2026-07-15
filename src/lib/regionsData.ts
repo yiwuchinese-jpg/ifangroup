@@ -33,11 +33,14 @@ export const REGIONS_DATA: RegionData[] = [
             "https://cdn.sanity.io/images/m2e07kon/production/8170baee91d8ea785f294a8b0a3ba018b59a5088-1000x751.jpg",
         ],
         details: {
-            intro: "The MENA region demands absolute resilience. Coastal desalination plants produce highly corrosive water, while inland projects face relentless solar radiation. IFAN's armored multi-layer systems are engineered specifically to neutralize these desert conditions.",
+            intro: "The MENA region punishes generic plumbing. Coastal desalination plants produce aggressive, mineral-heavy water that corrodes ordinary fittings, while inland sites face 40°C+ heat and relentless UV that turn unprotected plastic brittle within a few seasons. IFAN's armored multi-layer systems are built for exactly these conditions: an anti-UV outer skin, an aluminium core for strength and zero oxygen ingress, and forged lead-free brass at every stress point. From Gulf luxury villas to municipal desalination networks, the objective is the same — pipework that clears inspection and lasts decades in the desert, not a system that softens and fails through its first summer.",
             infrastructureSpecs: [
-                "Anti-UV External Resin Layer rated for 50-year desert exposure.",
-                "High-pressure Brass Manifolds (CW617N) for luxury high-rise water distribution.",
-                "HDPE underground networks for municipal sand-bed resilience."
+                "Anti-UV external resin layer rated for 50-year desert exposure.",
+                "PPR-AL-PPR composite risers with an aluminium core for zero oxygen permeation and low thermal expansion.",
+                "High-pressure brass manifolds (CW617N lead-free DZR) for luxury high-rise water distribution.",
+                "Forged brass ball and angle valves rated for chlorinated, mineral-heavy desalinated water.",
+                "HDPE underground networks engineered for municipal sand-bed movement and ground shift.",
+                "Per-shipment batch certificates with SABER and ESMA documentation prepared for Gulf customs."
             ],
             certifications: ["ISO 9001", "SABER (Saudi Arabia)", "ESMA (UAE)"]
         }
@@ -58,11 +61,14 @@ export const REGIONS_DATA: RegionData[] = [
             "https://cdn.sanity.io/images/m2e07kon/production/21577957c789aaa1b79b79de6d86078c07f13480-1000x667.jpg",
         ],
         details: {
-            intro: "North America features the world's strictest drinking water regulations alongside uniquely brutal freeze-thaw cycles. IFAN's North American matrix focuses entirely on lead-free compliance and ultra-fast, flame-free installation methods to bypass the massive local labor costs.",
+            intro: "North America pairs the world's strictest drinking-water rules with uniquely brutal freeze-thaw cycles and some of the highest skilled-labor costs anywhere. A single frozen burst can cause six figures of water damage, and open-flame soldering inside wood-frame construction is both a fire hazard and a labor sink. IFAN's North American matrix answers all three: shape-memory PEX-a that expands instead of cracking when it freezes, push-fit and press connections that need no flame or torch, and fully lead-free wetted parts certified to NSF. The result is a system that installs far faster, passes the toughest potable-water audits, and protects the contractor from freeze and fire liability alike.",
             infrastructureSpecs: [
-                "Shape-memory PEX-a tubing capable of surviving 300% expansion without bursting.",
-                "DZR (Dezincification Resistant) Lead-Free Brass Push-Fit couplings.",
-                "304/316L Stainless Steel Press-Fit for hospital and commercial hygienic lines."
+                "Shape-memory PEX-a tubing engineered to survive freeze expansion without bursting.",
+                "DZR lead-free brass push-fit couplings — no flame, no tools, NSF 372 compliant.",
+                "304/316L stainless steel press-fit for hospital and commercial hygienic lines.",
+                "Cold-expansion (ASTM F1960) fittings for permanent, creep-resistant PEX-a joints.",
+                "Manifold home-run layouts that cut fittings and callbacks in wood-frame builds.",
+                "Full NSF/cUPC documentation supplied per shipment for frictionless inspection."
             ],
             certifications: ["NSF 61", "NSF 372 (Lead Free)", "cUPC", "ASTM F1960"]
         }
@@ -83,11 +89,14 @@ export const REGIONS_DATA: RegionData[] = [
             "https://cdn.sanity.io/images/m2e07kon/production/57a6549ec7046142d0cdac087144494608bd73df-1000x667.jpg",
         ],
         details: {
-            intro: "Europe leads the world in low-carbon hydronic heating and micro-plastic elimination. IFAN supplies the heavy-duty oxygen barriers and thermostatic controls required to pass EU strict energy efficiency ratings (A++).",
+            intro: "Europe sets the global bar for low-carbon hydronic heating, potable-water purity and micro-plastic elimination, and the certification regime is unforgiving. Oxygen creeping through ordinary pipe walls quietly rusts expensive condensing boilers, while legacy lead and copper lines fail modern purity rules. IFAN supplies the pieces that pass an A++ energy audit: EVOH oxygen-barrier PEX and PE-RT for underfloor heating, thermostatic controls for room-by-room efficiency, and thin-wall stainless for lead-free potable risers. Every line carries the German and UK approvals — DVGW, WRAS, SKZ, CE — that specifiers demand before a product reaches a premium residential or commercial contract.",
             infrastructureSpecs: [
-                "EVOH ultra-barrier layers for zero boiler corrosion.",
-                "Smart Thermostatic Radiator Valves (TRV) for precise room-by-room climate control.",
-                "DVGW-approved Stainless Steel networks for replacing legacy lead/copper pipes."
+                "EVOH oxygen-barrier PEX and PE-RT for zero boiler corrosion in sealed heating loops.",
+                "Smart thermostatic radiator valves (TRV) for precise room-by-room climate control.",
+                "DVGW-approved stainless steel networks for replacing legacy lead and copper pipe.",
+                "PE-RT underfloor-heating circuits sized for A++ energy-efficiency ratings.",
+                "Lead-free DZR brass manifolds and mixing valves for hydronic distribution.",
+                "Full DVGW / WRAS / SKZ / CE certification packs supplied for EU and UK tenders."
             ],
             certifications: ["DVGW (Germany)", "WRAS (UK)", "CE", "SKZ"]
         }
@@ -108,11 +117,14 @@ export const REGIONS_DATA: RegionData[] = [
             "https://cdn.sanity.io/images/m2e07kon/production/3ea62cc8ce082c37e90af35fdf66a20e6449955e-1000x562.jpg",
         ],
         details: {
-            intro: "Spanning the hyper-dense Mega-cities of China, Japan, Korea, and the tropical expansion of Southeast Asia, this region requires a dual-pronged approach: absolute cost-efficiency for mass housing and uncompromising hygiene for luxury real estate.",
+            intro: "From the hyper-dense mega-cities of China, Japan and Korea to the tropical build-out of Southeast Asia, this region needs two things at once: rock-bottom cost for mass housing and uncompromising hygiene for luxury towers. Heat and humidity breed bacteria, direct sunlight turns clear pipe green with algae, and aging mains bleed 'red-water' rust into supply. IFAN covers the full spread — light-blocking, nano-silver antibacterial PPR for high-volume residential, bulk UPVC and CPVC for drainage and industrial flow, and premium 304/316 stainless press systems for elite developments. One supplier serves both the value tier and the luxury tier without a channel gap.",
             infrastructureSpecs: [
-                "Anti-bacterial Green/White PPR co-extruded pipes.",
-                "Mass-volume UPVC/CPVC systems for rapid urban drainage and industrial flows.",
-                "High-end Stainless Steel Press systems for commercial 'red-water' eradication."
+                "Light-blocking antibacterial green/white co-extruded PPR for algae-free supply.",
+                "Mass-volume UPVC and CPVC systems for rapid urban drainage and industrial flows.",
+                "High-end 304/316 stainless press systems for commercial 'red-water' eradication.",
+                "PPR-AL-PPR composite risers for high-rise pressure zoning in dense towers.",
+                "HDPE mains and fittings for buried municipal and campus distribution.",
+                "Compact-fusion fittings tuned for fast install in tight high-rise risers."
             ],
             certifications: ["WaterMark", "ISO", "Local Quality Standards"]
         }
@@ -133,11 +145,14 @@ export const REGIONS_DATA: RegionData[] = [
             "https://cdn.sanity.io/images/m2e07kon/production/3660936ae89c0d7a15ce5ef1867ab020f93365a1-1000x667.jpg",
         ],
         details: {
-            intro: "The CIS region relies entirely on massive, high-temperature District Heating networks. IFAN’s fiberglass-infused systems are specifically designed to survive internal boiling temperatures while resisting massive external freeze shock.",
+            intro: "The CIS region runs on some of the largest high-temperature district-heating networks on earth, often circulating water above 95°C under heavy pressure. Ordinary plastic softens, stretches and snakes under that load, and the same lines must then survive external cold shock deep below freezing. IFAN's fiberglass-reinforced PPR-GF-PPR is engineered for exactly this duty: the glass skeleton cuts thermal expansion to roughly a quarter of standard PPR, so pipes stay straight and dimensionally stable through boiling surges. Paired with large-bore forged manifolds and thick-wall fusion joints built for concrete encasement, it delivers pipelines that hold their shape and pressure for the full life of a municipal heating grid.",
             infrastructureSpecs: [
-                "PPR-GF-PPR tri-layer pipes with negligible thermal expansion.",
-                "Heavy-duty forged brass manifolds capable of managing intense pressure spikes.",
-                "Large-bore fusion systems designed for thick concrete encasements."
+                "PPR-GF-PPR tri-layer pipe with fiberglass core for minimal thermal expansion.",
+                "Heavy-duty forged brass manifolds rated for intense district-heating pressure spikes.",
+                "Large-bore socket-fusion systems designed for thick concrete encasement.",
+                "High-PN (PN20–PN25) hot-water classes rated for sustained >95°C circulation.",
+                "Insulated pre-lagged line options to cut heat loss across long buried runs.",
+                "GOST-documented batch testing for Russian and CIS project acceptance."
             ],
             certifications: ["GOST (Russia)"]
         }
@@ -158,11 +173,14 @@ export const REGIONS_DATA: RegionData[] = [
             "https://cdn.sanity.io/images/m2e07kon/production/3ca80723d6de9d17bd64d31d306f245cae5824fc-1000x667.jpg",
         ],
         details: {
-            intro: "Latin America provides massive wholesale volume opportunities driven by cost and legacy habits. IFAN dominates this sector by providing extreme value via perfectly compliant ASTM PVC glued systems and highly aggressive pricing on standard PPR.",
+            intro: "Latin America is a high-volume wholesale market shaped by cost pressure and deep-rooted installation habits. Contractors have relied on US-standard ASTM PVC glue-joint systems for decades, and long ocean freight already squeezes importer margins — so a supplier has to win on price without asking the local workforce to relearn its trade. IFAN fits that reality precisely: perfectly compliant ASTM Sch40/Sch80 PVC that drops straight into existing solvent-weld practice, plus aggressively priced green PPR that lets projects retire rusting galvanized iron for modern polymer. The play is simple — unbeatable wholesale velocity, full ASTM compliance, and zero retraining friction for the crews on site.",
             infrastructureSpecs: [
-                "ASTM standard Sch40/Sch80 White and Grey PVC.",
-                "Traditional solvent-weld (glue) fittings for rapid local adoption.",
-                "High-value Green PPR substituting outdated galvanized iron."
+                "ASTM Sch40/Sch80 white and grey PVC in full pipe-and-fitting ranges.",
+                "Traditional solvent-weld (glue) fittings for zero-retraining local adoption.",
+                "High-value green PPR replacing outdated galvanized iron supply lines.",
+                "CPVC hot-water lines for residential and light-commercial upgrades.",
+                "Container-optimized mixed loads that cut per-unit freight on long routes.",
+                "ASTM and ISO 9001 documentation supplied per shipment for customs."
             ],
             certifications: ["ASTM", "ISO 9001"]
         }

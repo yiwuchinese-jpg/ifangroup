@@ -491,14 +491,17 @@
     "regions": {
       "mena": {
         "details": {
-          "infrastructureSpecs": {
-            "0": "Camada externa de resina anti-UV, projetada para 50 anos de exposição em ambiente desértico.",
-            "1": "Coletores de latão de alta pressão (CW617N) para distribuição de água em edifícios altos de luxo.",
-            "2": "Redes subterrâneas em HDPE para resiliência municipal em leito de areia."
-          }
+          "infrastructureSpecs": [
+            "Camada externa de resina anti-UV classificada para exposição desértica de 50 anos.",
+            "Tubos de subida compostos PPR-AL-PPR com núcleo de alumínio para permeação zero de oxigênio e baixa expansão térmica.",
+            "Manifolds de latão de alta pressão (CW617N sem chumbo DZR) para distribuição de água em edifícios altos de luxo.",
+            "Válvulas de esfera e angulares em latão forjado, classificadas para água dessalinizada clorada e com alto teor de minerais.",
+            "Redes subterrâneas de HDPE projetadas para movimentação de areia municipal e deslocamento do solo.",
+            "Certificados de lote por envio com documentação SABER e ESMA preparados para alfândega do Golfo."
+          ]
         },
         "name": "MENA (Oriente Médio e Norte da África)",
-        "intro": "A região MENA exige resiliência absoluta. As usinas costeiras de dessalinização produzem água altamente corrosiva, enquanto os projetos no interior enfrentam radiação solar implacável. Os sistemas multicamadas blindados da IFAN são projetados especificamente para neutralizar essas condições desérticas.",
+        "intro": "A região do MENA pune sistemas hidráulicos genéricos. As usinas de dessalinização costeiras produzem água agressiva e rica em minerais que corrói conexões comuns, enquanto locais no interior enfrentam calor acima de 40°C e radiação UV implacável que tornam o plástico não protegido quebradiço em poucas temporadas. Os sistemas multicamadas blindados da IFAN são projetados exatamente para essas condições: uma camada externa anti-UV, um núcleo de alumínio para resistência e zero entrada de oxigênio, e latão forjado sem chumbo em cada ponto de tensão. De vilas de luxo no Golfo a redes municipais de dessalinização, o objetivo é o mesmo — tubulações que passam na inspeção e duram décadas no deserto, não um sistema que amolece e falha no primeiro verão.",
         "problem": "Radiação UV extrema, calor acima de 40°C e água dessalinizada altamente corrosiva.",
         "agitate": "Os plásticos convencionais degradam-se rapidamente, tornando-se quebradiços sob sol intenso, o que pode causar vazamentos catastróficos em alta pressão e enormes responsabilidades para o projeto.",
         "feature": "Tubos compósitos PPR-AL-PPR + Válvulas de latão forjado para serviços pesados.",
@@ -507,14 +510,17 @@
       },
       "north-america": {
         "details": {
-          "infrastructureSpecs": {
-            "0": "Tubulação PEX-a com memória de forma capaz de suportar expansão de 300% sem romper.",
-            "1": "Acoplamentos push-fit em latão sem chumbo DZR (resistente à dezincificação).",
-            "2": "Press-Fit em aço inoxidável 304/316L para linhas higiênicas hospitalares e comerciais."
-          }
+          "infrastructureSpecs": [
+            "Tubulação PEX-a com memória de forma projetada para suportar expansão por congelamento sem estourar.",
+            "Acoplamentos push-fit de latão sem chumbo DZR — sem chama, sem ferramentas, em conformidade com NSF 372.",
+            "304/316L aço inoxidável press-fit para linhas higiênicas hospitalares e comerciais.",
+            "Acessórios de expansão a frio (ASTM F1960) para juntas PEX-a permanentes e resistentes à fluência.",
+            "Layouts de manifold com sistema home-run que reduzem conexões e retornos em construções de estrutura de madeira.",
+            "Documentação completa NSF/cUPC fornecida por remessa para inspeção sem atritos."
+          ]
         },
         "name": "América do Norte",
-        "intro": "A América do Norte apresenta as regulamentações de água potável mais rigorosas do mundo, juntamente com ciclos de congelamento e degelo excepcionalmente severos. A matriz norte-americana da IFAN concentra-se inteiramente na conformidade sem chumbo e em métodos de instalação ultrarrápidos e sem chama para contornar os elevados custos locais de mão de obra.",
+        "intro": "A América do Norte combina as normas mais rigorosas do mundo para água potável com ciclos de congelamento e degelo excepcionalmente severos e alguns dos custos de mão de obra qualificada mais altos. Um único estouro por congelamento pode causar danos de seis dígitos, e a soldagem com chama aberta em estruturas de madeira é tanto um risco de incêndio quanto um desperdício de mão de obra. A matriz norte-americana da IFAN responde a todos os três: PEX-a com memória de forma que se expande em vez de rachar quando congela, conexões push-fit e press que não precisam de chama ou maçarico, e peças molhadas totalmente sem chumbo certificadas pela NSF. O resultado é um sistema que instala muito mais rápido, passa nas auditorias mais rigorosas de água potável e protege o contratante contra responsabilidades de congelamento e incêndio.",
         "problem": "Congelamentos severos no inverno, construção em estrutura de madeira e rigorosas regulamentações de zero chumbo (NSF/cUPC).",
         "agitate": "Tubos congelados e rompidos causam milhões em danos causados pela água. A soldagem por trabalho a quente em estruturas de madeira gera enormes riscos de incêndio e acarreta custos exorbitantes de mão de obra especializada.",
         "feature": "Expansão a frio PEX-a + Conexões de engate rápido + Prensagem em aço inoxidável 304/316L.",
@@ -523,14 +529,17 @@
       },
       "europe": {
         "details": {
-          "infrastructureSpecs": {
-            "0": "Camadas de ultrabarreira EVOH para corrosão zero da caldeira.",
-            "1": "Válvulas Termostáticas Inteligentes para Radiador (TRV) para um controlo preciso do clima em cada divisão.",
-            "2": "Redes em aço inoxidável aprovadas pela DVGW para substituição de tubagens antigas em chumbo/cobre."
-          }
+          "infrastructureSpecs": [
+            "EVOH barreira de oxigénio PEX e PE-RT para corrosão zero da caldeira em circuitos de aquecimento selados.",
+            "Válvulas termostáticas inteligentes para radiadores (TRV) para controle climático preciso cômodo por cômodo.",
+            "Redes de aço inoxidável aprovadas pela DVGW para substituir tubulações antigas de chumbo e cobre.",
+            "Circuitos de piso radiante em PE-RT dimensionados para classificações de eficiência energética A++.",
+            "Manifolds e válvulas misturadoras de latão DZR sem chumbo para distribuição hidrônica.",
+            "Pacotes completos de certificação DVGW / WRAS / SKZ / CE fornecidos para licitações na UE e no Reino Unido."
+          ]
         },
         "name": "União Europeia e Reino Unido",
-        "intro": "A Europa lidera o mundo em aquecimento hidrônico de baixo carbono e eliminação de microplásticos. A IFAN fornece as barreiras de oxigênio para serviços pesados e os controles termostáticos necessários para atender às rigorosas classificações de eficiência energética da UE (A++).",
+        "intro": "A Europa define o padrão global para aquecimento hídrico de baixo carbono, pureza da água potável e eliminação de microplásticos, e o regime de certificação é implacável. O oxigênio que penetra através de paredes comuns de tubos enferruja silenciosamente caldeiras de condensação caras, enquanto tubulações antigas de chumbo e cobre falham nas regras modernas de pureza. A IFAN fornece as peças que passam em uma auditoria energética A++: PEX e PE-RT com barreira de oxigênio EVOH para piso radiante, controles termostáticos para eficiência cômodo por cômodo, e aço inoxidável de parede fina para tubulações de água potável sem chumbo. Cada linha possui as aprovações alemã e britânica — DVGW, WRAS, SKZ, CE — que os especificadores exigem antes que um produto chegue a um contrato residencial ou comercial premium.",
         "problem": "Exigências implacáveis de eficiência energética, aquecimento por piso radiante obrigatório e rigorosas certificações de materiais atóxicos.",
         "agitate": "A permeação de oxigênio em tubulações padrão causa corrosão em caldeiras de alto custo. Os microplásticos em sistemas antigos comprometem a pureza da água potável.",
         "feature": "PEX-b/PERT com barreira anti-oxigênio EVOH + aço inoxidável de parede fina certificado pela DVGW + TRVs.",
@@ -539,14 +548,17 @@
       },
       "asia": {
         "details": {
-          "infrastructureSpecs": {
-            "0": "Tubos PPR coextrudados verde/branco antibacterianos.",
-            "1": "Sistemas de UPVC/CPVC para grandes volumes, destinados à drenagem urbana rápida e a fluxos industriais.",
-            "2": "Sistemas de prensagem em aço inoxidável de alta qualidade para a eliminação comercial de 'água vermelha'."
-          }
+          "infrastructureSpecs": [
+            "PPR antibacteriano verde/branco coextrudado com bloqueio de luz para abastecimento livre de algas.",
+            "Sistemas UPVC e CPVC de grande volume para drenagem urbana rápida e fluxos industriais.",
+            "Sistemas de pressão de aço inoxidável 304/316 de alta qualidade para erradicação de 'água vermelha' comercial.",
+            "Tubos ascendentes compostos de PPR-AL-PPR para zoneamento de pressão em arranha-céus densos.",
+            "Tubulações e conexões de HDPE para distribuição municipal e em campus enterrados.",
+            "Acessórios de fusão compacta ajustados para instalação rápida em colunas verticais apertadas de edifícios altos."
+          ]
         },
         "name": "Leste e Sudeste da Ásia",
-        "intro": "Abrangendo as megacidades hiperdensas da China, Japão e Coreia, bem como a expansão tropical do Sudeste Asiático, esta região exige uma abordagem em duas frentes: eficiência de custos absoluta para habitação em massa e higiene intransigente para empreendimentos imobiliários de luxo.",
+        "intro": "Das megacidades hiperdensas da China, Japão e Coreia até a expansão tropical do Sudeste Asiático, esta região precisa de duas coisas ao mesmo tempo: custo extremamente baixo para habitação em massa e higiene rigorosa para torres de luxo. Calor e umidade geram bactérias, a luz solar direta torna os tubos transparentes verdes com algas, e as redes antigas liberam ferrugem 'água vermelha' no abastecimento. A IFAN cobre todo o espectro — PPR antibacteriano com nano-prata e bloqueio de luz para residências de alto volume, UPVC e CPVC a granel para drenagem e fluxo industrial, e sistemas de pressão premium em aço inoxidável 304/316 para empreendimentos de elite. Um único fornecedor atende tanto o segmento de valor quanto o de luxo, sem lacunas de canal.",
         "problem": "Altas temperaturas e umidade favorecem a proliferação de bactérias; a rápida urbanização exige tanto máxima eficiência de custos quanto melhorias de luxo emergentes.",
         "agitate": "A luz solar intensa penetra nas tubulações padrão, tornando a água verde devido às algas. Infraestruturas envelhecidas sofrem contaminação por ferrugem de \"água vermelha\".",
         "feature": "Redes em PPR antibacteriano com nano-prata + aço inoxidável premium 304/316.",
@@ -555,14 +567,17 @@
       },
       "cis": {
         "details": {
-          "infrastructureSpecs": {
-            "0": "Tubos tricamada PPR-GF-PPR com expansão térmica desprezível.",
-            "1": "Coletores de latão forjado para serviço pesado, capazes de suportar picos intensos de pressão.",
-            "2": "Sistemas de fusão de grande diâmetro projetados para encamisamentos espessos de concreto."
-          }
+          "infrastructureSpecs": [
+            "Tubo tri-camada PPR-GF-PPR com núcleo de fibra de vidro para mínima expansão térmica.",
+            "Manifolds de latão forjado de alta resistência, classificados para picos intensos de pressão em aquecimento distrital.",
+            "Sistemas de fusão por soquete de grande diâmetro projetados para embutimento em concreto espesso.",
+            "Classes de água quente de alta PN (PN20–PN25) classificadas para circulação sustentada >95°C.",
+            "Opções de linha pré-isolada para reduzir a perda de calor em longos trechos enterrados.",
+            "Testes de lote documentados conforme GOST para aceitação de projetos na Rússia e CIS."
+          ]
         },
         "name": "Rússia e região da CEI",
-        "intro": "A região da CEI depende inteiramente de redes de Aquecimento Urbano massivas e de alta temperatura. Os sistemas reforçados com fibra de vidro da IFAN são especificamente projetados para suportar temperaturas internas de ebulição, ao mesmo tempo em que resistem a choques extremos de congelamento externo.",
+        "intro": "A região CIS opera com algumas das maiores redes de aquecimento urbano de alta temperatura do planeta, frequentemente circulando água acima de 95°C sob alta pressão. Plásticos comuns amolecem, esticam e se deformam sob essa carga, e as mesmas tubulações precisam suportar choques térmicos externos muito abaixo do congelamento. O PPR-GF-PPR reforçado com fibra de vidro da IFAN foi projetado exatamente para essa função: o esqueleto de vidro reduz a expansão térmica para aproximadamente um quarto do PPR padrão, mantendo os tubos retos e dimensionalmente estáveis durante picos de ebulição. Combinado com manifolds forjados de grande diâmetro e juntas de fusão de parede espessa projetadas para embutimento em concreto, ele oferece tubulações que mantêm sua forma e pressão durante toda a vida útil de uma rede de aquecimento municipal.",
         "problem": "Invernos rigorosos com temperaturas abaixo de zero exigem sistemas centrais de aquecimento distrital altamente pressurizados e de temperatura extrema (frequentemente >95°C).",
         "agitate": "Os plásticos comuns amolecem, expandem-se e deformam-se como serpentes sob tais picos de ebulição, levando a falhas catastróficas no sistema.",
         "feature": "PPR de Alta Pressão Reforçado com Fibra de Vidro (PPR-GF-PPR) + Coletores Forjados de Grande Diâmetro.",
@@ -571,14 +586,17 @@
       },
       "latam": {
         "details": {
-          "infrastructureSpecs": {
-            "0": "PVC branco e cinza Sch40/Sch80 padrão ASTM.",
-            "1": "Conexões tradicionais para soldagem com solvente (cola) para rápida adoção local.",
-            "2": "PPR Verde de alto valor substituindo o ferro galvanizado obsoleto."
-          }
+          "infrastructureSpecs": [
+            "ASTM Sch40/Sch80 PVC branco e cinza em gamas completas de tubos e conexões.",
+            "Conexões tradicionais de soldagem por solvente (cola) para adoção local sem necessidade de retreinamento.",
+            "Tubulações PPR verdes de alto valor substituindo linhas de abastecimento de ferro galvanizado obsoletas.",
+            "Linhas de água quente em CPVC para atualizações residenciais e comerciais leves.",
+            "Cargas mistas otimizadas para contêineres que reduzem o frete por unidade em rotas longas.",
+            "Documentação ASTM e ISO 9001 fornecida por remessa para alfândega."
+          ]
         },
         "name": "América Latina e América do Sul",
-        "intro": "A América Latina oferece enormes oportunidades de volume no atacado, impulsionadas por custos e hábitos tradicionais. A IFAN domina este setor ao oferecer excelente custo-benefício por meio de sistemas colados em PVC ASTM totalmente conformes e preços altamente competitivos para PPR padrão.",
+        "intro": "A América Latina é um mercado atacadista de alto volume moldado pela pressão de custos e hábitos de instalação profundamente enraizados. Os contratantes confiam em sistemas de junta colada de PVC padrão ASTM dos EUA há décadas, e o longo frete marítimo já comprime as margens dos importadores — portanto, um fornecedor precisa vencer no preço sem exigir que a mão de obra local reaprenda seu ofício. A IFAN se encaixa perfeitamente nessa realidade: PVC ASTM Sch40/Sch80 totalmente compatível que se integra diretamente à prática existente de soldagem solvente, além de PPR verde com preço agressivo que permite que projetos substituam ferro galvanizado enferrujado por polímero moderno. A jogada é simples — velocidade atacadista imbatível, conformidade total com ASTM e zero atrito de retreinamento para as equipes no local.",
         "problem": "Sistemas legados profundamente enraizados no padrão americano (ASTM), com forte dependência das tradicionais juntas coladas em PVC.",
         "agitate": "Os altos custos de transporte de longa distância comprometem as margens. Migrar empreiteiros locais de sistemas de colagem legados com 40 anos de uso é notoriamente difícil.",
         "feature": "Sistemas completos de PVC ASTM Sch40/Sch80 com junta colada + PPR verde acessível.",
