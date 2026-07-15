@@ -28,6 +28,8 @@ import {
   carouselImages,
   caseImages,
   certImages,
+  pprFaq,
+  pprSpecs,
 } from "./pprData";
 
 const whatsappNumber = "8617369685997";
@@ -179,32 +181,7 @@ const landingCopy = {
   },
   faq: {
     title: "PPR Sourcing Questions — Answered Directly",
-    items: [
-      {
-        q: "How do you guarantee the lowest price?",
-        a: "We are the manufacturer — no agents, no trading desks. Compare our ex-factory quote against any China PPR supplier. If you find a lower genuine factory price for equivalent spec, we match it.",
-      },
-      {
-        q: "How do I verify the PP-R material is 100% virgin?",
-        a: "Every batch ships with a material certificate. Third-party SGS or BV lab reports on request. Pre-shipment inspection or send samples to your own lab — we encourage it.",
-      },
-      {
-        q: "What is the MOQ for PPR pipes and fittings?",
-        a: "Standard: 3,000–5,000m pipes (mix sizes DN20–DN160), 5,000pcs fittings (mix types). Trial orders with lower quantities available at a small surcharge.",
-      },
-      {
-        q: "Do you sell on Amazon, Alibaba, or to end-consumers?",
-        a: "No. Strictly B2B wholesale. No retail, no marketplace, no consumer sales. Your import market stays protected from channel conflict.",
-      },
-      {
-        q: "Can I customize pipe color or branding?",
-        a: "Yes. OEM/ODM: custom colors (green, white, grey, blue), private label printing, custom packaging. MOQ applies — ask your sales contact for details.",
-      },
-      {
-        q: "What certifications do you have for my country?",
-        a: "DIN 8077/8078, ISO 15874, CE, SGS as standard. Regional certs — SASO, SONCAP, NOM — arranged per destination. Tell us your market and we'll confirm.",
-      },
-    ],
+    items: pprFaq,
   },
   finalCta: {
     title: "Request a Quote for PPR Pipes and Fittings",
@@ -920,6 +897,23 @@ export default function PPRLanding() {
                   <span className="font-bold text-slate-800">{row.label}</span>
                   <span className="font-semibold text-brand-700">{row.ifan}</span>
                   <span className="text-slate-500">{row.typical}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Specifications table */}
+        <section id="specs" className="border-t border-slate-200 bg-white py-14 md:py-18">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">{pprSpecs.badge}</span>
+            <h2 className="mt-3 text-3xl font-black tracking-normal md:text-4xl">{pprSpecs.title}</h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">{pprSpecs.subtitle}</p>
+            <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+              {pprSpecs.rows.map((row, i) => (
+                <div key={row.label} className={`grid grid-cols-[1fr_1.6fr] gap-4 border-b border-slate-100 px-6 py-4 text-sm last:border-b-0 ${i % 2 === 0 ? "bg-white" : "bg-slate-50"}`}>
+                  <span className="font-bold text-slate-800">{row.label}</span>
+                  <span className="font-semibold text-slate-600">{row.value}</span>
                 </div>
               ))}
             </div>
