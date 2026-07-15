@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { localeAlternates } from "@/lib/seo";
+import { buildPageSchema } from "@/lib/schema";
 import {
     Box, 
     Droplets, 
@@ -32,6 +33,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export const revalidate = 3600;
+
+const jsonLd = buildPageSchema({
+  path: "/products",
+  breadcrumbName: "Products",
+  serviceName: "Plumbing Pipe & Fitting Manufacturing and Wholesale Supply",
+  serviceType: "Plumbing pipe and fittings manufacturing and wholesale supply",
+  serviceDescription:
+    "Factory-direct plumbing range from one supplier: PPR (DN20–DN160, PN12.5–PN25), PVC/UPVC/CPVC, PPH, HDPE PE100/PE80, PEX and multilayer pipe, plus CW617N lead-free brass valves and faucets, strictly B2B wholesale.",
+  areaServed: ["Worldwide"],
+});
 
 export default async function ProductsPage() {
     const t = await getTranslations("productsPage");
@@ -60,6 +71,8 @@ export default async function ProductsPage() {
  }`);
 
     return (
+        <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <div className="flex min-h-screen flex-col bg-slate-50">
             <Navbar />
 
@@ -240,5 +253,6 @@ export default async function ProductsPage() {
 
             <Footer />
         </div>
+        </>
     );
 }

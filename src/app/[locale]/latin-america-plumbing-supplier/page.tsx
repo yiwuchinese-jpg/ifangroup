@@ -1,5 +1,16 @@
 import type { Metadata } from "next";
 import LatinAmericaPlumbingLanding from "@/components/landing/LatinAmericaPlumbingLanding";
+import { buildPageSchema } from "@/lib/schema";
+
+const jsonLd = buildPageSchema({
+  path: "/latin-america-plumbing-supplier",
+  breadcrumbName: "Latin America Plumbing Supplier",
+  serviceName: "Plumbing Materials Supply & Export for Latin America",
+  serviceType: "Wholesale plumbing materials supply and export",
+  serviceDescription:
+    "Factory-direct PPR, PVC/CPVC, PPH, HDPE, PEX and brass valve systems for Latin American importers and distributors, with Spanish-language support, strictly B2B wholesale and a one-container MOQ.",
+  areaServed: ["Latin America"],
+});
 
 type LandingLanguage = "en" | "es";
 type PageProps = {
@@ -107,5 +118,13 @@ export default async function LatinAmericaPlumbingSupplierPage({ params, searchP
   const { locale } = await params;
   const language = getLandingLanguage(locale, await searchParams);
 
-  return <LatinAmericaPlumbingLanding language={language} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <LatinAmericaPlumbingLanding language={language} />
+    </>
+  );
 }

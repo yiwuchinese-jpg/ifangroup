@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
 import GlobalPlumbingLanding from "@/components/landing/GlobalPlumbingLanding";
+import { globalPlumbingFaqs } from "@/components/landing/globalPlumbingData";
+import { buildPageSchema } from "@/lib/schema";
 
 const englishUrl = "https://www.ifanholding.com/global-plumbing-supplier";
 const spanishUrl = "https://www.ifanholding.com/es/global-plumbing-supplier";
+
+const jsonLd = buildPageSchema({
+  path: "/global-plumbing-supplier",
+  breadcrumbName: "Global Plumbing Supplier",
+  serviceName: "Global B2B Plumbing Materials Supply & Export",
+  serviceType: "Wholesale plumbing materials supply and export",
+  serviceDescription:
+    "Factory-direct PE/HDPE, PPR, PVC, PPH, PEX and brass valve systems for global distributors and importers, strictly B2B wholesale with a one-container MOQ.",
+  areaServed: ["Worldwide"],
+  faqs: globalPlumbingFaqs.map(([q, a]) => ({ q, a })),
+});
 
 export const metadata: Metadata = {
   title: "Global Wholesale Plumbing & Pipe Products Supplier",
@@ -40,6 +53,14 @@ type PageProps = {
 };
 
 export default async function GlobalPlumbingSupplierPage({ params }: PageProps) {
-  const { locale } = await params;
-  return <GlobalPlumbingLanding />;
+  await params;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <GlobalPlumbingLanding />
+    </>
+  );
 }

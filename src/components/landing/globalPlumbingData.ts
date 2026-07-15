@@ -1,0 +1,13 @@
+// FAQ — single source of truth, rendered in GlobalPlumbingLanding AND emitted as FAQPage JSON-LD in page.tsx.
+// Kept in a plain (non-"use client") module so a server component can import the real array.
+export const globalPlumbingFaqs: [string, string][] = [
+  ["How do you handle international shipping and customs?", "We support FOB, CIF and door-to-door delivery. Our team manages all documentation: commercial invoice, packing list, bill of lading, certificate of origin, and destination-specific customs requirements."],
+  ["What certifications do your products have?", "ISO 9001, CE, WRAS (UK), NSF (USA), plus regional standards for specific markets. Tell us your destination and we match the compliance requirements."],
+  ["Do you support OEM, private label or custom packaging?", "Yes — this is one of our core strengths. Custom packaging, private label branding, retail-ready box design. Your brand, your specifications, your packaging."],
+  ["What are your typical lead times and MOQ?", "Typically 15–30 days for standard products. MOQ is flexible — we welcome trial orders from first-time buyers to build trust before scaling up."],
+  ["Can you provide samples and technical documentation?", "Absolutely. Product samples, engineering drawings, technical datasheets, and certification copies are available upon request. Sample shipment within 3–5 working days."],
+  ["How does IFAN ensure quality for international orders?", "Raw material testing, in-process inspection, final QC before loading. Third-party inspection (SGS, BV, Intertek) can be arranged before shipment at your request."],
+  ["Are you a plumbing manufacturer or a trading supplier?", "We are the manufacturer. IFAN has built plumbing products in Zhejiang, China since 1993 in our own 120,000 m² factory with 30+ automated extrusion lines, in-house injection molding, and a mold workshop. You buy factory-direct, at the maker's price, with a batch certificate on every shipment — no middleman markup and no trading-company handoff."],
+  ["What full product range can I source from one order?", "One supplier for the whole system: PPR pipe DN20–DN160 in PN12.5–PN25, plus fittings, valves, composite pipe and floor-heating, and PVC/UPVC/CPVC, PPH, HDPE (PE100/PE80), PEX and multilayer pipe, and CW617N lead-free brass valves and faucets. MOQ is one container and you can mix sizes and products inside it."],
+  ["Do you sell on Amazon or Alibaba retail, or protect distributors?", "No. We are strictly B2B wholesale and export only — no Amazon, no Alibaba retail, no sales to individual consumers. That keeps our importers and distributors from competing against our own product listed online. You deal directly with the factory as a wholesale buyer, with your market protected."],
+];

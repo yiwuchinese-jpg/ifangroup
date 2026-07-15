@@ -6,11 +6,24 @@ import Footer from "@/components/layout/Footer";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { buildPageSchema } from "@/lib/schema";
+
+const jsonLd = buildPageSchema({
+    path: "/about-us",
+    breadcrumbName: "About Us",
+    serviceName: "IFAN Group — Plumbing Pipe & Valve Manufacturer",
+    serviceType: "Plumbing pipe and valve manufacturing",
+    serviceDescription:
+        "IFAN Group is a Chinese manufacturer of PPR, PVC, HDPE and PEX pipes, fittings and brass valves, operating since 1993 from a 120,000 m² factory in Zhejiang and exporting B2B wholesale to 120+ countries.",
+    areaServed: ["Worldwide"],
+});
 
 export default function AboutPage() {
     const t = useTranslations("about");
 
     return (
+        <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <div className="flex min-h-screen flex-col bg-white">
             <Navbar />
 
@@ -218,5 +231,6 @@ export default function AboutPage() {
 
             <Footer />
         </div>
+        </>
     );
 }

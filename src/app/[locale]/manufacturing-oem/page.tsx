@@ -5,11 +5,24 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { buildPageSchema } from "@/lib/schema";
+
+const jsonLd = buildPageSchema({
+    path: "/manufacturing-oem",
+    breadcrumbName: "Manufacturing & OEM",
+    serviceName: "OEM & Private-Label Plumbing Manufacturing",
+    serviceType: "OEM and private-label plumbing manufacturing",
+    serviceDescription:
+        "Custom and private-label manufacturing of PPR, PVC, HDPE, PEX pipe and brass valves — in-house mold workshop, injection molding and 30+ extrusion lines at a 120,000 m² factory operating since 1993.",
+    areaServed: ["Worldwide"],
+});
 
 export default function ManufacturingPage() {
     const t = useTranslations("manufacturing");
 
     return (
+        <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <div className="flex min-h-screen flex-col bg-white">
             <Navbar />
 
@@ -187,5 +200,6 @@ export default function ManufacturingPage() {
 
             <Footer />
         </div >
+        </>
     );
 }
