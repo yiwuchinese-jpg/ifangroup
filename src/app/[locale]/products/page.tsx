@@ -161,6 +161,24 @@ export default async function ProductsPage() {
                     </div>
                 </section>
 
+                {/* One Factory Overview */}
+                <section className="bg-white border-y border-slate-200 py-20 mb-16">
+                    <div className="container mx-auto px-6 max-w-4xl">
+                        <span className="text-brand-600 font-bold tracking-[0.2em] uppercase text-xs mb-6 block">
+                            {t("overview.badge")}
+                        </span>
+                        <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-8 leading-tight">
+                            {t("overview.title")}
+                        </h2>
+                        <p className="text-lg md:text-xl text-slate-600 font-light leading-relaxed mb-6">
+                            {t("overview.para1")}
+                        </p>
+                        <p className="text-base md:text-lg text-slate-500 leading-relaxed">
+                            {t("overview.para2")}
+                        </p>
+                    </div>
+                </section>
+
                 <div className="container mx-auto px-4 md:px-6 mb-24">
                     <div className="mb-12">
                         <h2 className="text-3xl font-black text-slate-900 mb-4">{t("catalog.title")}</h2>

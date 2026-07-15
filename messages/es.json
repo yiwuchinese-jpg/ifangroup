@@ -649,6 +649,12 @@
       "title": "Personalización OEM y ODM.",
       "desc": "Desde la configuración de materias primas hasta el etiquetado con marca propia, nuestro equipo de ingeniería ejecuta sus diseños bajo protocolos NDA estrictos.",
       "button": "Solicitar una consulta técnica"
+    },
+    "overview": {
+      "badge": "OEM y Marca Privada",
+      "title": "Tu producto, construido sobre nuestra integración vertical",
+      "para1": "IFAN fabrica según sus especificaciones, no solo a partir de un catálogo. Con un taller de moldes interno, moldeo por inyección y líneas de extrusión europeas bajo un mismo techo, producimos colores personalizados de PPR, impresión de marca privada en tuberías y empaques, y configuraciones de accesorios y válvulas a medida en PPR, PVC, HDPE, PEX y latón sin plomo. Ya sea que necesite una línea de productos de una sola marca o un catálogo completo de fontanería bajo su propia etiqueta, el utillaje y la producción están en la misma instalación que responde a su pedido.",
+      "para2": "Ese control es lo que protege su marca en cada contenedor. Cada lote OEM pasa por el mismo laboratorio nacional acreditado por CNAS para pruebas hidrostáticas, térmicas y de impacto, y se envía con los certificados que su mercado necesita para el despacho aduanero. Trabaja directamente con la fábrica, sin intermediarios comerciales: muestras antes de la producción, un solo proveedor para todo un sistema de fontanería, precios de fábrica y una planta que puede auditar en cualquier etapa del proceso."
     }
   },
   "news_page": {
@@ -1093,6 +1099,12 @@
       "desc": "Skip the retail margins. Connect with our enterprise sales engineering team to configure your next 40HQ container load with direct factory pricing.",
       "getQuote": "Get a Quote",
       "salesHotline": "Sales Hotline"
+    },
+    "overview": {
+      "badge": "Una fábrica, el sistema completo",
+      "title": "Cada línea de fontanería, diseñada y probada internamente",
+      "para1": "La mayoría de los compradores arman un envío de fontanería con varios proveedores. Con IFAN proviene de una sola fábrica: tubería PPR en DN20–DN160 y PN12.5–PN25, además de accesorios, válvulas, tubería compuesta y calefacción por suelo radiante; PVC, UPVC y CPVC; PPH; HDPE en PE100 y PE80; PEX y tubería multicapa; y válvulas y grifos de latón sin plomo CW617N. En tres marcas, el catálogo supera los 10,000 SKU, por lo que un solo contenedor puede llevar una mezcla equilibrada en lugar de forzar una carga completa de un solo artículo.",
+      "para2": "Cada línea se moldea y prueba de presión internamente, sin ser comercializada, por lo que las especificaciones en esta página son las que usted recibe. El PPR se fabrica con material 100% virgen y cada envío incluye un certificado de lote, con CE, ISO 9001 y SGS como estándar, y aprobaciones regionales como SASO, SONCAP o NOM gestionadas bajo solicitud. Usted compra estrictamente al por mayor B2B a precios directos de fábrica, con un MOQ de un contenedor, tamaños mixtos y muestras antes de comprometerse."
     }
   },
   "tools": {

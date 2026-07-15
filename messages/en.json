@@ -563,6 +563,12 @@
       "title": "OEM & ODM Customization.",
       "desc": "From raw material compounding to proprietary molds and private-label packaging, our engineering team executes your designs under strict international NDA protocols.",
       "button": "Request Engineering Consultation"
+    },
+    "overview": {
+      "badge": "OEM & Private Label",
+      "title": "Your Product, Built On Our Vertical Integration",
+      "para1": "IFAN builds to your specification, not just off a catalog. With an in-house mold workshop, injection molding, and European extrusion lines under one roof, we produce custom PPR colors, private-label print on pipe and packaging, and tailored fittings and valve configurations across PPR, PVC, HDPE, PEX and lead-free brass. Whether you need a single branded product line or a full plumbing catalog under your own label, the tooling and the production sit in the same facility that answers to your order.",
+      "para2": "That control is what protects your brand on every container. Every OEM batch runs through the same CNAS-accredited national laboratory for hydrostatic, thermal and impact testing, and ships with the certificates your market needs to clear customs. You work factory-direct with no trading-company layer: samples before production, one supplier for an entire plumbing system, factory pricing, and a plant you are welcome to audit at any stage of the run."
     }
   },
   "news_page": {
@@ -820,6 +826,12 @@
       "desc": "Skip the retail margins. Connect with our enterprise sales engineering team to configure your next 40HQ container load with direct factory pricing.",
       "getQuote": "Get a Quote",
       "salesHotline": "Sales Hotline"
+    },
+    "overview": {
+      "badge": "One Factory, The Whole System",
+      "title": "Every Plumbing Line, Engineered And Tested In-House",
+      "para1": "Most buyers assemble a plumbing shipment from several suppliers. With IFAN it comes from one factory: PPR pipe in DN20–DN160 and PN12.5–PN25, plus fittings, valves, composite pipe and floor-heating; PVC, UPVC and CPVC; PPH; HDPE in PE100 and PE80; PEX and multilayer pipe; and CW617N lead-free brass valves and faucets. Across three brands the catalog runs past 10,000 SKUs, so a single container can carry a balanced mix instead of forcing a full load of one item.",
+      "para2": "Every line is molded and pressure-tested in-house rather than traded on, which is why the specs on this page are the specs you receive. PPR is made from 100% virgin material and each shipment carries a batch certificate, with CE, ISO 9001 and SGS as standard and regional approvals such as SASO, SONCAP or NOM arranged on request. You buy strictly B2B wholesale at factory-direct pricing, with a one-container MOQ, mixed sizes, and samples before you commit."
     }
   },
   "resources": {
