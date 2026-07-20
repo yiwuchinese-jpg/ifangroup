@@ -673,6 +673,62 @@
       "title": "Tu producto, construido sobre nuestra integración vertical",
       "para1": "IFAN fabrica según sus especificaciones, no solo a partir de un catálogo. Con un taller de moldes interno, moldeo por inyección y líneas de extrusión europeas bajo un mismo techo, producimos colores personalizados de PPR, impresión de marca privada en tuberías y empaques, y configuraciones de accesorios y válvulas a medida en PPR, PVC, HDPE, PEX y latón sin plomo. Ya sea que necesite una línea de productos de una sola marca o un catálogo completo de fontanería bajo su propia etiqueta, el utillaje y la producción están en la misma instalación que responde a su pedido.",
       "para2": "Ese control es lo que protege su marca en cada contenedor. Cada lote OEM pasa por el mismo laboratorio nacional acreditado por CNAS para pruebas hidrostáticas, térmicas y de impacto, y se envía con los certificados que su mercado necesita para el despacho aduanero. Trabaja directamente con la fábrica, sin intermediarios comerciales: muestras antes de la producción, un solo proveedor para todo un sistema de fontanería, precios de fábrica y una planta que puede auditar en cualquier etapa del proceso."
+    },
+    "process": {
+      "badge": "Proceso OEM",
+      "title": "De la ficha técnica a la fecha de embarque",
+      "steps": [
+        {
+          "title": "Especificación y cotización",
+          "desc": "Envíe su especificación, planos o una muestra de la competencia. Ingeniería confirma viabilidad, materiales y precio por SKU — normalmente en días, no semanas."
+        },
+        {
+          "title": "Muestras y utillaje",
+          "desc": "Las muestras físicas se envían para aprobación antes de producir en serie. Los accesorios personalizados y los moldes de marca propia se fabrican en el taller de moldes interno."
+        },
+        {
+          "title": "Certificación y preproducción",
+          "desc": "La producción cumple DIN 8077/8078 e ISO 15874 con documentación CE y SGS; los certificados regionales SASO, SONCAP o NOM se gestionan antes del embarque."
+        },
+        {
+          "title": "Producción y control de calidad",
+          "desc": "Más de 30 líneas de extrusión e inyección propia fabrican su pedido con PP-R 100% virgen; el laboratorio ISO ensaya cada lote y emite certificados por envío."
+        },
+        {
+          "title": "Exportación y entrega",
+          "desc": "Contenedores mixtos desde un MOQ de un contenedor, FCL o LCL, documentación de exportación completa y apoyo aduanero hacia más de 120 países."
+        }
+      ]
+    },
+    "faq": {
+      "badge": "Preguntas OEM",
+      "title": "Lo que preguntan los compradores OEM antes de pedir",
+      "items": [
+        {
+          "q": "¿Cuál es el MOQ para pedidos OEM o de marca propia?",
+          "a": "Un contenedor — y puede mezclarse entre tamaños y líneas de producto: tubería PPR, accesorios, válvulas y complementos en la misma carga. Los moldes personalizados se cotizan por proyecto."
+        },
+        {
+          "q": "¿Puedo recibir muestras antes de comprometerme?",
+          "a": "Sí. Las muestras se envían antes de confirmar cualquier pedido, para verificar material, calidad de impresión y ajuste a su mercado local antes del primer contenedor."
+        },
+        {
+          "q": "¿Qué puede llevar mi marca?",
+          "a": "La impresión del tubo, el embalaje (bolsas, cajas, etiquetas) y el color — el PPR se produce en verde, blanco, gris o colores personalizados — además de configuraciones de accesorios y válvulas donde el utillaje lo permita."
+        },
+        {
+          "q": "¿Qué certificaciones se pueden gestionar?",
+          "a": "La producción cumple DIN 8077/8078 e ISO 15874 con documentación CE y SGS. Los certificados regionales — SASO para Arabia Saudita, SONCAP para Nigeria, NOM para México — se gestionan bajo pedido, y cada envío lleva certificados de lote."
+        },
+        {
+          "q": "¿Cómo se verifica la calidad OEM?",
+          "a": "PP-R 100% virgen (grado PP-R 100), laboratorio ISO interno, certificados de lote por envío — y se puede coordinar inspección de terceros antes de la carga."
+        },
+        {
+          "q": "¿Venden al por menor o a consumidores?",
+          "a": "No. IFAN es estrictamente mayorista B2B — sin Amazon ni plataformas minoristas — lo que protege sus precios y su distribución local."
+        }
+      ]
     }
   },
   "news_page": {
@@ -1123,6 +1179,28 @@
       "title": "Cada línea de fontanería, diseñada y probada internamente",
       "para1": "La mayoría de los compradores arman un envío de fontanería con varios proveedores. Con IFAN proviene de una sola fábrica: tubería PPR en DN20–DN160 y PN12.5–PN25, además de accesorios, válvulas, tubería compuesta y calefacción por suelo radiante; PVC, UPVC y CPVC; PPH; HDPE en PE100 y PE80; PEX y tubería multicapa; y válvulas y grifos de latón sin plomo CW617N. En tres marcas, el catálogo supera los 10,000 SKU, por lo que un solo contenedor puede llevar una mezcla equilibrada en lugar de forzar una carga completa de un solo artículo.",
       "para2": "Cada línea se moldea y prueba de presión internamente, sin ser comercializada, por lo que las especificaciones en esta página son las que usted recibe. El PPR se fabrica con material 100% virgen y cada envío incluye un certificado de lote, con CE, ISO 9001 y SGS como estándar, y aprobaciones regionales como SASO, SONCAP o NOM gestionadas bajo solicitud. Usted compra estrictamente al por mayor B2B a precios directos de fábrica, con un MOQ de un contenedor, tamaños mixtos y muestras antes de comprometerse."
+    },
+    "faq": {
+      "badge": "Conceptos básicos del pedido",
+      "title": "Antes de armar su cotización",
+      "items": [
+        {
+          "q": "¿Cuál es la cantidad mínima de pedido?",
+          "a": "Un contenedor — se aceptan tamaños y familias de producto mixtos, un punto de partida práctico para un primer pedido de stock."
+        },
+        {
+          "q": "¿Pueden compartir contenedor distintos productos?",
+          "a": "Sí. PPR, PVC/UPVC, HDPE, PEX y válvulas de latón pueden viajar en el mismo contenedor mixto, cargado según su mix de ventas."
+        },
+        {
+          "q": "¿Hay muestras disponibles antes de pedir?",
+          "a": "Sí — las muestras se envían antes de confirmar cualquier pedido."
+        },
+        {
+          "q": "¿Qué apoyo de envío y documentación se incluye?",
+          "a": "FCL o LCL, documentación de exportación completa, apoyo en despacho aduanero y certificados de lote con cada envío."
+        }
+      ]
     }
   },
   "tools": {

@@ -15,6 +15,14 @@ const jsonLd = buildPageSchema({
     serviceDescription:
         "Custom and private-label manufacturing of PPR, PVC, HDPE, PEX pipe and brass valves — in-house mold workshop, injection molding and 30+ extrusion lines at a 120,000 m² factory operating since 1993.",
     areaServed: ["Worldwide"],
+    faqs: [
+        { q: "What is the MOQ for OEM or private-label orders?", a: "One container — and it can be mixed across sizes and product lines, with PPR pipe, fittings, valves, and accessories in the same load. Custom molds are quoted per project." },
+        { q: "Can I get samples before committing?", a: "Yes. Samples ship before any order is confirmed, so you can check material, print quality, and fit against your local market before the first container." },
+        { q: "What can carry my brand?", a: "Pipe print, packaging (bags, boxes, labels), and color — PPR runs in green, white, grey, or custom colors — plus tailored fitting and valve configurations where tooling allows." },
+        { q: "Which certifications can be arranged?", a: "Production runs to DIN 8077/8078 and ISO 15874 with CE and SGS documentation. Regional certificates — SASO for Saudi Arabia, SONCAP for Nigeria, NOM for Mexico — are arranged on request, and every shipment carries batch certificates." },
+        { q: "How is OEM quality verified?", a: "100% virgin PP-R (PP-R 100 grade), an in-house ISO testing lab, batch certificates per shipment — and third-party pre-shipment inspection can be arranged before loading." },
+        { q: "Do you sell retail or to consumers?", a: "No. IFAN is strictly B2B wholesale — no Amazon, no retail platforms — which protects your local pricing and distribution." },
+    ],
 });
 
 export default function ManufacturingPage() {
@@ -179,6 +187,49 @@ export default function ManufacturingPage() {
                             <p className="text-lg text-slate-600 font-medium leading-relaxed">
                                 {t("overview.para2")}
                             </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* OEM Process — 5 steps */}
+                <section className="bg-slate-50 py-32 lg:py-40 border-t border-slate-200">
+                    <div className="container mx-auto px-6">
+                        <span className="text-slate-400 font-bold tracking-[0.3em] uppercase text-xs mb-8 block">
+                            {t("process.badge")}
+                        </span>
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-16 leading-[1.0] max-w-4xl">
+                            {t("process.title")}
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-0 border-t border-l border-slate-200">
+                            {[0, 1, 2, 3, 4].map((i) => (
+                                <div key={i} className="p-10 border-b border-r border-slate-200 flex flex-col items-start hover:bg-white transition-colors duration-500">
+                                    <span className="text-5xl font-black text-slate-200 mb-8">{String(i + 1).padStart(2, "0")}</span>
+                                    <h3 className="text-xl font-black text-slate-900 tracking-tight mb-4">{t(`process.steps.${i}.title`)}</h3>
+                                    <p className="text-slate-500 font-medium leading-relaxed text-sm">{t(`process.steps.${i}.desc`)}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* OEM FAQ — visible Q&A backing the FAQPage schema */}
+                <section className="bg-white py-32 lg:py-40 border-t border-slate-200">
+                    <div className="container mx-auto px-6">
+                        <div className="max-w-4xl">
+                            <span className="text-slate-400 font-bold tracking-[0.3em] uppercase text-xs mb-8 block">
+                                {t("faq.badge")}
+                            </span>
+                            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-16 leading-[1.0]">
+                                {t("faq.title")}
+                            </h2>
+                            <div className="divide-y divide-slate-200 border-y border-slate-200">
+                                {[0, 1, 2, 3, 4, 5].map((i) => (
+                                    <div key={i} className="py-8">
+                                        <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">{t(`faq.items.${i}.q`)}</h3>
+                                        <p className="text-slate-500 font-medium leading-relaxed">{t(`faq.items.${i}.a`)}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>

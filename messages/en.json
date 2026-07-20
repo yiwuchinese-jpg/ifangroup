@@ -587,6 +587,62 @@
       "title": "Your Product, Built On Our Vertical Integration",
       "para1": "IFAN builds to your specification, not just off a catalog. With an in-house mold workshop, injection molding, and European extrusion lines under one roof, we produce custom PPR colors, private-label print on pipe and packaging, and tailored fittings and valve configurations across PPR, PVC, HDPE, PEX and lead-free brass. Whether you need a single branded product line or a full plumbing catalog under your own label, the tooling and the production sit in the same facility that answers to your order.",
       "para2": "That control is what protects your brand on every container. Every OEM batch runs through the same CNAS-accredited national laboratory for hydrostatic, thermal and impact testing, and ships with the certificates your market needs to clear customs. You work factory-direct with no trading-company layer: samples before production, one supplier for an entire plumbing system, factory pricing, and a plant you are welcome to audit at any stage of the run."
+    },
+    "process": {
+      "badge": "OEM Process",
+      "title": "From Spec Sheet to Sailing Date",
+      "steps": [
+        {
+          "title": "Specification & Quote",
+          "desc": "Send your spec, drawings, or a competitor sample. Engineering confirms feasibility, materials, and per-SKU pricing — typically within days, not weeks."
+        },
+        {
+          "title": "Samples & Tooling",
+          "desc": "Physical samples ship for approval before anything is mass-produced. Custom fittings and private-label molds are cut in the in-house mold workshop."
+        },
+        {
+          "title": "Certification & Pre-Production",
+          "desc": "Production runs to DIN 8077/8078 and ISO 15874 with CE and SGS documentation; SASO, SONCAP, or NOM regional certificates are arranged before the order ships."
+        },
+        {
+          "title": "Production & QC",
+          "desc": "30+ extrusion lines and in-house injection molding run your order on 100% virgin PP-R, with the ISO lab testing each batch and certificates issued per shipment."
+        },
+        {
+          "title": "Export & Delivery",
+          "desc": "Mixed containers from a one-container MOQ, FCL or LCL, full export documentation and customs clearance support to 120+ countries."
+        }
+      ]
+    },
+    "faq": {
+      "badge": "OEM Questions",
+      "title": "What OEM Buyers Ask Before Ordering",
+      "items": [
+        {
+          "q": "What is the MOQ for OEM or private-label orders?",
+          "a": "One container — and it can be mixed across sizes and product lines, with PPR pipe, fittings, valves, and accessories in the same load. Custom molds are quoted per project."
+        },
+        {
+          "q": "Can I get samples before committing?",
+          "a": "Yes. Samples ship before any order is confirmed, so you can check material, print quality, and fit against your local market before the first container."
+        },
+        {
+          "q": "What can carry my brand?",
+          "a": "Pipe print, packaging (bags, boxes, labels), and color — PPR runs in green, white, grey, or custom colors — plus tailored fitting and valve configurations where tooling allows."
+        },
+        {
+          "q": "Which certifications can be arranged?",
+          "a": "Production runs to DIN 8077/8078 and ISO 15874 with CE and SGS documentation. Regional certificates — SASO for Saudi Arabia, SONCAP for Nigeria, NOM for Mexico — are arranged on request, and every shipment carries batch certificates."
+        },
+        {
+          "q": "How is OEM quality verified?",
+          "a": "100% virgin PP-R (PP-R 100 grade), an in-house ISO testing lab, batch certificates per shipment — and third-party pre-shipment inspection can be arranged before loading."
+        },
+        {
+          "q": "Do you sell retail or to consumers?",
+          "a": "No. IFAN is strictly B2B wholesale — no Amazon, no retail platforms — which protects your local pricing and distribution."
+        }
+      ]
     }
   },
   "news_page": {
@@ -850,6 +906,28 @@
       "title": "Every Plumbing Line, Engineered And Tested In-House",
       "para1": "Most buyers assemble a plumbing shipment from several suppliers. With IFAN it comes from one factory: PPR pipe in DN20–DN160 and PN12.5–PN25, plus fittings, valves, composite pipe and floor-heating; PVC, UPVC and CPVC; PPH; HDPE in PE100 and PE80; PEX and multilayer pipe; and CW617N lead-free brass valves and faucets. Across three brands the catalog runs past 10,000 SKUs, so a single container can carry a balanced mix instead of forcing a full load of one item.",
       "para2": "Every line is molded and pressure-tested in-house rather than traded on, which is why the specs on this page are the specs you receive. PPR is made from 100% virgin material and each shipment carries a batch certificate, with CE, ISO 9001 and SGS as standard and regional approvals such as SASO, SONCAP or NOM arranged on request. You buy strictly B2B wholesale at factory-direct pricing, with a one-container MOQ, mixed sizes, and samples before you commit."
+    },
+    "faq": {
+      "badge": "Ordering Basics",
+      "title": "Before You Build a Quote",
+      "items": [
+        {
+          "q": "What is the minimum order quantity?",
+          "a": "One container — mixed sizes and product families welcome, a practical starting point for a first stocking order."
+        },
+        {
+          "q": "Can different products share one container?",
+          "a": "Yes. PPR, PVC/UPVC, HDPE, PEX, and brass valves can travel in the same mixed container, loaded to match your sales mix."
+        },
+        {
+          "q": "Are samples available before ordering?",
+          "a": "Yes — samples ship before any order is confirmed."
+        },
+        {
+          "q": "What shipping and documentation support is included?",
+          "a": "FCL or LCL, full export documentation, customs clearance support, and batch certificates with every shipment."
+        }
+      ]
     }
   },
   "resources": {

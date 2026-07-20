@@ -42,6 +42,12 @@ const jsonLd = buildPageSchema({
   serviceDescription:
     "Factory-direct plumbing range from one supplier: PPR (DN20–DN160, PN12.5–PN25), PVC/UPVC/CPVC, PPH, HDPE PE100/PE80, PEX and multilayer pipe, plus CW617N lead-free brass valves and faucets, strictly B2B wholesale.",
   areaServed: ["Worldwide"],
+  faqs: [
+    { q: "What is the minimum order quantity?", a: "One container — mixed sizes and product families welcome, a practical starting point for a first stocking order." },
+    { q: "Can different products share one container?", a: "Yes. PPR, PVC/UPVC, HDPE, PEX, and brass valves can travel in the same mixed container, loaded to match your sales mix." },
+    { q: "Are samples available before ordering?", a: "Yes — samples ship before any order is confirmed." },
+    { q: "What shipping and documentation support is included?", a: "FCL or LCL, full export documentation, customs clearance support, and batch certificates with every shipment." },
+  ],
 });
 
 export default async function ProductsPage() {
@@ -232,6 +238,26 @@ export default async function ProductsPage() {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 3.5 Ordering FAQ — visible Q&A backing the FAQPage schema */}
+                <section className="bg-white py-20 border-t border-slate-200">
+                    <div className="container mx-auto px-6 max-w-4xl">
+                        <span className="text-brand-600 font-bold tracking-[0.2em] uppercase text-xs mb-4 block">
+                            {t("faq.badge")}
+                        </span>
+                        <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-12 leading-tight">
+                            {t("faq.title")}
+                        </h2>
+                        <div className="divide-y divide-slate-200 border-y border-slate-200">
+                            {[0, 1, 2, 3].map((i) => (
+                                <div key={i} className="py-7">
+                                    <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">{t(`faq.items.${i}.q`)}</h3>
+                                    <p className="text-slate-500 font-medium leading-relaxed">{t(`faq.items.${i}.a`)}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
