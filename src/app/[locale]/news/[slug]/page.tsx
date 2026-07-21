@@ -52,14 +52,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     // Head title: prefer SEO-tuned title when set; fall back to display title.
     // For non-English locales, only the display title is translated today, so use view.title.
     const headTitle = resolvedParams.locale === "en" && article.seoTitle ? article.seoTitle : view.title;
-    // Meta description resolution order: locale-specific translation → SEO field → excerpt → generic.
-    const metaDescription = view.description || article.seoDescription || `Read the latest insights from IFAN Group about ${view.title}.`;
+    // Meta description resolution order:
+    //   EN  → SEO-tuned seoDescription first (kept ≤160 for the SERP), then the long intro excerpt.
+    //   非EN → translated excerpt first, then the English seoDescription as fallback.
+    // Prevents the 300–460-char intro (Sanity `description`, aliased to excerpt) from truncating in search.
+    const genericDescription = `Read the latest insights from IFAN Group about ${view.title}.`;
+    const metaDescription = resolvedParams.locale === "en"
+        ? (article.seoDescription || view.description || genericDescription)
+        : (view.description || article.seoDescription || genericDescription);
     const canonical = localeUrl(resolvedParams.locale, `/news/${slug}`);
     const ogImageUrl: string | undefined = article.mainImage?.asset?.url;
 
     return {
         // absolute：避免 [locale]/layout 的 title.template 再追加 "| IFAN Group"。
-        title: { absolute: `${headTitle} | IFAN News & Insights` },
+        // 后缀收短为 " | IFAN"（省 16 字符），让 seoTitle 在 SERP 完整显示而非被品牌串截断。
+        title: { absolute: `${headTitle} | IFAN` },
         description: metaDescription,
         alternates: {
             canonical,
