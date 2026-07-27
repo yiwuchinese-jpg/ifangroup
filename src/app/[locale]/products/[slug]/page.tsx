@@ -7,6 +7,14 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { localeUrl } from "@/lib/seo";
+import {
+    buildProductTitle,
+    categoryPillarSlug,
+    dedupeSignature,
+    pickCanonical,
+    primaryCode,
+    sizeRange,
+} from "@/lib/products/catalog";
 
 // Render on demand and cache (ISR) instead of statically generating all 7146
 // product pages at build time. Static generation forced getTranslations to run
@@ -36,28 +44,71 @@ type ProductDetail = {
     variants?: ProductVariant[];
 };
 
+/**
+ * 找出该产品的规范 URL。
+ *
+ * 全站有 69 组 variants 逐行一致的重复导入（elbow-1031-37 / elbow-1031-37-193c 之类），
+ * 互相稀释排名。按「首个变体型号 + 变体数量」识别同一产品，再用 pickCanonical
+ * 选出稳定的规范页。查不到或只有自己时原样返回，不改变现状。
+ */
+async function resolveCanonicalSlug(
+    slug: string,
+    product: Pick<ProductDetail, "categoryTitle" | "variants">
+): Promise<string> {
+    const code = primaryCode(product.variants);
+    const signature = dedupeSignature(product.variants);
+    if (!code || !signature) return slug;
+
+    try {
+        const twins: { slug: string; categoryTitle?: string; variants?: { code?: string }[] }[] =
+            await client.fetch(
+                `*[_type == "product" && variants[0].code == $code && defined(slug.current)]{
+                    "slug": slug.current,
+                    "categoryTitle": category->title,
+                    variants[] { code }
+                }`,
+                { code }
+            );
+        const sameProduct = twins.filter((t) => dedupeSignature(t.variants) === signature);
+        if (sameProduct.length < 2) return slug;
+        return pickCanonical(sameProduct).slug;
+    } catch {
+        // 查询失败时不要擅自改 canonical——错误的 canonical 比没有更糟
+        return slug;
+    }
+}
+
 export async function generateMetadata(props: { params: Promise<{ slug: string; locale: string }> }) {
     const { slug, locale } = await props.params;
     setRequestLocale(locale);
     try {
-        const product: Pick<ProductDetail, "name" | "description" | "mainImage" | "categoryTitle" | "brandName"> | null =
+        const product: Pick<ProductDetail, "name" | "description" | "mainImage" | "categoryTitle" | "brandName" | "variants"> | null =
             await client.fetch(
                 `*[_type == "product" && slug.current == $slug][0]{
                     name, description,
                     mainImage { asset->{ url } },
                     "categoryTitle": category->title,
-                    "brandName": brand->name
+                    "brandName": brand->name,
+                    variants[] { code, size }
                 }`,
                 { slug }
             );
         if (!product) return {};
-        // [locale]/layout 的 title.template 会追加 "| IFAN Group"，这里不能再带品牌后缀。
-        const title = `${product.name} | Wholesale B2B`;
+        // 原来是 `${name} | Wholesale B2B`，导致 26 个页面同题为「Elbow | Wholesale B2B」。
+        // buildProductTitle 补上品类前缀 + 型号 + 尺寸区间，让每页在 SERP 里可分辨。
+        const title = buildProductTitle(product);
+        const range = sizeRange(product.variants);
         const description =
             product.description ||
-            `Buy ${product.name} wholesale direct from IFAN factory. CE certified, 50-year guarantee, bulk pricing for 120+ countries.`;
+            `${product.name} from IFAN, factory direct${range ? ` in ${range}` : ""}. B2B wholesale, batch certificates per shipment, shipped to 120+ countries.`;
+
+        // 重复导入的页面 canonical 到规范页：全站有 69 组 variants 完全一致的重复
+        // （如 elbow-1031-37 与 elbow-1031-37-193c），互相稀释排名。
+        const canonicalSlug = await resolveCanonicalSlug(slug, product);
         return {
-            title,
+            // absolute：buildProductTitle 已按 60 字符预算带上品牌，
+            // 再让 [locale]/layout 的 template 追加「| IFAN Group」会超长被截断。
+            title: { absolute: title },
             description,
             keywords: [
                 product.name,
@@ -78,7 +129,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string; 
             // 产品内容是英文单语，各语言路径互为重复页——全部 canonical 到无前缀英文 URL，
             // 不声明 hreflang 集群（那些不是翻译版本）。
             alternates: {
-                canonical: localeUrl("en", `/products/${slug}`),
+                canonical: localeUrl("en", `/products/${canonicalSlug}`),
             },
         };
     } catch {
@@ -103,6 +154,9 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
     if (!product) notFound();
 
     const localImagePath = `/images/products/${product.slug}/main.webp`;
+    const pillarSlug = categoryPillarSlug(product.categoryTitle);
+    const code = primaryCode(product.variants);
+    const range = sizeRange(product.variants);
 
     const productUrl = localeUrl("en", `/products/${product.slug}`);
     const productJsonLd = {
@@ -161,16 +215,46 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
 
                         {/* Content Section */}
                         <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                            {/* 品类名原来是死文本。1191 个产品页各给品类支柱页一条链接，
+                                是把这批页面仅有的权重导向 money 页最直接的方式。 */}
                             <nav className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
                                 <Link href="/products" className="hover:text-brand-600">{t("products")}</Link>
                                 <span>/</span>
-                                <span className="text-slate-900">{product.categoryTitle}</span>
+                                {pillarSlug ? (
+                                    <Link
+                                        href={`/categories/${pillarSlug}`}
+                                        className="text-slate-900 hover:text-brand-600"
+                                    >
+                                        {product.categoryTitle}
+                                    </Link>
+                                ) : (
+                                    <span className="text-slate-900">{product.categoryTitle}</span>
+                                )}
                             </nav>
 
                             <h1 className="text-4xl lg:text-6xl font-black text-slate-900 tracking-tighter mb-6 leading-tight">
                                 {product.name}
                             </h1>
-                            
+
+                            {/* 型号与尺寸区间是采购方扫页时第一眼要找的两个信息 */}
+                            {(code || range) && (
+                                <div className="flex flex-wrap items-center gap-3 mb-6">
+                                    {code && (
+                                        <span dir="ltr" className="inline-block px-3 py-1.5 bg-slate-900 text-white text-xs font-bold tracking-wider rounded-full">
+                                            {code}
+                                        </span>
+                                    )}
+                                    {range && (
+                                        <span dir="ltr" className="inline-block px-3 py-1.5 bg-brand-50 text-brand-800 border border-brand-200 text-xs font-bold tracking-wider rounded-full">
+                                            {range}
+                                        </span>
+                                    )}
+                                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
+                                        {product.variants?.length || 0} sizes
+                                    </span>
+                                </div>
+                            )}
+
                             <p className="text-xl text-slate-500 font-light leading-relaxed mb-10">
                                 {product.description || t("defaultProductDescription")}
                             </p>

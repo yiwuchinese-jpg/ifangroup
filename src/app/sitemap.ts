@@ -4,12 +4,14 @@ import { localeUrl, LOCALES } from "@/lib/seo";
 import { toolsData } from "@/lib/data/tools";
 import { REGIONS_DATA } from "@/lib/regionsData";
 import { CATEGORY_SLUGS, PILLAR_SLUGS } from "@/lib/pillar";
+import { dedupeSignature, isOrphanCategory, pickCanonical } from "@/lib/products/catalog";
 
 // Cache the generated sitemap for 1h (ISR) so Googlebot always gets a fast
 // response instead of re-querying every product/news slug from Sanity per fetch.
 export const revalidate = 3600;
 
 type SanityEntry = { slug: string; updatedAt?: string };
+type ProductEntry = SanityEntry & { categoryTitle?: string; variants?: { code?: string }[] };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 静态页面路径（六语言均有翻译，全部列出；英文为无前缀 URL）
@@ -72,17 +74,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: localeUrl("en", "/fabrica-ifanholding-mexico"), changeFrequency: "monthly" as const, priority: 0.85 },
     ];
 
-    // 动态产品页：内容为英文单语，只列规范的无前缀 URL
+    // 动态产品页：内容为英文单语，只列规范的无前缀 URL。
+    //
+    // 1191 个产品页 90 天只拿到 107 次 GSC 曝光，其中 69 组是 variants 逐行一致的
+    // 重复导入。把重复页和无品类归属的页面剔出 sitemap，让爬虫预算落到规范页上，
+    // 页面本身仍可访问（canonical 已指向规范页），只是不再主动推给谷歌。
     let productRoutes: MetadataRoute.Sitemap = [];
     try {
-        const products: SanityEntry[] = await client.fetch(
-            `*[_type == "product" && defined(slug.current)]{ "slug": slug.current, "updatedAt": _updatedAt }`
+        const products: ProductEntry[] = await client.fetch(
+            `*[_type == "product" && defined(slug.current)]{
+                "slug": slug.current,
+                "updatedAt": _updatedAt,
+                "categoryTitle": category->title,
+                variants[] { code }
+            }`
         );
-        productRoutes = products.map(({ slug, updatedAt }) => ({
+
+        // 按「首变体型号 + 变体数」分组，每组只保留规范页
+        const groups = new Map<string, ProductEntry[]>();
+        const ungrouped: ProductEntry[] = [];
+        for (const p of products) {
+            const sig = dedupeSignature(p.variants);
+            if (!sig) ungrouped.push(p);
+            else groups.set(sig, [...(groups.get(sig) ?? []), p]);
+        }
+        const canonical = [
+            ...ungrouped,
+            ...[...groups.values()].map((g) => (g.length > 1 ? pickCanonical(g) : g[0])),
+        ];
+
+        const listed = canonical.filter((p) => !isOrphanCategory(p.categoryTitle));
+        const dropped = products.length - listed.length;
+        if (dropped > 0) {
+            console.info(`[sitemap] 产品页 ${products.length} → ${listed.length}，剔除 ${dropped}（重复导入 + 无品类归属）`);
+        }
+
+        productRoutes = listed.map(({ slug, updatedAt }) => ({
             url: localeUrl("en", `/products/${slug}`),
             ...(updatedAt ? { lastModified: new Date(updatedAt) } : {}),
             changeFrequency: "monthly" as const,
-            priority: 0.7,
+            priority: 0.5,
         }));
     } catch (error) {
         console.error("[sitemap] Failed to fetch products:", error);

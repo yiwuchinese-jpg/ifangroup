@@ -63,9 +63,13 @@ export function buildPageSchema(opts: {
         url: `${SITE}/contact`,
       },
       areaServed: "Worldwide",
-      // TODO 待用户提供后补全：LinkedIn 公司页 / Alibaba 旺铺 / Facebook。
-      // sameAs 是实体消歧最强的信号，目前只有 YouTube 一条——这是「ifan」只排 9.5 的主因之一。
-      sameAs: ["https://www.youtube.com/@IFANGroup-plumbing"],
+      // sameAs 是实体消歧最强的信号。「ifan」是个高歧义词（还有风扇品牌、同名机构），
+      // 官方账号列得越全，谷歌越容易把 ifanholding.com 认成 IFAN 本体。
+      // TODO 待补：LinkedIn 公司页（Buffer 配置显示存在）、Alibaba 旺铺、Google Business Profile。
+      sameAs: [
+        "https://www.youtube.com/@IFANGroup-plumbing",
+        "https://www.facebook.com/IFANPlus13656666030",
+      ],
     },
     {
       "@type": "WebSite",
