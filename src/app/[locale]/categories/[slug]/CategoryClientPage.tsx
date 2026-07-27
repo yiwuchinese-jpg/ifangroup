@@ -8,14 +8,14 @@ import { ArrowRight, ChevronRight, CheckCircle2, ShieldCheck, TrendingUp, Globe,
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { CategoryCopy } from "@/lib/categoryCopywriting";
 
 export default function CategoryClientPage({
     slug,
-    copy
+    children,
 }: {
     slug: string;
-    copy: CategoryCopy;
+    /** 支柱正文（server 渲染）插在收口 CTA 之前，保证它仍在 <main> 内、页脚之上 */
+    children?: React.ReactNode;
 }) {
     const t = useTranslations("categories");
     const showcaseImages = Array.from({ length: 8 }, (_, i) => `/images/categories/${slug}/gallery-${i + 1}.webp`);
@@ -29,7 +29,7 @@ export default function CategoryClientPage({
                     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                         <Image
                             src={`/images/categories/${slug}/hero-bg.webp`}
-                            alt={`${t(`items.${slug}.heroTitle`, { fallback: copy.heroTitle })} Background`}
+                            alt={`${t(`items.${slug}.heroTitle`)} Background`}
                             fill
                             priority
                             sizes="100vw"
@@ -56,7 +56,7 @@ export default function CategoryClientPage({
                                 </div>
 
                                 <h1 className="text-5xl sm:text-7xl lg:text-[7.5rem] font-black text-white tracking-tighter leading-[0.9] mb-8">
-                                    {t(`items.${slug}.heroTitle`, { fallback: copy.heroTitle }).split(" ").map((word, i) => (
+                                    {t(`items.${slug}.heroTitle`).split(" ").map((word, i) => (
                                         <React.Fragment key={i}>
                                             <span className={i === 0 ? "text-brand-400" : ""}>{word}</span>{" "}
                                         </React.Fragment>
@@ -64,7 +64,7 @@ export default function CategoryClientPage({
                                 </h1>
 
                                 <p className="text-xl md:text-2xl text-slate-300 font-light max-w-3xl leading-relaxed mb-12 border-l-4 border-brand-500 pl-6 lg:pl-8 py-2">
-                                    {t(`items.${slug}.heroDescription`, { fallback: copy.heroDescription })}
+                                    {t(`items.${slug}.heroDescription`)}
                                 </p>
                                 
                                 <div className="flex flex-col sm:flex-row items-center gap-6">
@@ -102,7 +102,7 @@ export default function CategoryClientPage({
                                     <ShieldCheck className="w-4 h-4" /> {t("signatureBadge")}
                                 </div>
                                 <h2 className="text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter mb-8 leading-[1.05]">
-                                    {t("signatureTitlePrefix")} <br/><span className="text-brand-600">{t(`items.${slug}.heroTitle`, { fallback: copy.heroTitle }).split(" ")[0]}</span> {t("signatureTitleSuffix")}
+                                    {t("signatureTitlePrefix")} <br/><span className="text-brand-600">{t(`items.${slug}.heroTitle`).split(" ")[0]}</span> {t("signatureTitleSuffix")}
                                 </h2>
                                 <p className="text-slate-600 text-xl leading-relaxed mb-10 font-light max-w-lg">
                                     {t("signatureDesc")}
@@ -187,7 +187,7 @@ export default function CategoryClientPage({
                                     {t("engineeringBadge")}
                                 </span>
                                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter leading-[1.05] mb-8">
-                                    {t(`items.${slug}.tagline`, { fallback: copy.tagline })}
+                                    {t(`items.${slug}.tagline`)}
                                 </h2>
                                 <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10">
                                     {t("engineeringDesc")}
@@ -220,21 +220,21 @@ export default function CategoryClientPage({
                                 <div className="bg-slate-900 text-white p-12 lg:p-16 hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
                                     <div className="absolute -right-20 -top-20 w-64 h-64 bg-brand-500 rounded-full blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
                                     <h3 className="text-3xl font-black tracking-tight mb-6">
-                                        {t(`items.${slug}.technicalSuperiority.title`, { fallback: copy.technicalSuperiority.title })}
+                                        {t(`items.${slug}.technicalSuperiority.title`)}
                                     </h3>
                                     <div className="w-16 h-1 bg-brand-500 mb-8"></div>
                                     <p className="text-xl text-slate-300 leading-relaxed font-light">
-                                        {t(`items.${slug}.technicalSuperiority.description`, { fallback: copy.technicalSuperiority.description })}
+                                        {t(`items.${slug}.technicalSuperiority.description`)}
                                     </p>
                                 </div>
 
                                 <div className="bg-white p-12 lg:p-16 border border-slate-200 hover:shadow-xl transition-all duration-500">
                                     <h3 className="text-3xl font-black text-slate-900 tracking-tight mb-6">
-                                        {t(`items.${slug}.applications.title`, { fallback: copy.applications.title })}
+                                        {t(`items.${slug}.applications.title`)}
                                     </h3>
                                     <div className="w-16 h-1 bg-brand-600 mb-8"></div>
                                     <p className="text-xl text-slate-600 leading-relaxed font-light">
-                                        {t(`items.${slug}.applications.description`, { fallback: copy.applications.description })}
+                                        {t(`items.${slug}.applications.description`)}
                                     </p>
                                 </div>
                             </motion.div>
@@ -250,7 +250,7 @@ export default function CategoryClientPage({
                                     {t("visualIntelligence")}
                                 </span>
                                 <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9]">
-                                    {t(`items.${slug}.heroTitle`, { fallback: copy.heroTitle }).split(" ")[0]} <br /> {t("showcaseSuffix")}
+                                    {t(`items.${slug}.heroTitle`).split(" ")[0]} <br /> {t("showcaseSuffix")}
                                 </h2>
                             </div>
                             <div className="max-w-md text-slate-500 font-medium text-lg leading-relaxed">
@@ -405,6 +405,8 @@ export default function CategoryClientPage({
                         </div>
                     </div>
                 </section>
+
+                {children}
 
                 <section className="py-24 lg:py-32 bg-slate-950 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-600 rounded-full blur-[150px] opacity-20 translate-x-1/2 -translate-y-1/2"></div>

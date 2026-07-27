@@ -109,7 +109,9 @@
     "tutorialCenter": "Tutorial Center",
     "tool731": "IFAN 731 Tool Manual",
     "tool732": "IFAN 732 Tool Manual",
-    "tool733": "IFAN 733 Tool Manual"
+    "tool733": "IFAN 733 Tool Manual",
+    "cookieSettings": "Configuración de cookies",
+    "faq": "Preguntas frecuentes"
   },
   "contact": {
     "title": "Contáctenos",
@@ -198,7 +200,7 @@
         },
         "item4": {
           "year": "Hoy",
-          "desc": "Lanzamiento del grupo IFAN Holding. Unificación de las marcas IFAN, IFANPLUS e IFANPRO bajo un ecosistema de fabricación inteligente de 400.000 m²."
+          "desc": "Lanzamiento del grupo IFAN Holding. Unificación de las marcas IFAN, IFANPLUS e IFANPRO bajo un ecosistema de fabricación inteligente de 120.000 m²."
         }
       }
     },
@@ -237,7 +239,7 @@
     "overview": {
       "badge": "Quiénes Somos",
       "title": "De un taller de válvulas en Zhejiang a un grupo global de fontanería",
-      "para1": "El Grupo IFAN fabrica productos de control de fluidos desde 1993, cuando comenzó como un taller de válvulas y ferretería en Zhuji, Zhejiang. Tres décadas después, opera como un grupo de fabricación integrado que abarca aproximadamente 400,000 m² de producción inteligente en tres marcas — IFAN, IFANPLUS e IFANPRO — que juntas cubren más de 10,000 SKU de fontanería. Desde tuberías de PPR, PVC y HDPE hasta sistemas PEX, accesorios y válvulas de latón sin plomo, toda la gama se diseña, moldea y prueba internamente, en lugar de ensamblarse a partir de proveedores externos.",
+      "para1": "El Grupo IFAN fabrica productos de control de fluidos desde 1993, cuando comenzó como un taller de válvulas y ferretería en Zhuji, Zhejiang. Tres décadas después, opera como un grupo de fabricación integrado que abarca aproximadamente 120.000 m² de producción inteligente en tres marcas — IFAN, IFANPLUS e IFANPRO — que juntas cubren más de 10,000 SKU de fontanería. Desde tuberías de PPR, PVC y HDPE hasta sistemas PEX, accesorios y válvulas de latón sin plomo, toda la gama se diseña, moldea y prueba internamente, en lugar de ensamblarse a partir de proveedores externos.",
       "para2": "Ese control vertical es lo que permite a IFAN vender directamente de fábrica a importadores, distribuidores y compradores de proyectos en más de 120 países, estrictamente bajo una base mayorista B2B. Cada lote de producción pasa por un laboratorio nacional acreditado por CNAS para pruebas hidrostáticas, térmicas y de impacto, y los productos cuentan con las aprobaciones CE, ISO 9001, ISO 14001, WRAS y SKZ para uso en agua potable y gas. Para los compradores, eso significa calidad constante que pueden certificar en aduanas, un solo proveedor para todo un sistema de fontanería y una fábrica que siempre pueden auditar."
     }
   },
@@ -645,7 +647,7 @@
       "title": "Integración Vertical Total.",
       "items": {
         "item1": {
-          "value": "400.000 m²",
+          "value": "120.000 m²",
           "desc": "Talleres de producción especializados en la red IFAN."
         },
         "item2": {
@@ -847,107 +849,107 @@
         }
       },
       "hdpe": {
-        "heroTitle": "HDPE Infrastructure",
-        "heroDescription": "IFAN High-Density Polyethylene (HDPE) systems deliver unmatched durability for large-scale municipal water grids, industrial pipelines, and chemical transport infrastructure.",
-        "tagline": "High-Density Strength for Municipal Scale.",
+        "heroTitle": "Infraestructura HDPE",
+        "heroDescription": "Los sistemas IFAN de polietileno de alta densidad (HDPE) ofrecen una durabilidad incomparable para redes municipales de agua a gran escala, tuberías industriales e infraestructura de transporte de productos químicos.",
+        "tagline": "Resistencia de alta densidad a escala municipal.",
         "technicalSuperiority": {
-          "title": "Superior Chemical Resistance & Flexibility",
-          "description": "HDPE's high-density molecular structure provides exceptional resistance to a wide spectrum of chemicals, corrosive soils, and UV radiation. The flexible nature prevents cracking under ground movement."
+          "title": "Resistencia química y flexibilidad superiores",
+          "description": "La estructura molecular de alta densidad del HDPE proporciona una resistencia excepcional frente a un amplio espectro de productos químicos, suelos corrosivos y radiación UV. Su naturaleza flexible evita fisuras ante los movimientos del terreno."
         },
         "applications": {
-          "title": "Municipal & Industrial Backbone",
-          "description": "The premier choice for water supply mains, sewage and drainage networks, industrial chemical transport, and gas distribution pipelines across municipal and industrial projects worldwide."
+          "title": "Columna vertebral municipal e industrial",
+          "description": "La opción preferente para redes maestras de abastecimiento de agua, sistemas de alcantarillado y drenaje, transporte industrial de productos químicos y redes de distribución de gas en proyectos municipales e industriales de todo el mundo."
         }
       },
       "pph": {
-        "heroTitle": "PPH Industrial Piping",
-        "heroDescription": "Engineered from Polypropylene Homopolymer (PPH), IFAN's industrial-grade systems guarantee unmatched chemical resistance and high-temperature performance for demanding chemical, petrochemical, and industrial manufacturing environments.",
-        "tagline": "Industrial-Grade Chemical & Thermal Resilience.",
+        "heroTitle": "Tubería industrial PPH",
+        "heroDescription": "Fabricados en polipropileno homopolímero (PPH), los sistemas de grado industrial de IFAN garantizan una resistencia química y un rendimiento a alta temperatura inigualables para entornos químicos, petroquímicos y de fabricación industrial exigentes.",
+        "tagline": "Resiliencia química y térmica de grado industrial.",
         "technicalSuperiority": {
-          "title": "Beta-Nucleated Structural Integrity",
-          "description": "Manufactured using advanced beta-nucleation technology, our PPH products offer superior impact strength, high rigidity, and excellent resistance to comprehensive chemical corrosion, even at elevated temperatures up to 100°C."
+          "title": "Integridad estructural beta-nucleada",
+          "description": "Fabricados con tecnología avanzada de beta-nucleación, nuestros productos PPH ofrecen una resistencia al impacto superior, alta rigidez y una excelente resistencia a la corrosión química integral, incluso a temperaturas elevadas de hasta 100 °C."
         },
         "applications": {
-          "title": "Aggressive Chemical Handling",
-          "description": "The definitive solution for corrosive fluid transport, industrial effluent treatment, pickling lines, and semiconductor manufacturing facilities where standard polymers fail."
+          "title": "Manejo de químicos agresivos",
+          "description": "La solución definitiva para el transporte de fluidos corrosivos, el tratamiento de efluentes industriales, líneas de decapado e instalaciones de fabricación de semiconductores donde los polímeros estándar fallan."
         }
       },
       "stainless-press": {
-        "heroTitle": "Stainless Steel Press Systems",
-        "heroDescription": "IFAN 304/316L Stainless Steel press fittings and pipes redefine metallic infrastructure. Delivering immediate, flame-free, permanent connections with pristine hygiene standards tailored for critical water and gas pipelines.",
-        "tagline": "Pristine Purity. Flame-Free Permanent Connection.",
+        "heroTitle": "Sistemas de prensa en acero inoxidable",
+        "heroDescription": "Los accesorios y tubos de prensa en acero inoxidable 304/316L de IFAN redefinen la infraestructura metálica. Ofrecen conexiones inmediatas, permanentes y sin llama, con estándares de higiene impecables para tuberías críticas de agua y gas.",
+        "tagline": "Pureza impecable. Conexión permanente sin llama.",
         "technicalSuperiority": {
-          "title": "O-Ring Press Technology & Hygienic Purity",
-          "description": "Utilizing precision-engineered EPDM/FKM O-rings and high-grade austenitic stainless steel. Our press technology ensures a leak-proof sealing in seconds, eliminating welding risks while maintaining absolute fluid purity and profound corrosion resistance."
+          "title": "Tecnología de prensado con junta tórica y pureza higiénica",
+          "description": "Utilizamos juntas tóricas EPDM/FKM de precisión y acero inoxidable austenítico de alta calidad. Nuestra tecnología de prensado garantiza un sellado estanco en segundos, elimina los riesgos de la soldadura y mantiene una pureza absoluta del fluido junto con una profunda resistencia a la corrosión."
         },
         "applications": {
-          "title": "Critical Demands & Architectural Prestige",
-          "description": "Crucial for hospital water supplies, food and beverage processing plants, luxury hotel potable water grids, and high-pressure fire protection systems."
+          "title": "Exigencias críticas y prestigio arquitectónico",
+          "description": "Fundamental para el suministro de agua hospitalaria, plantas de procesamiento de alimentos y bebidas, redes de agua potable en hoteles de lujo y sistemas de protección contra incendios de alta presión."
         }
       },
       "pexa": {
-        "heroTitle": "PEX-a Cross-Linked Piping",
-        "heroDescription": "Engineered through pure peroxide cross-linking, IFAN PEX-a piping systems offer the industry's highest degree of flexibility, thermal memory, and freeze damage resistance, establishing the ultimate standard for radiant heating and snow-melting applications.",
-        "tagline": "Unparalleled Flexibility. Supreme Thermal Memory.",
+        "heroTitle": "Tubería reticulada PEX-a",
+        "heroDescription": "Producidos mediante reticulación pura con peróxido, los sistemas de tubería PEX-a de IFAN ofrecen el mayor grado de flexibilidad, memoria térmica y resistencia a daños por congelación del sector, estableciendo el estándar definitivo para calefacción radiante y sistemas de fusión de nieve.",
+        "tagline": "Flexibilidad sin igual. Memoria térmica suprema.",
         "technicalSuperiority": {
-          "title": "Peroxide Cross-Linking Perfection",
-          "description": "Achieving over 80% degree of cross-linking, our PEX-a pipes can expand dramatically to accommodate freezing water and instantly return to their original shape when heated, completely eliminating freeze-rupture risks."
+          "title": "Perfección en la reticulación con peróxido",
+          "description": "Con un grado de reticulación superior al 80 %, nuestros tubos PEX-a pueden expandirse notablemente para absorber la congelación del agua y recuperar su forma original al calentarse, eliminando por completo el riesgo de rotura por helada."
         },
         "applications": {
-          "title": "Radiant Heating & Snow Melting",
-          "description": "The elite choice for underfloor radiant heating grids, outdoor snow-melting systems, and tight-radius potable water plumbing loops in both residential and high-end commercial architecture."
+          "title": "Calefacción radiante y fusión de nieve",
+          "description": "La elección de referencia para redes de suelo radiante, sistemas exteriores de fusión de nieve y circuitos de agua potable con radios de curvatura reducidos, tanto en arquitectura residencial como comercial de alta gama."
         }
       },
       "gas-systems": {
-        "heroTitle": "Professional Gas Systems",
-        "heroDescription": "Engineered for absolute safety and zero-leak reliability, IFAN Gas Systems provide robust, multi-layer composite piping and precision brass fittings designed exclusively for seamless indoor and outdoor gas distribution.",
-        "tagline": "Uncompromising Safety for Gas Transport.",
+        "heroTitle": "Sistemas profesionales de gas",
+        "heroDescription": "Diseñados para una seguridad absoluta y una fiabilidad sin fugas, los sistemas de gas de IFAN combinan tubería compuesta multicapa robusta y accesorios de latón de precisión concebidos exclusivamente para la distribución de gas en interiores y exteriores.",
+        "tagline": "Seguridad sin concesiones en el transporte de gas.",
         "technicalSuperiority": {
-          "title": "Enhanced Barrier & Hermetic Sealing",
-          "description": "Featuring a highly engineered aluminum core layer, our PEX-AL-PEX gas pipes offer 100% impermeability to oxygen and gases, while our gas-rated brass fittings ensure tamper-proof, high-torque sealing."
+          "title": "Barrera reforzada y sellado hermético",
+          "description": "Con una capa de núcleo de aluminio de alta ingeniería, nuestros tubos de gas PEX-AL-PEX ofrecen una impermeabilidad del 100 % al oxígeno y a los gases, mientras que nuestros accesorios de latón homologados para gas garantizan un sellado inviolable y de alto par de apriete."
         },
         "applications": {
-          "title": "Residential & Commercial Gas Feeds",
-          "description": "Crucial for delivering natural gas (NG) and liquid petroleum gas (LPG) to boilers, stoves, commercial kitchens, and central heating units with absolute peace of mind."
+          "title": "Acometidas de gas residenciales y comerciales",
+          "description": "Esencial para suministrar gas natural (GN) y gas licuado de petróleo (GLP) a calderas, cocinas, cocinas comerciales y unidades de calefacción central con total tranquilidad."
         }
       },
       "stainless-corrugated": {
-        "heroTitle": "Corrugated Stainless Systems",
-        "heroDescription": "Revolutionizing difficult installations, IFAN Corrugated Stainless Steel Tubing (CSST) delivers immense flexibility wrapped in armored durability, making complex routing in tight spaces both rapid and remarkably secure.",
-        "tagline": "Armored Flexibility for Extreme Routing.",
+        "heroTitle": "Sistemas corrugados de acero inoxidable",
+        "heroDescription": "El tubo corrugado de acero inoxidable (CSST) de IFAN revoluciona las instalaciones difíciles: aporta una flexibilidad enorme con una durabilidad blindada, haciendo que los trazados complejos en espacios reducidos sean rápidos y notablemente seguros.",
+        "tagline": "Flexibilidad blindada para trazados extremos.",
         "technicalSuperiority": {
-          "title": "Deep Corrugation & Austenitic Strength",
-          "description": "Manufactured from premium 304/316L stainless steel, the deep corrugation geometry absorbs seismic shocks, thermal expansion, and mechanical vibration while allowing the tube to bend sharply without kinking."
+          "title": "Corrugado profundo y resistencia austenítica",
+          "description": "Fabricado en acero inoxidable 304/316L de primera calidad, la geometría de corrugado profundo absorbe choques sísmicos, dilataciones térmicas y vibraciones mecánicas, permitiendo que el tubo se curve de forma pronunciada sin estrangularse."
         },
         "applications": {
-          "title": "Seismic Zones & Tight Retrofits",
-          "description": "Highly deployed in advanced HVAC hookups, solar thermal loops, seismic-prone gas line installations, and retrofitting historical buildings where rigid pipes simply cannot maneuver."
+          "title": "Zonas sísmicas y reformas en espacios reducidos",
+          "description": "Ampliamente utilizado en conexiones avanzadas de climatización, circuitos solares térmicos, instalaciones de gas en zonas sísmicas y rehabilitación de edificios históricos donde la tubería rígida sencillamente no puede maniobrar."
         }
       },
       "angle-valves": {
-        "heroTitle": "Precision Angle Valves",
-        "heroDescription": "The final line of defense for your sanitary fixtures. IFAN premium angle valves combine elegant, architectural aesthetics with heavy-duty ceramic core technology to provide smooth, drip-free shutoff capability.",
-        "tagline": "Elegant Design. Drip-Free Isolation.",
+        "heroTitle": "Llaves de escuadra de precisión",
+        "heroDescription": "La última línea de defensa de sus aparatos sanitarios. Las llaves de escuadra premium de IFAN combinan una estética arquitectónica elegante con tecnología de núcleo cerámico de alta resistencia para ofrecer un cierre suave y sin goteos.",
+        "tagline": "Diseño elegante. Aislamiento sin goteo.",
         "technicalSuperiority": {
-          "title": "Diamond-Polished Ceramic Cartridges",
-          "description": "Constructed from solid brass and equipped with diamond-polished ceramic discs, our angle valves withstand up to 500,000 operational cycles, ensuring absolute zero leakage and exceptionally smooth torque."
+          "title": "Cartuchos cerámicos pulidos con diamante",
+          "description": "Construidas en latón macizo y equipadas con discos cerámicos pulidos con diamante, nuestras llaves de escuadra soportan hasta 500 000 ciclos de funcionamiento, garantizando cero fugas y un par de accionamiento excepcionalmente suave."
         },
         "applications": {
-          "title": "Sanitary & Appliance Isolation",
-          "description": "Essential for isolating water supply to toilets, bidets, premium washbasins, and household appliances like washing machines and dishwashers for immediate servicing."
+          "title": "Aislamiento de sanitarios y electrodomésticos",
+          "description": "Imprescindibles para aislar el suministro de agua a inodoros, bidés, lavabos de gama alta y electrodomésticos como lavadoras y lavavajillas para su mantenimiento inmediato."
         }
       },
       "faucets": {
-        "heroTitle": "Architectural Faucets",
-        "heroDescription": "Fusing masterful fluid engineering with contemporary design, IFAN architectural faucets are the centerpiece of modern bathrooms and kitchens, delivering precise temperature control and visually stunning water flow.",
-        "tagline": "Where Fluid Engineering Meets Luxury Design.",
+        "heroTitle": "Grifería arquitectónica",
+        "heroDescription": "Fusionando una ingeniería de fluidos magistral con el diseño contemporáneo, la grifería arquitectónica de IFAN es el elemento central de baños y cocinas modernos, con un control preciso de la temperatura y un flujo de agua visualmente cautivador.",
+        "tagline": "Donde la ingeniería de fluidos se encuentra con el diseño de lujo.",
         "technicalSuperiority": {
-          "title": "Aerated Flow & Multi-Layer Plating",
-          "description": "Fitted with advanced Swiss aerators to ensure a splash-free, water-saving cascade. The exterior boasts rigorous multi-layer electroplating that provides superior resistance to hard water stains, corrosion, and everyday scratching."
+          "title": "Flujo aireado y recubrimiento multicapa",
+          "description": "Equipada con aireadores suizos avanzados que garantizan un chorro sin salpicaduras y de bajo consumo. El exterior cuenta con un riguroso electrorrecubrimiento multicapa que aporta una resistencia superior a las manchas de agua dura, la corrosión y las rayaduras cotidianas."
         },
         "applications": {
-          "title": "Premium Residential & Hospitality",
-          "description": "Designed for luxury bathroom vanities, chef-grade kitchen sinks, and upscale hotel suites where both relentless durability and striking visual prestige are demanded."
+          "title": "Residencial premium y hostelería",
+          "description": "Diseñada para muebles de baño de lujo, fregaderos de cocina de nivel profesional y suites de hotel de alta gama donde se exigen tanto una durabilidad implacable como un prestigio visual notable."
         }
       }
     }
@@ -1209,5 +1211,55 @@
     "backToProducts": "Volver a Productos",
     "requestQuote": "Solicitar Cotización",
     "title": "Manual de Herramienta IFAN {id}"
+  },
+  "cookieConsent": {
+    "title": "Gestionar consentimiento",
+    "description": "Para ofrecer la mejor experiencia, utilizamos tecnologías como las cookies para almacenar o acceder a la información del dispositivo. El consentimiento nos permite procesar datos como el comportamiento de navegación o los identificadores únicos en este sitio. No consentir o retirar el consentimiento puede afectar negativamente a determinadas características y funciones.",
+    "accept": "Aceptar",
+    "deny": "Denegar",
+    "preferences": "Ver preferencias",
+    "save": "Guardar preferencias",
+    "close": "Cerrar",
+    "privacyStatement": "Declaración de privacidad",
+    "alwaysActive": "Siempre activo",
+    "necessary": {
+      "title": "Estrictamente necesarias",
+      "desc": "Imprescindibles para el funcionamiento del sitio: navegación, seguridad y registro de su elección de consentimiento. No se pueden desactivar."
+    },
+    "statistics": {
+      "title": "Estadísticas",
+      "desc": "Nos ayudan a entender cómo se utiliza el sitio (Google Analytics, Microsoft Clarity). Los datos son agregados y anónimos."
+    },
+    "marketing": {
+      "title": "Marketing",
+      "desc": "Se utilizan para medir el rendimiento publicitario y mostrarle ofertas relevantes de IFAN (Google Ads, Meta Pixel)."
+    }
+  },
+  "pillar": {
+    "specTable": {
+      "specification": "Especificación",
+      "value": "Valor"
+    },
+    "comparison": {
+      "criterion": "Criterio",
+      "ifan": "IFAN"
+    },
+    "standards": {
+      "certNumber": "Certificado"
+    },
+    "relatedProducts": {
+      "viewAll": "Ver el catálogo completo"
+    },
+    "cta": {
+      "heading": "Solicite un presupuesto directo de fábrica",
+      "body": "Indíquenos los diámetros, la clase de presión y el volumen que necesita. Nuestro departamento técnico responde con una ficha de especificaciones y precios FOB, sin el margen de una empresa comercial de por medio.",
+      "primary": "Solicitar presupuesto",
+      "secondary": "Ver productos"
+    },
+    "bridge": {
+      "title": "Guía técnica completa disponible en inglés",
+      "body": "Esta página de categoría está disponible en su idioma. Las tablas de especificaciones completas, el desglose de normas y las preguntas frecuentes de abastecimiento se publican actualmente solo en inglés.",
+      "link": "Leer en inglés"
+    }
   }
 }

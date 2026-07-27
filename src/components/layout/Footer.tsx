@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
+import CookieSettingsButton from "@/components/legal/CookieSettingsButton";
 
 export default function Footer() {
     const t = useTranslations("footer");
@@ -51,6 +52,7 @@ export default function Footer() {
                         <ul className="space-y-4 text-sm font-medium">
                             <li><Link href="/about-us" className="text-slate-400 hover:text-white transition-colors">{t("aboutUs")}</Link></li>
                             <li><Link href="/brands" className="text-slate-400 hover:text-white transition-colors">{t("brandMatrix")}</Link></li>
+                            <li><Link href="/faq" className="text-slate-400 hover:text-white transition-colors">{t("faq")}</Link></li>
                             <li><Link href="/resources" className="text-slate-400 hover:text-white transition-colors">{t("resources")}</Link></li>
                             <li><Link href="/contact" className="text-slate-400 hover:text-white transition-colors">{t("contact")}</Link></li>
                         </ul>
@@ -88,6 +90,7 @@ export default function Footer() {
                     <div className="flex gap-6 mt-4 md:mt-0">
                         <Link href="/privacy" className="hover:text-white transition-colors">{t("privacyPolicy")}</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">{t("termsConditions")}</Link>
+                        <CookieSettingsButton className="hover:text-white transition-colors" />
                     </div>
                 </div>
             </div>

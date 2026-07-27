@@ -3,15 +3,13 @@ import { client } from "@/lib/sanity";
 import { localeUrl, LOCALES } from "@/lib/seo";
 import { toolsData } from "@/lib/data/tools";
 import { REGIONS_DATA } from "@/lib/regionsData";
+import { CATEGORY_SLUGS, PILLAR_SLUGS } from "@/lib/pillar";
 
 // Cache the generated sitemap for 1h (ISR) so Googlebot always gets a fast
 // response instead of re-querying every product/news slug from Sanity per fetch.
 export const revalidate = 3600;
 
 type SanityEntry = { slug: string; updatedAt?: string };
-
-// Category slugs mirror src/lib/categoryCopywriting.ts.
-const CATEGORY_SLUGS = ["ppr", "brass-fittings", "pp", "pvc", "pex-ppsu", "hvac-valves"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 静态页面路径（六语言均有翻译，全部列出；英文为无前缀 URL）
@@ -24,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: "/news", priority: 0.8, changeFrequency: "daily" as const },
         { path: "/manufacturing-oem", priority: 0.9, changeFrequency: "monthly" as const },
         { path: "/global-solutions", priority: 0.75, changeFrequency: "monthly" as const },
+        { path: "/faq", priority: 0.85, changeFrequency: "monthly" as const },
         { path: "/resources", priority: 0.7, changeFrequency: "monthly" as const },
         { path: "/media", priority: 0.6, changeFrequency: "monthly" as const },
         { path: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
@@ -38,11 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     );
 
     // 分类页 / 区域方案页 / 工具指南页（slug 来自本地数据源）
+    // 英文支柱页是 money 页，优先级最高；其余英文品类页次之；非英文只有短版页，再次之。
     const categoryRoutes: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
         CATEGORY_SLUGS.map((slug) => ({
             url: localeUrl(locale, `/categories/${slug}`),
             changeFrequency: "weekly" as const,
-            priority: 0.85,
+            priority: locale !== "en" ? 0.7 : PILLAR_SLUGS.includes(slug) ? 0.9 : 0.85,
         }))
     );
 

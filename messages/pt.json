@@ -109,7 +109,9 @@
     "tutorialCenter": "Tutorial Center",
     "tool731": "IFAN 731 Tool Manual",
     "tool732": "IFAN 732 Tool Manual",
-    "tool733": "IFAN 733 Tool Manual"
+    "tool733": "IFAN 733 Tool Manual",
+    "cookieSettings": "Definições de cookies",
+    "faq": "Perguntas frequentes"
   },
   "contact": {
     "title": "Entre em Contato",
@@ -198,7 +200,7 @@
         },
         "item4": {
           "year": "Agora",
-          "desc": "Lançamento do grupo IFAN Holding. Unificação das marcas IFAN, IFANPLUS e IFANPRO sob um ecossistema de fabricação inteligente de 400.000 m²."
+          "desc": "Lançamento do grupo IFAN Holding. Unificação das marcas IFAN, IFANPLUS e IFANPRO sob um ecossistema de fabricação inteligente de 120.000 m²."
         }
       }
     },
@@ -237,7 +239,7 @@
     "overview": {
       "badge": "Quem Somos",
       "title": "De uma oficina de válvulas em Zhejiang a um grupo global de encanamentos",
-      "para1": "O Grupo IFAN fabrica produtos de controle de fluidos desde 1993, quando começou como uma oficina de válvulas e ferragens em Zhuji, Zhejiang. Três décadas depois, opera como um grupo industrial integrado, abrangendo aproximadamente 400.000 m² de produção inteligente em três marcas — IFAN, IFANPLUS e IFANPRO — que juntas cobrem mais de 10.000 SKUs de encanamento. Desde tubos de PPR, PVC e HDPE até sistemas PEX, conexões e válvulas de latão sem chumbo, toda a gama é projetada, moldada e testada internamente, em vez de montada a partir de fornecedores externos.",
+      "para1": "O Grupo IFAN fabrica produtos de controle de fluidos desde 1993, quando começou como uma oficina de válvulas e ferragens em Zhuji, Zhejiang. Três décadas depois, opera como um grupo industrial integrado, abrangendo aproximadamente 120.000 m² de produção inteligente em três marcas — IFAN, IFANPLUS e IFANPRO — que juntas cobrem mais de 10.000 SKUs de encanamento. Desde tubos de PPR, PVC e HDPE até sistemas PEX, conexões e válvulas de latão sem chumbo, toda a gama é projetada, moldada e testada internamente, em vez de montada a partir de fornecedores externos.",
       "para2": "Esse controle vertical é o que permite à IFAN vender diretamente da fábrica para importadores, distribuidores e compradores de projetos em mais de 120 países, estritamente no atacado B2B. Cada lote de produção passa por um laboratório nacional acreditado pela CNAS para testes hidrostáticos, térmicos e de impacto, e os produtos possuem aprovações CE, ISO 9001, ISO 14001, WRAS e SKZ para uso em água potável e gás. Para os compradores, isso significa qualidade consistente que podem certificar na alfândega, um único fornecedor para todo um sistema de encanamento e uma fábrica que estão sempre convidados a auditar."
     }
   },
@@ -645,7 +647,7 @@
       "title": "Integração Vertical Total.",
       "items": {
         "item1": {
-          "value": "400.000 m²",
+          "value": "120.000 m²",
           "desc": "Oficinas de produção especializadas na rede IFAN."
         },
         "item2": {
@@ -1209,5 +1211,55 @@
     "backToProducts": "Voltar aos Produtos",
     "requestQuote": "Solicitar Cotação",
     "title": "Manual da Ferramenta IFAN {id}"
+  },
+  "cookieConsent": {
+    "title": "Gerir consentimento",
+    "description": "Para proporcionar a melhor experiência, utilizamos tecnologias como cookies para armazenar e/ou aceder a informações do dispositivo. O consentimento permite-nos processar dados como o comportamento de navegação ou identificadores únicos neste site. Não consentir ou retirar o consentimento pode afetar negativamente determinadas funcionalidades.",
+    "accept": "Aceitar",
+    "deny": "Recusar",
+    "preferences": "Ver preferências",
+    "save": "Guardar preferências",
+    "close": "Fechar",
+    "privacyStatement": "Declaração de privacidade",
+    "alwaysActive": "Sempre ativo",
+    "necessary": {
+      "title": "Estritamente necessários",
+      "desc": "Essenciais para o funcionamento do site: navegação, segurança e registo da sua escolha de consentimento. Não podem ser desativados."
+    },
+    "statistics": {
+      "title": "Estatísticas",
+      "desc": "Ajudam-nos a perceber como o site é utilizado (Google Analytics, Microsoft Clarity). Os dados são agregados e anónimos."
+    },
+    "marketing": {
+      "title": "Marketing",
+      "desc": "Utilizados para medir o desempenho dos anúncios e mostrar-lhe ofertas relevantes da IFAN (Google Ads, Meta Pixel)."
+    }
+  },
+  "pillar": {
+    "specTable": {
+      "specification": "Especificação",
+      "value": "Valor"
+    },
+    "comparison": {
+      "criterion": "Critério",
+      "ifan": "IFAN"
+    },
+    "standards": {
+      "certNumber": "Certificado"
+    },
+    "relatedProducts": {
+      "viewAll": "Ver o catálogo completo"
+    },
+    "cta": {
+      "heading": "Solicite um orçamento direto da fábrica",
+      "body": "Informe-nos os diâmetros, a classe de pressão e o volume de que necessita. A nossa equipa de engenharia responde com uma ficha de especificações e preços FOB, sem a margem de uma trading pelo meio.",
+      "primary": "Pedir orçamento",
+      "secondary": "Ver produtos"
+    },
+    "bridge": {
+      "title": "Guia técnico completo disponível em inglês",
+      "body": "Esta página de categoria está disponível no seu idioma. As tabelas completas de especificações, o detalhe das normas e as perguntas frequentes sobre fornecimento estão atualmente publicados apenas em inglês.",
+      "link": "Ler em inglês"
+    }
   }
 }
