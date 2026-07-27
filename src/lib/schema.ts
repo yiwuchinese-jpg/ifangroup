@@ -65,10 +65,12 @@ export function buildPageSchema(opts: {
       areaServed: "Worldwide",
       // sameAs 是实体消歧最强的信号。「ifan」是个高歧义词（还有风扇品牌、同名机构），
       // 官方账号列得越全，谷歌越容易把 ifanholding.com 认成 IFAN 本体。
-      // TODO 待补：LinkedIn 公司页（Buffer 配置显示存在）、Alibaba 旺铺、Google Business Profile。
+      // LinkedIn 用数字 ID 形式：公开可访问且永久有效，改 vanity slug 也不会失效。
+      // TODO 待补：Alibaba 旺铺、Google Business Profile（方法论 2.9 列为 P0）。
       sameAs: [
         "https://www.youtube.com/@IFANGroup-plumbing",
         "https://www.facebook.com/IFANPlus13656666030",
+        "https://www.linkedin.com/company/99164793/",
       ],
     },
     {

@@ -37,7 +37,11 @@ export default function Footer() {
                              {t("products")}
                         </h4>
                         <ul className="space-y-4 text-sm font-medium">
+                            {/* 五个支柱页全部在页脚出现：页脚是唯一每页都有的入口，
+                                此前 hdpe 与 pvc 只在导航栏下拉里，站内几乎拿不到链接 */}
                             <li><Link href="/categories/ppr" className="text-slate-400 hover:text-white transition-colors">{t("pprPipes")}</Link></li>
+                            <li><Link href="/categories/hdpe" className="text-slate-400 hover:text-white transition-colors">{t("hdpePipes")}</Link></li>
+                            <li><Link href="/categories/pvc" className="text-slate-400 hover:text-white transition-colors">{t("pvcDrainage")}</Link></li>
                             <li><Link href="/categories/pex-ppsu" className="text-slate-400 hover:text-white transition-colors">{t("compositePipes")}</Link></li>
                             <li><Link href="/categories/brass-fittings" className="text-slate-400 hover:text-white transition-colors">{t("brassFittings")}</Link></li>
                             <li><Link href="/categories/hvac-valves" className="text-slate-400 hover:text-white transition-colors">{t("brassValves")}</Link></li>
