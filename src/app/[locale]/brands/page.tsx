@@ -12,8 +12,11 @@ export const revalidate = 0;
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     return {
-        title: "Our Brand Portfolio | IFAN, IFANPlus, IFANPRO & More",
-        description: "Explore the full IFAN Group brand portfolio: IFAN (global volume), IFANPlus (premium tier), IFANPRO (West Africa), IFANNova (French elegance), and IFANUltra (European standard). Each brand serves a distinct market segment.",
+        // GSC：90 天 131 曝光 / 2 点击，主词是「ifan」(28 曝光, pos 36.8) 和「ifan logo」。
+        // 原标题 69 字符会被截断，且以「Our Brand Portfolio」开头，品牌搜索者看不出这是官方页。
+        title: { absolute: "IFAN Brands: IFANPlus, IFANPRO, IFANNova & IFANUltra" },
+        description:
+            "The official IFAN Group brand family: IFAN, IFANPlus, IFANPRO, IFANNova and IFANUltra — which brand serves which market, and what each covers.",
         keywords: ["IFAN brand", "IFANPlus premium plumbing", "IFANPRO West Africa", "plumbing brand portfolio", "B2B plumbing brands China"],
         alternates: localeAlternates(locale, "/brands"),
     };

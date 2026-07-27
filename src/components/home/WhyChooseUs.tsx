@@ -8,7 +8,8 @@ export default function WhyChooseUs() {
  {
  icon: <Scale className="w-7 h-7 text-white"/>,
  title:"Massive Production Scale",
- description:"120,000m² facility with 200+ intelligent extrusion lines ensuring multi-million dollar deliveries."
+ // 全站其余 8 处均写 30+ 条挤出线，此处原为 200+，属站内自相矛盾，已统一
+ description:"120,000m² facility with 30+ intelligent extrusion lines and 2,000 tonnes monthly output."
  },
  {
  icon: <BadgePercent className="w-7 h-7 text-white"/>,

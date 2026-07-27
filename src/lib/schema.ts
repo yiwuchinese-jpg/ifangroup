@@ -23,14 +23,58 @@ export function buildPageSchema(opts: {
       "@type": "Organization",
       "@id": ORG_ID,
       name: "IFAN Group",
+      // GSC 显示非博客页的曝光几乎全部来自品牌词（ifan / ifan group / ifan ppr / ifan company），
+      // 而「ifan」只排到 9.5。把实体属性写足，是让谷歌把 ifanholding.com 认成 IFAN 本体的直接手段。
+      legalName: "Zhuji Fengfan Piping Co., Ltd",
+      alternateName: ["IFAN", "IFAN Group", "IFANHOLDING", "诸暨风帆管业有限公司"],
       url: SITE,
       logo: `${SITE}/icon.png`,
       foundingDate: "1993",
       description:
         "Chinese manufacturer of PPR, PVC, HDPE and PEX pipes, fittings and brass valves, exporting B2B wholesale to 120+ countries.",
-      address: { "@type": "PostalAddress", addressRegion: "Zhejiang", addressCountry: "CN" },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "IFAN Industrial Park, Diankou Town",
+        addressLocality: "Zhuji",
+        addressRegion: "Zhejiang",
+        addressCountry: "CN",
+      },
+      numberOfEmployees: { "@type": "QuantitativeValue", value: 600 },
+      knowsAbout: [
+        "PPR pipe manufacturing",
+        "HDPE pipe manufacturing",
+        "uPVC drainage systems",
+        "PEX and PE-RT underfloor heating",
+        "CW617N lead-free brass valves",
+      ],
+      brand: [
+        { "@type": "Brand", name: "IFAN" },
+        { "@type": "Brand", name: "IFANPLUS" },
+        { "@type": "Brand", name: "IFANPRO" },
+        { "@type": "Brand", name: "IFANNova" },
+        { "@type": "Brand", name: "IFANUltra" },
+      ],
+      hasCredential: ["ISO 9001:2015", "ISO 14001:2015", "ISO 45001:2018", "CE", "SGS", "WRAS"],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        areaServed: "Worldwide",
+        availableLanguage: ["en", "es", "pt", "ru", "ar", "fr"],
+        url: `${SITE}/contact`,
+      },
       areaServed: "Worldwide",
+      // TODO 待用户提供后补全：LinkedIn 公司页 / Alibaba 旺铺 / Facebook。
+      // sameAs 是实体消歧最强的信号，目前只有 YouTube 一条——这是「ifan」只排 9.5 的主因之一。
       sameAs: ["https://www.youtube.com/@IFANGroup-plumbing"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: SITE,
+      name: "IFAN Group",
+      alternateName: "IFAN",
+      publisher: { "@id": ORG_ID },
+      inLanguage: ["en", "es", "pt", "ru", "ar", "fr"],
     },
     {
       "@type": "Service",
