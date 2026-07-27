@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import CookieConsent from '@/components/legal/CookieConsent';
 
 export const metadata: Metadata = {
     title: {
@@ -65,6 +66,8 @@ export default async function LocaleLayout({ children, params }: Props) {
                 <main className="flex-1">
                     {children}
                 </main>
+                {/* 挂在 provider 内部，弹窗文案才能跟随当前语言 */}
+                <CookieConsent />
             </div>
         </NextIntlClientProvider>
     );
