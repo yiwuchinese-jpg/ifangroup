@@ -4,6 +4,7 @@ import CategoryClientPage from "./CategoryClientPage";
 import { Metadata } from "next";
 import { localeAlternates, localeUrl } from "@/lib/seo";
 import { buildPageSchema } from "@/lib/schema";
+import { routing } from "@/i18n/routing";
 import { CATEGORY_SLUGS, hasLocalizedBody, isCategorySlug } from "@/lib/pillar";
 import { getPillar } from "@/lib/pillar/categoryPillars";
 import { LanguageBridge, PillarSections } from "@/components/pillar";
@@ -12,12 +13,17 @@ import { LanguageBridge, PillarSections } from "@/components/pillar";
 // 之前是 revalidate=0（每次请求全动态），加长文后会变成 TTFB 问题。
 export const revalidate = 3600;
 
-// 关掉动态参数：此前 /categories/任意字符串 都返回 200 + 兜底文案，
-// 等于给爬虫开了一个无限 soft-404 面。现在未知 slug 直接 404。
-export const dynamicParams = false;
+// 本路由有 [locale] 和 [slug] 两个动态段。generateStaticParams 只返回 slug 时
+// 必须保留 dynamicParams，否则 Next 找不到被完整枚举的 locale×slug 组合，
+// 84 个品类 URL 会全部 404（已在生产上踩过一次）。
+// 未知 slug 的 soft-404 由下方 isCategorySlug → notFound() 兜住，效果等价。
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-    return CATEGORY_SLUGS.map((slug) => ({ slug }));
+    // 枚举 locale×slug 全组合，让所有品类页在构建期预渲染
+    return routing.locales.flatMap((locale) =>
+        CATEGORY_SLUGS.map((slug) => ({ locale, slug }))
+    );
 }
 
 export async function generateMetadata({
