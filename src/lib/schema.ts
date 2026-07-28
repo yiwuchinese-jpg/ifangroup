@@ -45,7 +45,7 @@ export function buildPageSchema(opts: {
         "HDPE pipe manufacturing",
         "uPVC drainage systems",
         "PEX and PE-RT underfloor heating",
-        "CW617N lead-free brass valves",
+        "CW617N brass valves",
       ],
       brand: [
         { "@type": "Brand", name: "IFAN" },

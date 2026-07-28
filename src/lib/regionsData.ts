@@ -37,7 +37,7 @@ export const REGIONS_DATA: RegionData[] = [
             infrastructureSpecs: [
                 "Anti-UV external resin layer rated for 50-year desert exposure.",
                 "PPR-AL-PPR composite risers with an aluminium core for zero oxygen permeation and low thermal expansion.",
-                "High-pressure brass manifolds (CW617N lead-free DZR) for luxury high-rise water distribution.",
+                "High-pressure brass manifolds in CW617N for luxury high-rise water distribution.",
                 "Forged brass ball and angle valves rated for chlorinated, mineral-heavy desalinated water.",
                 "HDPE underground networks engineered for municipal sand-bed movement and ground shift.",
                 "Per-shipment batch certificates with SABER and ESMA documentation prepared for Gulf customs."

@@ -4,7 +4,7 @@ import type { CategoryPillar } from "../pillarTypes";
 const valveFaqs: FaqItem[] = [
     {
         q: "What is CW617N brass and why does it matter?",
-        a: "CW617N is the European designation for a hot-forgeable lead-free brass alloy, roughly 57–59 % copper. It is the standard body material for potable-water valves in Europe because it resists dezincification and keeps lead migration within drinking-water limits. Ask any supplier to state the alloy, not just 'brass'.",
+        a: "CW617N (CuZn40Pb2) is the European designation for a hot-forgeable brass — roughly 57–59 % copper, about 40 % zinc and 1.6–2.5 % lead, which is there for machinability. It is the standard body material for general plumbing valves in Europe, but it is neither lead-free nor dezincification-resistant. Aggressive water calls for a DZR grade such as CW602N; markets with a lead limit — the US caps wetted surfaces at a 0.25 % weighted average — call for a genuinely lead-free alloy. Ask any supplier to state the alloy, not just 'brass'.",
     },
     {
         q: "Forged or cast brass valve body — which should I specify?",
@@ -12,7 +12,7 @@ const valveFaqs: FaqItem[] = [
     },
     {
         q: "What sizes and pressure classes do you produce?",
-        a: "Brass ball valves run DN8 to DN100 in PN16, PN25 and PN40, with FF, FM, MM and double-union connections, in BSP or NPT threads. Brass gate valves run DN15 to DN50 with BSP or NPT threaded ends. All in lead-free CW617N.",
+        a: "Brass ball valves run DN8 to DN100 in PN16, PN25 and PN40, with FF, FM, MM and double-union connections, in BSP or NPT threads. Brass gate valves run DN15 to DN50 with BSP or NPT threaded ends. All in CW617N brass.",
     },
     {
         q: "Which certifications do the valves carry?",
@@ -32,7 +32,7 @@ const valveFaqs: FaqItem[] = [
     },
     {
         q: "How do I verify a valve is genuinely lead-free?",
-        a: "Ask for the material certificate stating CW617N and the third-party test report against the drinking-water regulation of your market. An alloy claim without documentation is not verifiable, and lead content is exactly the parameter that customs and water authorities test on arrival.",
+        a: "Start by noting that CW617N is not it — that grade carries 1.6–2.5 % lead. A genuinely lead-free valve is a different alloy family, usually a silicon or bismuth brass. Ask for the material certificate naming that alloy, plus the third-party test report against the drinking-water regulation of your market. An alloy claim without documentation is not verifiable, and lead content is exactly the parameter customs and water authorities test on arrival.",
     },
 ];
 
@@ -41,13 +41,13 @@ export const valvesPillar: CategoryPillar = {
     seo: {
         title: "Brass Ball Valve Manufacturer | CW617N DN8–DN100 PN16–40",
         description:
-            "Lead-free CW617N brass ball and gate valves, DN8–DN100 in PN16/25/40, forged and cast bodies. CE, ACS, WRAS, SASO certified. No MOQ, ~10-day lead time.",
+            "CW617N brass ball and gate valves, DN8–DN100 in PN16/25/40, forged and cast bodies. CE, ACS, WRAS, SASO certified. No MOQ, ~10-day lead time.",
     },
     schema: {
         serviceName: "Brass Valve and Manifold Manufacturing",
-        serviceType: "Lead-free brass valve manufacturing and B2B export",
+        serviceType: "Brass valve manufacturing and B2B export",
         serviceDescription:
-            "Factory-direct brass ball valves, gate valves and manifolds in lead-free CW617N, DN8–DN100 in PN16, PN25 and PN40, with forged and cast bodies and in-house cold forging. Certified to CE, ACS, WRAS and SASO under ISO 9001, produced at a 120,000 m² plant in Zhejiang operating since 1993 and shipped B2B worldwide.",
+            "Factory-direct brass ball valves, gate valves and manifolds in CW617N brass, DN8–DN100 in PN16, PN25 and PN40, with forged and cast bodies and in-house cold forging. Certified to CE, ACS, WRAS and SASO under ISO 9001, produced at a 120,000 m² plant in Zhejiang operating since 1993 and shipped B2B worldwide.",
     },
     faqs: valveFaqs,
     sections: [
@@ -57,7 +57,7 @@ export const valvesPillar: CategoryPillar = {
             heading: "Brass Valves: What IFAN Manufactures",
             body: [
                 "A valve is the cheapest component in a plumbing system and the most expensive one to replace. It sits inside a wall or under a floor, it is expected to seal after years of never being touched, and when it fails the cost is the demolition around it rather than the part itself.",
-                "IFAN manufactures the full brass small-bore range in-house: ball valves from DN8 to DN100 in PN16, PN25 and PN40, gate valves from DN15 to DN50, plus manifolds, angle valves and plumbing brass. All bodies are lead-free CW617N. We produce both forged and cast bodies, with cold forging done in-house rather than bought in.",
+                "IFAN manufactures the full brass small-bore range in-house: ball valves from DN8 to DN100 in PN16, PN25 and PN40, gate valves from DN15 to DN50, plus manifolds, angle valves and plumbing brass. All bodies are CW617N. We produce both forged and cast bodies, with cold forging done in-house rather than bought in.",
                 "The valve range is stocked year-round with no minimum order and roughly a ten-day lead time. That is deliberately different from the extrusion lines, which are made to order on a 45-day cycle — it means valves can be added to a pipe container without holding up the shipment.",
             ],
         },
@@ -66,11 +66,11 @@ export const valvesPillar: CategoryPillar = {
             id: "alloy",
             heading: "CW617N: Why the Alloy Designation Is the Whole Specification",
             body: [
-                "'Brass' is not a specification. It is a family of copper-zinc alloys whose behaviour under pressure, temperature and potable water varies enormously with composition. The designation that matters for plumbing valves is CW617N — roughly 57 to 59 percent copper, hot-forgeable, and formulated to keep lead migration inside drinking-water limits.",
-                "Two failure modes drive the choice. The first is dezincification: in soft or aggressive water, zinc leaches out of an unsuitable alloy and leaves a porous copper skeleton that crumbles under pressure. The second is lead migration, which is what water authorities and customs laboratories actually test for on arrival.",
-                "Neither is visible on inspection. A valve that fails on either count looks identical to one that passes, which is why the material certificate is the document to insist on. IFAN states CW617N on the certificate for every batch, verifiable against the market standard.",
+                "'Brass' is not a specification. It is a family of copper-zinc alloys whose behaviour under pressure, temperature and potable water varies enormously with composition. The designation that matters for general plumbing valves is CW617N, or CuZn40Pb2 — roughly 57 to 59 percent copper, about 40 percent zinc, and 1.6 to 2.5 percent lead, which is what makes it machine cleanly enough to hold a sealing thread.",
+                "Two failure modes drive the choice, and CW617N addresses neither. The first is dezincification: in soft or aggressive water, zinc leaches out and leaves a porous copper skeleton that crumbles under pressure. Resisting it takes a DZR grade — CW602N, an arsenical brass. The second is lead migration, which water authorities and customs laboratories test on arrival. The US caps wetted surfaces at a 0.25 percent weighted average, so a 2 percent leaded brass does not qualify and the body has to be a lead-free alloy instead.",
+                "Neither failure is visible on inspection. A valve that fails on either count looks identical to one that passes, which is why the material certificate is the document to insist on. IFAN states CW617N on the certificate for every batch. Tell us the water chemistry and the destination market and we will say plainly whether that grade is the right one for the job.",
             ],
-            aside: "Practical check: ask for the material certificate naming the alloy, plus the third-party potable-water test report for your destination market. A supplier who can only say 'lead-free brass' has not answered the question.",
+            aside: "Practical check: ask for the material certificate naming the exact alloy, plus the third-party potable-water test report for your destination market. A supplier who answers 'lead-free brass' without naming a grade has not answered the question — and one who calls CW617N lead-free has answered it wrongly.",
         },
         {
             type: "prose",
@@ -88,7 +88,7 @@ export const valvesPillar: CategoryPillar = {
             heading: "IFAN Brass Valve Specification",
             intro: "Confirmed manufacturing and supply specification for the brass valve range.",
             rows: [
-                { label: "Body material", value: "CW617N lead-free brass", verified: true },
+                { label: "Body material", value: "CW617N (CuZn40Pb2) hot-forging brass", verified: true },
                 { label: "Body construction", value: "Forged and cast; cold forging in-house", verified: true },
                 {
                     label: "Ball valve range",
@@ -216,7 +216,7 @@ export const valvesPillar: CategoryPillar = {
                 },
                 {
                     href: "/news/cw617n-lead-free-brass",
-                    label: "CW617N Lead-Free Brass Explained",
+                    label: "CW617N and Lead-Free Brass Explained",
                     blurb: "Why the alloy designation is the specification",
                 },
                 {

@@ -40,7 +40,7 @@ const jsonLd = buildPageSchema({
   serviceName: "Plumbing Pipe & Fitting Manufacturing and Wholesale Supply",
   serviceType: "Plumbing pipe and fittings manufacturing and wholesale supply",
   serviceDescription:
-    "Factory-direct plumbing range from one supplier: PPR (DN20–DN160, PN12.5–PN25), PVC/UPVC/CPVC, PPH, HDPE PE100/PE80, PEX and multilayer pipe, plus CW617N lead-free brass valves and faucets, strictly B2B wholesale.",
+    "Factory-direct plumbing range from one supplier: PPR (DN20–DN160, PN12.5–PN25), PVC/UPVC/CPVC, PPH, HDPE PE100/PE80, PEX and multilayer pipe, plus CW617N brass valves and faucets, strictly B2B wholesale.",
   areaServed: ["Worldwide"],
   faqs: [
     { q: "What is the minimum order quantity?", a: "One container — mixed sizes and product families welcome, a practical starting point for a first stocking order." },
