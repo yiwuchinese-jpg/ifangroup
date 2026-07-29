@@ -320,13 +320,15 @@ export const hdpePillar: CategoryPillar = {
                 },
             ],
         },
-        {
-            type: "relatedProducts",
-            id: "products",
-            heading: "HDPE Products in the IFAN Catalogue",
-            // 按 Sanity 的 category->title 取——路由 slug 与 Sanity slug 是两套词汇
-            sanityCategoryTitles: ["PE Series"],
-            limit: 8,
-        },
+        // 这里原本有一个 relatedProducts 区块，取 Sanity 的 "PE Series" 分类。
+        // 2026-07-29 实测：整个产品库 1191 个 SKU 里，名称含 hdpe / pe100 / poly 的是 0 个，
+        // "PE Series" 分类下只有 15 件——激光打标复合盘管（size 形如 1216x100m，是
+        // PEX-AL-PEX 规格）、电动套丝机和管卡，没有一件是 HDPE 管或 HDPE 管件。
+        // 线上这 8 条产品深链因此全部指向激光管和套丝机，标题却写着「HDPE Products」。
+        //
+        // 这不是过滤条件写错，是目录里根本没有对应的货，没有正确的分类可指。
+        // 与其展示 8 个错的产品，不如不展示——错配的实体关联既误导买家，
+        // 也在向 Google 传递品类与产品内容不一致的信号。
+        // 等产品库补进真正的 HDPE SKU 后再把这个区块加回来。
     ],
 };

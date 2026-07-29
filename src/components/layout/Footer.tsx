@@ -56,6 +56,10 @@ export default function Footer() {
                         <ul className="space-y-4 text-sm font-medium">
                             <li><Link href="/about-us" className="text-slate-400 hover:text-white transition-colors">{t("aboutUs")}</Link></li>
                             <li><Link href="/brands" className="text-slate-400 hover:text-white transition-colors">{t("brandMatrix")}</Link></li>
+                            {/* 博客索引页此前在全站服务端 HTML 里一条入链都没有：导航栏那条 /news
+                                在客户端才挂载的下拉菜单里，页脚又没放。而 /news/* 拿着全站 94% 的曝光，
+                                爬虫却只能靠 sitemap 找到它的索引页。页脚是唯一每页都有的服务端入口。 */}
+                            <li><Link href="/news" className="text-slate-400 hover:text-white transition-colors">{t("news")}</Link></li>
                             <li><Link href="/faq" className="text-slate-400 hover:text-white transition-colors">{t("faq")}</Link></li>
                             <li><Link href="/resources" className="text-slate-400 hover:text-white transition-colors">{t("resources")}</Link></li>
                             <li><Link href="/contact" className="text-slate-400 hover:text-white transition-colors">{t("contact")}</Link></li>

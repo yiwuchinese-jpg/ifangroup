@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from 'next-intl/plugin';
+import { LOCALE_PREFIXES, MERGED_ARTICLES } from "./src/lib/mergedArticles";
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
@@ -16,6 +17,19 @@ const nextConfig: NextConfig = {
     return [
       { source: '/wp-json/:path*', destination: '/api/wp-json/:path*' },
     ];
+  },
+  async redirects() {
+    // 自相残杀的文章合并。被合并页的 slug 仍留在 Sanity（正文和五种译文还要用来
+    // 补进保留页），靠这里的 301 + sitemap 侧过滤让它对搜索引擎消失，
+    // 不用改 CMS 数据——回滚只需 revert 一个 commit。
+    // 英文是无前缀 URL，其余五种语言各自带前缀，逐一列出。
+    return MERGED_ARTICLES.flatMap(({ from, to }) =>
+      LOCALE_PREFIXES.map((prefix) => ({
+        source: `${prefix}/news/${from}`,
+        destination: `${prefix}/news/${to}`,
+        permanent: true,
+      }))
+    );
   },
   async headers() {
     // 非内容路由（后台/接口/占位页）统一声明 noindex，防止进搜索索引。

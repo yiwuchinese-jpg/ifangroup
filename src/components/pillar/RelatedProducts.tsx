@@ -11,6 +11,20 @@ type ProductCard = {
 };
 
 /**
+ * 生产设备与模具的排除条件。
+ *
+ * 品类分类里混进了产线设备：uPVC 分类挂着「Electric pipe threading machines」和
+ * 「Manual threading machine」，PEX 分类挂着「PEX Round Tools Mold 1」，PE 分类挂着一堆
+ * 「Pipe clip」。这些出现在「uPVC Products in the IFAN Catalogue」这类标题下面，
+ * 对买家是噪声，对 Google 是品类与产品不一致的信号。
+ *
+ * 在查询层排除而不是逐个改 Sanity 分类：分类归属是导入流程的产物，人工改完下次
+ * 导入还会回来。GROQ 的 match 按词元前缀匹配，已实测四个词能把上述条目全部滤掉。
+ */
+const TOOLING_EXCLUSION = `!(name match "machine*") && !(name match "mold*")
+    && !(name match "tool*") && !(name match "clip*")`;
+
+/**
  * 按 Sanity 的 category->title 取关联产品。
  *
  * 为什么按 title 而不按 slug：路由 slug（hdpe/ppr）和 Sanity slug（pe-series/ppr-series）
@@ -35,7 +49,8 @@ export default async function RelatedProducts({
     let products: ProductCard[] = [];
     try {
         products = await client.fetch<ProductCard[]>(
-            `*[_type == "product" && category->title in $titles && defined(slug.current)][0...$limit]{
+            `*[_type == "product" && category->title in $titles && defined(slug.current)
+                && ${TOOLING_EXCLUSION}][0...$limit]{
                 name,
                 "slug": slug.current,
                 description,

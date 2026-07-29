@@ -3,8 +3,10 @@ import { client } from "@/lib/sanity";
 import { localeUrl, LOCALES } from "@/lib/seo";
 import { toolsData } from "@/lib/data/tools";
 import { REGIONS_DATA } from "@/lib/regionsData";
-import { CATEGORY_SLUGS, PILLAR_SLUGS } from "@/lib/pillar";
+import { CATEGORY_SLUGS } from "@/lib/pillar";
+import { getPillar } from "@/lib/pillar/categoryPillars";
 import { dedupeSignature, isOrphanCategory, pickCanonical } from "@/lib/products/catalog";
+import { MERGED_SLUGS } from "@/lib/mergedArticles";
 
 // Cache the generated sitemap for 1h (ISR) so Googlebot always gets a fast
 // response instead of re-querying every product/news slug from Sanity per fetch.
@@ -39,12 +41,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     );
 
     // 分类页 / 区域方案页 / 工具指南页（slug 来自本地数据源）
-    // 英文支柱页是 money 页，优先级最高；其余英文品类页次之；非英文只有短版页，再次之。
+    // 英文支柱页是 money 页，优先级最高；非英文只有短版页，次之。
+    //
+    // 只列有支柱数据的品类。另外 9 个（pp/pph/pexa/gas-systems/stainless-corrugated/
+    // angle-valves/faucets/stainless-press/brass-fittings）正文只有 i18n 里约 100 词的
+    // hero 文案，已在 categories/[slug]/page.tsx 里 noindex——把 noindex 页留在 sitemap 里
+    // 是自相矛盾的信号。之前它们拿 0.85，比文章的 0.8 还高，优先级设置是倒置的。
+    // 判据与 page.tsx 同源（getPillar），补齐支柱正文后自动重新入图。
     const categoryRoutes: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
-        CATEGORY_SLUGS.map((slug) => ({
+        CATEGORY_SLUGS.filter((slug) => getPillar(slug)).map((slug) => ({
             url: localeUrl(locale, `/categories/${slug}`),
             changeFrequency: "weekly" as const,
-            priority: locale !== "en" ? 0.7 : PILLAR_SLUGS.includes(slug) ? 0.9 : 0.85,
+            priority: locale !== "en" ? 0.7 : 0.9,
         }))
     );
 
@@ -141,8 +149,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const posts: SanityEntry[] = await client.fetch(
             `*[_type == "article" && defined(slug.current) && defined(publishedAt)]{ "slug": slug.current, "updatedAt": _updatedAt }`
         );
+        // 已合并的文章 URL 在 next.config.ts 里 301 到保留页，不能再出现在 sitemap 里
+        const live = posts.filter(({ slug }) => !MERGED_SLUGS.has(slug));
         newsRoutes = LOCALES.flatMap((locale) =>
-            posts.map(({ slug, updatedAt }) => ({
+            live.map(({ slug, updatedAt }) => ({
                 url: localeUrl(locale, `/news/${slug}`),
                 ...(updatedAt ? { lastModified: new Date(updatedAt) } : {}),
                 changeFrequency: "weekly" as const,

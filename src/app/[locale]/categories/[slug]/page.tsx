@@ -50,6 +50,12 @@ export async function generateMetadata({
         // 「| IFAN Group」会超长被截断；短版页仍走 template 以带上品牌。
         title: full ? { absolute: pillar.seo.title } : title,
         description,
+        // 没有支柱数据的 9 个品类（pp/pph/pexa/gas-systems/stainless-corrugated/
+        // angle-valves/faucets/stainless-press/brass-fittings）只有 i18n 里约 100 词的
+        // hero 文案，没有 JSON-LD、没有产品深链，90 天 GSC 零曝光。让它们留在索引里
+        // 只会摊薄整站质量信号并烧掉爬取预算。follow 保留，链接权重仍可流向产品页。
+        // 补齐支柱正文后从这里自动解除——判据是 getPillar() 是否有数据，不用手改名单。
+        ...(pillar ? {} : { robots: { index: false, follow: true } }),
         alternates: localeAlternates(locale, `/categories/${slug}`),
         openGraph: {
             title,
