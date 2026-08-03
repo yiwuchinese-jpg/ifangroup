@@ -11,6 +11,8 @@ import Image from "next/image";
 import ReadingProgress from "@/components/news/ReadingProgress";
 import ArticleTOC from "@/components/news/ArticleTOC";
 import ArticleShare from "@/components/news/ArticleShare";
+import CategoryBridge from "@/components/news/CategoryBridge";
+import { pickCategoryTargets, injectCategoryLinks } from "@/lib/internalLinks";
 import { ReactNode } from "react";
 
 export const revalidate = 3600;
@@ -245,6 +247,17 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
     const view = localizedView(article, resolvedParams.locale);
     const { articleSchema, breadcrumbSchema } = buildArticleSchemas(article, resolvedParams.locale, view.title);
 
+    // 内链层：把文章接到品类支柱页。正文内链承接「读到一半想看货」，收口卡片承接「读完往哪走」。
+    // 只有 htmlContent 路径能注入——Portable Text 走的是结构化节点，不是字符串，这里不碰。
+    const categoryTargets = pickCategoryTargets({
+        title: view.title,
+        category: article.category,
+        html: view.htmlContent,
+    });
+    const articleHtml = view.htmlContent
+        ? injectCategoryLinks(view.htmlContent, resolvedParams.locale, categoryTargets).html
+        : undefined;
+
     return (
         <div className="flex min-h-screen flex-col bg-white">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
@@ -339,7 +352,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                     )}
 
                                     <div className="prose prose-xl prose-slate max-w-none">
-                                        {view.htmlContent ? (
+                                        {articleHtml ? (
                                             // 优先渲染 Evolution 301 写入的原始 HTML 富文本（按 locale 选翻译版）
                                             // 文章页固定白底，强制深色正文，避免系统暗色模式下继承近白色 --foreground 导致白底白字
                                             <div
@@ -347,7 +360,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                                 className="article-html-content text-slate-700"
                                                 style={{ color: "#334155" }}
                                                 dangerouslySetInnerHTML={{
-                                                    __html: view.htmlContent
+                                                    __html: articleHtml
                                                 }}
                                             />
                                         ) : view.body ? (
@@ -359,6 +372,9 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                                             </div>
                                         )}
                                     </div>
+
+                                    {/* 品类桥接：读者读完技术内容后唯一通往 money page 的入口 */}
+                                    <CategoryBridge targets={categoryTargets} locale={resolvedParams.locale} />
 
                                     {/* Author / E-E-A-T box — a visible provenance signal for readers and Google */}
                                     <aside className="mt-16 pt-8 border-t-2 border-slate-200 text-sm text-slate-600 leading-relaxed">
