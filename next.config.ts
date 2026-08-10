@@ -4,6 +4,16 @@ import { LOCALE_PREFIXES, MERGED_ARTICLES } from "./src/lib/mergedArticles";
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
+// 视频托管在 Sanity 媒体库，但对外只暴露自己域名下的 /videos/* 地址：
+// 客户拿到的链接是 www.ifanholding.com，换 CDN 或重传只需改这张表，外链不失效。
+// 文件本身不进仓库（单个 20MB+），Sanity 仍是唯一存放处。
+const HOSTED_VIDEOS: Record<string, string> = {
+  'electrofusion-welding-guide-en.mp4':
+    'https://cdn.sanity.io/files/m2e07kon/production/12f23de82631aae172feab4a97e7443eef5e69b2.mp4',
+  'electrofusion-welding-guide-zh.mp4':
+    'https://cdn.sanity.io/files/m2e07kon/production/1e9e184dbdcd9c4f1239b43522c0aab2db3abbee.mp4',
+};
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -16,6 +26,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       { source: '/wp-json/:path*', destination: '/api/wp-json/:path*' },
+      ...Object.entries(HOSTED_VIDEOS).map(([file, destination]) => ({
+        source: `/videos/${file}`,
+        destination,
+      })),
     ];
   },
   async redirects() {
