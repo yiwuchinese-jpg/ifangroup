@@ -113,7 +113,8 @@
     "cookieSettings": "Paramètres des cookies",
     "faq": "Questions fréquentes",
     "hdpePipes": "Tuyaux HDPE / PE100",
-    "pvcDrainage": "Systèmes d'évacuation uPVC"
+    "pvcDrainage": "Systèmes d'évacuation uPVC",
+    "feedback": "Votre avis"
   },
   "contact": {
     "title": "Contactez-nous",
@@ -315,14 +316,7 @@
     "fr": "Français"
   },
   "brandShowcase": {
-    "ifanTitle1": "Mondial",
-    "ifanTitle2": "Puissance.",
-    "ifanDesc": "L’épine dorsale des réseaux d’eau municipaux et des infrastructures publiques à grande échelle.",
     "exploreCollection": "Découvrir la collection",
-    "ifanPlusTitle1": "Pur",
-    "ifanPlusTitle2": "Élégance.",
-    "ifanPlusDesc": "La gamme de luxe phare pour des exigences résidentielles strictes en matière d’esthétique et de performance.",
-    "discoverMasterpieces": "Découvrez des chefs-d’œuvre",
     "portfolioBadge": "Portefeuille diversifié",
     "portfolioTitle1": "L’écosystème",
     "portfolioTitle2": "de",
@@ -333,7 +327,30 @@
     "proxyTitle2": "Libellés globaux.",
     "ctaTitle": "Développez votre marque avec la méga-usine IFAN.",
     "ctaDesc": "Rejoignez la prestigieuse liste des séries mondiales homologuées pour la fabrication de précision.",
-    "ctaButton": "Demande de partenariat mondial"
+    "ctaButton": "Demande de partenariat mondial",
+    "hubLabel": "La série IFAN",
+    "hub": {
+      "ifan": {
+        "eyebrow": "Gamme complète · En stock",
+        "desc": "Le catalogue de référence — PPR, PEX, PEHD, robinetterie et laiton — tenu en stock pour une expédition rapide dans le monde entier."
+      },
+      "ifanplus": {
+        "eyebrow": "Premium supérieur · Résidentiel",
+        "desc": "La gamme premium phare, conçue pour les exigences esthétiques résidentielles et une longue durée de service."
+      },
+      "ifanultra": {
+        "eyebrow": "Norme européenne · Haut de gamme",
+        "desc": "Systèmes PPR, PEX et PP conformes aux spécifications européennes pour les projets techniques exigeants."
+      },
+      "ifanpro": {
+        "eyebrow": "Optimisé en coût · Grand volume",
+        "desc": "Tubes et vannes PPR, PEX et PP au meilleur rapport qualité-prix pour les programmes de distribution à grand volume."
+      },
+      "ifannova": {
+        "eyebrow": "Premium · Qualité projet",
+        "desc": "Une gamme premium de systèmes de tuyauterie PPR, PEX et PP à la finition soignée, pensée pour les projets."
+      }
+    }
   },
   "factoryScale": {
     "badge": "Échelle et précision",
@@ -1266,5 +1283,66 @@
       "body": "Cette page de catégorie est disponible dans votre langue. Les tableaux de spécifications complets, le détail des normes et la FAQ approvisionnement ne sont pour l'instant publiés qu'en anglais.",
       "link": "Lire en anglais"
     }
+  },
+  "feedback": {
+    "launcher": "Votre avis",
+    "widgetTitle": "Comment nous en sortons-nous ?",
+    "widgetSubtitle": "Qualité, livraison ou service — dites-le nous en 30 secondes.",
+    "close": "Fermer",
+    "openFullPage": "Ouvrir le formulaire complet →",
+    "badge": "Après-vente",
+    "heroTitle": "Dites-nous ce qui",
+    "heroTitleHighlight": "s'est vraiment passé",
+    "heroDesc": "Un tube recalé à l'essai de pression, un conteneur arrivé en retard, un certificat jamais reçu — nous préférons l'apprendre de vous plutôt que d'une commande qui ne revient pas.",
+    "promisesTitle": "Ce qui se passe après l'envoi",
+    "promise1Title": "Réponse sous 48 heures",
+    "promise1Desc": "Chaque message est lu par une personne de l'équipe export, pas par un répondeur automatique. Laissez un e-mail et vous recevrez une réponse écrite.",
+    "promise2Title": "Transmis à l'ingénieur responsable",
+    "promise2Desc": "Les signalements qualité partent vers la ligne qui a produit le lot. Les problèmes de livraison vont au service expédition qui l'a réservée.",
+    "promise3Title": "Suivi jusqu'à la clôture",
+    "promise3Desc": "Chaque signalement porte un statut jusqu'à résolution. Les problèmes récurrents sont revus chaque mois et intégrés à la check-list qualité.",
+    "helpfulTitle": "Ce qui nous aide à résoudre plus vite",
+    "helpful1": "Votre numéro de PI ou de commande, si vous l'avez sous la main.",
+    "helpful2": "Le code ou la dimension du produit — par exemple PPR DN25 PN20.",
+    "helpful3": "Quand cela s'est produit et combien de pièces sont concernées.",
+    "helpful4": "Photos ou rapports d'essai — répondez à notre e-mail de confirmation pour les joindre.",
+    "urgentNote": "Expédition urgente ou délai de réclamation ? Écrivez-nous directement à",
+    "formTitle": "Envoyer votre avis",
+    "formDesc": "Seuls la note et votre message sont obligatoires. Le reste nous aide à retrouver votre dossier.",
+    "ratingLabel": "Expérience globale",
+    "ratingStar": "Noter {count} sur 5",
+    "ratingWord": {
+      "1": "Mauvaise",
+      "2": "En deçà des attentes",
+      "3": "Acceptable",
+      "4": "Bonne",
+      "5": "Excellente"
+    },
+    "topicLabel": "De quoi s'agit-il",
+    "topics": {
+      "product-quality": "Qualité produit",
+      "delivery": "Livraison et emballage",
+      "after-sales": "Service après-vente",
+      "documents": "Documents et certificats",
+      "website": "Expérience du site",
+      "other": "Autre sujet"
+    },
+    "messageLabel": "Votre message",
+    "messagePlaceholder": "Dites-nous ce qui s'est passé — plus c'est précis, plus vite nous pouvons agir.",
+    "nameLabel": "Votre nom",
+    "companyLabel": "Société",
+    "companyPlaceholder": "Nom de votre société",
+    "countryLabel": "Pays",
+    "countryPlaceholder": "ex. : Maroc",
+    "orderLabel": "Numéro de commande / PI",
+    "emailLabel": "E-mail",
+    "emailHint": "Facultatif — mais sans lui, nous ne pouvons pas vous répondre.",
+    "submit": "Envoyer",
+    "submitting": "Envoi en cours...",
+    "successTitle": "Merci — c'est bien reçu",
+    "successMessage": "Votre message est entre les mains de notre équipe. Si vous avez laissé un e-mail, vous recevrez une réponse écrite sous 48 heures.",
+    "errorRating": "Veuillez d'abord choisir une note.",
+    "errorGeneric": "Une erreur est survenue. Réessayez ou écrivez à ifanholding@gmail.com.",
+    "privacyNote": "Nous n'utilisons vos informations que pour traiter votre demande et améliorer nos produits. Nous ne les vendons ni ne les partageons."
   }
 }

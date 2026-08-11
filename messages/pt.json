@@ -113,7 +113,8 @@
     "cookieSettings": "Definições de cookies",
     "faq": "Perguntas frequentes",
     "hdpePipes": "Tubagem HDPE / PE100",
-    "pvcDrainage": "Sistemas de drenagem uPVC"
+    "pvcDrainage": "Sistemas de drenagem uPVC",
+    "feedback": "Feedback"
   },
   "contact": {
     "title": "Entre em Contato",
@@ -315,14 +316,7 @@
     "fr": "Français"
   },
   "brandShowcase": {
-    "ifanTitle1": "Global",
-    "ifanTitle2": "Potência.",
-    "ifanDesc": "A espinha dorsal das redes municipais de abastecimento de água e da infraestrutura pública de grande porte.",
     "exploreCollection": "Explore a coleção",
-    "ifanPlusTitle1": "Puro",
-    "ifanPlusTitle2": "Elegância.",
-    "ifanPlusDesc": "A principal linha de luxo para rigorosos padrões residenciais de estética e desempenho.",
-    "discoverMasterpieces": "Descubra Obras-Primas",
     "portfolioBadge": "Portfólio diversificado",
     "portfolioTitle1": "O Ecossistema",
     "portfolioTitle2": "de",
@@ -333,7 +327,30 @@
     "proxyTitle2": "Rótulos globais.",
     "ctaTitle": "Amplie sua marca com a megafábrica da IFAN.",
     "ctaDesc": "Faça parte da prestigiosa lista de séries globais autorizadas para manufatura de precisão.",
-    "ctaButton": "Consulta para Parceria Global"
+    "ctaButton": "Consulta para Parceria Global",
+    "hubLabel": "A série IFAN",
+    "hub": {
+      "ifan": {
+        "eyebrow": "Linha completa · Pronta entrega",
+        "desc": "O catálogo principal — PPR, PEX, PEAD, válvulas e latão — mantido em estoque para despacho rápido para todo o mundo."
+      },
+      "ifanplus": {
+        "eyebrow": "Premium superior · Residencial",
+        "desc": "A linha premium principal, desenvolvida para exigências estéticas residenciais e longa vida útil."
+      },
+      "ifanultra": {
+        "eyebrow": "Padrão europeu · Alto padrão",
+        "desc": "Sistemas de PPR, PEX e PP fabricados conforme especificação europeia para projetos técnicos exigentes."
+      },
+      "ifanpro": {
+        "eyebrow": "Custo otimizado · Alto volume",
+        "desc": "Tubos e válvulas de PPR, PEX e PP com ótimo custo-benefício para programas de distribuição de grande volume."
+      },
+      "ifannova": {
+        "eyebrow": "Premium · Grau de projeto",
+        "desc": "Uma linha premium de sistemas de tubulação de PPR, PEX e PP com acabamento refinado para projetos."
+      }
+    }
   },
   "factoryScale": {
     "badge": "Escala e Precisão",
@@ -1266,5 +1283,66 @@
       "body": "Esta página de categoria está disponível no seu idioma. As tabelas completas de especificações, o detalhe das normas e as perguntas frequentes sobre fornecimento estão atualmente publicados apenas em inglês.",
       "link": "Ler em inglês"
     }
+  },
+  "feedback": {
+    "launcher": "Feedback",
+    "widgetTitle": "Como estamos indo?",
+    "widgetSubtitle": "Qualidade, entrega ou serviço — conte-nos em 30 segundos.",
+    "close": "Fechar",
+    "openFullPage": "Abrir o formulário completo →",
+    "badge": "Pós-venda",
+    "heroTitle": "Conte-nos o que",
+    "heroTitleHighlight": "realmente aconteceu",
+    "heroDesc": "Um tubo que falhou no teste de pressão, um contêiner que chegou atrasado, um certificado que nunca veio — preferimos saber por você do que por um pedido perdido.",
+    "promisesTitle": "O que acontece depois do envio",
+    "promise1Title": "Resposta em 48 horas",
+    "promise1Desc": "Cada mensagem é lida por uma pessoa da equipe de exportação, não por um robô. Deixe seu e-mail e receberá uma resposta por escrito.",
+    "promise2Title": "Encaminhado ao engenheiro responsável",
+    "promise2Desc": "Relatos de qualidade vão para a linha que produziu o lote. Problemas de entrega vão para o setor de embarque que fez a reserva.",
+    "promise3Title": "Acompanhado até o encerramento",
+    "promise3Desc": "Cada relato tem um status até ser resolvido. Problemas recorrentes são revisados mensalmente e incorporados ao checklist de QC.",
+    "helpfulTitle": "O que nos ajuda a resolver mais rápido",
+    "helpful1": "Seu número de PI ou do pedido, se tiver à mão.",
+    "helpful2": "O código ou a medida do produto — por exemplo PPR DN25 PN20.",
+    "helpful3": "Quando aconteceu e quantas peças foram afetadas.",
+    "helpful4": "Fotos ou laudos de ensaio — responda ao nosso e-mail de confirmação para anexá-los.",
+    "urgentNote": "Embarque urgente ou prazo de reclamação? Escreva direto para",
+    "formTitle": "Envie seu feedback",
+    "formDesc": "Apenas a avaliação e a mensagem são obrigatórias. O resto só nos ajuda a rastrear.",
+    "ratingLabel": "Experiência geral",
+    "ratingStar": "Avaliar {count} de 5",
+    "ratingWord": {
+      "1": "Ruim",
+      "2": "Abaixo do esperado",
+      "3": "Aceitável",
+      "4": "Boa",
+      "5": "Excelente"
+    },
+    "topicLabel": "Sobre o que é",
+    "topics": {
+      "product-quality": "Qualidade do produto",
+      "delivery": "Entrega e embalagem",
+      "after-sales": "Serviço pós-venda",
+      "documents": "Documentos e certificados",
+      "website": "Experiência no site",
+      "other": "Outro assunto"
+    },
+    "messageLabel": "Seu feedback",
+    "messagePlaceholder": "Conte-nos o que aconteceu — quanto mais específico, mais rápido podemos agir.",
+    "nameLabel": "Seu nome",
+    "companyLabel": "Empresa",
+    "companyPlaceholder": "Nome da sua empresa",
+    "countryLabel": "País",
+    "countryPlaceholder": "ex.: Brasil",
+    "orderLabel": "Número do pedido / PI",
+    "emailLabel": "E-mail",
+    "emailHint": "Opcional — mas sem ele não temos como responder.",
+    "submit": "Enviar feedback",
+    "submitting": "Enviando...",
+    "successTitle": "Obrigado — recebemos",
+    "successMessage": "Seu feedback está com a nossa equipe. Se deixou um e-mail, aguarde resposta por escrito em até 48 horas.",
+    "errorRating": "Selecione uma avaliação primeiro.",
+    "errorGeneric": "Algo deu errado. Tente novamente ou escreva para ifanholding@gmail.com.",
+    "privacyNote": "Usamos o que você envia apenas para tratar o seu caso e melhorar nossos produtos. Nunca vendemos nem compartilhamos."
   }
 }

@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import BrandHubAccordion from "./BrandHubAccordion";
 
 export interface ShowcaseBrand {
     _id: string;
@@ -21,8 +22,7 @@ export interface ShowcaseBrand {
 }
 
 interface BrandShowcaseClientProps {
-    flagships: ShowcaseBrand[];
-    subBrands: ShowcaseBrand[];
+    ifanSeries: ShowcaseBrand[];
     proxySeries: Record<string, ShowcaseBrand[]>;
     otherBrands: ShowcaseBrand[];
 }
@@ -51,16 +51,12 @@ const gallerySlides = [
 ];
 
 export default function BrandShowcaseClient({
-    flagships,
-    subBrands,
+    ifanSeries,
     proxySeries,
     otherBrands: _otherBrands,
 }: BrandShowcaseClientProps) {
     const t = useTranslations("brandShowcase");
     const [activeSlide, setActiveSlide] = useState(0);
-
-    const ifan = flagships.find(b => b.name === "IFAN");
-    const ifanPlus = flagships.find(b => b.name === "IFANPlus");
 
     useEffect(() => {
         const timer = window.setInterval(() => {
@@ -81,95 +77,10 @@ export default function BrandShowcaseClient({
     return (
         <section className="bg-white">
 
-            {/* 1. THE CINEMATIC FLAGSHIPS (Now Architectural & Flat) */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-slate-200">
-
-                {/* IFAN: The Infrastructure Power */}
-                {ifan && (
-                    <div className="group flex flex-col justify-between min-h-[400px] md:min-h-[600px] lg:min-h-[800px] bg-slate-50 p-8 md:p-16 lg:p-32 border-b lg:border-b-0 lg:border-r border-slate-200">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                            {ifan.logo?.asset?.url ? (
-                                <img
-                                    src={ifan.logo.asset.url}
-                                    alt="IFAN"
-                                    className="h-[60px] mb-12 lg:mb-24 object-contain object-left select-none mix-blend-multiply"
-                                    draggable={false}
-                                    onContextMenu={(e) => e.preventDefault()}
-                                />
-                            ) : (
-                                <h3 className="text-4xl font-black text-slate-900 mb-12 lg:mb-24 tracking-tighter">IFAN</h3>
-                            )}
-
-                            <div className="space-y-6">
-                                <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-[7.5rem] font-black text-slate-900 tracking-tighter leading-[0.9]">
-                                    {t("ifanTitle1", { defaultMessage: "Global" })}<br /><span className="text-brand-600">{t("ifanTitle2", { defaultMessage: "Power." })}</span>
-                                </h2>
-                                <p className="text-slate-500 text-lg md:text-xl font-light max-w-sm leading-relaxed">
-                                    {t("ifanDesc", { defaultMessage: "The backbone of municipal water grids and large-scale public infrastructure." })}
-                                </p>
-                            </div>
-                        </motion.div>
-
-                        <div className="pt-24 lg:pt-0">
-                            <Link href={`/brands/${ifan.slug}`} className="group/btn inline-flex items-center gap-4 text-brand-600 font-bold tracking-[0.2em] uppercase text-sm">
-                                {t("exploreCollection", { defaultMessage: "Explore Collection" })}
-                                <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
-                            </Link>
-                        </div>
-                    </div>
-                )}
-
-                {/* IFANPLUS: The Aesthetic Pinnacle */}
-                {ifanPlus && (
-                    <div className="group flex flex-col justify-between min-h-[400px] md:min-h-[600px] lg:min-h-[800px] bg-white p-8 md:p-16 lg:p-32">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                            className="flex flex-col h-full"
-                        >
-                            {ifanPlus.logo?.asset?.url ? (
-                                <img
-                                    src={ifanPlus.logo.asset.url}
-                                    alt="IFANPLUS"
-                                    className="h-[60px] mb-12 lg:mb-24 object-contain object-left select-none mix-blend-multiply"
-                                    draggable={false}
-                                    onContextMenu={(e) => e.preventDefault()}
-                                />
-                            ) : (
-                                <h3 className="text-4xl font-black text-slate-900 mb-12 lg:mb-24 tracking-tighter">IFANPLUS</h3>
-                            )}
-
-                            <div className="space-y-6">
-                                <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-[7.5rem] font-black text-slate-900 tracking-tighter leading-[0.9]">
-                                    {t("ifanPlusTitle1", { defaultMessage: "Pure" })}<br /><span className="text-slate-800">{t("ifanPlusTitle2", { defaultMessage: "Elegance." })}</span>
-                                </h2>
-                                <p className="text-slate-500 text-lg md:text-xl font-light max-w-sm leading-relaxed">
-                                    {t("ifanPlusDesc", { defaultMessage: "The flagship luxury tier for strict residential aesthetics and performance." })}
-                                </p>
-                            </div>
-                        </motion.div>
-
-                        <div className="pt-24 lg:pt-0">
-                            <Link href={`/brands/${ifanPlus.slug}`} className="group/btn inline-flex items-center gap-4 text-slate-900 hover:text-brand-600 font-bold tracking-[0.2em] uppercase text-sm transition-colors">
-                                {t("discoverMasterpieces", { defaultMessage: "Discover Masterpieces" })}
-                                <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
-                            </Link>
-                        </div>
-                    </div>
-                )}
-            </div>
-
-            {/* 2. SUB-BRAND PORTFOLIO (Architectural Grid Style) */}
-            <div className="py-32 lg:py-48 bg-white border-b border-slate-200">
+            {/* 1. IFAN SERIES — 五栏 hover 展开：logo 芯片在栏间连续位移，不做交叉淡入 */}
+            <div className="bg-white pt-28 lg:pt-40 border-b border-slate-200">
                 <div className="container mx-auto px-6">
-                    <header className="max-w-4xl mb-32">
+                    <header className="max-w-4xl mb-20 lg:mb-28">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -177,48 +88,17 @@ export default function BrandShowcaseClient({
                             transition={{ duration: 0.8 }}
                         >
                             <span className="text-slate-400 font-bold tracking-[0.3em] uppercase text-xs mb-8 block">{t("portfolioBadge", { defaultMessage: "Diversified Portfolio" })}</span>
-                            <h3 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-tight mb-8">
+                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-tight mb-8">
                                 {t("portfolioTitle1", { defaultMessage: "The Ecosystem" })} <br className="hidden md:block" /> {t("portfolioTitle2", { defaultMessage: "of" })} <span className="text-brand-600">{t("portfolioTitle3", { defaultMessage: "Specialization." })}</span>
-                            </h3>
+                            </h2>
                             <p className="text-xl text-slate-500 font-light max-w-2xl leading-relaxed">
                                 {t("portfolioDesc", { defaultMessage: "A highly calibrated network of brands, each leading a specific regional or technological segment of the global fluid control market." })}
                             </p>
                         </motion.div>
                     </header>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-slate-200">
-                        {subBrands.map((b, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: i * 0.1 }}
-                                className="group relative bg-white border-r border-b border-slate-200 p-12 flex flex-col h-[320px] hover:bg-slate-50 transition-colors duration-500"
-                            >
-                                <div className="flex-grow flex flex-col items-start justify-center mb-8">
-                                    {b.logo?.asset?.url ? (
-                                        <img
-                                            src={b.logo.asset.url}
-                                            alt={b.name}
-                                            className="max-h-[80px] max-w-[200px] object-contain object-left grayscale group-hover:grayscale-0 transition-all duration-500 select-none mix-blend-multiply"
-                                            draggable={false}
-                                        />
-                                    ) : (
-                                        <div className="text-3xl font-black text-slate-300 group-hover:text-slate-900 transition-colors uppercase tracking-tighter">{b.name}</div>
-                                    )}
-                                </div>
-
-                                <div className="mt-auto">
-                                    <Link href={`/brands/${b.slug}`} className="flex items-center gap-4 group/link text-slate-400 hover:text-brand-600 transition-colors">
-                                        <span className="text-xs font-bold tracking-[0.2em] uppercase">{t("viewSpecs", { defaultMessage: "View Specifications" })}</span>
-                                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-2 transition-transform duration-300" />
-                                    </Link>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
                 </div>
+
+                <BrandHubAccordion brands={ifanSeries} />
             </div>
 
             <div className="border-b border-slate-200 bg-white py-24 lg:py-32">

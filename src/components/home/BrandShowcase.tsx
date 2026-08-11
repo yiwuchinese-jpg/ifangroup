@@ -5,14 +5,8 @@ import BrandShowcaseClient, { type ShowcaseBrand } from "./BrandShowcaseClient";
 export default async function BrandShowcase() {
  const allBrands: ShowcaseBrand[] = await client.fetch(allBrandsQuery);
 
- // Split into Flagships, Sub-brands, and Proxy series
- const flagships = allBrands.filter((b) =>
- b.name === "IFAN" || b.name === "IFANPlus"
- );
-
- const subBrands = allBrands.filter((b) =>
- b.series === "Ifan系列" && b.name !== "IFAN" && b.name !== "IFANPlus"
- );
+ // IFAN 自有系列走五栏 hover 展开模块；代理系列仍按国家分组展示。
+ const ifanSeries = allBrands.filter((b) => b.series === "Ifan系列");
 
  const proxySeries: Record<string, ShowcaseBrand[]> = {};
  allBrands.forEach((b) => {
@@ -26,8 +20,7 @@ export default async function BrandShowcase() {
 
  return (
  <BrandShowcaseClient
- flagships={flagships}
- subBrands={subBrands}
+ ifanSeries={ifanSeries}
  proxySeries={proxySeries}
  otherBrands={otherBrands}
  />

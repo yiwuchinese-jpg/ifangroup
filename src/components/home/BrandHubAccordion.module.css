@@ -1,0 +1,484 @@
+/* 五栏品牌 hover 展开模块。
+   默认五栏等宽并显示全部文案；hover 时当前栏展开、其余栏收窄，
+   同一个 logo 芯片连续位移到窄栏正中，不做交叉淡入淡出。
+   所有位移由 CSS transition 驱动，JS 只负责记录当前栏和实测栏高。 */
+
+.hub {
+    --chip-w: 128px;
+    --chip-h: 68px;
+    --chip-w-half: 64px;
+    --chip-h-half: 34px;
+    --side-pad: clamp(18px, 2vw, 42px);
+    --bottom-pad: clamp(72px, 9vh, 112px);
+    /* 栏高由 JS 用 ResizeObserver 实测写入；SSR 首帧回退到 100svh */
+    --panel-h: 100svh;
+
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    min-height: 720px;
+    overflow: hidden;
+    isolation: isolate;
+    background: #080b0a;
+    color: #fff;
+}
+
+.hub *,
+.hub *::before,
+.hub *::after {
+    box-sizing: border-box;
+}
+
+/* 顶部系列标签 */
+.seriesLabel {
+    position: absolute;
+    z-index: 30;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+}
+
+.grid {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+}
+
+.panel {
+    --accent: #ffffff;
+    --tint: rgba(0, 0, 0, 0.38);
+
+    position: relative;
+    display: flex;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: inherit;
+    overflow: hidden;
+    isolation: isolate;
+    color: inherit;
+    text-decoration: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+    transition:
+        flex-grow 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.9s ease;
+    will-change: flex-grow;
+}
+
+.panel:last-child {
+    border-right: 0;
+}
+
+/* 背景图：略微放大留出 hover 推进的余量 */
+.panel::before {
+    content: "";
+    position: absolute;
+    z-index: -3;
+    inset: -3%;
+    background-image: var(--panel-image);
+    background-position: center;
+    background-size: cover;
+    transform: scale(1.04);
+    transition: transform 1.55s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+/* 压暗 + 品牌色蒙层，保证白字可读 */
+.panel::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    background:
+        linear-gradient(180deg,
+            rgba(3, 5, 5, 0.14) 0%,
+            rgba(3, 5, 5, 0.32) 40%,
+            rgba(3, 5, 5, 0.94) 100%),
+        linear-gradient(90deg, var(--tint) 0%, rgba(0, 0, 0, 0.08) 100%);
+    transition: opacity 0.85s ease;
+}
+
+.shade {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.08), transparent 42%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.09), transparent 48%, rgba(0, 0, 0, 0.18));
+    pointer-events: none;
+}
+
+.inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: inherit;
+    padding: 82px var(--side-pad) var(--bottom-pad);
+    transition:
+        padding-left 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        padding-right 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* logo 芯片：收窄时靠 inset-inline-start + translateY 连续移到窄栏正中 */
+.chip {
+    position: relative;
+    inset-inline-start: 0;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: var(--chip-w);
+    height: var(--chip-h);
+    margin-bottom: 22px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.94);
+    color: #111;
+    font-size: 17px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.25);
+    transform: translateY(0) scale(1);
+    transition:
+        inset-inline-start 1.12s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.22s cubic-bezier(0.16, 1, 0.3, 1),
+        margin-bottom 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.95s ease;
+    will-change: inset-inline-start, transform;
+}
+
+.chipLogo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    user-select: none;
+}
+
+/* 芯片下方的品牌色小横条 */
+.chip::after {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    inset-inline-start: 0;
+    width: 34px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.eyebrow {
+    max-height: 28px;
+    margin: 0 0 10px;
+    overflow: hidden;
+    color: var(--accent);
+    font-size: 11px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        max-height 0.78s ease,
+        margin 0.78s ease,
+        opacity 0.58s ease,
+        transform 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.title {
+    max-width: 360px;
+    max-height: 92px;
+    margin: 0;
+    overflow: hidden;
+    color: #fff;
+    font-size: clamp(24px, 1.7vw, 32px);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        max-height 0.82s ease,
+        margin 0.82s ease,
+        opacity 0.62s ease,
+        transform 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+        font-size 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.description {
+    display: -webkit-box;
+    max-width: 390px;
+    max-height: 74px;
+    margin: 14px 0 0;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.65;
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    transition:
+        max-height 0.88s ease,
+        margin 0.88s ease,
+        opacity 0.62s ease,
+        transform 0.88s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    max-height: 24px;
+    margin-top: 22px;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        max-height 0.78s ease,
+        margin 0.78s ease,
+        opacity 0.56s ease,
+        transform 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.55s ease,
+        gap 0.55s ease;
+}
+
+.more svg {
+    width: 15px;
+    height: 15px;
+    transition: transform 0.55s ease;
+}
+
+/* =========================================================
+   桌面端：默认五栏等宽 / hover 时一栏展开、其余收窄
+   ========================================================= */
+@media (min-width: 1025px) {
+    .grid.hasActive .panel {
+        flex-grow: 0.8;
+        filter: brightness(0.58) saturate(0.72);
+    }
+
+    .grid.hasActive .panel.active {
+        flex-grow: 3.2;
+        filter: brightness(1) saturate(1.08);
+    }
+
+    /* 未选中栏：文字收起，芯片移到窄栏正中。
+       缩放到 0.75 是为了 1025px 断点附近留出余量——那里窄栏只有约 127px 宽。 */
+    .grid.hasActive .panel:not(.active) .inner {
+        --side-pad: 10px;
+    }
+
+    .grid.hasActive .panel:not(.active) .chip {
+        inset-inline-start: calc(50% - var(--chip-w-half));
+        margin-bottom: 0;
+        transform:
+            translateY(calc(var(--bottom-pad) + var(--chip-h-half) - var(--panel-h) / 2))
+            scale(0.75);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.3);
+        transition-delay: 0s, 0.08s, 0s, 0s;
+    }
+
+    .grid.hasActive .panel:not(.active) .eyebrow,
+    .grid.hasActive .panel:not(.active) .title,
+    .grid.hasActive .panel:not(.active) .description,
+    .grid.hasActive .panel:not(.active) .more {
+        max-height: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        opacity: 0;
+        transform: translateY(12px);
+        pointer-events: none;
+        transition-delay: 0s;
+    }
+
+    /* 当前栏：展开并放大文案 */
+    .panel.active::before {
+        transform: scale(1.11);
+    }
+
+    .panel.active::after {
+        opacity: 0.84;
+    }
+
+    .panel.active .inner {
+        --side-pad: clamp(38px, 4.6vw, 88px);
+    }
+
+    .panel.active .chip {
+        inset-inline-start: 0;
+        margin-bottom: 32px;
+        transform: translateY(-9px) scale(1.04);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.34);
+        transition-delay: 0s;
+    }
+
+    .panel.active .chip::after {
+        opacity: 1;
+        transition-delay: 0.3s;
+    }
+
+    .panel.active .eyebrow {
+        max-height: 28px;
+        margin-bottom: 10px;
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.18s;
+    }
+
+    .panel.active .title {
+        max-height: 150px;
+        font-size: clamp(38px, 3.6vw, 62px);
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.14s;
+    }
+
+    .panel.active .description {
+        max-height: 96px;
+        margin-top: 16px;
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-line-clamp: 4;
+        transition-delay: 0.2s;
+    }
+
+    .panel.active .more {
+        max-height: 24px;
+        margin-top: 22px;
+        gap: 16px;
+        color: #fff;
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.24s;
+    }
+
+    .panel.active .more svg {
+        transform: translateX(4px);
+    }
+}
+
+/* =========================================================
+   平板：两列，最后一栏整行
+   ========================================================= */
+@media (max-width: 1024px) {
+    .hub {
+        height: auto;
+        min-height: 100svh;
+        overflow: visible;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        min-height: 100svh;
+    }
+
+    .panel {
+        min-height: 520px;
+        border-right: 1px solid rgba(255, 255, 255, 0.16);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .panel:nth-child(2n) {
+        border-right: 0;
+    }
+
+    .panel:last-child {
+        grid-column: 1 / -1;
+        border-right: 0;
+    }
+
+    .inner {
+        min-height: 520px;
+        padding: 82px 34px 78px;
+    }
+
+    .description {
+        max-height: none;
+        margin-top: 14px;
+        -webkit-line-clamp: unset;
+    }
+}
+
+/* =========================================================
+   手机：单列
+   ========================================================= */
+@media (max-width: 640px) {
+    .seriesLabel {
+        max-width: 60vw;
+        overflow: hidden;
+        font-size: 9px;
+        letter-spacing: 0.15em;
+        text-overflow: ellipsis;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel,
+    .panel:nth-child(2n),
+    .panel:last-child {
+        grid-column: auto;
+        min-height: 470px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .inner {
+        min-height: 470px;
+        padding: 74px 24px 76px;
+    }
+
+    .title {
+        max-width: 320px;
+        font-size: clamp(30px, 9vw, 44px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .panel,
+    .panel::before,
+    .panel::after,
+    .inner,
+    .chip,
+    .eyebrow,
+    .title,
+    .description,
+    .more,
+    .more svg {
+        transition: none !important;
+    }
+}

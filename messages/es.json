@@ -113,7 +113,8 @@
     "cookieSettings": "Configuración de cookies",
     "faq": "Preguntas frecuentes",
     "hdpePipes": "Tubería HDPE / PE100",
-    "pvcDrainage": "Sistemas de drenaje uPVC"
+    "pvcDrainage": "Sistemas de drenaje uPVC",
+    "feedback": "Opiniones"
   },
   "contact": {
     "title": "Contáctenos",
@@ -315,14 +316,7 @@
     "fr": "Français"
   },
   "brandShowcase": {
-    "ifanTitle1": "Global",
-    "ifanTitle2": "Potencia.",
-    "ifanDesc": "La columna vertebral de las redes municipales de agua y de la infraestructura pública a gran escala.",
     "exploreCollection": "Explorar colección",
-    "ifanPlusTitle1": "Puro",
-    "ifanPlusTitle2": "Elegancia.",
-    "ifanPlusDesc": "La gama de lujo insignia para exigentes requisitos de estética y rendimiento residenciales.",
-    "discoverMasterpieces": "Descubra obras maestras",
     "portfolioBadge": "Portafolio diversificado",
     "portfolioTitle1": "El ecosistema",
     "portfolioTitle2": "de",
@@ -333,7 +327,30 @@
     "proxyTitle2": "Etiquetas globales.",
     "ctaTitle": "Impulse su marca con la megafábrica de IFAN.",
     "ctaDesc": "Únase a la prestigiosa lista de series globales autorizadas para la fabricación de precisión.",
-    "ctaButton": "Consulta de alianza global"
+    "ctaButton": "Consulta de alianza global",
+    "hubLabel": "La serie IFAN",
+    "hub": {
+      "ifan": {
+        "eyebrow": "Gama completa · Stock disponible",
+        "desc": "El catálogo principal —PPR, PEX, HDPE, válvulas y latón— con stock permanente para envíos rápidos a todo el mundo."
+      },
+      "ifanplus": {
+        "eyebrow": "Prémium superior · Residencial",
+        "desc": "La gama prémium insignia, diseñada para exigencias estéticas residenciales y una larga vida útil."
+      },
+      "ifanultra": {
+        "eyebrow": "Norma europea · Gama alta",
+        "desc": "Sistemas de PPR, PEX y PP fabricados según especificación europea para proyectos técnicos exigentes."
+      },
+      "ifanpro": {
+        "eyebrow": "Optimizado en costes · Alto volumen",
+        "desc": "Tubos y válvulas de PPR, PEX y PP con excelente relación calidad-precio para programas de distribución de gran volumen."
+      },
+      "ifannova": {
+        "eyebrow": "Prémium · Grado proyecto",
+        "desc": "Una línea prémium de sistemas de tubería de PPR, PEX y PP con un acabado refinado para proyectos."
+      }
+    }
   },
   "factoryScale": {
     "badge": "Escala y precisión",
@@ -1266,5 +1283,66 @@
       "body": "Esta página de categoría está disponible en su idioma. Las tablas de especificaciones completas, el desglose de normas y las preguntas frecuentes de abastecimiento se publican actualmente solo en inglés.",
       "link": "Leer en inglés"
     }
+  },
+  "feedback": {
+    "launcher": "Opinión",
+    "widgetTitle": "¿Cómo lo estamos haciendo?",
+    "widgetSubtitle": "Calidad, entrega o servicio: cuéntenoslo en 30 segundos.",
+    "close": "Cerrar",
+    "openFullPage": "Abrir el formulario completo →",
+    "badge": "Posventa",
+    "heroTitle": "Cuéntenos qué",
+    "heroTitleHighlight": "pasó realmente",
+    "heroDesc": "Un tubo que falló la prueba de presión, un contenedor que llegó tarde, un certificado que nunca llegó: preferimos saberlo por usted que por un pedido perdido.",
+    "promisesTitle": "Qué pasa después de enviarlo",
+    "promise1Title": "Respuesta en 48 horas",
+    "promise1Desc": "Cada mensaje lo lee una persona del equipo de exportación, no un autorespondedor. Deje su correo y recibirá una respuesta escrita.",
+    "promise2Title": "Enviado al ingeniero responsable",
+    "promise2Desc": "Los reportes de calidad van a la línea que fabricó el lote. Los problemas de entrega, al departamento de envíos que lo reservó.",
+    "promise3Title": "Seguimiento hasta el cierre",
+    "promise3Desc": "Cada reporte lleva un estado hasta resolverse. Los problemas recurrentes se revisan cada mes y se incorporan a la lista de control de calidad.",
+    "helpfulTitle": "Lo que nos ayuda a resolverlo antes",
+    "helpful1": "Su número de PI o de pedido, si lo tiene a mano.",
+    "helpful2": "El código o la medida del producto, por ejemplo PPR DN25 PN20.",
+    "helpful3": "Cuándo ocurrió y cuántas piezas están afectadas.",
+    "helpful4": "Fotos o informes de ensayo: respóndanos al correo de confirmación para adjuntarlos.",
+    "urgentNote": "¿Envío urgente o plazo de reclamación? Escríbanos directamente a",
+    "formTitle": "Envíe su opinión",
+    "formDesc": "Solo la valoración y su mensaje son obligatorios. Lo demás nos ayuda a rastrearlo.",
+    "ratingLabel": "Experiencia general",
+    "ratingStar": "Valorar {count} de 5",
+    "ratingWord": {
+      "1": "Mala",
+      "2": "Por debajo de lo esperado",
+      "3": "Aceptable",
+      "4": "Buena",
+      "5": "Excelente"
+    },
+    "topicLabel": "¿De qué se trata?",
+    "topics": {
+      "product-quality": "Calidad del producto",
+      "delivery": "Entrega y embalaje",
+      "after-sales": "Servicio posventa",
+      "documents": "Documentos y certificados",
+      "website": "Experiencia en el sitio web",
+      "other": "Otro tema"
+    },
+    "messageLabel": "Su comentario",
+    "messagePlaceholder": "Cuéntenos qué pasó: cuanto más concreto, más rápido podremos actuar.",
+    "nameLabel": "Su nombre",
+    "companyLabel": "Empresa",
+    "companyPlaceholder": "Nombre de su empresa",
+    "countryLabel": "País",
+    "countryPlaceholder": "p. ej. México",
+    "orderLabel": "Número de pedido / PI",
+    "emailLabel": "Correo electrónico",
+    "emailHint": "Opcional, pero sin él no podremos responderle.",
+    "submit": "Enviar comentario",
+    "submitting": "Enviando...",
+    "successTitle": "Gracias, ya lo tenemos",
+    "successMessage": "Su comentario está con nuestro equipo. Si dejó un correo, recibirá respuesta por escrito en 48 horas.",
+    "errorRating": "Seleccione primero una valoración.",
+    "errorGeneric": "Algo salió mal. Inténtelo de nuevo o escriba a ifanholding@gmail.com.",
+    "privacyNote": "Usamos lo que nos envía solo para gestionar su caso y mejorar nuestros productos. Nunca lo vendemos ni lo compartimos."
   }
 }

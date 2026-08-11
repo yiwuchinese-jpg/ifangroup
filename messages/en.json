@@ -108,17 +108,11 @@
     "faq": "Sourcing FAQ",
     "hdpePipes": "HDPE / PE100 Pipe",
     "pvcDrainage": "uPVC Drainage Systems",
-    "news": "Technical Guides"
+    "news": "Technical Guides",
+    "feedback": "Feedback"
   },
   "brandShowcase": {
-    "ifanTitle1": "Global",
-    "ifanTitle2": "Power.",
-    "ifanDesc": "The backbone of municipal water grids and large-scale public infrastructure.",
     "exploreCollection": "Explore Collection",
-    "ifanPlusTitle1": "Pure",
-    "ifanPlusTitle2": "Elegance.",
-    "ifanPlusDesc": "The flagship luxury tier for strict residential aesthetics and performance.",
-    "discoverMasterpieces": "Discover Masterpieces",
     "portfolioBadge": "Diversified Portfolio",
     "portfolioTitle1": "The Ecosystem",
     "portfolioTitle2": "of",
@@ -129,7 +123,30 @@
     "proxyTitle2": "Global Labels.",
     "ctaTitle": "Scale Your Brand with the IFAN Mega-Factory.",
     "ctaDesc": "Join the prestigious list of global series authorized for precision manufacturing.",
-    "ctaButton": "Global Partnership Inquiry"
+    "ctaButton": "Global Partnership Inquiry",
+    "hubLabel": "The IFAN Series",
+    "hub": {
+      "ifan": {
+        "eyebrow": "Full Range · Stocked & Ready",
+        "desc": "The core catalogue — PPR, PEX, HDPE, valves and brass — held in stock for fast global dispatch."
+      },
+      "ifanplus": {
+        "eyebrow": "Top-Tier Premium · Residential",
+        "desc": "The flagship premium tier, engineered for strict residential aesthetics and long-service performance."
+      },
+      "ifanultra": {
+        "eyebrow": "European Standard · Top Tier",
+        "desc": "PPR, PEX and PP systems built to European specification for demanding technical projects."
+      },
+      "ifanpro": {
+        "eyebrow": "Value Engineered · High Output",
+        "desc": "Cost-efficient PPR, PEX and PP pipes and valves for high-volume distribution programmes."
+      },
+      "ifannova": {
+        "eyebrow": "High-End Premium · Project Grade",
+        "desc": "A premium project-grade line of PPR, PEX and PP piping systems with a refined finish."
+      }
+    }
   },
   "factoryScale": {
     "badge": "Scale & Precision",
@@ -1223,5 +1240,66 @@
       "body": "This category page is available in your language. The complete specification tables, standards breakdown and sourcing FAQ are currently published in English only.",
       "link": "Read in English"
     }
+  },
+  "feedback": {
+    "launcher": "Feedback",
+    "widgetTitle": "How are we doing?",
+    "widgetSubtitle": "Quality, delivery or service — tell us in 30 seconds.",
+    "close": "Close",
+    "openFullPage": "Open the full feedback form →",
+    "badge": "After-Sales",
+    "heroTitle": "Tell us what",
+    "heroTitleHighlight": "actually happened",
+    "heroDesc": "A pipe that failed pressure test, a container that arrived late, a certificate that never came — we would rather hear it from you than from a lost re-order.",
+    "promisesTitle": "What happens after you send this",
+    "promise1Title": "Answered within 48 hours",
+    "promise1Desc": "Every submission is read by a person on the export team, not an auto-responder. Leave an email and you get a written reply.",
+    "promise2Title": "Routed to the responsible engineer",
+    "promise2Desc": "Quality reports go to the production line that made the batch. Delivery issues go to the shipping desk that booked it.",
+    "promise3Title": "Tracked until it is closed",
+    "promise3Desc": "Each report carries a status until resolved. Recurring issues are reviewed monthly and fed back into the QC checklist.",
+    "helpfulTitle": "What helps us fix it faster",
+    "helpful1": "Your PI or order number, if you have one at hand.",
+    "helpful2": "The product code or size — for example PPR DN25 PN20.",
+    "helpful3": "When it happened, and how many pieces are affected.",
+    "helpful4": "Photos or test reports — reply to our confirmation email to attach them.",
+    "urgentNote": "Urgent shipment or claim deadline? Write to us directly at",
+    "formTitle": "Send your feedback",
+    "formDesc": "Only the rating and your message are required. Everything else just helps us trace it.",
+    "ratingLabel": "Overall experience",
+    "ratingStar": "Rate {count} out of 5",
+    "ratingWord": {
+      "1": "Poor",
+      "2": "Below expectations",
+      "3": "Acceptable",
+      "4": "Good",
+      "5": "Excellent"
+    },
+    "topicLabel": "What is this about",
+    "topics": {
+      "product-quality": "Product quality",
+      "delivery": "Delivery & packaging",
+      "after-sales": "After-sales service",
+      "documents": "Documents & certificates",
+      "website": "Website experience",
+      "other": "Something else"
+    },
+    "messageLabel": "Your feedback",
+    "messagePlaceholder": "Tell us what happened — the more specific, the faster we can act on it.",
+    "nameLabel": "Your name",
+    "companyLabel": "Company",
+    "companyPlaceholder": "Your company name",
+    "countryLabel": "Country",
+    "countryPlaceholder": "e.g. Mexico",
+    "orderLabel": "Order / PI number",
+    "emailLabel": "Email",
+    "emailHint": "Optional — but without it we have no way to reply to you.",
+    "submit": "Send feedback",
+    "submitting": "Sending...",
+    "successTitle": "Thank you — we have it",
+    "successMessage": "Your feedback is with our team. If you left an email, expect a written reply within 48 hours.",
+    "errorRating": "Please select a rating first.",
+    "errorGeneric": "Something went wrong. Please try again, or email ifanholding@gmail.com.",
+    "privacyNote": "We use what you send only to handle your case and improve our products. We never sell or share it."
   }
 }
