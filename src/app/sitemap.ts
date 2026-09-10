@@ -146,18 +146,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 动态新闻页：文章带多语言翻译，按六语言列出
     let newsRoutes: MetadataRoute.Sitemap = [];
     try {
-        const posts: SanityEntry[] = await client.fetch(
-            `*[_type == "article" && defined(slug.current) && defined(publishedAt)]{ "slug": slug.current, "updatedAt": _updatedAt }`
+        // 2026-09-10：只列「确实有译文」的语言版本。没译文的 locale 页面回落英文正文，
+        // 已在 news/[slug]/page.tsx 里 noindex + canonical 指回英文，不能再进 sitemap。
+        type NewsEntry = SanityEntry & { translated?: Partial<Record<string, boolean>> };
+        const posts: NewsEntry[] = await client.fetch(
+            `*[_type == "article" && defined(slug.current) && defined(publishedAt)]{
+                "slug": slug.current,
+                "updatedAt": _updatedAt,
+                "translated": {
+                    "es": defined(translations.es.htmlContent) || defined(translations.es.body),
+                    "pt": defined(translations.pt.htmlContent) || defined(translations.pt.body),
+                    "ru": defined(translations.ru.htmlContent) || defined(translations.ru.body),
+                    "ar": defined(translations.ar.htmlContent) || defined(translations.ar.body),
+                    "fr": defined(translations.fr.htmlContent) || defined(translations.fr.body)
+                }
+            }`
         );
         // 已合并的文章 URL 在 next.config.ts 里 301 到保留页，不能再出现在 sitemap 里
         const live = posts.filter(({ slug }) => !MERGED_SLUGS.has(slug));
         newsRoutes = LOCALES.flatMap((locale) =>
-            live.map(({ slug, updatedAt }) => ({
-                url: localeUrl(locale, `/news/${slug}`),
-                ...(updatedAt ? { lastModified: new Date(updatedAt) } : {}),
-                changeFrequency: "weekly" as const,
-                priority: 0.8,
-            }))
+            live
+                .filter(({ translated }) => locale === "en" || translated?.[locale] === true)
+                .map(({ slug, updatedAt }) => ({
+                    url: localeUrl(locale, `/news/${slug}`),
+                    ...(updatedAt ? { lastModified: new Date(updatedAt) } : {}),
+                    changeFrequency: "weekly" as const,
+                    priority: 0.8,
+                }))
         );
     } catch (error) {
         console.error("[sitemap] Failed to fetch news:", error);

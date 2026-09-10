@@ -37,6 +37,13 @@ function localizedView(article: { title: string; htmlContent?: string; excerpt?:
     };
 }
 
+// A locale counts as translated only when it has its own body; a title-only translation
+// still renders the English article and must not be indexed as a separate page.
+function hasTranslation(article: { translations?: Partial<Record<Locale, ArticleTranslation>> }, locale: string): boolean {
+    const t = article.translations?.[locale as Locale];
+    return Boolean(t && (t.htmlContent || t.body));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
     const resolvedParams = await params;
     const article = await client.fetch(articleBySlugQuery, { slug: resolvedParams.slug });
@@ -45,9 +52,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const view = localizedView(article, resolvedParams.locale);
     const slug = resolvedParams.slug;
-    // hreflang cluster: one entry per locale + x-default → English (unprefixed URL).
+    // 2026-09-10：hreflang 只登记「确实有译文」的语言。没译文的语言会回落英文正文，
+    // 之前照样自指 canonical + index + 进 hreflang/sitemap，等于把同一篇英文文章以
+    // 5 个 URL 推给 Google（实测 9 月 9 篇未翻译文章 = 45 个英文克隆 URL），GSC 里
+    // 21/22 条「Google 选择了不同的规范网址」全来自这里。没译文的 locale：canonical 指回
+    // 英文、noindex,follow、不进 hreflang。译文补上后自动恢复。
+    const availableLocales = LOCALES.filter((l) => l === "en" || hasTranslation(article, l));
+    const localeHasContent = availableLocales.includes(resolvedParams.locale as Locale);
     const languages: Record<string, string> = Object.fromEntries(
-        LOCALES.map((l) => [l, localeUrl(l, `/news/${slug}`)])
+        availableLocales.map((l) => [l, localeUrl(l, `/news/${slug}`)])
     );
     languages["x-default"] = localeUrl("en", `/news/${slug}`);
 
@@ -62,7 +75,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const metaDescription = resolvedParams.locale === "en"
         ? (article.seoDescription || view.description || genericDescription)
         : (view.description || article.seoDescription || genericDescription);
-    const canonical = localeUrl(resolvedParams.locale, `/news/${slug}`);
+    const canonical = localeHasContent
+        ? localeUrl(resolvedParams.locale, `/news/${slug}`)
+        : localeUrl("en", `/news/${slug}`);
     const ogImageUrl: string | undefined = article.mainImage?.asset?.url;
 
     return {
@@ -74,6 +89,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             canonical,
             languages,
         },
+        ...(localeHasContent ? {} : { robots: { index: false, follow: true } }),
         openGraph: {
             type: "article",
             url: canonical,
