@@ -55,6 +55,9 @@ export default function Footer() {
                         </h4>
                         <ul className="space-y-4 text-sm font-medium">
                             <li><Link href="/about-us" className="text-slate-400 hover:text-white transition-colors">{t("aboutUs")}</Link></li>
+                            {/* 官方网站声明页。至少 8 个站点声称属于同一个法人主体，
+                                这页要让爬虫从任何一页都能一步走到，所以放页脚而不只放导航。 */}
+                            <li><Link href="/official-website" className="text-slate-400 hover:text-white transition-colors">{t("officialWebsite")}</Link></li>
                             <li><Link href="/brands" className="text-slate-400 hover:text-white transition-colors">{t("brandMatrix")}</Link></li>
                             {/* 博客索引页此前在全站服务端 HTML 里一条入链都没有：导航栏那条 /news
                                 在客户端才挂载的下拉菜单里，页脚又没放。而 /news/* 拿着全站 94% 的曝光，

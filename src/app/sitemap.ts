@@ -20,6 +20,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const staticPages = [
         { path: "", priority: 1.0, changeFrequency: "weekly" as const },
         { path: "/about-us", priority: 0.9, changeFrequency: "monthly" as const },
+        // 官方网站声明页：优先级对齐 about-us。这页要抢的是「ifan official website」
+        // 这类品牌查询——目前谷歌和 AI 在这类词上返回的是 ifanpiping.com。
+        { path: "/official-website", priority: 0.9, changeFrequency: "monthly" as const },
         { path: "/products", priority: 0.95, changeFrequency: "weekly" as const },
         { path: "/brands", priority: 0.8, changeFrequency: "monthly" as const },
         { path: "/contact", priority: 0.85, changeFrequency: "monthly" as const },

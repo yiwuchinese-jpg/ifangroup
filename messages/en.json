@@ -109,7 +109,8 @@
     "hdpePipes": "HDPE / PE100 Pipe",
     "pvcDrainage": "uPVC Drainage Systems",
     "news": "Technical Guides",
-    "feedback": "Feedback"
+    "feedback": "Feedback",
+    "officialWebsite": "Official Website Statement"
   },
   "brandShowcase": {
     "exploreCollection": "Explore Collection",
@@ -564,6 +565,11 @@
       "title": "From a Zhejiang Valve Workshop to a Global Plumbing Group",
       "para1": "IFAN Group has manufactured fluid-control products since 1993, when it began as a valve and hardware workshop in Zhuji, Zhejiang. Three decades on, it operates as an integrated manufacturing group spanning roughly 120,000 m² of smart production across three brands — IFAN, IFANPLUS and IFANPRO — that together cover more than 10,000 plumbing SKUs. From PPR, PVC and HDPE pipe to PEX systems, fittings and lead-free brass valves, the full range is engineered, molded and tested in-house rather than assembled from outside suppliers.",
       "para2": "That vertical control is what lets IFAN sell factory-direct to importers, distributors and project buyers in more than 120 countries, strictly on a B2B wholesale basis. Every production batch passes through a CNAS-accredited national laboratory for hydrostatic, thermal and impact testing, and the products carry CE, ISO 9001, ISO 14001, WRAS and SKZ approvals for potable-water and gas use. For buyers that means consistent quality they can certify at customs, one supplier for an entire plumbing system, and a factory they are always welcome to audit."
+    },
+    "officialNotice": {
+      "title": "One group, one official website",
+      "desc": "www.ifanholding.com is the official corporate website of IFAN Group (Zhuji Fengfan Piping Co., Ltd.) and the domain printed on IFAN product packaging. Other IFAN-branded domains are operated independently by individual sales representatives and are not maintained by head office.",
+      "cta": "Read the official website statement"
     }
   },
   "manufacturing": {
@@ -828,6 +834,10 @@
       "ifanPlusFeature3": "100% Premium Raw Material Guarantee",
       "ifanPlusFeature4": "Exclusive Regional Agency Protection Options",
       "ifanPlusBtn": "Discover IFANPLUS Premium"
+    },
+    "meta": {
+      "title": "IFAN Group | Top Plumbing Manufacturer & Wholesale Supplier",
+      "description": "Direct from our 120,000m² smart factory. Source 10,000+ PPR, PEX, and brass valves at unbeatable wholesale prices. Request your custom B2B quote today!"
     }
   },
   "products": {

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Trophy, BookOpen } from "lucide-react";
+import { ArrowRight, Trophy, BookOpen, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Link } from "@/i18n/navigation";
@@ -246,6 +246,28 @@ export default function AboutPage() {
                                 </Link>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                {/* 官方网站声明。放在 about-us 是因为这页本身就是「IFAN 是谁」的落点，
+                    而现在至少 8 个站点声称属于同一个法人主体——身份说明和身份声明
+                    要在同一页上，谷歌才会把两者当成同一个主题处理。 */}
+                <section className="py-24 bg-slate-950 border-t border-white/5">
+                    <div className="container mx-auto px-6 max-w-4xl text-center">
+                        <ShieldCheck className="w-10 h-10 text-brand-500 mx-auto mb-8" />
+                        <h3 className="text-3xl lg:text-4xl font-black text-white tracking-tighter mb-6">
+                            {t("officialNotice.title")}
+                        </h3>
+                        <p className="text-slate-400 leading-relaxed font-light text-lg mb-10">
+                            {t("officialNotice.desc")}
+                        </p>
+                        <Link
+                            href="/official-website"
+                            className="group/link inline-flex items-center gap-4 text-brand-500 hover:text-white font-bold tracking-[0.2em] uppercase text-xs transition-colors"
+                        >
+                            {t("officialNotice.cta")}
+                            <ArrowRight className="w-4 h-4 group-hover/link:translate-x-2 transition-transform duration-300" />
+                        </Link>
                     </div>
                 </section>
             </main>

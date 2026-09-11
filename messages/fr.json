@@ -114,7 +114,8 @@
     "faq": "Questions fréquentes",
     "hdpePipes": "Tuyaux HDPE / PE100",
     "pvcDrainage": "Systèmes d'évacuation uPVC",
-    "feedback": "Votre avis"
+    "feedback": "Votre avis",
+    "officialWebsite": "Site officiel"
   },
   "contact": {
     "title": "Contactez-nous",
@@ -247,6 +248,11 @@
       "title": "D’un atelier de vannes du Zhejiang à un groupe mondial de plomberie",
       "para1": "IFAN Group fabrique des produits de contrôle des fluides depuis 1993, date à laquelle il a débuté comme atelier de vannes et de quincaillerie à Zhuji, Zhejiang. Trois décennies plus tard, il fonctionne comme un groupe de fabrication intégré couvrant environ 120 000 m² de production intelligente répartie sur trois marques — IFAN, IFANPLUS et IFANPRO — qui ensemble couvrent plus de 10 000 références de plomberie. Des tuyaux en PPR, PVC et HDPE aux systèmes PEX, raccords et vannes en laiton sans plomb, toute la gamme est conçue, moulée et testée en interne plutôt qu'assemblée à partir de fournisseurs externes.",
       "para2": "Ce contrôle vertical permet à IFAN de vendre en direct d’usine aux importateurs, distributeurs et acheteurs de projets dans plus de 120 pays, strictement sur une base de vente en gros B2B. Chaque lot de production passe par un laboratoire national accrédité CNAS pour des tests hydrostatiques, thermiques et de résistance aux chocs, et les produits sont certifiés CE, ISO 9001, ISO 14001, WRAS et SKZ pour une utilisation avec l’eau potable et le gaz. Pour les acheteurs, cela signifie une qualité constante qu’ils peuvent certifier en douane, un seul fournisseur pour l’ensemble d’un système de plomberie, et une usine qu’ils sont toujours les bienvenus à auditer."
+    },
+    "officialNotice": {
+      "title": "Un groupe, un site officiel",
+      "desc": "www.ifanholding.com est le site institutionnel officiel d'IFAN Group (Zhuji Fengfan Piping Co., Ltd.) et le domaine imprimé sur les emballages des produits IFAN. Les autres domaines portant la marque IFAN sont exploités de façon indépendante par des représentants commerciaux et ne sont pas maintenus par le siège.",
+      "cta": "Lire la déclaration de site officiel"
     }
   },
   "products": {
@@ -908,6 +914,10 @@
       "ifanPlusFeature3": "Garantie de Matière Première 100% Premium",
       "ifanPlusFeature4": "Options de Protection d'Agence Régionale Exclusive",
       "ifanPlusBtn": "Découvrir IFANPLUS Premium"
+    },
+    "meta": {
+      "title": "IFAN Group | Fabricant de tubes PPR, PEX et vannes en laiton",
+      "description": "Directement de notre usine intelligente de 120 000 m². Plus de 10 000 produits PPR, PEX et vannes en laiton au prix de gros. Demandez votre devis B2B."
     }
   },
   "resources": {

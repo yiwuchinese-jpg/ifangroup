@@ -114,7 +114,8 @@
     "faq": "Preguntas frecuentes",
     "hdpePipes": "Tubería HDPE / PE100",
     "pvcDrainage": "Sistemas de drenaje uPVC",
-    "feedback": "Opiniones"
+    "feedback": "Opiniones",
+    "officialWebsite": "Sitio web oficial"
   },
   "contact": {
     "title": "Contáctenos",
@@ -247,6 +248,11 @@
       "title": "De un taller de válvulas en Zhejiang a un grupo global de fontanería",
       "para1": "El Grupo IFAN fabrica productos de control de fluidos desde 1993, cuando comenzó como un taller de válvulas y ferretería en Zhuji, Zhejiang. Tres décadas después, opera como un grupo de fabricación integrado que abarca aproximadamente 120.000 m² de producción inteligente en tres marcas — IFAN, IFANPLUS e IFANPRO — que juntas cubren más de 10,000 SKU de fontanería. Desde tuberías de PPR, PVC y HDPE hasta sistemas PEX, accesorios y válvulas de latón sin plomo, toda la gama se diseña, moldea y prueba internamente, en lugar de ensamblarse a partir de proveedores externos.",
       "para2": "Ese control vertical es lo que permite a IFAN vender directamente de fábrica a importadores, distribuidores y compradores de proyectos en más de 120 países, estrictamente bajo una base mayorista B2B. Cada lote de producción pasa por un laboratorio nacional acreditado por CNAS para pruebas hidrostáticas, térmicas y de impacto, y los productos cuentan con las aprobaciones CE, ISO 9001, ISO 14001, WRAS y SKZ para uso en agua potable y gas. Para los compradores, eso significa calidad constante que pueden certificar en aduanas, un solo proveedor para todo un sistema de fontanería y una fábrica que siempre pueden auditar."
+    },
+    "officialNotice": {
+      "title": "Un grupo, un sitio web oficial",
+      "desc": "www.ifanholding.com es el sitio web corporativo oficial de IFAN Group (Zhuji Fengfan Piping Co., Ltd.) y el dominio impreso en el embalaje de los productos IFAN. Otros dominios con la marca IFAN son gestionados de forma independiente por representantes de ventas y no son mantenidos por la casa matriz.",
+      "cta": "Leer la declaración de sitio web oficial"
     }
   },
   "products": {
@@ -1114,6 +1120,10 @@
       "ifanPlusFeature3": "Garantía de Materia Prima 100% Premium",
       "ifanPlusFeature4": "Opciones de Protección de Agencia Regional Exclusiva",
       "ifanPlusBtn": "Descubrir IFANPLUS Premium"
+    },
+    "meta": {
+      "title": "IFAN Group | Fabricante de tuberías PPR, PEX y válvulas de latón",
+      "description": "Directo de nuestra fábrica inteligente de 120.000 m². Más de 10.000 productos PPR, PEX y válvulas de latón a precio mayorista. Solicite su cotización B2B."
     }
   },
   "resources": {
