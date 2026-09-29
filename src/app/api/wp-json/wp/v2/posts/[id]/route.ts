@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { writeClient } from '@/lib/sanity-write';
-import { client } from '@/lib/sanity';
+import { freshClient as client } from '@/lib/sanity';
 import { getCorsHeaders } from '../../cors';
 import { replaceWpImagesWithSanityUrls } from '../../media-cache';
 import { findCategoryIdByName } from '../../utils';

@@ -11,7 +11,7 @@ import { getTranslations } from "next-intl/server";
 import { localeAlternates, localeUrl } from "@/lib/seo";
 import { buildPageSchema } from "@/lib/schema";
 
-export const revalidate = 0; // 强制刷新数据，不在此处缓存
+export const revalidate = 3600; // 2026-09-29：原为 0（每次访问都查 Sanity），改为 1 小时缓存；发布后可用 /api/revalidate 立即刷新
 
 // 首页 canonical + 六语言 hreflang + 按语言的 title/description。
 // 此前 title/description 继承 [locale]/layout 的英文默认值，/es /pt 等页面

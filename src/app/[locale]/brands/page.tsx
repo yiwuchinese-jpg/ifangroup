@@ -8,7 +8,7 @@ import BrandSolarSystemClient from "./BrandSolarSystemClient";
 import { localeAlternates } from "@/lib/seo";
 import { buildPageSchema } from "@/lib/schema";
 
-export const revalidate = 0;
+export const revalidate = 3600; // 2026-09-29：原为 0（每次访问都查 Sanity），改为 1 小时缓存；发布后可用 /api/revalidate 立即刷新
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

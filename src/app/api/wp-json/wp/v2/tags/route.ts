@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { client } from '@/lib/sanity';
+import { freshClient as client } from '@/lib/sanity';
 import { getCorsHeaders } from '../cors';
 
 export async function OPTIONS() {
